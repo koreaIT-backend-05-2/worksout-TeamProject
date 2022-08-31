@@ -1,3 +1,11 @@
+.header-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 .hidden{
     /* visibility: hidden; */
     /* display: none; */
@@ -16,7 +24,7 @@
     background-color: blueviolet;
 }
 .sort-checkboxes {
-    border: 1px solid #141414;
+    /* border: 1px solid #141414; */
     display: flex;
 }
 
