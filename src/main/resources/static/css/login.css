@@ -81,17 +81,36 @@
 
 }
 
-.save-checkbox {
+#save-checkbox + label {
     margin-right: 5px;
 
     width: 16px;
     height: 16px;
 
-    border: none; 
-    accent-color: black;
-
+    border: none;
+    background-color: #efefef;
+    
     cursor: pointer;
 }
+
+#save-checkbox:checked + label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+#save-checkbox {
+    display: none;
+}
+
+
 
 /* 아이디 비밀번호 찾기 */
 
