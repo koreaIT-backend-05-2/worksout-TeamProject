@@ -20,3 +20,7 @@ html, body {
 button {
     cursor: pointer;
 }
+
+table {
+    border-collapse: collapse;
+}
