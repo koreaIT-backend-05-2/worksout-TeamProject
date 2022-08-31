@@ -123,7 +123,7 @@ tbody img {
     padding: 20px;
 
     width: 320px;
-    height: 316px;
+    height: 330px;
 
     border: 1px solid rgba(180, 180, 180, 0.4);
 }
@@ -163,7 +163,7 @@ tbody img {
 .total-price-info {
     position: relative;
 
-    height: 110px;
+    height: 90px;
 }
 
 .total-price {
@@ -179,7 +179,21 @@ tbody img {
     margin-top: 8px;
 }
 
-.purchase-button {
+
+
+.nonmember-purchase-button {
+    width: 270px;
+    height: 36px;
+
+    color: #1F2937;
+
+    background-color: #f3f4f6;
+    border: none;
+}
+
+.member-purchase-button {
+    margin-top: 16px;
+    
     width: 270px;
     height: 36px;
 
@@ -187,4 +201,3 @@ tbody img {
 
     background-color: #111827;
 }
-
