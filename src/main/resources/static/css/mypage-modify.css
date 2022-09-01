@@ -42,6 +42,12 @@ tbody td {
     vertical-align: bottom;
 }
 
+.my-info-modify {
+    height: 15px;
+    cursor: pointer;
+}
+
+
 /* mypage 내용 */
 
 /* <<<<<<<<<<<<<<<<<< 좌측메뉴 fragment >>>>>>>>>>>>>>>>>> */
@@ -132,6 +138,10 @@ select:focus {
 
 }
 
+label {
+    cursor: pointer;
+}
+
 .name-and-gender {
     display: flex;
     align-items: center;
@@ -191,6 +201,10 @@ select:focus {
 
     width: 305px;
     height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
+    color: #9ca3af;
 }
 
 .input-userrank {
@@ -207,6 +221,10 @@ select:focus {
 
     width: 305px;
     height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
+    color: #9ca3af;
 }
 
 /* 핸드폰 번호 마케팅 동의 */
@@ -289,6 +307,17 @@ select:focus {
 
 /* 배송 정보 */
 
+.new-input-button {
+    margin-top: 20px;
+
+    width: 92px;
+    height: 36px;
+
+    background-color: #111827;
+    font-size: 12px;
+    color: #fff;
+}
+
 .address-and-consignee {
     display: flex;
     align-items: center;
@@ -356,16 +385,26 @@ select:focus {
     width: 100%;
 }
 
+.input-address p {
+    cursor: pointer;
+}
+
 .input-address input {
     padding: 0px 16px;
 
     width: 525px;
     height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
 }
 
 .input-address button {
     width: 100px;
     height: 36px;
+
+    background-color: #e5e7eb;
+    border: none;
 } 
 
 .detail-address input {
@@ -373,12 +412,18 @@ select:focus {
     padding: 0px 16px;
 
     width: 630px;
+
+    background-color: #fff;
 }
 
 /* 배송시 요청사항 */
 
 .input-request {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
+    margin-top: 20px;
 }
 
 .input-request input {
@@ -386,4 +431,34 @@ select:focus {
     padding: 0px 16px;
 
     width: 630px;
+    height: 36px;
+}
+
+/* 정보수정, 회원탈퇴 버튼 */
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.button-group button {
+    width: 200px;
+    height: 36px;
+}
+
+.modify-button {
+    background-color: #d1d5db;
+    color: #fff;
+
+    border: none;
+}
+
+.withdrawal-button {
+    background-color: #fff;
+    color: #111827;
+
+    border: 1px solid black;
 }

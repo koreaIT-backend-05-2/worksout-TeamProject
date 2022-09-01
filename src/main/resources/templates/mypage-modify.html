@@ -29,7 +29,7 @@
                         </tbody>
                     </tr>
                 </table>
-                <p>내 정보 수정 ></p>
+                <p class="my-info-modify">내 정보 수정 ></p>
             </div>
              <!-- contents -->
             <div class="contents">
@@ -122,7 +122,7 @@
                     <!-- 배송정보 -->
                     <div>
                         <h3>배송정보</h3>
-                        <button type="button">신규 입력</button>
+                        <button type="button" class="new-input-button">신규 입력</button>
                         <div class="address-and-consignee">
                             <div class="input-location">
                                 <label for="location">배송지명*</label>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="input-address">
                             <p>주소*</p>
-                            <input type="text" readonly>
+                            <input type="text" readonly placeholder="주소">
                             <button type="button">검색</button>
                             <div class="detail-address">
                                 <input type="text" placeholder="상세 주소 입력">
@@ -156,7 +156,7 @@
                             <input type="text" id="request-term" placeholder="배송시 요청사항을 입력해주세요.">
                         </div>
                     </div>
-                    <div>
+                    <div class="button-group">
                         <button type="button" class="modify-button">수정하기</button>
                         <button type="button" class="withdrawal-button">회원탈퇴</button>
                     </div>
