@@ -12,6 +12,17 @@ img {
     height: 960px;
 }
 
+.img-group {
+    display: flex;
+
+    width: 640px;
+    overflow: hidden;
+}
+
+/* .test-button {
+    position: absolute;
+} */
+
 /* item 그룹 */
 
 .items-information {
