@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,8 @@
     <main>
         <div class="myPage">
             <!-- 상단 frgment -->
+            <th:block th:replace="/fragment/mypage-head"></th:block>
+            <!--  
             <div class="my-info">
                 <table>
                     <tr>
@@ -31,6 +33,7 @@
                 </table>
                 <p class="my-info-modify">내 정보 수정 ></p>
             </div>
+            		-->
              <!-- contents -->
             <div class="contents">
                 <div class="myPage-left-menu">

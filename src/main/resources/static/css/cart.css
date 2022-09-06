@@ -8,6 +8,9 @@
 
 .cart-group {
     width: 940px;
+    height: 300px;
+
+    
 }
 
 .cart-group-header {
@@ -65,11 +68,14 @@ tbody img {
     height: 144px;
 }
 
+tbody tr {
+    border-bottom: 1px solid #d3d4d6;
+}
+
 .td-items-info {
     display: flex;
     align-items: center;
-
-    height: 250px;
+    height: 200px;
 }
 
 .items-info-content {
@@ -115,6 +121,8 @@ tbody img {
     text-align: center;
     cursor: pointer;
 }
+
+
 
 /* 주문정보 div */
 
