@@ -17,7 +17,7 @@ selectBtn.onclick = () => {
 
 for(let i = 0; i < sizeBtns.length; i++) {
     sizeBtns[i].onclick = () => {
-        sizeBtns[i].classList.add("act-toggle");
+        sizeBtns[i].classList.add("act-size");
         
         selectBtn.onclick = () =>{
             if(sizeBtns[i].style.backgroundColor = "black"){
@@ -51,6 +51,7 @@ detailInfoBtn.onclick = () => {
 
 function detailInner() {
     detailInfoGroup.style.borderBottom = "1px solid black"
+    detailInfo.style.margin = "15px 0px"
     detailInfo.innerHTML = `
         <p>억스(AAUXX)의 아이링(iRing)은 스마트 디바이스의 그립과 거치를 편리하게 해주는 디지털 액세서리 브랜드입니다. </p>
         <p>끊임없이 테크놀로지 트렌드를 파악하고 더 편안한 디지털 라이프를 위해 고민하고 제안합니다.</p>  

@@ -154,10 +154,6 @@ img {
     color: #000000DE;
 }
 
-.detail-info {
-    margin: 15px 0px;
-}
-
 .detail-info p {
     padding-bottom: 10px;
     color: #1F2937;
@@ -317,7 +313,7 @@ article {
 
 /* toggle 이벤트 */
 
-.act-toggle {
+.act-size {
 
     background-color: black;
     color: #fff;
