@@ -32,6 +32,7 @@ public class UserSignupReqDto {
 					.user_password(new BCryptPasswordEncoder().encode(password))
 					.user_phone(phone)
 					.user_roles("ROLE_ADMIN")
+					.user_level("BASIC")
 					.user_qualification_agreement(qualificationAgree)
 					.user_info_agreement(infoAgree)
 					.user_email_agreement(emailAgree)
