@@ -1,13 +1,5 @@
-const interestBtn = document.querySelector(".interest-button");
-const sizeBtnsGroup = document.querySelector(".size-buttons-group");
 const sizeBtns = document.querySelectorAll(".size-button");
 const selectBtn = document.querySelector(".select-button");
-
-console.log(sizeBtnsGroup);
-
-interestBtn.onclick = () => {
-    interestBtn.classList.toggle("interest-toggle");
-}
 
 // 사이즈 클릭시만 구매 또는 장바구니 버튼 생성
 
@@ -17,10 +9,17 @@ selectBtn.onclick = () => {
 
 for(let i = 0; i < sizeBtns.length; i++) {
     sizeBtns[i].onclick = () => {
+	// 클릭 이전에 한번 초기화
+		sizeBtns.forEach(sizeBtn => {
+			sizeBtn.classList.remove("act-size")
+		});
+		
+	// 이벤트 추가
         sizeBtns[i].classList.add("act-size");
-        
+      
+   	// 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
         selectBtn.onclick = () =>{
-            if(sizeBtns[i].style.backgroundColor = "black"){
+            if(sizeBtns[i].classList.add){
                 change();
             }
         }
@@ -28,6 +27,7 @@ for(let i = 0; i < sizeBtns.length; i++) {
 }
 
 
+// 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
 
 function change() {
     const purchaseGroup = document.querySelector(".purchase-group");
@@ -43,20 +43,59 @@ function change() {
 
 const detailInfoBtn = document.querySelector(".detail-info-button");
 const detailInfo = document.querySelector(".detail-info");
-const detailInfoGroup = document.querySelector(".detail-info-group "); 
 
 detailInfoBtn.onclick = () => {
-    detailInner();
+	detailInfo.classList.toggle("act");
 }
 
-function detailInner() {
-    detailInfoGroup.style.borderBottom = "1px solid black"
-    detailInfo.style.margin = "15px 0px"
-    detailInfo.innerHTML = `
-        <p>억스(AAUXX)의 아이링(iRing)은 스마트 디바이스의 그립과 거치를 편리하게 해주는 디지털 액세서리 브랜드입니다. </p>
-        <p>끊임없이 테크놀로지 트렌드를 파악하고 더 편안한 디지털 라이프를 위해 고민하고 제안합니다.</p>  
-        <p>아이링(iRing)은 특허 기술을 기반으로 타협하지 않는 품질의 제품을 제공하기 위해 노력합니다.</p>
-        
-        <span>* 반드시 아이폰 12 이상 맥세이프가 탑재된 기종 또는 맥세이프 케이스와 함께 사용하세요.</span>
-`;
+// 배송안내
+const shippingInfoBtn = document.querySelector(".shipping-info-button");
+const shippingInfo = document.querySelector(".shipping-info");
+
+shippingInfoBtn.onclick = () => {
+	shippingInfo.classList.toggle("act");
+}
+
+// 반품안내
+const returnInfoBtn = document.querySelector(".return-info-button");
+const returnInfo = document.querySelector(".return-info");
+
+returnInfoBtn.onclick = () => {
+	returnInfo.classList.toggle("act");
+}
+
+
+// A/S 안내
+const asInfoBtn = document.querySelector(".as-info-button");
+const asInfo = document.querySelector(".as-info");
+
+asInfoBtn.onclick = () => {
+	asInfo.classList.toggle("act");
+}
+
+// 주의사항
+const precautionsInfoBtn = document.querySelector(".precautions-info-button");
+const precautionsInfo = document.querySelector(".precautions-info");
+
+precautionsInfoBtn.onclick = () => {
+	precautionsInfo.classList.toggle("act");
+}
+
+
+//관심버튼 눌렀을 때 바뀜
+
+const interestBtn = document.querySelector(".interest-button");
+
+console.log("관심버튼:" + interestBtn);
+
+let flag = false;
+
+interestBtn.onclick = () => {
+	if(flag) {
+		flag = false;
+		interestBtn.innerHTML = `<i class="fa-regular fa-heart" ></i>`;
+	}else{
+		flag = true;
+		interestBtn.innerHTML = `<i class="fa-solid fa-heart" style="color:red;"></i>`;
+	}
 }

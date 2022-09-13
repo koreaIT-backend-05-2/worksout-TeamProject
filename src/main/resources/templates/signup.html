@@ -34,13 +34,13 @@
             <div class="label-group label-dob">
                 <p>생년월일</p>
                 <select name="year" id="year">
-                    <option value=""disabled selected hidden>연도</option>
+                    <option value="year"disabled selected hidden>연도</option>
                 </select>
-                <select name="month" id="month">
-                    <option value=""disabled selected hidden>월</option>
+                <select name="month" id="month" disabled="false" >
+                    <option value="month"disabled selected hidden>월</option>
                 </select>
-                <select name="date" id="date">
-                    <option value=""disabled selected hidden>일</option>
+                <select name="date" id="date" disabled="false" >
+                    <option value="date"disabled selected hidden>일</option>
                 </select>
             </div>
             <div class="label-group label-id">
@@ -128,5 +128,7 @@
             </div>
         </div>
     </main>
+
+    <script src="/static/js/signup.js"></script>
 </body>
 </html>

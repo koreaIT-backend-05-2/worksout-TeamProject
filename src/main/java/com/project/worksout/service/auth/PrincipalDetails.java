@@ -1,5 +1,6 @@
 package com.project.worksout.service.auth;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -23,7 +24,14 @@ public class PrincipalDetails implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+		
+		
+		user.getUserRoles().forEach(role -> {
+			grantedAuthorities.add(() -> role);
+		});
+		
+		return grantedAuthorities;
 	}
 
 	@Override

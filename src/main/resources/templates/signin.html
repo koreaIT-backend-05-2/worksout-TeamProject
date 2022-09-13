@@ -11,12 +11,12 @@
 </head>
 <body>
     <main>
-        <div class="login">
+        <form class="login" method="post" action="/signin">
             <h1>로그인</h1>
             <div class="login-form">
                 <div class="input-id">
                     <p>아이디</p>
-                    <input type="email" name="email" placeholder="이메일을 입력해주세요.">
+                    <input type="email" name="username" placeholder="이메일을 입력해주세요.">
                 </div>
                 <div class="input-password">
                     <p>비밀번호</p>
@@ -35,12 +35,12 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <button type="button" class="signin-button">로그인</button>
+                    <button type="submit" class="signin-button">로그인</button>
                     <button type="button" class="signup-button">회원가입</button>
                     <p>비회원 주문조회</p>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
 </body>
 </html>

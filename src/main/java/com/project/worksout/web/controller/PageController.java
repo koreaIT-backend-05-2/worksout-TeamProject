@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-	@GetMapping({"/index", "/"})
-	public String loadIndex() {
-		return "/index";
-	}
-	
 	@GetMapping("/signin")
 	public String loadSignin() {
 		return "/signin";
@@ -21,7 +16,7 @@ public class PageController {
 		return "/signup";
 	}
 	
-	@GetMapping("/item")
+	@GetMapping("/items")
 	public String loadItemDetailPage() {
 		return "/items-detail-page";
 	}

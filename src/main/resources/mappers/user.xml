@@ -25,7 +25,30 @@
   			now(),
   			now()
   		)
-  	
   	</insert>
+  	<select id="findUserByUsername" parameterType="String"
+  		resultType="com.project.worksout.domain.user.User">
+  		select
+  			um.user_code,
+  			
+  			um.user_name,
+  			um.user_gender,
+  			um.user_birth,
+  			um.user_id,
+  			um.user_password,
+  			um.user_phone,
+  			um.user_roles,
+  			um.user_level,
+  			
+  			ud.user_address01,
+  			ud.user_address02,
+  			ud.user_address03
+  		from
+  			user_mst um
+  			left outer join user_dtl ud on(ud.user_code = um.user_code)
+  		where
+  			um.user_id = #{username}
+  	
+  	</select>
   
   </mapper>
