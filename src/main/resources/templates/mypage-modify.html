@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/mypage-modify.css">
+    <title>modify</title>
+</head>
+<body>
+    <main>
+        <div class="myPage">
+            <!-- 상단 frgment -->
+            <th:block th:replace="/fragment/mypage-head"></th:block>
+            <!--  
+            <div class="my-info">
+                <table>
+                    <tr>
+                        <thead>
+                            <td>회원 이름</td>
+                            <td>회원 등급</td>
+                            <td>보유 포인트</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>박준형</td>
+                                <td>BASIC</td>
+                                <td>0P</td>
+                            </tr>
+                        </tbody>
+                    </tr>
+                </table>
+                <p class="my-info-modify">내 정보 수정 ></p>
+            </div>
+            		-->
+             <!-- contents -->
+            <div class="contents">
+                <div class="myPage-left-menu">
+                    <div class="menu-order">
+                        <h5>나의 주문</h5>
+                        <div class="menu-contents">
+                            <p>전체 주문 내역</p>
+                            <p>결제 취소 내역</p>
+                            <p>교환 · 반품 내역</p>
+                        </div>
+                    </div>
+                    <div class="menu-info">
+                        <h5>나의 정보</h5>
+                        <div class="menu-contents">
+                            <p>내 정보 수정</p>
+                            <p>1:1 문의하기</p>
+                            <p>포인트 & 쿠폰</p>
+                            <p>라플 (응모 내역)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="menu-etc">
+                            <p>고객센터</p>
+                            <p>자주 묻는 질문</p>
+                            <p>로그아웃</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 변경되는 내용 -->
+                <article>
+                    <div class="mypage-contents">
+                            <h3>내 정보 수정</h3>
+                            <div class="row-line"></div>
+                            <h3>나의 정보</h3>
+                        <div class="modify-form">
+                            <div class="name-and-gender">
+                                <div class="input-username">
+                                    <label for="username">이름</label>
+                                    <input type="text" id="username" value="박준형">
+                                </div>
+                                <div class="select-gender">
+                                    <label for="gender">성별</label>
+                                    <select name="gender" id="gender">
+                                        <option value="male">남성</option>
+                                        <option value="female">여성</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="code-and-rank">
+                                <div class="input-usercode">
+                                    <label for="usercode">회원코드</label>
+                                    <input type="text" id="usercode" value="3116226">
+                                </div>
+                                <div class="input-userrank">
+                                    <label for="userrank">회원등급</label>
+                                    <input type="text" id="userrank" value="BASIC">
+                                </div>
+                            </div>
+                            <div class="phonenumber-and-agree">
+                                <div class="input-userphonenumber">
+                                    <label for="phonenumber">핸드폰 번호</label>
+                                    <div class="input-phonenumber">
+                                        <input id="phonenumber" type="text" value="010">
+                                        <input type="text" value="6558">
+                                        <input type="text" value="7973">
+                                    </div>
+                                </div>
+                                <div class="agree-marketing">
+                                    <p>마케팅 정보 수신 동의</p>
+                                    <div class="agree-group">
+                                        <div class="checkbox-group">
+                                            <input id="email-agree" class="checkbox-agree" type="checkbox">
+                                            <label for="email-agree"></label>
+                                            <label for="email-agree" class="agree">E-mail</label>
+                                        </div>
+                                        <div class="checkbox-group last-checkbox-group">
+                                            <input id="sms-agree" class="checkbox-agree" type="checkbox">
+                                            <label for="sms-agree"></label>
+                                            <label for="sms-agree" class="agree">PUSH, SMS 등</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-line"></div>
+
+                    <!-- 배송정보 -->
+                    <div>
+                        <h3>배송정보</h3>
+                        <button type="button" class="new-input-button">신규 입력</button>
+                        <div class="address-and-consignee">
+                            <div class="input-location">
+                                <label for="location">배송지명*</label>
+                                <input type="text" id="location" placeholder="배송지명을 적어주세요">
+                            </div>
+                            <div class="input-consignee">
+                                <label for="consignee">수취인 이름*</label>
+                                <input type="text" id="consignee" placeholder="수취인 이름을 적어주세요.">
+                            </div>
+                        </div>
+                        <div class="consignee-phonenumber">
+                            <div class="input-consignee-hp">
+                                <label for="consignee-hp">수취인 전화번호*</label>
+                                <div class="input-phonenumber">
+                                    <input  id="consignee-hp" type="text" placeholder="000">
+                                    <input type="text" placeholder="0000">
+                                    <input type="text" placeholder="0000">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-address">
+                            <p>주소*</p>
+                            <input type="text" readonly placeholder="주소">
+                            <button type="button">검색</button>
+                            <div class="detail-address">
+                                <input type="text" placeholder="상세 주소 입력">
+                            </div>
+                        </div>
+                        <div class="input-request"> 
+                            <label for="request-term">배송시 요청사항</label>
+                            <input type="text" id="request-term" placeholder="배송시 요청사항을 입력해주세요.">
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="modify-button">수정하기</button>
+                        <button type="button" class="withdrawal-button">회원탈퇴</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

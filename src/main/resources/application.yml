@@ -13,11 +13,11 @@ server:
 spring:
   mvc:
     static-path-pattern: /static/**
-#  datasource:
-#    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://web-study.cimknwts3ktb.ap-northeast-2.rds.amazonaws.com:3306/todolist0725?useUnicode=true&characterEncoding=UTF-8
-#    username: admin
-#    password: 1q2w3e4r
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://web-study.cimknwts3ktb.ap-northeast-2.rds.amazonaws.com:3306/worksout?useUnicode=true&characterEncoding=UTF-8
+    username: admin
+    password: 1q2w3e4r
     
 mybatis:
   mapper-locations:
