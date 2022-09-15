@@ -20,6 +20,11 @@ public class PageController {
 	public String loadItemDetailPage() {
 		return "/items-detail-page";
 	}
+	
+	@GetMapping("/cart")
+	public String loadCartPage() {
+		return "/cart";
+	}
 
 	
 }

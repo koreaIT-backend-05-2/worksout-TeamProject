@@ -1,0 +1,47 @@
+/* <<<<<<<<<<<<<<<<<< 좌측메뉴 fragment >>>>>>>>>>>>>>>>>> */
+
+.contents {
+    display: flex;
+}
+
+.myPage-left-menu {
+    width: 192px;
+}
+
+.myPage-left-menu h5{
+    margin-bottom: 16px;
+
+    font-weight: 300;
+    color: #1f2937;
+}
+
+
+.menu-order {
+
+}
+
+.menu-contents {
+    line-height: 25px;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.menu-contents p{
+    cursor: pointer;
+}
+
+.menu-info {
+    margin-top: 28px;
+}
+
+.menu-etc {
+    margin-top: 28px;
+
+    line-height: 25px;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.menu-etc p{
+   cursor: pointer;
+}

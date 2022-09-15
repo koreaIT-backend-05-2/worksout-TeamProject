@@ -51,6 +51,12 @@ input:focus {
 
 }
 
+.error-msg {
+    margin-top: 7px;
+    font-size: 11px;
+    color: red;
+}
+
 
 select:focus {
     outline: none;

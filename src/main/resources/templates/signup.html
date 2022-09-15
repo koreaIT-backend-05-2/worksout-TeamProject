@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/signup.css">
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
     <title>signup</title>
 </head>
 <body>
@@ -20,7 +21,8 @@
             </div>
             <div class="label-group label-username">
                 <label for="username">이름</label>
-                <input id="username" type="text" placeholder="이름을 입력해주세요.">
+                <input id="username" name="name" type="text" placeholder="이름을 입력해주세요.">
+                <p class=" error-msg username-error"></p>
             </div>
             <div class="label-group label-gender">
                 <label for="gender">성별</label>
@@ -30,6 +32,7 @@
                     <option value="female">여자</option>
                     <option value="etc">기타</option>
                 </select>
+                <p class=" error-msg gender-error"></p>
             </div>
             <div class="label-group label-dob">
                 <p>생년월일</p>
@@ -45,25 +48,29 @@
             </div>
             <div class="label-group label-id">
                 <label for="id">아이디(이메일)</label>
-                <input id="id" type="email" placeholder="이메일을 입력해주세요.">
+                <input id="id" name="username"  type="email"  placeholder="이메일을 입력해주세요.">
+                <p class=" error-msg userId-error"></p>
             </div>
             <div  class="label-group">
                 <label for="password">비밀번호</label>
-                <input id="password" type="password">
+                <input id="password" name="password" type="password" >
+                <p class=" error-msg password-error"></p>
             </div>
             <div  class="label-group">
-                <label for="check-password">비밀번호 확인</label>
-                <input id="check-password" type="password">
+                <label for="password-check">비밀번호 확인</label>
+                <input id="password-check" type="password">
+                <p class=" error-msg password-check-error"></p>
             </div>
             <div  class="label-group label-phonenumber">
                 <div>
                     <label for="phonenumber">핸드폰 번호</label>
                 </div>
                 <div class="input-phonenumber">
-                    <input id="phonenumber" type="text" placeholder="000">
-                    <input type="text" placeholder="0000">
-                    <input type="text" placeholder="0000">
+                    <input id="phonenumber"  name="phonefirst" type="text" placeholder="000">
+                    <input name="phonemiddle" type="text" placeholder="0000">
+                    <input name="phonelast" type="text" placeholder="0000">
                 </div>
+                <p class=" error-msg phone-error"></p>
             </div>
             <div>
                 <button type="button" class="auth-number">인증번호 발송</button>
@@ -75,10 +82,11 @@
                 <label for="all-agree" class="agree">약관 전체 동의</label>
             </div>
             <div class="checkbox-group">
-                <input id="terms-agree" class="checkbox-terms-agree" type="checkbox">
+                <input id="terms-agree" name="qualificationAgree" class="checkbox-agree" type="checkbox">
                 <label for="terms-agree"></label>
                 <label for="terms-agree" class="agree">이용약관에 동의합니다.</label>
             </div>
+            <p class=" error-msg qualification-agree-error"></p>
             <div class="agree-contents">
                <h5>서비스 이용 약관</h5> 
 
@@ -98,10 +106,11 @@
                 <p> - ⑥ ‘포인트’ 이라 함은 “몰"에 등록한 회원에게 온라인/오프라인 상품 구매 시 결제 금액의 일정 비율만큼 적립금을 지급해주는 회원 혜택입니다. “몰”은 “몰”에 등록한 회원에게 포인트를 적립 및 차감 할 수 있으며 구체적인 사항은 회사가 정한 운영 정책에 따릅니다.</p>
             </div>
             <div class="checkbox-group">
-                <input id="personal-info-agree" class="checkbox-agree" type="checkbox">
+                <input id="personal-info-agree"  name="infoAgree" class="checkbox-agree" type="checkbox">
                 <label for="personal-info-agree"></label>
                 <label for="personal-info-agree" class="agree">개인정보 수집 · 이용 안내</label>
             </div>
+            <p class=" error-msg info-agree-error"></p>
             <div class="agree-personal-info">
                 <h5>[개인 정보 수집 및 이용 안내]</h5>
                 
@@ -113,12 +122,12 @@
             <div class="agree-marketing-group">
                 <p class="agree-marketing">마케팅 정보 수신 동의</p>
                 <div class="checkbox-group">
-                    <input id="email-agree" class="checkbox-agree" type="checkbox">
+                    <input id="email-agree"  name="emailAgree"  class="checkbox-agree" type="checkbox">
                     <label for="email-agree"></label>
                     <label for="email-agree" class="agree">E-mail</label>
                 </div>
                 <div class="checkbox-group last-checkbox-group">
-                    <input id="sms-agree" class="checkbox-agree" type="checkbox">
+                    <input id="sms-agree" name="smsAgree" class="checkbox-agree" type="checkbox">
                     <label for="sms-agree"></label>
                     <label for="sms-agree" class="agree">PUSH, SMS 등</label>
                 </div>
