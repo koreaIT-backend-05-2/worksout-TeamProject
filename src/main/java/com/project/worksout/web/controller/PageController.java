@@ -20,6 +20,9 @@ public class PageController {
 	public String loadItemDetailPage() {
 		return "/items-detail-page";
 	}
-
 	
+	@GetMapping("/category")
+	public String loadItemCategoryPage() {
+		return "/items-category-page";
+	}
 }
