@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,136 +8,17 @@
     <script src="https://kit.fontawesome.com/644e1d23ae.js" crossorigin="anonymous"></script>
 
     <title>웍스아웃</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/header-footer.css">
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="stylesheet" href="../static/css/admin-user-info.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/header-footer.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin-user-info.css">
 </head>
 
 <body>
     <div class="__next">
         <div class="all-container">
 
-            <!-- header 부분  -->
-            <header class="header-z-index">
-                <div class="header">
-                    <div class="main-container-header">
-                        <div class="header-section selection-line">
-                            <div class="header-section-start">
-                                <a href="">응모</a>
-                                <a href="" class="store-info">매장 정보</a>
-                            </div>
-                            <div class="header-section-mid">
-                                <a href="">WORKSOUT</a>
-                            </div>
-                            <div class="header-section-end">
-                                <div class="header-section-end-buttons">
-                                    <button type="button">
-                                        <img src="../image/icons/magnifying-glass-solid.svg" alt="">검색</button>
-                                    <button type="button">관심상품</button>
-                                    <button type="button">장바구니</button>
-                                    <a href="" class="login">로그인</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="header-gender-etc-category selection-line">
-                            <div class="gender-etc-category button-set">
-                                <button>남성</button>
-                            </div>
-                            <div class="gender-etc-category">
-                                <button>여성</button>
-                            </div>
-                            <div class="gender-etc-category">
-                                <button>생활</button>
-                            </div>
-                            <div class="gender-etc-category">
-                                <button>세일</button>
-                            </div>
-                            <div class="gender-etc-category">
-                                <button>브랜드</button>
-                            </div>
-                        </div>
-                        <!-- hidden menu -->
-                        <div class="hidden-category-menu hidden">
-                            <div class="brand-category-menu">
-                                <div>
-                                    <div class="focus-brand"><i class="fa-solid fa-bookmark"></i><span>포커스브랜드</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                    <div class="focus-brand-items"><i class="fa-solid fa-bookmark"></i><span>focus brand items</span></div>
-                                </div>
-                                <div class="header-categories">
-                                    <div class="header-new-product">신상품</div>
-                                    <div class="underline"></div>
-                                    <h1 class="header-category-category">카테고리</h1>
-                                    <div class="all-categories">
-                                        <div class="category-items">상의</div>
-                                        <div class="category-items">하의</div>
-                                        <div class="category-items">신발</div>
-                                        <div class="category-items">가방</div>
-                                        <div class="category-items">악세사리</div>
-                                    </div>
-                                </div>
-                                <div class="brands">   
-                                    <div class="brand-div">브랜드</div>
-                                    <div class="all-brands">
-                                        <div class="brand-section01">
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 001</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 002</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 003</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 004</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 005</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 006</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 007</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 008</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 009</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 010</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 011</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 012</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 013</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 014</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 015</span></div>
-                                        </div>
-                                        <div class="brand-section02">
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 016</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 017</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 018</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 019</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 020</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 021</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 022</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 023</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 024</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 025</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 026</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 027</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 028</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 029</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 030</span></div>
-                                        </div>
-                                        <div class="brand-section03">
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 031</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 032</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 033</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 034</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 035</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 036</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 037</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 038</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 039</span></div>
-                                            <div class="brand-items"><i class="fa-regular fa-bookmark" style="color: #d1d1d1;"></i><span>brand 040</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+           <th:block th:replace="/fragment/header"></th:block>
 
             <main class="main-container">
                 <div class="header-name">유저정보</div>
@@ -174,16 +55,16 @@
                                         <td th:text="${principal.user.user_password}"></td>
                                         <td th:text="${principal.user.user_roles}"></td>
                                         <td th:text="${principal.user.user_provider}"></td> -->
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>0</td>
                                     </tr>
                                 </table>
                             </div>
@@ -192,59 +73,10 @@
                 </div>
             </main>
             
-            <div class="footer">
-                <div class="footer-content">
-                    <div class="company-info">
-                        <span>© 2003-2022 주식회사 웍스아웃</span>
-                        |
-                        <span>통신판매업신고: 2014-서울마포-0219</span>
-                        |
-                        <span>호스팅사업자: 주식회사 아마존웹서비스</span>
-                        |
-                        <span>사업자등록번호: 106-86-85373</span>
-                        <br>
-                        <span>상호명: 주식회사 웍스아웃 | 주소: 서울시 마포구 월드컵북로23길 24 </span>
-                        |
-                        <span>전자우편주소: customer@worksout.co.kr</span>
-                        |
-                        <span>대표: 강승혁, 박선영전화: 02-541-0854이용약관개인정보취급 방침</span>
-                    </div>
-                    <div class="for-supports">
-                        <div class="supports">
-                            <span>
-                                <a href="">웍스아웃에 대하여</a>
-                            </span>
-                            <span>
-                                <a href="">고객지원</a>
-                            </span>
-                            <span>
-                                <a href="">문의하기</a>
-                            </span>
-                            <span>
-                                <a href="">채용안내</a>
-                            </span>
-                            <div class="sns-buttons">
-                                <button>
-                                    <img src="../image/icons/instagram_icon.png" alt="">
-                                </button>
-                                <button>
-                                    <img src="../image/icons/facebook_icon.png" alt="">
-                                </button>
-                                <button>
-                                    <img src="../image/icons/youtube_icon.png" alt="">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="escrow">
-                            <a href="">구매안전 (에스크로) 서비스 가입사실 확인</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="/fragment/footer"></th:block>
         </div>
 
     </div>
-    <script src="../static/js/item-category-page.js"></script>
 
 </body>
 

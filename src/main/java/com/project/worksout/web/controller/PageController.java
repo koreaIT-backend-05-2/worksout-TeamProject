@@ -25,4 +25,9 @@ public class PageController {
 	public String loadItemCategoryPage() {
 		return "/items-category-page";
 	}
+	
+	@GetMapping("/adminuser")
+	public String loadAdminUserInfoPage() {
+		return "/admin-user-info-page";
+	}
 }
