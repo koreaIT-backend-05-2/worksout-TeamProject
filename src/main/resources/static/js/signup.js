@@ -173,9 +173,9 @@ inputs[1].onblur = () => {
 
  */
  
- const checkboxs = document.querySelectorAll(".checkbox-agree");
- const allAgree = document.querySelector("#all-agree")
- let agreeList = [false, false, false, false, false];
+const checkboxs = document.querySelectorAll(".checkbox-agree");
+const allAgree = document.querySelector("#all-agree")
+let agreeList = [false, false, false, false, false];
 let agreeFlag = false;
 
 console.log("전체동의: " + allAgree)
@@ -200,6 +200,11 @@ function agreeCheck() {
 	}
 }
 
+for(let i = 0; i < agreeList.length; i++) {
+	checkboxs[i].onchange = () => {
+		agreeList[i] = checkboxs[i].checked;
+	}
+}
 
 
 
@@ -210,24 +215,16 @@ const selects = document.querySelectorAll("select");
 const authNumber = document.querySelector(".auth-number");
 
 
-for(let i = 0; i < agreeList.length; i++) {
-	checkboxs[i].onchange = () => {
-		agreeList[i] = checkboxs[i].checked;
-	}
-}
+
 
 authNumber.onclick = () => {
 	
 }
 
-console.log(selects);
-
 
 signupBtn.onclick = () => {
 	
 	let birthData = selects[1].value + "-" + selects[2].value + "-" + selects[3].value
-	let phoneData = inputs[4].value + "-" + inputs[5].value + "-" + inputs[6].value
-	
 	let usernameError = document.querySelector(".username-error");
 	let genderError = document.querySelector(".gender-error");
 	let userIdError = document.querySelector(".userId-error")
@@ -244,7 +241,9 @@ signupBtn.onclick = () => {
 		birth: birthData,
 		username: inputs[1].value,
 		password: inputs[2].value,
-		phone: phoneData,
+		phoneFirst: inputs[4].value,
+		phoneMiddle: inputs[5].value,
+		phoneLast: inputs[6].value,
 		"qualificationAgree": checkboxs[1].checked,
 		"infoAgree": checkboxs[2].checked,
 		"emailAgree": checkboxs[3].checked,

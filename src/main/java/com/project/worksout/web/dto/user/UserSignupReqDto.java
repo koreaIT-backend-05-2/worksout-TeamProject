@@ -35,8 +35,16 @@ public class UserSignupReqDto {
 	private String password;
 	
 	@NotBlank
-	@Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$", message = "핸드폰 번호의 약식과 맞지 않습니다.")
-	private String phone;
+	@Pattern(regexp = "^\\d{2,3}$", message = "핸드폰 번호의 약식과 맞지 않습니다.")
+	private String phoneFirst;
+	
+	@NotBlank
+	@Pattern(regexp = "^\\d{3,4}$", message = "핸드폰 번호의 약식과 맞지 않습니다.")
+	private String phoneMiddle;
+	
+	@NotBlank
+	@Pattern(regexp = "^\\d{4}$", message = "핸드폰 번호의 약식과 맞지 않습니다.")
+	private String phoneLast;
 	
 	@AssertTrue
 	private boolean qualificationAgree;
@@ -62,13 +70,18 @@ public class UserSignupReqDto {
 					.user_birth(birth)
 					.user_id(username)
 					.user_password(new BCryptPasswordEncoder().encode(password))
-					.user_phone(phone)
+					.user_phone_first(phoneFirst)
+					.user_phone_middle(phoneMiddle)
+					.user_phone_last(phoneLast)
 					.user_roles("ROLE_ADMIN")
-					.user_level("BASIC")
+					.user_rank("BASIC")
 					.user_qualification_agreement(qualificationAgree)
 					.user_info_agreement(infoAgree)
 					.user_email_agreement(emailAgree)
 					.user_sms_agreement(smsAgree)
+					.consignee_phone_first("")
+					.consignee_phone_middle("")
+					.consignee_phone_last("")
 					.build();
 	}
 	

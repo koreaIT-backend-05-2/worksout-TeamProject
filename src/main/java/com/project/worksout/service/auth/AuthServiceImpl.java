@@ -3,6 +3,7 @@ package com.project.worksout.service.auth;
 import org.springframework.stereotype.Service;
 
 import com.project.worksout.domain.user.UserRepository;
+import com.project.worksout.web.dto.user.UpdateUserReqDto;
 import com.project.worksout.web.dto.user.UsernameCheckReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class AuthServiceImpl implements AuthService{
 	public boolean checkUsername(UsernameCheckReqDto usernameCheckReqDto) throws Exception {
 		
 		return userRepository.findUserByUsername(usernameCheckReqDto.getUsername()) == null;
+	}
+	
+	@Override
+	public boolean updateUser(UpdateUserReqDto updateUserReqDto) throws Exception {
+		return userRepository.updateUserByUsercode(updateUserReqDto.toEntity()) > 0;
 	}
 	
 }

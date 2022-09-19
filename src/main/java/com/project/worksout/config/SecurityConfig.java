@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable();
 			http.authorizeRequests()
-					.antMatchers("/", "/index", "/items/**", "/mypage/**")
+					.antMatchers("/", "/index", "/mypage/**")
 					.authenticated()
 					.anyRequest()
 					.permitAll()
@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 					.formLogin()
 					.loginPage("/signin")
 					.loginProcessingUrl("/signin")
-					.defaultSuccessUrl("/items");
+					.defaultSuccessUrl("/mypage/modify");
 		}
 	
 	

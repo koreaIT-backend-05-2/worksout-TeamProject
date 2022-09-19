@@ -2,6 +2,7 @@ package com.project.worksout.service.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +20,6 @@ public class PrincipalDetails implements UserDetails{
 	
 	public PrincipalDetails(User user) {
 		this.user = user;
-		
 	}
 
 	@Override

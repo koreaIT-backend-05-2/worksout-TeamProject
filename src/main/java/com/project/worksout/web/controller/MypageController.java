@@ -10,7 +10,7 @@ public class MypageController {
 
 	@GetMapping("/modify")
 	public String loadModify() {
-		return "/mypage-modify";
+		return "/mypage/mypage-modify";
 	}
 	
 }

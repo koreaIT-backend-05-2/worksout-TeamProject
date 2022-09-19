@@ -6,9 +6,12 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +20,7 @@ import com.project.worksout.service.auth.AuthService;
 import com.project.worksout.service.auth.PrincipalDetails;
 import com.project.worksout.service.auth.PrincipalDetailsService;
 import com.project.worksout.web.dto.CMRespDto;
+import com.project.worksout.web.dto.user.UpdateUserReqDto;
 import com.project.worksout.web.dto.user.UserSignupReqDto;
 import com.project.worksout.web.dto.user.UsernameCheckReqDto;
 
@@ -78,6 +82,33 @@ public class AuthController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "중복 확인", status));
+		
+	}
+	
+	@GetMapping("/principal")
+	public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if(principalDetails == null) {
+			return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
+	
+	}
+	
+	//회원정보 수정 컨트롤러
+	@PutMapping("/modify/{userCode}")
+	public ResponseEntity<?> modifyUser(@PathVariable int userCode, @RequestBody UpdateUserReqDto updateUserReqDto) {
+		boolean status = false;
+		
+		try {
+			status = authService.updateUser(updateUserReqDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "회원정보 수정 실패", status));
+		}
+		
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원정보 수정 완료", updateUserReqDto));
 	}
 	
 }

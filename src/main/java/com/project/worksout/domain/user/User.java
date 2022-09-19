@@ -21,16 +21,25 @@ public class User {
 	private String user_birth;
 	private String user_id;
 	private String user_password;
-	private String user_phone;
+	private String user_phone_first;
+	private String user_phone_middle;
+	private String user_phone_last;
 	private String user_roles;
-	private String user_level;
+	private String user_rank;
 	private boolean user_qualification_agreement;
 	private boolean user_info_agreement;
 	private boolean user_email_agreement;
 	private boolean user_sms_agreement;
-	private String user_address01;
-	private String user_address02;
-	private String user_address03;
+	
+	private String delivery_name;
+	private String consignee_name;
+	private String consignee_phone_first;
+	private String consignee_phone_middle;
+	private String consignee_phone_last;
+	private String delivery_address;
+	private String delivery_detail_address;
+	private String delivery_requestment;
+	
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
 	
