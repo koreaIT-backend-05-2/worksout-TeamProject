@@ -9,4 +9,6 @@ public interface AuthService {
 	public boolean checkUsername(UsernameCheckReqDto usernameCheckReqDto) throws Exception;
 	
 	public boolean updateUser(UpdateUserReqDto updateUserReqDto) throws Exception;
+
+	public boolean removeUser(int userCode)throws Exception;
 }

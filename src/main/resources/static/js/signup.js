@@ -51,7 +51,7 @@ year.onfocus = () => {
   // year 목록 생성되지 않았을 때 (최초 클릭 시)
   if(!isYearOptionExisted) {
     isYearOptionExisted = true
-    for(var i = 1900; i <= 2022; i++) {
+    for(var i = 2022; i >= 1900; i--) {
       // option element 생성
       const YearOption = document.createElement('option')
       YearOption.setAttribute('value', i)
@@ -78,10 +78,7 @@ month.onfocus = () => {
       month.appendChild(monthOption);
     }
   }
-
 }
-
-
   
 isDateOptionExisted = false;
 
@@ -123,9 +120,6 @@ isDateOptionExisted = false;
 console.log(year.value);
 console.log(month.value);
 console.log(date.value);
-
-
-
 
 /**
 
@@ -169,6 +163,34 @@ inputs[1].onblur = () => {
 
 /**
 
+	비밀번호 확인
+
+ */
+
+const password = document.querySelector("#password");
+const passwordCheck = document.querySelector("#password-check");
+let passwordCheckError = document.querySelector(".password-check-error");
+
+
+
+password.onblur = () => {
+	
+	if(password.value != passwordCheck.value){
+		passwordCheck.style.border = "1px solid red";
+		passwordCheckError.innerHTML = "비밀번호를 확인해주세요."
+	}
+}
+
+passwordCheck.onkeyup = () => {
+	
+	if(password.value == passwordCheck.value) {
+		passwordCheck.style.border = "";
+		passwordCheckError.innerHTML = ""
+	}
+}
+
+/**
+
 	약관동의 체크박스 체크
 
  */
@@ -206,15 +228,11 @@ for(let i = 0; i < agreeList.length; i++) {
 	}
 }
 
-
-
 // 회원가입
 
 const signupBtn = document.querySelector(".signup-button");
 const selects = document.querySelectorAll("select");
 const authNumber = document.querySelector(".auth-number");
-
-
 
 
 authNumber.onclick = () => {
@@ -229,7 +247,6 @@ signupBtn.onclick = () => {
 	let genderError = document.querySelector(".gender-error");
 	let userIdError = document.querySelector(".userId-error")
 	let passwordError = document.querySelector(".password-error");
-	let passwordCheckError = document.querySelector(".password-check-error");
 	let phoneError = document.querySelector(".phone-error");
 	let qualificationAgreeError = document.querySelector(".qualification-agree-error");
 	let infoAgreeError = document.querySelector(".info-agree-error");
@@ -351,7 +368,7 @@ signupBtn.onclick = () => {
 		success: (response) => {
 			if(response.data) {
 				alert("회원가입 완료")
-				location.replace("/signin");
+				location.replace("/signup/success");
 			}
 		},
 		error: (error) => {

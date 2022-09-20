@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
+//로그인 회원가입 관련 페이지
 	@GetMapping("/signin")
 	public String loadSignin() {
 		return "/signin";
@@ -16,6 +17,13 @@ public class PageController {
 		return "/signup";
 	}
 	
+	@GetMapping("/signup/success")
+	public String successSignup() {
+		return "/signup-success";
+	}
+	
+	
+// 상품 관련 페이지	
 	@GetMapping("/items")
 	public String loadItemDetailPage() {
 		return "/items-detail-page";

@@ -86,5 +86,14 @@
   			um.user_code = #{user_code}
   			
   	</update>
+  	<delete id="removeUserByUsercode"  parameterType="Integer">
+  		delete
+  		from
+  			user_mst
+  		where
+  			user_code = #{user_code}
+  	
+  	</delete>
+  
   
   </mapper>

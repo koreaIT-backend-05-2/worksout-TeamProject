@@ -5,9 +5,11 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-public class AuthController {
+public class AuthRestController {
 
 	private final  PrincipalDetailsService principalDetailsService;
 	private final AuthService authService;
@@ -109,6 +111,22 @@ public class AuthController {
 		
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원정보 수정 완료", updateUserReqDto));
+	}
+	
+	
+	@DeleteMapping("/remove/{userCode}")
+	public ResponseEntity<?> removeUser(@PathVariable int userCode) {
+		boolean status = false;
+		
+		try {
+			status = authService.removeUser(userCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "회원정보 삭제 실패", status));
+		}
+		
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원정보 삭제 완료", status));
 	}
 	
 }

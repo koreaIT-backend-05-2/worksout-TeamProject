@@ -30,4 +30,10 @@ public class AuthServiceImpl implements AuthService{
 		return userRepository.updateUserByUsercode(updateUserReqDto.toEntity()) > 0;
 	}
 	
+	@Override
+	public boolean removeUser(int userCode) throws Exception {
+		
+		return userRepository.removeUserByUsercode(userCode) > 0;
+	}
+	
 }
