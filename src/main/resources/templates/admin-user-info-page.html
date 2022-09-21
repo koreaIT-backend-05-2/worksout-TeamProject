@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/644e1d23ae.js" crossorigin="anonymous"></script>
+
+    <title>웍스아웃</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin-user-info.css">
+</head>
+
+<body>
+           <th:block th:replace="/fragment/header"></th:block>
+    <div class="__next">
+        <div class="all-container">
+
+            <!-- 헤더부분 -->
+
+            <main class="main-container">
+                <div class="header-name">유저정보</div>
+                <div class="main-div">
+                    <div class="admin-category">
+                        <div>
+                            <div class="admin-category-underbar-menu">유저정보</div>
+                            <div class="admin-category-menu">상품리스트</div>
+                            <div class="admin-category-menu">상품등록</div>
+                            <div class="admin-category-menu">문의게시글</div>
+                        </div>
+                    </div>
+                    <div class="admin-contents">
+                        <div class="admin-user-info">
+                            <div class="admin-user-info-table">                            
+                                <table>
+                                    <tr>
+                                        <th>UserCode</th>
+                                        <th>이름</th>
+                                        <th>이메일</th>
+                                        <th>비밀번호</th>
+                                        <th>성별</th>
+                                        <th>연락처</th>
+                                        <th>생년월일</th>
+                                        <th>고객레벨</th>
+                                        <th>E-mail 동의</th>
+                                        <th>SMS 동의</th>
+                                        <th>권한</th>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td th:text="${principal.user.user_name}"></td>
+                                            <td th:text="${principal.user.user_email}"></td>
+                                        <td th:text="${principal.user.user_id}"></td>
+                                        <td th:text="${principal.user.oauth2_id}"></td>
+                                        <td th:text="${principal.user.user_password}"></td>
+                                        <td th:text="${principal.user.user_roles}"></td>
+                                        <td th:text="${principal.user.user_provider}"></td> -->
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <th:block th:replace="/fragment/footer"></th:block>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

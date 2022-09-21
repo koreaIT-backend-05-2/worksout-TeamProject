@@ -19,10 +19,15 @@ spring:
     username: admin
     password: 1q2w3e4r
     
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+          
+    
 mybatis:
   mapper-locations:
   - /mappers/*.xml
-  
-  
-  file:
-    path: C:/TeamProject/workspace/git/worksout-TeamProject/upload
+
+file:
+  path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
