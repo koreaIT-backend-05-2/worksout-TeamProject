@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.worksout.handler.aop.annotation.Log;
 import com.project.worksout.service.auth.AuthService;
 import com.project.worksout.service.auth.PrincipalDetails;
 import com.project.worksout.service.auth.PrincipalDetailsService;
@@ -36,6 +37,7 @@ public class AuthRestController {
 	private final  PrincipalDetailsService principalDetailsService;
 	private final AuthService authService;
 	
+	@Log
 	@PostMapping("/signup")
 	public ResponseEntity<?> signup(@Valid @RequestBody UserSignupReqDto userSignupReqDto, BindingResult bindingResult) {
 		boolean status = false;
@@ -60,6 +62,7 @@ public class AuthRestController {
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원가입 성공", status));
 	}
+	
 	
 	@GetMapping("/signup/validation/username")
 	public ResponseEntity<?> checkUsername(@Valid UsernameCheckReqDto usernameCheckReqDto, BindingResult bindingResult) {
