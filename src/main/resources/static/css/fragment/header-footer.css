@@ -38,8 +38,6 @@ button {
     justify-content: space-between;
     align-items: center;
 
-    padding: 12px 32px;
-
     width: auto;
     height: 60px;
 }
@@ -79,28 +77,51 @@ button {
     align-items: center;    
     
     width: 618.66px;
-    height: 36px;
+    height: 38px;
+}
+
+.header-section-end-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 0px 0px 1px;
+    padding: 8px;
+
+    width: 350px;
+
+    font-size: 11px;
+}
+
+.auth-items {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 120px;
+}
+
+.header-section-end-buttons p {
+    cursor: pointer;
 }
 
 .header-section-end-buttons img{
-
     margin: 1px 7px 0px 0px;
 
     width: 11px;
     height: 11px;
+
+    cursor: pointer;
 }
 
-.header-section-end button {
-    border: 0px 0px 1px;
-    padding: 8px;
-}
+
 
 .header-gender-etc-category{
     display: flex;
     justify-content: center;
 
     width: auto;
-    height: 36px;
+    height: 38px;
 }
 
 .gender-etc-category{

@@ -9,16 +9,16 @@
 
     <title>웍스아웃</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/header-footer.css">
     <link rel="stylesheet" href="/static/css/admin.css">
     <link rel="stylesheet" href="/static/css/admin-user-info.css">
 </head>
 
 <body>
+           <th:block th:replace="/fragment/header"></th:block>
     <div class="__next">
         <div class="all-container">
 
-           <th:block th:replace="/fragment/header"></th:block>
+            <!-- 헤더부분 -->
 
             <main class="main-container">
                 <div class="header-name">유저정보</div>
@@ -26,6 +26,7 @@
                     <div class="admin-category">
                         <div>
                             <div class="admin-category-underbar-menu">유저정보</div>
+                            <div class="admin-category-menu">상품리스트</div>
                             <div class="admin-category-menu">상품등록</div>
                             <div class="admin-category-menu">문의게시글</div>
                         </div>
