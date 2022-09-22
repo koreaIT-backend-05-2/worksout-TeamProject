@@ -61,7 +61,6 @@ public class ProductServiceImpl implements ProductService {
 		
 		productRepository.save(product);
 		
-		// file이 없는경우
 		if(predicate.test(createProductReqDto.getFile().get(0).getOriginalFilename())) {
 			List<ProductFile> productFiles = new ArrayList<ProductFile>();
 			
