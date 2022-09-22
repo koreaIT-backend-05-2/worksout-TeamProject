@@ -22,4 +22,18 @@
 			now()
 		);
 	</insert>	
+	<insert id="saveProductFiles" parameterType="java.util.List">
+		insert into
+			product_img_file
+		values
+		<foreach collection="list" item="file" separator=",">
+			(
+				0,
+				#{file.product_code},
+				#{file.file_name},
+				now(),
+				now()
+			)
+		</foreach>
+	</insert>
   </mapper>

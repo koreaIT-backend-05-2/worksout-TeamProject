@@ -22,27 +22,27 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ProductRestController {
 	
-	@Value("{file.path}")
-	private String filePath;
+//	@Value("${file.path}")
+//	private String filePath;
 
 	private final ProductService productService;
 	// 상품 등록
 	@PostMapping("/insert")
 	public ResponseEntity<?> insertProduct(CreateProductReqDto createProductReqDto){
-		boolean status = false;
+		//boolean status = false;
+		int status = 0;
 		
 		log.info("{}", createProductReqDto);
 		log.info("fileName: = {}", createProductReqDto.getFile().get(0).getOriginalFilename());
-		log.info("fileName: = {}", createProductReqDto.getFile().get(1).getOriginalFilename());
-		
+//		log.info("filePath: = {}", filePath);
 		
 		
 		try {
 			status = productService.createProduct(createProductReqDto);
 			System.out.println(status);
-			if(!status) {
-				throw new RuntimeException("DB ERROR!!");
-			}
+//			if(!status) {
+//				throw new RuntimeException("DB ERROR!!");
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"failed", status));

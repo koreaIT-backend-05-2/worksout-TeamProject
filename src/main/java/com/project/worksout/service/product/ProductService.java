@@ -8,7 +8,7 @@ import com.project.worksout.web.dto.product.UpdateProductReqDto;
 
 public interface ProductService {
 	//추가 (Create)
-	public boolean createProduct(CreateProductReqDto createProductReqDto) throws Exception;
+	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception;
 	
 	//조회 (Select)
 	public List<ProductListRespDto> getProductList(String type, int page, int contentCount) throws Exception;
