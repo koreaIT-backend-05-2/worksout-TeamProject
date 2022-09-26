@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/644e1d23ae.js" crossorigin="anonymous"></script>
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <title>웍스아웃</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <style>
+        table {
+            border: 1px solid #141414;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #141414;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="__next">
+        <div class="all-container">
+            <!-- 헤더부분 -->
+            <th:block th:replace="/fragment/header"></th:block>
+
+            <main class="main-container">
+                <div class="header-name">상품리스트</div>
+                <div class="main-div">
+                    <div class="admin-category">
+                        <div>
+                            <div class="admin-category-menu">유저정보</div>
+                            <div class="admin-category-underbar-menu">상품리스트</div>
+                            <div class="admin-category-menu">상품등록</div>
+                            <div class="admin-category-menu">문의게시글</div>
+                        </div>
+                    </div>
+                    <div class="admin-contents">
+                        <table>
+                            <tr>
+                                <th>상품 코드</th>
+                                <th>상품 브랜드</th>
+                                <th>상품 종류</th>
+                                <th>상품명</th>
+                                <th>가격</th>
+                                <th>수량</th>
+                                <th>사이즈</th>
+                                <th>image</th>
+                                <th>수정/삭제</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>nike</td>
+                                <td>shirt</td>
+                                <td>fantastic bling bling shirt</td>
+                                <td>45,000</td>
+                                <td>40</td>
+                                <td>L</td>
+                                <td>link</td>
+                                <td>
+                                    <button type="button">수정</button>
+                                    <button type="button">삭제</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- footer부분 -->
+            <th:block th:replace="/fragment/footer"></th:block>
+        </div>
+
+    </div>
+  <!-- <script src="/static/js/item-category-page.js"></script> -->
+    
+    <script src="/static/js/product/product-insert.js"></script>
+
+</body>
+
+</html>

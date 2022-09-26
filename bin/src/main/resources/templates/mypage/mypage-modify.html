@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/fragment/mypage-left-menu.css">
+    <link rel="stylesheet" href="/static/css/mypage/mypage-modify.css">
+    <title>modify</title>
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <th:block th:replace="/fragment/header"></th:block>
+    <main>
+        <div class="myPage">
+            <!-- head frgment -->
+            <th:block th:replace="/fragment/mypage-head"></th:block>
+          
+             <!-- contents -->
+            <div class="contents">
+            
+            <!-- left-menu-fragment -->
+            <div th:replace="~{fragment/mypage-left-menu :: left-menu}"></div>
+
+                <!-- 변경되는 내용 -->
+                <article>
+                    <div class="mypage-contents">
+                            <h3>내 정보 수정</h3>
+                            <div class="row-line"></div>
+                            <h3>나의 정보</h3>
+                        <div class="modify-form">
+                            <div class="name-and-gender">
+                                <div class="input-username">
+                                    <label for="username">이름</label>
+                                    <input type="text"  name = name id="username" value="" >
+                                </div>
+                                <div class="select-gender">
+                                    <label for="gender">성별</label>
+                                    <select name="gender" id="gender" >
+                                        <option value="male">남성</option>
+                                        <option value="female">여성</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="code-and-rank">
+                                <div class="input-usercode">
+                                    <label for="usercode">회원코드</label>
+                                    <input type="text" name = "usercode" id="usercode" value="" disabled="disabled">
+                                </div>
+                                <div class="input-userrank">
+                                    <label for="userrank">회원등급</label>
+                                    <input type="text" name = "level" id="userrank" value="BASIC"  disabled="disabled">
+                                </div>
+                            </div>
+                            <div class="phonenumber-and-agree">
+                                <div class="input-userphonenumber">
+                                    <label for="phonenumber">핸드폰 번호</label>
+                                    <div class="input-phonenumber edit-phone">
+                                        <input id="phonenumber" type="text" maxlength="3" >
+                                        <input type="text"  maxlength="4">
+                                        <input type="text"  maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="agree-marketing">
+                                    <p>마케팅 정보 수신 동의</p>
+                                    <div class="agree-group">
+                                        <div class="checkbox-group">
+                                            <input id="email-agree" class="checkbox-agree" type="checkbox">
+                                            <label for="email-agree"></label>
+                                            <label for="email-agree" class="agree">E-mail</label>
+                                        </div>
+                                        <div class="checkbox-group last-checkbox-group">
+                                            <input id="sms-agree" class="checkbox-agree" type="checkbox">
+                                            <label for="sms-agree"></label>
+                                            <label for="sms-agree" class="agree">PUSH, SMS 등</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-line"></div>
+
+                    <!-- 배송정보 -->
+                    <div class="shipping-info">
+                        <h3>배송정보</h3>
+                        <button type="button" class="new-input-button">신규 입력</button>
+                        <div class="address-and-consignee">
+                            <div class="input-location">
+                                <label for="location">배송지명*</label>
+                                <input type="text" id="location" class = "location-name" placeholder="배송지명을 적어주세요">
+                            </div>
+                            <div class="input-consignee">
+                                <label for="consignee">수취인 이름*</label>
+                                <input type="text" id="consignee" placeholder="수취인 이름을 적어주세요.">
+                            </div>
+                        </div>
+                        <div class="consignee-phonenumber">
+                            <div class="input-consignee-hp">
+                                <label for="consignee-hp">수취인 전화번호*</label>
+                                <div class="input-phonenumber address-phone">
+                                    <input  id="consignee-hp" type="text" placeholder="010" maxlength="3">
+                                    <input type="text" placeholder="0000" maxlength="4">
+                                    <input type="text" placeholder="0000" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-address">
+                            <p>주소*</p>
+                            <input type="text" class="address-input"  disabled="disabled" value="주소" >
+                            <button type="button" class="address-search-button">검색</button>
+                            <div class="detail-address">
+                                <input type="text"  class="detail-address-input" value="상세 주소 입력">
+                            </div>
+                        </div>
+                        <div class="input-request"> 
+                            <label for="request-term">배송시 요청사항</label>
+                            <input type="text" id="request-term" placeholder="배송시 요청사항을 입력해주세요.">
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="modify-button">수정하기</button>
+                        <button type="button" class="withdrawal-button">회원탈퇴</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <th:block th:replace="/fragment/footer"></th:block>
+    </main>
+
+	<!-- 모달창 -->
+    <div class="modal-container modal-visible">
+        <div class="modal-withdrawal">
+            <div class="modal-close-group">
+                <p>회원 탈퇴</p>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <p>회원 탈퇴 시, 보유하고 계신 포인트와 쿠폰은 모두 소멸됩니다.</p>
+            <p>탈퇴 후 동일한 정보로 재가입 시, 6개월 내 중복 쿠폰 재발급이 불가능합니다.</p>
+            <p>탈퇴 하시겠습니까?</p>
+            <button type="button" class="modal-withdrawal-button">탈퇴하기</button>
+        </div>
+    </div>
+
+    <script src="/static/js/mypage/mypage-modify.js"></script>
+</body>
+</html>

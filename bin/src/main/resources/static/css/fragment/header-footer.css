@@ -1,0 +1,286 @@
+.hidden {
+    display: none !important;
+}
+
+a{
+    text-decoration: none;
+    color: #1f2937;
+}
+
+.selection-line{
+    border-bottom: 1px solid #efefef;
+}
+
+button {
+    border: 0px solid;
+    background-color: transparent;
+    background-image: none;
+}
+
+.hidden-onblur{
+    display: none;
+}
+
+/* 헤더부분 */
+.header-z-index{
+    position: relative;
+    z-index: 10;
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    height: 98px;
+}
+
+.header-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: auto;
+    height: 60px;
+}
+
+.header-section-start{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;    
+    
+    width: 618.66px;
+    height: 36px;
+}
+
+.store-info{
+    margin: 0px 0px 0px 24px;
+}
+
+.header-section-mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    
+    margin: 4px 0px 0px;
+
+    width: 618.66px;
+    height: 32px;
+}
+
+.header-section-mid a{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.header-section-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;    
+    
+    width: 618.66px;
+    height: 38px;
+}
+
+.header-section-end-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 0px 0px 1px;
+    padding: 8px;
+
+    width: 350px;
+    height: 38px;
+
+    font-size: 11px;
+}
+
+.auth-items {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 120px;
+    height: 38px;
+}
+
+.header-section-end-buttons p {
+    cursor: pointer;
+}
+
+.header-section-end-buttons img{
+    margin: 1px 7px 0px 0px;
+
+    width: 11px;
+    height: 11px;
+
+    cursor: pointer;
+}
+
+
+
+.header-gender-etc-category{
+    display: flex;
+    justify-content: center;
+
+    width: auto;
+    height: 38px;
+}
+
+.gender-etc-category{
+    margin: 0px 0px 0px 16px;
+    padding: 0px 16px;
+}
+
+.gender-etc-category button{
+    border: 0px 0px 1px;
+    padding: 8px;
+}
+
+/* hidden-category-menu부분 */
+
+.hidden-category-menu {
+    display: flex;
+    align-items: center;
+
+    padding: 20px 80px 20px 40px;
+
+    background-color: white;
+    
+}
+
+.brand-category-menu {
+    display: flex;
+    justify-content: center;
+ 
+}
+
+/* 히든안에 카테고리 부분 */
+.focus-brand{
+    padding: 0px 0px 8px;
+}
+.focus-brand span{
+    margin: 0px 0px 0px 8px;
+}
+.focus-brand-items {
+    margin: 0px 0px 4px;
+
+    width: 192px;
+    height: 16px;
+}
+.focus-brand-items span{
+    margin: 0px 0px 0px 8px;
+}
+
+.header-categories {
+    margin: 0px 0px 0px 64px;
+}
+.underline {
+    margin: 7px 0px;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+.header-category-category {
+    margin: 0px 0px 8px;
+
+    width: 183px;
+
+    font-weight: 400;
+}
+.all-categories{
+    margin: 0px 0px 0px 8px;
+}
+
+.category-items {
+    margin: 0px 16px 6px 0px;
+    width: 88.266px;
+    height: 16px;
+}
+/* 브랜드부분 */
+.brands {
+    margin: 0px 0px 0px 64px;
+}
+.brand-div{
+    padding: 0px 0px 8px;
+}
+.all-brands {
+    display: flex;
+
+    /* 
+    width: 1760px; */
+    height: 344px;
+}
+
+.brand-items {
+    margin: 0px 16px 4px 0px;
+    width: 208px;
+    height: 16px;
+}
+
+.brand-items span{
+    margin: 0px 0px 0px 9px;
+    font-size: 12px;
+}
+
+
+/* footer 부분 */
+
+.footer {
+    margin: 12px 0px 0px;
+    padding: 4px 32px 12px;
+
+    border-top: 1px solid #efefef;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 8px 0px 0px;
+
+    height: 32px;
+}
+.company-info span{
+    color: #888888;
+    
+}
+
+.supports {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supports a{
+    margin: 0px 5px;
+    
+    font-size: 10px;
+    color: #1f2937;
+}
+
+.sns-buttons{
+    display: flex;
+    margin: 1px 12px 0px 12px;
+    width: 44px;
+}
+.sns-buttons button{
+    margin: 0px 0px 0px 4px;
+    height: 12px;
+}
+.sns-buttons img{
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+
+    cursor: pointer;
+}
+
+.escrow{
+    margin: 0px 0px 0px 8px;
+}
+
+.escrow a{
+    font-size: 10px;
+    color: #1f2937;
+}
+
+/* authitems 내부 마이페이지 로그인 */
+

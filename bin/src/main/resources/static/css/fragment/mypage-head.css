@@ -1,0 +1,42 @@
+/* <<<<<<<<<<<<<<<<<< 테이블 fragment >>>>>>>>>>>>>>>>>> */
+
+.my-info {
+    display: flex;
+
+    margin-bottom: 40px;
+    padding: 24px;
+    width: 100%;
+
+    background-color: #f3f4f6;
+}
+
+table {
+    width: 1000px;
+    height: 50px;
+
+    text-align: left;
+}
+
+thead {
+    color: #9ca3af;
+    
+}
+
+td {
+    padding-left: 20px;
+    
+    border-right: 1px solid #d6d8db;
+}
+
+td:last-child {
+    border: none;
+}
+
+tbody td {
+    vertical-align: bottom;
+}
+
+.my-info-modify {
+    height: 15px;
+    cursor: pointer;
+}
