@@ -23,7 +23,7 @@ public class PageController {
 	}
 	
 	
-// 상품 관련 페이지	
+	// 상품 관련 페이지	
 	@GetMapping("/items")
 	public String loadItemDetailPage() {
 		return "/items-detail-page";
@@ -40,17 +40,5 @@ public class PageController {
 		return "/items-category-page";
 	}
 	
-	// 관리자 뷰
-	@GetMapping("/admin/user")
-	public String loadAdminUserInfoPage() {
-		return "/admin-user-info-page";
-	}
-	@GetMapping("/admin/add-items")
-	public String loadAdminItemInsertPage() {
-		return "/admin-item-insert-page";
-	}
-	@GetMapping("/admin/ask")
-	public String loadAdminAskPage() {
-		return "/admin-ask-page";
-	}
+	
 }

@@ -1,5 +1,7 @@
 package com.project.worksout.web.controller.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,14 +51,21 @@ public class ProductRestController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1,"success", status));
-		//return null;
 	}
 	
 	// 상품 조회
 	@PostMapping("/search")
-	public ResponseEntity<?> searchProduct(){
+	public ResponseEntity<?> searchProduct(int page, int contentCount){
+		List<ProductListRespDto> listDto = null;
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1,"",""));
+		try {
+			listDto = productService.getProductList(page, contentCount);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"DB error", listDto));			
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1,"searching success", listDto));
 	}
 	
 	// 상품 수정

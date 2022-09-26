@@ -37,4 +37,22 @@
 			)
 		</foreach>
 	</insert>
+	<select id="getProductList" parameterType="hashmap"
+	resultType="com.project.worksout.domain.product.Product">
+		SELECT
+			pm.product_Code,
+			pm.product_Brand,
+			pm.product_kind,
+			pm.product_name,
+			pm.product_price,
+			pm.product_amount,
+			pm.product_size,
+			pf.file_code,
+			pf.file_name
+		FROM
+			product_mst pm
+			LEFT OUTER JOIN product_img_file pf ON(pf.product_code = pm.product_code) 
+		WHERE
+			pm.product_code = pf.product_code;
+	</select>
   </mapper>

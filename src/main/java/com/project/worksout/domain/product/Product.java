@@ -24,6 +24,8 @@ public class Product {
 	private String product_size;
 	private int importance_flag;
 	private int total_count;
+	private int file_code;
+	private String file_name;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;	
 	
