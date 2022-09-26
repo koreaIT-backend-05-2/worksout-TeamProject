@@ -11,7 +11,7 @@ public interface ProductService {
 	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception;
 	
 	//조회 (Select)
-	public List<ProductListRespDto> getProductList(String type, int page, int contentCount) throws Exception;
+	public List<ProductListRespDto> getProductList(int page, int contentCount) throws Exception;
 
 	//수정 (Update)
 	public boolean updateProduct(UpdateProductReqDto updateProductReqDto) throws Exception;

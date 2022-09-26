@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.project.worksout.domain.product.ProductRepository">
-	<insert id="save" parameterType="com.project.worksout.domain.product.Product">
+	<insert id="save" parameterType="com.project.worksout.domain.product.Product"
+		useGeneratedKeys="true" keyProperty="product_code">
 		insert into
 			product_mst
 		values(
