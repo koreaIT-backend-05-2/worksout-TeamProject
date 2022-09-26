@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -66,7 +68,8 @@ public class ProductServiceImpl implements ProductService {
 			
 			for(MultipartFile file : createProductReqDto.getFile()) {
 				String originalFilename = file.getOriginalFilename();
-				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFilename;
+//				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFilename;
+				String tempFilename = originalFilename;
 				log.info(tempFilename);
 				Path uploadPath = Paths.get(filePath, "product/" + tempFilename);
 				
@@ -90,8 +93,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductListRespDto> getProductList(String type, int page, int contentCount) throws Exception {
+	public List<ProductListRespDto> getProductList(int page, int contentCount) throws Exception {
 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("contentCount", contentCount);
+		
+		
+		List<Product> productList = productRepository.getProductList(getProductList(page, contentCount));
 		return null;
 	}
 

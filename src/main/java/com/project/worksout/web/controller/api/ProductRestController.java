@@ -39,7 +39,7 @@ public class ProductRestController {
 		
 		try {
 			status = productService.createProduct(createProductReqDto);
-			System.out.println(status);
+//			System.out.println(status + "sysout이다");
 //			if(!status) {
 //				throw new RuntimeException("DB ERROR!!");
 //			}
