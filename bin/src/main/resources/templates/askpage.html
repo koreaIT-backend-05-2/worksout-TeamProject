@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskPage</title>
+    <!-- <link rel="stylesheet" href="/src/main/resources/static/css/askpage.css"> -->
+    <!-- <link rel="stylesheet" href="/resources/static/css/askpage.css"> -->
+    <link rel="stylesheet" href="/static/css/askpage.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="center-text">
+                <div>문의하기</div>
+            </div>
+            <div class="center-container">
+                <div class="left-category-box">
+                    <div class="left-category">
+                        <h4>도움말</h4>
+                        <div><a class="ask-tag" href="">문의하기</a></div>
+                        <div><a class="left-tag" href="">자주 하는 질문</a></div>
+                        <div><a class="left-tag" href="">세탁 및 취급 시 주의 사항</a></div>
+                        <h4>쇼핑</h4>
+                        <div><a class="left-tag" href="">회원 혜택</a></div>
+                        <div><a class="left-tag" href="">A/S 안내</a></div>
+                        <div><a class="left-tag" href="">구매 안내</a></div>
+                        <div><a class="left-tag" href="">배송 안내</a></div>
+                        <div><a class="left-tag" href="">반품 안내</a></div>
+                        <div><a class="left-tag" href="">응모 상품 교환&환불 규정</a></div>
+                    </div>
+                </div>
+                <div class="middle-category-box">
+                    <div class="middle-category">
+                        <div  class="mid-contents">
+                            <select name="type" id="" class="select">
+                                <option value disabled hidden selected>유형을 선택해주세요</option>
+                                <option value="ONLINE">온라인 스토어</option>
+                                <option value="MARKETING">마케팅</option>
+                                <option value="PARTNERSHIP">파트너쉽</option>
+                                <option value="RECRUITING">구인공고</option>
+                            </select>
+                        </div>
+                        <div class="mid-contents">
+                            <input name="title" placeholder="제목">
+                        </div>
+                        <div class="mid-contents">
+                            <input name="name" placeholder="이름">
+                        </div>
+                        <div class="mid-contents">
+                            <input name="email" placeholder="이메일">
+                        </div>
+                        <div class="mid-contents">
+                            <textarea name="contents" id="contents" placeholder="내용을 입력해 주세요."></textarea>
+                        </div>
+                        <div class="file-upload-box">
+                            <div class="file-upload-text">
+                                <div>파일업로드</div>
+                            </div>
+                            <input type="file" name="file" hidden>
+                            <button>문서</button>
+                        </div>
+                        <ul></ul>
+                        <div class="mid-low-text">
+                            <p class="low-text-title">개인정보 수집 및 이용에 대한 동의</p>
+                            <p class="low-text-contents">
+                                1. 수집 목적: 서비스 이용에 따른 본인 확인 및 결과 회신, 서비스 진행에 따른 필요 정보 획득 및 응대 목적
+                                <br>
+                                2. 수집 항목: 이름, 이메일주소
+                                <br>
+                                3. 보유 및 이용기간: 문의 처리 후 6개월간 보관 후 폐기
+                                <br>
+                                웍스아웃은 서비스 이용을 위해 필요한 최소한의 개인정보만을 수집합니다.
+                                <br>
+                                수집하는 개인정보 필수항목을 입력하지 않을 시 서비스 이용에 제한이 있을 수 있습니다.
+                            </p>
+                        </div>
+                        <div class="mid-low-button-box">
+                            <div aria-colindex="mid-low-button">
+                                <button class="button1">취소하기</button>
+                                <button class="button2">보내기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-category-box">
+                    <div class="right-category">
+                        <h4>고객 지원</h4>
+                        <span>
+                            주문 및 배송에 대해 빠른 답변을 원하시면 전화로 문의해주세요.
+                            <br>
+                            전화 문의: 02-541-0854
+                            <br>
+                            이메일 문의: customer@worksout.co.kr
+                            <br>
+                            고객 지원팀 운영시간은 월요일-금요일 오전 9시 30분 부터 오후 5시 30분 까지 입니다. (토,일 및 공휴일 휴무)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+
+    <script>
+        const submitButton = document.querySelector(".button2");
+
+        submitButton.onclick = () => {
+            const textareaValue = document.querySelector("#contents").value;
+            alert(textareaValue);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+
+    padding: 0px;
+    margin: 0px;
+
+    font-size: 12px;
+
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+    background-color: #fff;
+}
+
+button {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}

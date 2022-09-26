@@ -100,8 +100,13 @@ public class ProductServiceImpl implements ProductService {
 		map.put("contentCount", contentCount);
 		
 		
-		List<Product> productList = productRepository.getProductList(getProductList(page, contentCount));
-		return null;
+		List<ProductListRespDto> productList = new ArrayList<ProductListRespDto>();
+		
+		productRepository.getProductList(map).forEach(product -> {
+			productList.add(product.toListDto());
+		});
+		
+		return productList;
 	}
 
 	@Override

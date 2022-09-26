@@ -1,0 +1,446 @@
+main {
+	width: 100%;
+}
+
+
+.myPage {
+    margin: 0px auto;
+    
+    width: 1152px;
+}
+
+/* mypage 내용 */
+
+/* mypage-contents */
+
+.mypage-contents {
+    width: 960px;
+
+}
+
+.mypage-contents h3{
+    margin-bottom: 16px;
+
+    font-weight: 400;
+
+}
+
+.row-line {
+    margin: 20px 0px;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: #9ca3af;
+}
+
+.modify-form {
+
+}
+
+/* 이름 성별 */
+
+input:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid black;
+
+}
+
+label {
+    cursor: pointer;
+}
+
+.name-and-gender {
+    display: flex;
+    align-items: center;
+}
+
+.input-username {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-username input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+}
+
+.select-gender {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20px;
+}
+
+.select-gender select {
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+
+    border: 1px solid rgba(229,231,235,1);
+    color: #6B7280;
+}
+
+/* 회원 코드 등급 */
+
+.code-and-rank {
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.input-usercode {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-usercode input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
+    color: #9ca3af;
+}
+
+.input-userrank {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20px;
+}
+
+.input-userrank input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
+    color: #9ca3af;
+}
+
+/* 핸드폰 번호 마케팅 동의 */
+
+.phonenumber-and-agree {
+    display: flex;
+
+    margin-top: 20px;
+}
+
+.input-phonenumber {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 305px;
+}
+
+.input-userphonenumber input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 90px;
+    height: 36px;
+}
+
+
+/* 마케팅 정보 수신 동의 */
+
+.agree-marketing {
+    margin-left: 20px;
+}
+
+.agree-group {
+    display: flex;
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+.checkbox-group {
+    display: flex;
+
+    padding-right: 20px;
+}
+
+.checkbox-agree + label {
+
+    margin-right: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: #efefef;
+    
+    cursor: pointer;
+}
+
+.checkbox-agree:checked + label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+.checkbox-agree {
+    display: none;
+}
+
+.agree {
+    cursor: pointer;
+}
+
+/* 배송 정보 */
+
+.new-input-button {
+    margin-top: 20px;
+
+    width: 92px;
+    height: 36px;
+
+    background-color: #111827;
+    font-size: 12px;
+    color: #fff;
+}
+
+.address-and-consignee {
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.input-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-location input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+}
+
+.input-consignee {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20px;
+}
+
+.input-consignee input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 305px;
+    height: 36px;
+}
+
+.consignee-phonenumber {
+    display: flex;
+
+    margin-top: 20px;
+}
+
+.input-phonenumber {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 305px;
+}
+
+.input-consignee-hp input{
+    margin-top: 4px;
+    padding: 0px 16px;
+
+    width: 90px;
+    height: 36px;
+}
+
+/* 주소 */
+
+.input-address {
+    margin-top: 20px;
+
+    width: 100%;
+}
+
+.input-address p {
+    cursor: pointer;
+}
+
+.address-input {
+    padding: 0px 16px;
+
+    width: 525px;
+    height: 36px;
+
+    background-color: #f3f4f6;
+    border: 1px solid rgba(229,231,235,1);
+    
+    color: gray;
+}
+
+.input-address button {
+    width: 100px;
+    height: 36px;
+
+    background-color: #e5e7eb;
+    border: none;
+} 
+
+.detail-address-input {
+    margin-top: 7px;
+    padding: 0px 16px;
+
+    width: 630px;
+    height: 36px;
+
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+/* 배송시 요청사항 */
+
+.input-request {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: 20px;
+}
+
+.input-request input {
+    margin-top: 7px;
+    padding: 0px 16px;
+
+    width: 630px;
+    height: 36px;
+}
+
+/* 정보수정, 회원탈퇴 버튼 */
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.button-group button {
+    width: 200px;
+    height: 36px;
+}
+
+.modify-button {
+    background-color: #d1d5db;
+    color: #fff;
+
+    border: none;
+}
+
+.withdrawal-button {
+    background-color: #fff;
+    color: #111827;
+
+    border: 1px solid black;
+}
+
+
+/* 모달창 */
+
+.modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #00000065;
+    width: 100%;
+    height: 100%;
+
+	z-index: 999;
+}
+
+.modal-visible {
+    display: none;
+}
+
+.modal-withdrawal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 24px;
+
+    width: 386px;
+    height: 224px;
+    background-color: #fff;
+
+}
+
+.modal-withdrawal p {
+    font-size: 11px;
+    color: #1f2937;
+}
+
+.modal-close-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close-group i {
+	cursor: pointer;
+}
+
+.modal-withdrawal-button {
+    margin-top: 16px;
+    padding: 8px;
+    
+    width: 336px;
+    height: 36px;
+    
+    background-color: #111827;
+    color: #fff;
+
+    font-size: 11px;
+}
+

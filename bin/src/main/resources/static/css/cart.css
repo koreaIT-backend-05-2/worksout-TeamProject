@@ -1,0 +1,211 @@
+.cart {
+    display: flex;
+
+    margin: 112px auto;
+
+    width: 1280px;
+}
+
+.cart-group {
+    width: 940px;
+    height: 300px;
+
+    
+}
+
+.cart-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+}
+
+.cart-group-header p {
+    color: #1F2937;
+}
+
+.items-delete {
+    cursor: pointer;
+}
+
+/* 테이블 */
+
+input {
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid rgba(180, 180, 180, 0.4);
+    accent-color: black;
+    cursor: pointer;
+}
+
+.cart-table {
+    width: 940px;
+    height: 290px;
+}
+
+thead {
+    background-color: rgba(249,250,251,1);
+    color: #6b7280;
+}
+
+.th-checkbox {
+    width: 70px;
+    height: 40px;
+}
+
+/* tbody */
+
+.td-checkbox {
+    width: 70px;
+    text-align: center;
+}
+
+tbody img {
+    width: 96px;
+    height: 144px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #d3d4d6;
+}
+
+.td-items-info {
+    display: flex;
+    align-items: center;
+    height: 200px;
+}
+
+.items-info-content {
+    padding-left: 10px;
+    line-height: 30px;
+
+    color: #6b7280;
+}
+
+
+.td-quantity-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.td-quantity-button button {
+    width: 25px;
+    height: 28px;
+
+    background-color: #fff;
+    border: 1px solid rgba(180, 180, 180, 0.4);
+}
+
+.td-quantity-button p {
+    width: 32px;
+    height: 28px;
+
+    border-top: 1px solid rgba(180, 180, 180, 0.4);
+    border-bottom: 1px solid rgba(180, 180, 180, 0.4);
+    
+    
+    text-align: center;
+    line-height: 28px;
+}
+
+.td-price {
+    color: #6b7280;
+    text-align: center;
+}
+
+.td-trash {
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+/* 주문정보 div */
+
+.order-info {
+    margin-left: 32px;
+    padding: 20px;
+
+    width: 320px;
+    height: 330px;
+
+    border: 1px solid rgba(180, 180, 180, 0.4);
+}
+
+.order-info h5 {
+    padding-bottom: 8px;
+
+    color: #1F2937;
+}
+
+.total-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 16px;
+
+}
+
+.total-shipping {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 16px;
+}
+
+.box-line {
+    margin-top: 16px;
+
+    width: 280px;
+    height: 1px;
+
+    background-color: rgba(180, 180, 180, 0.4);
+}
+
+.total-price-info {
+    position: relative;
+
+    height: 90px;
+}
+
+.total-price {
+    position: absolute;
+    right: 5px;
+
+    margin-top: 16px;
+
+    text-align: right;
+}
+
+.total-price p:last-child {
+    margin-top: 8px;
+}
+
+
+
+.nonmember-purchase-button {
+    width: 270px;
+    height: 36px;
+
+    color: #1F2937;
+
+    background-color: #f3f4f6;
+    border: none;
+}
+
+.member-purchase-button {
+    margin-top: 16px;
+    
+    width: 270px;
+    height: 36px;
+
+    color: #fff;
+
+    background-color: #111827;
+}
