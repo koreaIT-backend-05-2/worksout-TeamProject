@@ -4,5 +4,5 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public interface SMSAuthService {
 
-	public boolean authPhoneNumberCheck(String sendMsg) throws CoolsmsException;
+	public String phoneNumberCheck(String to) throws CoolsmsException;
 }

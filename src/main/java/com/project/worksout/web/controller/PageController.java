@@ -33,7 +33,6 @@ public class PageController {
 	public String loadCartPage() {
 		return "/cart";
 	}
-
 	
 	@GetMapping("/category")
 	public String loadItemCategoryPage() {
@@ -49,8 +48,14 @@ public class PageController {
 	public String loadAdminItemInsertPage() {
 		return "/admin-item-insert-page";
 	}
-	@GetMapping("/admin/ask")
+	@GetMapping("/admin/inquiry")
 	public String loadAdminAskPage() {
-		return "/admin-ask-page";
+		return "/admin-inquiry-page";
+	}
+	
+	//문의사항 페이지
+	@GetMapping("/inquiry")
+	public String loadInquiryPage() {
+		return "inquiry";
 	}
 }

@@ -3,13 +3,17 @@ package com.project.worksout.service.sms;
 import java.util.HashMap;
 import java.util.Random;
 
+import org.springframework.stereotype.Service;
+
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
+@Service
 public class SMSAuthServiceImpl implements SMSAuthService{
 
+	
 	@Override
-	public boolean authPhoneNumberCheck(String sendMsg) throws CoolsmsException {
+	public String phoneNumberCheck(String to) throws CoolsmsException {
 		
 		String api_key = "NCSHOLAAFPJOZGR6";
 		String api_secret = "9UG5OWF6N6RLLBPV3QFKK31B09R2F2NH";
@@ -24,10 +28,8 @@ public class SMSAuthServiceImpl implements SMSAuthService{
 			numStr += randomStr;
 		}
 		
-		
-		
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("to", "01065587973");
+		params.put("to", to);
 		params.put("from", "01065587973");
 		params.put("type", "sms");
 		params.put("text", "인증번호는 ["+ numStr +"] 입니다.");
@@ -35,7 +37,7 @@ public class SMSAuthServiceImpl implements SMSAuthService{
 		message.send(params);
 		
 		
-		return false;
+		return numStr;
 	}
 	
 	

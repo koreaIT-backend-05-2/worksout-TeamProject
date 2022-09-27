@@ -31,3 +31,4 @@ mybatis:
 
 file:
   path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
+  downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
