@@ -168,7 +168,11 @@
 	</select>
 	
 	<delete id="deleteProduct" parameterType="integer">
-		
+		delete
+		from
+			product_mst
+		where
+			product_code = #{product_code}
 	</delete>
 	
   </mapper>

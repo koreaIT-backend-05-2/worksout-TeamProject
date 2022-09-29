@@ -38,6 +38,8 @@ function load(nowPage) {
 
 function getList(list) {
 	const tbody = document.querySelector("tbody");
+	let listCount = 0;
+	let map = new Map();
 	tbody.innerHTML = "";
 	
 	list.forEach(product => {
@@ -50,8 +52,8 @@ function getList(list) {
 		}
 		
 		tbody.innerHTML += `
-			<tr>
-	            <td>${product.productCode}</td>
+			<tr id = "product-contents-${product.productCode}" class = "product-contents">
+	            <td id = "pd-${product.productCode}" class = "pd">${product.productCode}</td>
 	            <td>${product.productBrand}</td>
 	            <td>${product.productKind}</td>
 	            <td>${product.productName}</td>
@@ -60,13 +62,51 @@ function getList(list) {
 	            <td>${product.productSize}</td>
 	            <td>${files}</td>
 	            <td>
-	                <button type="button">수정</button>
-	                <button type="button">삭제</button>
+	                <button type="button" class="updateButton">수정</button>
+	                <button type="button" class="deleteButton">삭제</button>
 	            </td>
 	        </tr>
 		`;
+		
 	});
+	addEvent();
 }
+
+function subStringProductCode(productContent){
+	const tdProductContents = productContent.querySelector(".pd");
+	console.log("tdProductContents : " + tdProductContents);
+	const productCode = tdProductContents.getAttribute("id");
+	console.log("productCode : " + productCode);
+	const tokenIndex = productCode.lastIndexOf("-");
+	console.log("tokenIndex : " + tokenIndex);
+	
+	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
+	console.log("  ");
+	return productCode.substring(tokenIndex + 1);
+}
+
+function addEvent(){
+	const productContents = document.querySelectorAll(".product-contents");
+
+	for(let pdContent of productContents) {
+ 		const productCode = subStringProductCode(pdContent);
+ 		
+		addDeleteEvent(pdContent, productCode);
+	}
+		//console.log(productCode);
+}
+
+function addDeleteEvent(pdContent, productCode){
+	const deleteButton = pdContent.querySelector(".deleteButton");
+	deleteButton.onclick = () => {
+		console.log(productCode);
+//		console.log(removeChk());
+		if(removeChk()){
+			deleteProduct(pdContent, productCode);
+		}
+	}
+}
+
 
 function deleteProduct(productContent, productCode) {
 	$.ajax({
@@ -75,10 +115,15 @@ function deleteProduct(productContent, productCode) {
 		async: false,
 		dataType: "json",
 		success: (response) => {
-			if (response.data) {
-				productContentList.removeChild(productContent);
-			}
+			//if (response.data) {
+				//productContentList.removeChild(productContent);
+			//}
+			location.href = "/admin/itemlist";
 		},
 		error: errorMessage
 	})
+}
+
+function removeChk(){
+	return confirm("정말 삭제 하시겠습니까?") ? true : false;
 }
