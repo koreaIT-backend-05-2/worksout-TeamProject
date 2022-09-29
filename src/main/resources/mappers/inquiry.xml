@@ -4,6 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.project.worksout.domain.inquiry.InquiryRepository">
+  <select id="getInquiryList" parameterType="hashmap" resultType="com.project.worksout.domain.inquiry.Inquiry">
+  	select
+  		inquiry_code,
+  		inquiry_kind,
+  		inquiry_name,
+  		inquiry_email,
+  		inquiry_title,
+  		create_date,
+  		(select 
+  			count(*) 
+		from 
+			inquiry_mst
+		<choose>
+			<when test='search_flag == "ONLINESTORE" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "MARKETING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "PARTNERSHIP" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "RECRUITING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+		</choose>
+			) as total_inquiry_count
+  	from
+  		inquiry_mst qm
+  		<choose>
+			<when test='search_flag == "ONLINESTORE" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "MARKETING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "PARTNERSHIP" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "RECRUITING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+		</choose>
+  	order by
+  		inquiry_code desc
+  	limit #{index}, 10;
+  </select>
   
   <insert id="saveInquiry" parameterType="com.project.worksout.domain.inquiry.Inquiry"
   	useGeneratedKeys="true" keyProperty="inquiry_code">
@@ -38,11 +93,13 @@
   <select id="getInquiry" parameterType="hashmap"  resultType="com.project.worksout.domain.inquiry.Inquiry">
   SELECT
 	qm.inquiry_code,
+	qm.inquiry_kind,
 	qm.inquiry_name,
 	qm.inquiry_email,
 	qm.inquiry_title,
 	qm.inquiry_content,
 	
+	qf.file_code,
 	qf.file_name,
 	
 	qm.create_date

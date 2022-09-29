@@ -52,6 +52,12 @@ public class PageController {
 	public String loadAdminAskPage() {
 		return "/admin-inquiry-page";
 	}
+	@GetMapping("/admin/inquiry/detail/{inquiryCode}")
+	public String detailInquriy() {
+		return "/admin-inquiry-detail-page";
+	}
+	
+	
 	
 	//문의사항 페이지
 	@GetMapping("/inquiry")

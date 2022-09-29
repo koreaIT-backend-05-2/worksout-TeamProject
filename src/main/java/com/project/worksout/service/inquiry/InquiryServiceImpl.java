@@ -22,6 +22,7 @@ import com.project.worksout.domain.inquiry.InquiryFile;
 import com.project.worksout.domain.inquiry.InquiryRepository;
 import com.project.worksout.web.dto.inquiry.AddInquiryReqDto;
 import com.project.worksout.web.dto.inquiry.GetInquiryRespDto;
+import com.project.worksout.web.dto.inquiry.GetinquiryListRespDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -113,10 +114,12 @@ public class InquiryServiceImpl implements InquiryService{
 			
 			inquiries.forEach(inquiry -> {
 				Map<String, Object> fileMap = new HashMap<String, Object>();
-				fileMap.put("fileCode", inquiry.getFile_code());
-				
 				String fileName = inquiry.getFile_name();
-				fileMap.put("fileName", fileName.substring(fileName.indexOf("_") + 1));
+				
+				if(fileName != null) {
+					fileMap.put("fileCode", inquiry.getFile_code());
+					fileMap.put("fileName", fileName.substring(fileName.indexOf("_") + 1));
+				}
 				
 				downloadFiles.add(fileMap);
 			});
@@ -125,6 +128,7 @@ public class InquiryServiceImpl implements InquiryService{
 			
 			getInquiryRespDto = GetInquiryRespDto.builder()
 					.inquiryCode(firstInquiry.getInquiry_code())
+					.inquiryKind(firstInquiry.getInquiry_kind())
 					.inquiryTitle(firstInquiry.getInquiry_title())
 					.inquiryName(firstInquiry.getInquiry_name())
 					.inquiryEmail(firstInquiry.getInquiry_email())
@@ -136,5 +140,21 @@ public class InquiryServiceImpl implements InquiryService{
 		
 		return getInquiryRespDto;
 	}
-
+	
+	@Override
+	public List<GetinquiryListRespDto> getinquiryList(int page, String searchFlag) throws Exception {
+		int index = (page - 1) * 10;
+		
+		Map<String, Object> map  = new HashMap<String, Object>();
+		map.put("index", index);
+		map.put("search_flag", searchFlag);
+		
+		List<GetinquiryListRespDto> list = new ArrayList<GetinquiryListRespDto>();
+		
+		inquiryRepository.getInquiryList(map).forEach(inquiry -> {
+			list.add(inquiry.toListDto());
+		});
+		
+		return list;
+	}
 }

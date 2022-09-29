@@ -12,6 +12,7 @@ public class GetInquiryRespDto {
 
 	private int inquiryCode;
 	private String inquiryTitle;
+	private String inquiryKind;
 	private String inquiryName;
 	private String inquiryEmail;
 	private String createDate;
