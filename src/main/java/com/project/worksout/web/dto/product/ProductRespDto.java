@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class ProductListRespDto {
+public class ProductRespDto {
 	private int productCode;
 	private String productBrand;
 	private String productKind;

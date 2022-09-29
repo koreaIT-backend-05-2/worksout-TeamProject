@@ -4,16 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.worksout.service.product.ProductService;
 import com.project.worksout.web.dto.CMRespDto;
 import com.project.worksout.web.dto.product.CreateProductReqDto;
 import com.project.worksout.web.dto.product.ProductListRespDto;
+import com.project.worksout.web.dto.product.UpdateProductReqDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +39,8 @@ public class ProductRestController {
 		//boolean status = false;
 		int status = 0;
 		
-		log.info("{}", createProductReqDto);
-		log.info("fileName: = {}", createProductReqDto.getFile().get(0).getOriginalFilename());
+//		log.info("{}", createProductReqDto);
+//		log.info("fileName: = {}", createProductReqDto.getFile().get(0).getOriginalFilename());
 //		log.info("filePath: = {}", filePath);
 		
 		
@@ -54,12 +59,12 @@ public class ProductRestController {
 	}
 	
 	// 상품 조회
-	@PostMapping("/search")
-	public ResponseEntity<?> searchProduct(int page, int contentCount){
+	@GetMapping("/list/{page}")
+	public ResponseEntity<?> searchProduct(@PathVariable int page, @RequestParam String searchFlag, @RequestParam String searchValue){
 		List<ProductListRespDto> listDto = null;
 		
 		try {
-			listDto = productService.getProductList(page, contentCount);
+			listDto = productService.getProductList(page, searchFlag, searchValue);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"DB error", listDto));			
@@ -69,17 +74,31 @@ public class ProductRestController {
 	}
 	
 	// 상품 수정
-	@PostMapping("/edit")
-	public ResponseEntity<?> editProduct(){
+	@PutMapping("/edit/{productCode}")
+	public ResponseEntity<?> editProduct(@PathVariable int productCode, @RequestBody UpdateProductReqDto updateProductReqDto){
+		boolean status = false;
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1,"",""));
+		try {
+			updateProductReqDto.setProductCode(productCode);
+			status = productService.updateProduct(updateProductReqDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"failed update",status));			
+		}
+		return ResponseEntity.ok().body(new CMRespDto<>(1,"success update",status));
 	}
 	
 	// 상품 삭제
-	@PostMapping("/delete")
-	public ResponseEntity<?> deleteProduct(){
-		
-		return ResponseEntity.ok().body(new CMRespDto<>(1,"",""));
+	@DeleteMapping("/delete/{productCode}")
+	public ResponseEntity<?> deleteProduct(@PathVariable int productCode){
+		boolean status = false;
+		try {
+			status = productService.removeProduct(productCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"failed delete",status));			
+		}
+		return ResponseEntity.ok().body(new CMRespDto<>(1,"success delete",status));
 	}
 	
 	// test

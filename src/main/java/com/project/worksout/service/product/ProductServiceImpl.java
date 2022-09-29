@@ -20,6 +20,7 @@ import com.project.worksout.domain.product.ProductFile;
 import com.project.worksout.domain.product.ProductRepository;
 import com.project.worksout.web.dto.product.CreateProductReqDto;
 import com.project.worksout.web.dto.product.ProductListRespDto;
+import com.project.worksout.web.dto.product.ProductRespDto;
 import com.project.worksout.web.dto.product.UpdateProductReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -36,16 +37,11 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductRepository productRepository;
 	// 추가
 	@Override
-	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception {
-//		Product productEntity = createProductReqDto.toEntity();
-//		
-//		return productRepository.save(productEntity) > 0;
-		
+	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception {		
 		Predicate<String> predicate = (filename) -> !filename.isBlank();
 		
 		Product product = null;
 		
-		//log.info(createProductReqDto);
 		System.out.println(createProductReqDto);
 		log.info(createProductReqDto.getProductBrand());
 		
@@ -93,17 +89,51 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductListRespDto> getProductList(int page, int contentCount) throws Exception {
+	public ProductRespDto getProduct(String flag, int productCode) throws Exception {
+		ProductRespDto productRespDto = null;
+		
+		Map<String, Object> reqMap = new HashMap<String, Object>();
+		reqMap.put("flag", flag);
+		reqMap.put("product_code", productCode);
+		
+		Product product = productRepository.getProduct(reqMap);
+		if(product != null) {
+			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
+			
+			product.getProduct_files().forEach(file -> {
+				Map<String, Object> fileMap = new HashMap<String, Object>();
+				fileMap.put("fileCode", file.getFile_code());
+				fileMap.put("fileName", file.getFile_name());
+				files.add(fileMap);
+			});
+			
+			productRespDto = product.toProductRespDto(files);
+		}
+		return productRespDto;
+	}
+	@Override
+	public List<ProductListRespDto> getProductList(int page, String searchFlag, String searchValue) throws Exception {
+		int index = (page - 1) * 10;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", page);
-		map.put("contentCount", contentCount);
+		map.put("index", index);
+		map.put("search_flag", searchFlag);
+		map.put("search_value", searchValue == null ? "" : searchValue);
 		
 		
 		List<ProductListRespDto> productList = new ArrayList<ProductListRespDto>();
 		
 		productRepository.getProductList(map).forEach(product -> {
-			productList.add(product.toListDto());
+			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
+			
+			product.getProduct_files().forEach(file -> {
+				Map<String, Object> fileMap = new HashMap<String, Object>();
+				fileMap.put("fileCode", file.getFile_code());
+				fileMap.put("fileName", file.getFile_name());
+				files.add(fileMap);
+			});
+			
+			productList.add(product.toProductListRespDto(files));
 		});
 		
 		return productList;
@@ -112,13 +142,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean updateProduct(UpdateProductReqDto updateProductReqDto) throws Exception {
 		
-		return false;
+		return productRepository.updateProduct(updateProductReqDto.toEntity()) > 0;
 	}
 
 	@Override
 	public boolean removeProduct(int productCode) throws Exception {
 		
-		return false;
+		return productRepository.deleteProduct(productCode) > 0;
 	}
 
 }

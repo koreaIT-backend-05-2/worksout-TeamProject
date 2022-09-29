@@ -1,8 +1,11 @@
 package com.project.worksout.domain.product;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 import com.project.worksout.web.dto.product.ProductListRespDto;
+import com.project.worksout.web.dto.product.ProductRespDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,12 +27,12 @@ public class Product {
 	private String product_size;
 	private int importance_flag;
 	private int total_count;
-	private int file_code;
-	private String file_name;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;	
 	
-	public ProductListRespDto toListDto() {
+	private List<ProductFile> product_files;
+	
+	public ProductListRespDto toProductListRespDto(List<Map<String, Object>> files) {
 		return ProductListRespDto.builder()
 				.productCode(product_code)
 				.productBrand(product_brand)
@@ -43,6 +46,18 @@ public class Product {
 				.totalCount(total_count = 0)
 				.createDate(create_date)
 				.updateDate(update_date)
+				.files(files)
+				.build();
+	}
+	
+	public ProductRespDto toProductRespDto(List<Map<String, Object>> files) {
+		return ProductRespDto.builder()
+				.productCode(product_code)
+				.productBrand(product_brand)
+				.productKind(product_kind)
+				.productName(product_name)
+				.productPrice(product_price)
+				.files(files)
 				.build();
 	}
 }
