@@ -54,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
 				.product_price(createProductReqDto.getProductPrice())
 				.product_amount(createProductReqDto.getProductAmount())
 				.product_size(createProductReqDto.getProductSize())
+				.product_gender(createProductReqDto.getProductGender())
 				.build();
 		
 		
@@ -89,11 +90,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductRespDto getProduct(String flag, int productCode) throws Exception {
+	public ProductRespDto getProduct(int productCode) throws Exception {
 		ProductRespDto productRespDto = null;
 		
 		Map<String, Object> reqMap = new HashMap<String, Object>();
-		reqMap.put("flag", flag);
 		reqMap.put("product_code", productCode);
 		
 		Product product = productRepository.getProduct(reqMap);
@@ -109,6 +109,7 @@ public class ProductServiceImpl implements ProductService {
 			
 			productRespDto = product.toProductRespDto(files);
 		}
+		log.info("{}", productRespDto);
 		return productRespDto;
 	}
 	@Override

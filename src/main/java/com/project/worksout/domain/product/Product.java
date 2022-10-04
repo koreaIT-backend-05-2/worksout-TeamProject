@@ -25,6 +25,7 @@ public class Product {
 	private int product_price;
 	private int product_amount;
 	private String product_size;
+	private String product_gender;
 	private int importance_flag;
 	private int total_count;
 	private LocalDateTime create_date;
@@ -42,6 +43,7 @@ public class Product {
 				.productPrice(product_price)
 				.productAmount(product_amount)
 				.productSize(product_size)
+				.productGender(product_gender)
 				.importanceFlag(importance_flag = 0)
 				.totalCount(total_count = 0)
 				.createDate(create_date)
@@ -56,7 +58,14 @@ public class Product {
 				.productBrand(product_brand)
 				.productKind(product_kind)
 				.productName(product_name)
+				.productInfo(product_info)
 				.productPrice(product_price)
+				.productAmount(product_amount)
+				.productSize(product_size)
+				.importanceFlag(importance_flag = 0)
+				.totalCount(total_count = 0)
+				.createDate(create_date)
+				.updateDate(update_date)
 				.files(files)
 				.build();
 	}

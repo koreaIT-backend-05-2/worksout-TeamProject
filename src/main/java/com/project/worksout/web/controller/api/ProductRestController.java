@@ -18,6 +18,7 @@ import com.project.worksout.service.product.ProductService;
 import com.project.worksout.web.dto.CMRespDto;
 import com.project.worksout.web.dto.product.CreateProductReqDto;
 import com.project.worksout.web.dto.product.ProductListRespDto;
+import com.project.worksout.web.dto.product.ProductRespDto;
 import com.project.worksout.web.dto.product.UpdateProductReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -28,28 +29,19 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/v1/admin")
 @RequiredArgsConstructor
 public class ProductRestController {
-	
-//	@Value("${file.path}")
-//	private String filePath;
 
 	private final ProductService productService;
 	// 상품 등록
 	@PostMapping("/insert")
 	public ResponseEntity<?> insertProduct(CreateProductReqDto createProductReqDto){
-		//boolean status = false;
 		int status = 0;
 		
 //		log.info("{}", createProductReqDto);
 //		log.info("fileName: = {}", createProductReqDto.getFile().get(0).getOriginalFilename());
 //		log.info("filePath: = {}", filePath);
-		
-		
+				
 		try {
 			status = productService.createProduct(createProductReqDto);
-//			System.out.println(status + "sysout이다");
-//			if(!status) {
-//				throw new RuntimeException("DB ERROR!!");
-//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"failed", status));
@@ -60,7 +52,7 @@ public class ProductRestController {
 	
 	// 상품 조회
 	@GetMapping("/list/{page}")
-	public ResponseEntity<?> searchProduct(@PathVariable int page, @RequestParam String searchFlag, @RequestParam String searchValue){
+	public ResponseEntity<?> getProductList(@PathVariable int page, @RequestParam String searchFlag, @RequestParam String searchValue){
 		List<ProductListRespDto> listDto = null;
 		
 		try {
@@ -71,6 +63,23 @@ public class ProductRestController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1,"searching success", listDto));
+	}
+	
+	// 상품 업데이트를 위한 조회
+	@GetMapping("/{productCode}")
+	public ResponseEntity<?> getProductForUpdate(@PathVariable int productCode){
+		ProductRespDto productRespDto = null;
+		
+		System.out.println("productCode : " + productCode);
+		
+		try {
+			productRespDto = productService.getProduct(productCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"DB error", productRespDto));			
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1,"searching success", productRespDto));
 	}
 	
 	// 상품 수정

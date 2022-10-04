@@ -22,8 +22,8 @@ addButton.onclick = () => {
 		data: formData,
 		dataType: "json",
 		success: (response) => {
-			//alert(response.data);
-			location.href = "/admin/add-items";
+			alert(response.data);
+			/** location.href = "/admin/add-items";*/
 		},
 		error:errorMessage
 	});	

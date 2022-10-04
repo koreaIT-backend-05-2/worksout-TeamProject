@@ -12,6 +12,7 @@ th, td {
 .admin-div {
 	display: flex;
 	flex-direction: column;
+    width: 1200px;
 }
 
 .list-footer {
@@ -33,7 +34,7 @@ th, td {
     font-weight: 600;	
 }
 
-.page-buttons {
+/* .page-buttons {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -61,4 +62,20 @@ th, td {
 
 .page-button:hover {
     background-color: #c0c0c0;
+} */
+
+.admin-content-update{
+    
+}
+
+.insert-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.insert-items input{
+    margin: 5px;
+    padding: 5px;
+    width: 350px;
+    height: 30px;
 }

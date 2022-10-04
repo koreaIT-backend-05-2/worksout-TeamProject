@@ -18,6 +18,7 @@ public class CreateProductReqDto {
 	private int productPrice;
 	private int productAmount;
 	private String productSize;
+	private String productGender;
 	private int importanceFlag;
 	private int totalCount;
 	private List<MultipartFile> file;

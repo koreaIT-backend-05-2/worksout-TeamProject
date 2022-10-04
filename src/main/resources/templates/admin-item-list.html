@@ -33,13 +33,11 @@
                     </div>
                     <div class="admin-div">
 	                    <div class="notice-search">
-			                <select class="search-select">
+			                <select class="search-select hidden">
 			                    <option value="brand">브랜드</option>
-			                    <option value="brandAndKind">브랜드+종류</option>
-			                    <option value="kind">종류</option>
 			                </select>
-			                <input type="text" class="search-input">
-			                <button type="button" class="search-button">검색</button>
+			                <input type="text" class="search-input" id = "inputValue">
+			                <button type="button" class="search-button">수정하기</button>
 			            </div>
 	                    <div class="admin-contents">
 		                    <article>
@@ -53,6 +51,7 @@
 			                                <th>가격</th>
 			                                <th>수량</th>
 			                                <th>사이즈</th>
+			                                <th>젠더</th>
 			                                <th>image</th>
 			                                <th>수정/삭제</th>
 			                            </tr>
@@ -66,6 +65,7 @@
 			                                <td>45,000</td>
 			                                <td>40</td>
 			                                <td>L</td>
+			                                <td>m</td>
 			                                <td>link</td>
 			                                <td>
 			                                    <button type="button">수정</button>
@@ -76,7 +76,7 @@
 		                        </table>
 	                        </article>
 	                    </div>
-	                    <div class="list-footer">
+	                    <!-- <div class="list-footer">
 	                    	<div class="page-buttons">
 					            <button type="button" class="page-button pre">&lt;</button>
 					            <button type="button" class="page-button">1</button>
@@ -86,8 +86,21 @@
 					            <button type="button" class="page-button">5</button>
 					            <button type="button" class="page-button next">&gt;</button>
 					        </div>
-	                    </div>                    
+	                    </div>                     -->
 	                </div>
+					<div class="admin-content-update">
+						<!-- <div class="insert-items">
+							<input type="text" placeholder="product_brand" name="productBrand">
+							<input type="text" placeholder="product_kind" name="productKind">
+							<input type="text" placeholder="product_name" name="productName">
+							<input type="text" placeholder="product_info" name="productInfo">
+							<input type="text" placeholder="product_price" name="productPrice">
+							<input type="text" placeholder="product_amount" name="productAmount">
+							<input type="text" placeholder="product_size" name="productSize">
+							<input type="text" placeholder="product_gender" name="productGender">
+							<input type="file" class="product-file" name="file" multiple="multiple" accept=".jpg, .jpeg, .png, .gif">
+						</div> -->
+					</div>
                 </div>
             </main>
             

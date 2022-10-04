@@ -1,16 +1,38 @@
+const updateButton = document.querySelector(".search-button");
 
-let nowPage = 1;
+let preProductCode = 0;
 
-load(nowPage);
+load();
 
-function load(nowPage) {
+updateButton.onclick = () => {
+	const productCodeForUpdate = document.getElementById('inputValue').value;
+	
+	//alert("상품코드 값은 " + productCodeForUpdate);
+	
+	$.ajax({
+		async: false,
+		type: "get",
+		url: `/api/v1/admin/${productCodeForUpdate}`,
+		datatype : "json",
+		success:(response) => {
+			console.log(response.data);
+			getProductByProductCode(response.data);
+		}, error: (error) => {
+			console.log(error);
+		}
+	})
+}
+
+
+
+function load() {
 	const searchFlag = document.querySelector(".search-select").value;
 	const searchValue = document.querySelector(".search-input").value;
 	
 	$.ajax({
 		async: false,
 		type: "get",
-		url: "/api/v1/admin/list/" + nowPage,
+		url: "/api/v1/admin/list/" + 1,
 		data: {
 			"searchFlag": searchFlag,
 			"searchValue": searchValue
@@ -18,7 +40,7 @@ function load(nowPage) {
 		dataType: "json",
 		success:(response) => {
 				getList(response.data);
-				console.log(response.data);
+				console.log("response.data : " + response.data);
 //			if(response.data[0] != null){
 //				getList(response.data);
 //				console.log(response.data);
@@ -36,14 +58,36 @@ function load(nowPage) {
 	})
 }
 
+function updateProductContent(productCode, product){
+	let successFlag = false;
+	$.ajax ({
+		async: false,
+		type: "put",
+		url: `/api/v1/admin/edit/${productCode}`,
+		contentType: "application/json",
+		data : JSON.stringify({
+			"productCode" : productCode,
+			"product" : product
+		}),
+		dataType : "JSON",
+		success: (response) => {
+			successFlag = response.data;	
+		},
+		error: (error) => {
+			console.log(error);
+		}
+	})
+	return successFlag;
+}
+
 function getList(list) {
 	const tbody = document.querySelector("tbody");
-	let listCount = 0;
-	let map = new Map();
+	
 	tbody.innerHTML = "";
 	
 	list.forEach(product => {
 		let files = "";
+		
 		for(let i = 0; i < product.files.length; i++) {
 			files += `<a href="">${product.files[i].fileName}</a>`
 			if(i < product.files.length - 1){
@@ -60,6 +104,7 @@ function getList(list) {
 	            <td>${product.productPrice}</td>
 	            <td>${product.productAmount}</td>
 	            <td>${product.productSize}</td>
+	            <td>${product.productGender}</td>
 	            <td>${files}</td>
 	            <td>
 	                <button type="button" class="updateButton">수정</button>
@@ -70,6 +115,66 @@ function getList(list) {
 		
 	});
 	addEvent();
+}
+
+
+
+
+function getProductByProductCode (product) {
+//	console.log(product);
+	
+	const adminContentUpdate = document.querySelector(".admin-content-update");
+	let files = "";
+	
+	for(let i = 0; i < product.files.length; i++) {
+			files += `<a href="">${product.files[i].fileName}</a>`
+			if(i < product.files.length - 1){
+				files += " / ";
+			}
+		}
+	
+	adminContentUpdate.innerHTML = `
+		<div class="insert-items">
+			<input type="text" placeholder="product_brand" name="productBrand" value="${product.productBrand}">
+			<input type="text" placeholder="product_kind" name="productKind" value="${product.productKind}">
+			<input type="text" placeholder="product_name" name="productName" value="${product.productName}">
+			<input type="text" placeholder="product_info" name="productInfo" value="${product.productInfo}">
+			<input type="text" placeholder="product_price" name="productPrice" value="${product.productPrice}">
+			<input type="text" placeholder="product_amount" name="productAmount" value="${product.productAmount}">
+			<input type="text" placeholder="product_size" name="productSize" value="${product.productSize}">
+			<input type="text" placeholder="product_gender" name="productGender" value="${product.productGender}">
+			<input type="file" class="product-file" name="file" multiple="multiple" accept=".jpg, .jpeg, .png, .gif"> 
+			<div id = "preview-images">${files}</div>
+		</div>
+		<button type="button" class="cancel-update-button">수정하지않기</button>
+		<button type="button" class="update-button">수정하기</button>
+	`;
+	const cancelUpdateButton = document.querySelector(".cancel-update-button");
+	const updateButton = document.querySelector(".update-button");
+	
+	cancelUpdateButton.onclick=()=>{
+		location.href = "/admin/itemlist";
+	}
+	
+	updateButton.onclick=()=>{
+		updateProductContent(product.productCode, product);
+	}
+}
+
+//			<div id = "preview-images">${readImage(files)}</div>
+
+function readImage(files){
+	if(files && files[0]){
+		
+		const reader = new FileReader();
+		
+		reader.onload = (e) => {
+			const previewImage = document.getElementById("preview-images");
+			previewImage.src = e.target.result;
+		}
+		
+		reader.readAsDataURL(files[0]);
+	}
 }
 
 function subStringProductCode(productContent){
@@ -95,6 +200,7 @@ function addEvent(){
 	}
 		//console.log(productCode);
 }
+
 
 function addDeleteEvent(pdContent, productCode){
 	const deleteButton = pdContent.querySelector(".deleteButton");
