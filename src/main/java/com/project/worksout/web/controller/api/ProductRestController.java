@@ -51,12 +51,12 @@ public class ProductRestController {
 	}
 	
 	// 상품 조회
-	@GetMapping("/list/{page}")
-	public ResponseEntity<?> getProductList(@PathVariable int page, @RequestParam String searchFlag, @RequestParam String searchValue){
+	@GetMapping("/list/{type}")
+	public ResponseEntity<?> getProductList(@PathVariable int type, @RequestParam String searchFlag, @RequestParam String searchValue){
 		List<ProductListRespDto> listDto = null;
 		
 		try {
-			listDto = productService.getProductList(page, searchFlag, searchValue);
+			listDto = productService.getProductList(type, searchFlag, searchValue);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"DB error", listDto));			

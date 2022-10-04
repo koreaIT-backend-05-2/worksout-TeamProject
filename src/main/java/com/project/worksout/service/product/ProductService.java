@@ -12,7 +12,7 @@ public interface ProductService {
 	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception;
 	
 	//조회 (Select)
-	public List<ProductListRespDto> getProductList(int page, String searchFlag, String searchValue) throws Exception;
+	public List<ProductListRespDto> getProductList(int type, String searchFlag, String searchValue) throws Exception;
 	public ProductRespDto getProduct(int productCode) throws Exception;
 
 	//수정 (Update)

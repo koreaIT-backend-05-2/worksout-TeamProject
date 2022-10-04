@@ -50,6 +50,8 @@ public class ProductServiceImpl implements ProductService {
 				.product_brand(createProductReqDto.getProductBrand())
 				.product_kind(createProductReqDto.getProductKind())
 				.product_name(createProductReqDto.getProductName())
+				.product_detail_name(createProductReqDto.getProductDetailName())
+				.product_kor_name(createProductReqDto.getProductKorName())
 				.product_info(createProductReqDto.getProductInfo())
 				.product_price(createProductReqDto.getProductPrice())
 				.product_amount(createProductReqDto.getProductAmount())

@@ -30,4 +30,4 @@ mybatis:
   - /mappers/*.xml
 
 file:
-  path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
+  path: C:/TeamProject/worksout-TeamProject/git/worksout-TeamProject/upload/

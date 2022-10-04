@@ -9,6 +9,8 @@ public class UpdateProductReqDto {
 	private int productCode;
 	private String productBrand;
 	private String productName;
+	private String productDetailName;
+	private String productKorName;
 	private String productKind;
 	private String productInfo;
 	private int productPrice;
@@ -20,6 +22,9 @@ public class UpdateProductReqDto {
 		return Product.builder()
 				.product_code(productCode)
 				.product_brand(productBrand)
+				.product_name(productName)
+				.product_detail_name(productDetailName)
+				.product_kor_name(productKorName)
 				.product_kind(productKind)
 				.product_info(productInfo)
 				.product_price(productPrice)

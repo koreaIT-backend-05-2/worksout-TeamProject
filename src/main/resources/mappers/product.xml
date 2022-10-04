@@ -14,6 +14,8 @@
   		<result column="product_brand" property="product_brand"/>
   		<result column="product_kind" property="product_kind"/>
   		<result column="product_name" property="product_name"/>
+  		<result column="product_detail_name" property="product_detail_name"/>
+  		<result column="product_kor_name" property="product_kor_name"/>
   		<result column="product_info" property="product_info"/>
   		<result column="product_price" property="product_price"/>
   		<result column="product_amount" property="product_amount"/>
@@ -32,6 +34,8 @@
 			#{product_brand},
 			#{product_kind},
 			#{product_name},
+			#{product_detail_name},
+			#{product_kor_name},
 			#{product_info},
 			#{product_price},
 			#{product_amount},
@@ -64,6 +68,8 @@
 			pm.product_brand,
 			pm.product_kind,
 			pm.product_name,
+			pm.product_detail_name,
+			pm.product_kor_name,
 			pm.product_info,
 			pm.product_price,
 			pm.product_amount,
@@ -84,6 +90,8 @@
 			pm.product_brand,
 			pm.product_kind,
 			pm.product_name,
+			pm.product_detail_name,
+			pm.product_kor_name,
 			pm.product_info,
 			pm.product_price,
 			pm.product_amount,
@@ -105,6 +113,8 @@
 			product_brand = #{product_brand},
 			product_kind = #{product_kind},
 			product_name = #{product_name},
+			product_detail_name = #{product_detail_name},
+			product_kor_name = #{product_kor_name},
 			product_info = #{product_info},
 			product_price = #{product_price},
 			product_amount = #{product_amount},
