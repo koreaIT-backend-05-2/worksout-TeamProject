@@ -52,7 +52,6 @@ function load(genderSelect){
 function loadItems(list, genderSelect) {
 	const loadedItems = document.querySelector(".loaded-items");
 	loadedItems.innerHTML = "";
-	let count = 0;
 	
 	let item = null;
 	
@@ -74,7 +73,7 @@ function loadItems(list, genderSelect) {
 			
 			
 			loadedItems.innerHTML += `
-			<div class = "selection"> 
+			<div class = "item-selection"> 
 				<div class="items">
 					<div class="item">
 					    <img src="/image/product/${product.files[0].fileName}">
@@ -89,40 +88,50 @@ function loadItems(list, genderSelect) {
 				</div>
 			</div>
 				`;
-			
-			const selection = document.querySelector(".selection");
-			selection.onmouseover = () => {
-				console.log("over");
-			}
-			
-		
-			loadedItems.onmouseover = () => {
-				
-				//const imageChange = document.querySelector(".item");
-				//imageChange.innerHTML = "";
-				//imageChange.innerHTML = `
-				//	<div class="item">
-				//		    <img src="/image/product/${product.files[1].fileName}">
-				//	</div>
-				//`;
-				
-				//console.log("in");
-			}
-			loadedItems.onmouseout = () => {
-				//const imageChange = document.querySelector(".item");
-				//imageChange.innerHTML = "";
-				//imageChange.innerHTML = `
-				//	<div class="item">
-				//		    <img src="/image/product/${product.files[0].fileName}">
-				//	</div>
-				//`;
-				//console.log("out");
-			}
-		
-		
+					
 		}		
-		item = product.productName;
-		count++;	
+		item = product.productName;		
 		
 	})
+	addEvent();
+}
+function subStringProductCode(items){
+	const productContents = items.querySelector(".pd");
+	console.log("tdProductContents : " + productContents);
+	
+	const productCode = productContents.getAttribute("id");
+	console.log("productCode : " + productCode);
+	
+	const tokenIndex = productCode.lastIndexOf("-");
+	console.log("tokenIndex : " + tokenIndex);
+	
+	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
+	console.log("  ");
+	return productCode.substring(tokenIndex + 1);
+}
+
+function addEvent(){
+	const itemSelection = document.querySelectorAll(".item-selection");
+
+	for(let items of itemSelection) {
+ 		const productCode = subStringProductCode(items);
+ 		
+		addSelectEvent(items, productCode);
+	}
+		//console.log(productCode);
+}
+
+
+function addSelectEvent(items, productCode){
+	const itemSelection = items.querySelector(".item-selection");
+	itemSelection.onmouseover = () => {
+		console.log("over");
+//		console.log(removeChk());
+		//if(removeChk()){
+		//	deleteProduct(pdContent, productCode);
+		//}
+	}
+	itemSelection.onmouseout = () => {
+		console.log("out");
+	}
 }
