@@ -1,0 +1,41 @@
+
+
+.admin-contents{
+    width: 1560px;
+}
+
+.ask-header {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 10px 0px;
+    
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+.ask-header-box {
+    text-align: center;
+    
+    width: 180px;
+}
+.ask-header-box2 {
+    text-align: center;
+    width: 950px;
+    
+}
+
+.ask-lists {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0px;
+}
+
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.page-button {
+    width: 30px;
+}

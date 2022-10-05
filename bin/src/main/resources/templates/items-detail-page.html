@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Items Detail page</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/items-detail-page.css">
+<script src="https://kit.fontawesome.com/ede2458143.js"></script>
+<script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<th:block th:replace="/fragment/header"></th:block>
+    <main>
+        <div class="main-items">
+            <div class="img-group">
+                    <img src="https://media.worksout.co.kr/uploads/live/CA22FWSHLS10189001/CA22FWSHLS10189001-1.jpg" alt="#">
+                    <img src="https://media.worksout.co.kr/uploads/live/A1224SACOT00002003/A1224SACOT00002003-1.JPG" alt="#">
+                    <img src="https://media.worksout.co.kr/uploads/live/A1224SACOT00002003/A1224SACOT00002003-3.JPG" alt="#">
+                    <!-- <button type="button" class="test-button">버튼</button> -->
+            </div>
+            <div class="items-information">
+                    <div class="items">
+                        <span class="itmes-name">AAUXX <i class="fa-regular fa-bookmark"></i></span>
+                        <p class="items-title">L/S CHARTER SHIRT</p>
+                        <p class="items-color">ARTICHOKE GARMENT DYED</p>
+                        <span class="items-translation">긴팔 차터 셔츠 아티초크 가먼트 다이드</span>
+                        <span class="items-number">CA22FWSHLS10189001</span>
+                        <p class="items-price">185,000원</p>
+                    </div>
+                    <div class="size-buttons-group">
+                        <button type="button" class="size-button">S</button>
+                        <button type="button" class="size-button">M</button>
+                        <button type="button" class="size-button">L</button>
+                        <button type="button" class="size-button">XL</button>
+                        <button type="button" class="size-button">XXL</button>
+                    </div>
+                    <div>
+                        <button type="button" class="guide-button">사이즈 가이드</button>
+                    </div>
+                        <button type="button"  class="info-button">상품 정보 고시</button>
+                    <div class="size-select-group">
+                        <div class="purchase-group">
+                            <!-- <button type="button" class="purchase-button">구매하기</button>
+                            <button type="button" class="cart-button">장바구니</button> -->
+                            <button type="button" class="select-button">사이즈를 선택해주세요</button>
+                        </div>
+                        <button type="button" class="interest-button"><i class="fa-regular fa-heart" ></i></button>
+                    </div>
+                    <div class="info-button-group">
+                        <div>
+                            <div class="detail-info-group">
+                                <p class="detail-info-button">상세 정보</p>
+                                <div><i class="fa-solid fa-angle-down"></i></div>
+                            </div>
+
+                            <div class="detail-info">
+                                <p>
+                                    L/S CHARTER SHIRT는 오가닉 코튼100% 'MORAGA' 트윌 소재의 긴팔 셔츠입니다. 루즈 핏이며, 가먼트 워싱 처리 되었습니다. 두개의 가슴 포켓이 있으며, 하나의 포켓은 버튼으로 여닫을 수 있습니다. 팔꿈치는 더블 레이어 형태입니다. 가슴 포켓이 스퀘어 라벨이 부착되어 있습니다.
+                                </p>
+                            </div> 
+
+                        </div>
+                        <div>
+                            <div class="shipping-info-group">
+                                <p class="shipping-info-button">배송 안내</p>
+                                <div><i class="fa-solid fa-angle-down"></i></div>
+                            </div>
+
+                            <div class="shipping-info">
+                                <p>CJ대한통운(1588-1255)</p>
+                                <p>배송 지역: 전국 (일부 지역 제외)</p>  
+                                <p>배송비: 10만원 이상 구매 시 무료 배송</p>
+                                <p>
+                                    배송 기간: 평일 오후 2시 이전 결제 완료된 <br>
+                                    주문건은 당일 출고되며 배송은 1~3일 정도 소요됩니다.
+                                </p>
+                                <a href="#">(자세히 보기)</a>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="return-info-group">
+                                <p class="return-info-button">반품 안내</p>
+                                <div><i class="fa-solid fa-angle-down"></i></div>
+                            </div>
+
+                            <div class="return-info">
+                                <p>
+                                    교환/환불의 경우 모든 상품은 상품을 공급받으신 날로부터 <br>
+                                    7일 이내 신청하시면 기사님께서 빠른 시일 내에 수거하실 예정입니다.<br>
+                                    고객님의 단순 변심으로 인한 상품의 교환/반품을 요청하시는 경우,<br>
+                                    택배비용은 고객님 부담이오니 이점 양해 바랍니다.<br>
+                                    웍스아웃 (마이페이지 > 주문 내역 > 주문서 상세 페이지 조회 > 교환/환불 신청)
+                                </p>
+                                <a href="#">(자세히 보기)</a>
+                            </div>
+                            
+                        </div>
+                        <div >
+                            <div class="as-info-group">
+                                <p class="as-info-button">A/S 안내</p>
+                                <div><i class="fa-solid fa-angle-down"></i></div>
+                            </div>
+
+                            <div class="as-info">
+                                <p>
+                                    (주)웍스아웃 및 (주)웍스아웃의 정식 판매처를 통하여 <br>
+                                    구입한 모든 제품은 A/S를 받으실 수 있습니다.
+                                </p>
+                                <a href="#">(자세히 보기)</a>
+                            </div>
+                           
+                        </div>
+                        <div>
+                            <div class="precautions-info-group"> 
+                                <p class="precautions-info-button">세탁 및 취급 시 주의사항</p>
+                                <div><i class="fa-solid fa-angle-down"></i></div>    
+                            </div>
+                              
+                            <div class="precautions-info">
+                                <p>
+                                    제품 혼용율에 따라 세탁 및 취급 유의 사항이 변경될 수 있습니다. <br>
+                                    반드시 부착되어 있는 케어라벨 내용을 확인하신 후 세탁하시기 바랍니다. <br> 
+                                    따라서 세탁시에는 반드시 세탁 및 최급 시 주의사항 페이지를 참고 부탁 드립니다. <br>
+                                </p>
+                                <a href="#">(자세히 보기)</a>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+    </div>
+    </main>
+    <article>
+        <div class="recm-brandItems">
+            <p>브랜드 상품</p>
+            <div class="recm-brandItems-img">
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/A1224SACOT00002001/A1224SACOT00002001-0.JPG" alt="">
+                    <div class="recm-brandItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/A1224SACOT00002001/A1224SACOT00002001-0.JPG" alt="">
+                    <div class="recm-brandItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/A1224SACOT00002001/A1224SACOT00002001-0.JPG" alt="">
+                    <div class="recm-brandItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/A1224SACOT00002001/A1224SACOT00002001-0.JPG" alt="">
+                    <div class="recm-brandItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/A1224SACOT00002001/A1224SACOT00002001-0.JPG" alt="">
+                    <div class="recm-brandItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--  -->
+        <div class="recm-togetherItems">
+            <p>함께 착용한 상품</p>
+            <div class="recm-togetherItems-img">
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/AC22SSTSSS00040002/AC22SSTSSS00040002-0.jpg" alt="">
+                    <div class="recm-togetherItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/AC22SSTSSS00040002/AC22SSTSSS00040002-0.jpg" alt="">
+                    <div class="recm-togetherItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/AC22SSTSSS00040002/AC22SSTSSS00040002-0.jpg" alt="">
+                    <div class="recm-togetherItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/AC22SSTSSS00040002/AC22SSTSSS00040002-0.jpg" alt="">
+                    <div class="recm-togetherItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://media.worksout.co.kr/resized/live/AC22SSTSSS00040002/AC22SSTSSS00040002-0.jpg" alt="">
+                    <div class="recm-togetherItems-info">
+                        <p>AAUXX</p>
+                        <p>WORKSOUT X IRING ORIGINAL</p>
+                        <p>15,000원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <script src="/static/js/items-detail-page.js"></script>
+</body>
+</html>

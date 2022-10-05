@@ -1,9 +1,13 @@
 package com.project.worksout.service.product;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -16,6 +20,7 @@ import com.project.worksout.domain.product.ProductFile;
 import com.project.worksout.domain.product.ProductRepository;
 import com.project.worksout.web.dto.product.CreateProductReqDto;
 import com.project.worksout.web.dto.product.ProductListRespDto;
+import com.project.worksout.web.dto.product.ProductRespDto;
 import com.project.worksout.web.dto.product.UpdateProductReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -26,51 +31,127 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-//	@Value("${file.path}")
-//	private String filePath;
+	@Value("${file.path}")
+	private String filePath;
 	
 	private final ProductRepository productRepository;
 	// 추가
 	@Override
-	public boolean createProduct(CreateProductReqDto createProductReqDto) throws Exception {
-		Product productEntity = createProductReqDto.toEntity();
-//		
-		return productRepository.save(productEntity) > 0;
+	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception {		
+		Predicate<String> predicate = (filename) -> !filename.isBlank();
 		
-//		Predicate<String> predicate = (filename) -> !filename.isBlank();
-//		
-//		productRepository.save(productEntity);
-//		
-//		// file이 없는경우
-//		if(predicate.test(createProductReqDto.getFile().get(0).getOriginalFilename())) {
-//			List<ProductFile> productFiles = new ArrayList<ProductFile>();
-//			
-//			for(MultipartFile file : createProductReqDto.getFile()) {
-//				String originalFilename = file.getOriginalFilename();
-//				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + orginalFilename;
-//				log.info(tempFilename);
-//				//Path uploadPath = Paths.get(tempFilename, null)
-//			}
-//		}
+		Product product = null;
 		
+		System.out.println(createProductReqDto);
+		log.info(createProductReqDto.getProductBrand());
+		
+		product = Product.builder()
+				.product_code(createProductReqDto.getProductCode())
+				.product_brand(createProductReqDto.getProductBrand())
+				.product_kind(createProductReqDto.getProductKind())
+				.product_name(createProductReqDto.getProductName())
+				.product_detail_name(createProductReqDto.getProductDetailName())
+				.product_kor_name(createProductReqDto.getProductKorName())
+				.product_info(createProductReqDto.getProductInfo())
+				.product_price(createProductReqDto.getProductPrice())
+				.product_amount(createProductReqDto.getProductAmount())
+				.product_size(createProductReqDto.getProductSize())
+				.product_gender(createProductReqDto.getProductGender())
+				.build();
+		
+		
+		productRepository.save(product);
+		
+		if(predicate.test(createProductReqDto.getFile().get(0).getOriginalFilename())) {
+			List<ProductFile> productFiles = new ArrayList<ProductFile>();
+			
+			for(MultipartFile file : createProductReqDto.getFile()) {
+				String originalFilename = file.getOriginalFilename();
+//				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFilename;
+				String tempFilename = originalFilename;
+				log.info(tempFilename);
+				Path uploadPath = Paths.get(filePath, "product/" + tempFilename);
+				
+				File f = new File(filePath + "product");
+				if(!f.exists()) {
+					f.mkdirs();
+				}
+				
+				try {
+					Files.write(uploadPath, file.getBytes());					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				productFiles.add(ProductFile.builder().product_code(product.getProduct_code()).file_name(tempFilename).build());
+			}
+			productRepository.saveProductFiles(productFiles);
+			
+		}
+		return product.getProduct_code();
 	}
 
 	@Override
-	public List<ProductListRespDto> getProductList(String type, int page, int contentCount) throws Exception {
+	public ProductRespDto getProduct(int productCode) throws Exception {
+		ProductRespDto productRespDto = null;
 		
-		return null;
+		Map<String, Object> reqMap = new HashMap<String, Object>();
+		reqMap.put("product_code", productCode);
+		
+		Product product = productRepository.getProduct(reqMap);
+		if(product != null) {
+			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
+			
+			product.getProduct_files().forEach(file -> {
+				Map<String, Object> fileMap = new HashMap<String, Object>();
+				fileMap.put("fileCode", file.getFile_code());
+				fileMap.put("fileName", file.getFile_name());
+				files.add(fileMap);
+			});
+			
+			productRespDto = product.toProductRespDto(files);
+		}
+		log.info("{}", productRespDto);
+		return productRespDto;
+	}
+	@Override
+	public List<ProductListRespDto> getProductList(int page, String searchFlag, String searchValue) throws Exception {
+		int index = (page - 1) * 10;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("index", index);
+		map.put("search_flag", searchFlag);
+		map.put("search_value", searchValue == null ? "" : searchValue);
+		
+		
+		List<ProductListRespDto> productList = new ArrayList<ProductListRespDto>();
+		
+		productRepository.getProductList(map).forEach(product -> {
+			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
+			
+			product.getProduct_files().forEach(file -> {
+				Map<String, Object> fileMap = new HashMap<String, Object>();
+				fileMap.put("fileCode", file.getFile_code());
+				fileMap.put("fileName", file.getFile_name());
+				files.add(fileMap);
+			});
+			
+			productList.add(product.toProductListRespDto(files));
+		});
+		
+		return productList;
 	}
 
 	@Override
 	public boolean updateProduct(UpdateProductReqDto updateProductReqDto) throws Exception {
 		
-		return false;
+		return productRepository.updateProduct(updateProductReqDto.toEntity()) > 0;
 	}
 
 	@Override
 	public boolean removeProduct(int productCode) throws Exception {
 		
-		return false;
+		return productRepository.deleteProduct(productCode) > 0;
 	}
 
 }

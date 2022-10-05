@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.worksout.domain.product.ProductRepository">
+  	<resultMap type="com.project.worksout.domain.product.ProductFile" id="product_files">
+  		<result column="file_code" property="file_code"/>
+  		<result column="file_name" property="file_name"/>
+  	</resultMap>
+  	
+  	<resultMap type="com.project.worksout.domain.product.Product" id="product">
+  		<result column="product_code" property="product_code"/>
+  		<result column="product_brand" property="product_brand"/>
+  		<result column="product_kind" property="product_kind"/>
+  		<result column="product_name" property="product_name"/>
+  		<result column="product_detail_name" property="product_detail_name"/>
+  		<result column="product_kor_name" property="product_kor_name"/>
+  		<result column="product_info" property="product_info"/>
+  		<result column="product_price" property="product_price"/>
+  		<result column="product_amount" property="product_amount"/>
+  		<result column="product_size" property="product_size"/>
+  		<result column="product_gender" property="product_gender"/>
+  		<collection property="product_files" javaType="list" resultMap="product_files"></collection>
+  	</resultMap>
+  
+  
+	<insert id="save" parameterType="com.project.worksout.domain.product.Product"
+		useGeneratedKeys="true" keyProperty="product_code">
+		insert into
+			product_mst
+		values(
+			0,
+			#{product_brand},
+			#{product_kind},
+			#{product_name},
+			#{product_detail_name},
+			#{product_kor_name},
+			#{product_info},
+			#{product_price},
+			#{product_amount},
+			#{product_size},
+			#{product_gender},
+			0,
+			0,
+			now(),
+			now()
+		);
+	</insert>	
+	<insert id="saveProductFiles" parameterType="java.util.List">
+		insert into
+			product_img_file
+		values
+		<foreach collection="list" item="file" separator=",">
+			(
+				0,
+				#{file.product_code},
+				#{file.file_name},
+				now(),
+				now()
+			)
+		</foreach>
+	</insert>
+	<select id="getProductList" parameterType="hashmap"
+	resultMap="product">
+		SELECT
+			pm.product_code,
+			pm.product_brand,
+			pm.product_kind,
+			pm.product_name,
+			pm.product_detail_name,
+			pm.product_kor_name,
+			pm.product_info,
+			pm.product_price,
+			pm.product_amount,
+			pm.product_size,
+			pm.product_gender,
+			pf.file_code,
+			pf.file_name
+		FROM
+			product_mst pm
+			LEFT OUTER JOIN product_img_file pf ON(pf.product_code = pm.product_code) 
+		WHERE
+			pm.product_code = pf.product_code; 
+	</select>
+	<select id="getProduct" parameterType="hashmap"
+	resultMap="product">
+		SELECT
+			pm.product_code,
+			pm.product_brand,
+			pm.product_kind,
+			pm.product_name,
+			pm.product_detail_name,
+			pm.product_kor_name,
+			pm.product_info,
+			pm.product_price,
+			pm.product_amount,
+			pm.product_size,
+			pm.product_gender,
+			pf.file_code,
+			pf.file_name
+		FROM
+			product_mst pm
+			LEFT OUTER JOIN product_img_file pf ON(pf.product_code = pm.product_code)
+		WHERE
+			pm.product_code = #{product_code}	
+	</select>
+	
+	<update id="updateProduct" parameterType = "integer">
+		update
+			product_mst
+		set
+			product_brand = #{product_brand},
+			product_kind = #{product_kind},
+			product_name = #{product_name},
+			product_detail_name = #{product_detail_name},
+			product_kor_name = #{product_kor_name},
+			product_info = #{product_info},
+			product_price = #{product_price},
+			product_amount = #{product_amount},
+			product_size = #{product_size},
+			product_gender = #{product_gender},
+		where
+			product_code = #{product_code}
+	</update>
+	
+	<delete id="deleteProduct" parameterType="integer">
+		delete
+		from
+			product_mst
+		where
+			product_code = #{product_code}
+	</delete>
+	
+  </mapper>

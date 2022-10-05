@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/644e1d23ae.js" crossorigin="anonymous"></script>
+
+    <title>웍스아웃</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin-ask.css">
+</head>
+
+<body>
+    <div class="__next">
+        <div class="all-container">
+
+            <!-- header 부분  -->
+            <th:block th:replace="/fragment/header"></th:block>
+
+            <main class="main-container">
+                <div class="header-name">문의게시글</div>
+                <div class="main-div">
+                    <div class="admin-category">
+                        <div>
+                            <div class="admin-category-menu user-info">유저정보</div>
+                            <div class="admin-category-menu pd-list">상품리스트</div>
+                            <div class="admin-category-menu pd-insert">상품등록</div>
+                            <div class="admin-category-underbar-menu inquiry">문의게시글</div>
+                        </div>
+                    </div>
+                    <div class="admin-contents">
+                        <div class="ask">
+                            <div class="ask-header">
+                                <div class="ask-header-box">글번호</div>
+                                <div class="ask-header-box">작성자</div>
+                                <div class="ask-header-box2">글내용</div>
+                                <div class="ask-header-box">작성일</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">1</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">2</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">3</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">4</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">5</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">6</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">7</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">8</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">9</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                            <div class="ask-lists">
+                                <div class="ask-header-box">10</div>
+                                <div class="ask-header-box">홍길동</div>
+                                <div class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</div>
+                                <div class="ask-header-box">2022-09-09</div>
+                            </div>
+                        </div>
+                        <div class="page-buttons">
+                            <button type="button" class="page-button pre">&lt;</button>
+                            <button type="button" class="page-button">1</button>
+                            <button type="button" class="page-button">2</button>
+                            <button type="button" class="page-button">3</button>
+                            <button type="button" class="page-button">4</button>
+                            <button type="button" class="page-button">5</button>
+                            <button type="button" class="page-button next">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- footer부분 -->
+            <th:block th:replace="/fragment/footer"></th:block>
+        
+        </div>
+
+    </div>
+    <!-- <script src="/static/js/item-category-page.js"></script> -->
+    <script src="/static/js/product/product.js"></script>
+</body>
+
+</html>

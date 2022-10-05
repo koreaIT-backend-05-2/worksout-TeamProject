@@ -1,0 +1,99 @@
+.notice-search {
+	margin: 0px 0px 3px 0px;
+}
+
+table {
+            border: 1px solid #141414;
+            border-collapse: collapse;
+        }
+
+th{
+    border: 1px solid #141414;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+	border: 1px solid #141414;
+	padding : 5px;
+	text-align: center;
+}
+
+.pd-code-table {
+	width : 60px;
+}
+
+.main-div {
+	height : auto;
+}
+
+.admin-div {
+	display: flex;
+	flex-direction: column;
+    width: 1200px;
+}
+
+.list-footer {
+	display: flex;
+	justify-content: space-between;
+	
+	width:70%;
+}
+
+.notice-add-button {
+    margin: 5px 5px;
+    
+    border: 1px solid #141414;
+    width: 80px;
+    height: 40px;
+
+    background-color: white;
+
+    font-weight: 600;	
+}
+
+/* .page-buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 15px;
+
+    width: 70%;
+    height: 100px;
+}
+
+.page-button {
+    margin: 2px;
+    
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+
+    width: 25px;
+    height: 25px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+.page-button:hover {
+    background-color: #c0c0c0;
+} */
+
+.admin-content-update{
+    
+}
+
+.insert-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.insert-items input{
+    margin: 5px;
+    padding: 5px;
+    width: 350px;
+    height: 30px;
+}

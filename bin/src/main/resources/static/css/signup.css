@@ -1,0 +1,322 @@
+.signup {
+    margin: 0px auto;
+
+    width: 450px;
+}
+
+.signup-title {
+    margin: 56px 0px 24px;
+}
+
+.signup-title h1 {
+    font-size: 14px;
+    font-weight: 100;
+    color: #1f2937;
+}
+
+.signup-title p {
+    margin-top: 24px;
+
+    font-size: 12px;
+    font-weight: 100;
+    color: #1f2937;
+}
+
+.label-username {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+/* 전체 input , select, label*/
+
+input {
+    margin-top: 4px;
+
+    padding: 0px 16px;
+
+    width: 416px;
+    height: 36px;
+    
+    border: 1px solid #9ca3af;
+    background-color: #fff;
+
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid black;
+
+}
+
+.error-msg {
+    margin-top: 7px;
+    font-size: 11px;
+    color: red;
+}
+
+
+select:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+.label-group {
+    margin-top: 24px;
+}
+
+
+/* 성별 */
+
+.label-gender {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.gender {
+    margin-top: 4px;
+
+    padding: 0px 16px;
+
+    width: 416px;
+    height: 36px;
+    
+    border: 1px solid #9ca3af;
+    background-color: #fff;
+}
+
+/* 생년월일 */
+
+.label-dob p {
+    cursor: pointer;
+}
+
+.label-dob select {
+    margin-top: 4px;
+
+    width: 135px;
+    height: 36px;
+
+    border: none;
+    background-color: rgba(243,244,246,1);
+    color: rgb(185, 185, 185);
+}
+
+.label-dob select:nth-child(2) {
+    border: 1px solid #9ca3af;
+    background-color: #fff;
+
+    color: #1f2937;
+}
+
+/* 핸드폰 번호 */
+
+
+.label-phonenumber input{
+    width: 128px;
+    height: 36px;
+}
+
+.input-phonenumber {
+    display: flex;
+    justify-content: space-between;
+
+    width: 416px;
+}
+
+/* 인증번호 발송 버튼 */
+
+.auth-number {
+    margin-top: 24px;
+
+    width: 416px;
+    height: 36px;
+
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+.row-line {
+    margin-top: 24px;
+
+    width: 416px;
+    height: 1px;
+
+    background-color:  rgb(185, 185, 185, 0.5)
+}
+
+/* 약관 동의 */
+
+.checkbox-group {
+    display: flex;
+
+    margin-top: 24px;
+}
+
+.checkbox-agree + label {
+
+    margin-right: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: #efefef;
+    
+    cursor: pointer;
+}
+
+.checkbox-agree:checked + label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+.checkbox-agree {
+    display: none;
+}
+
+.agree {
+    cursor: pointer;
+}
+
+/* 이용약관 동의 */
+
+.checkbox-terms-agree + label {
+
+    margin-right: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: #efefef;
+    
+    cursor: pointer;
+}
+
+.checkbox-terms-agree:checked + label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+.checkbox-terms-agree {
+    display: none;
+}
+
+.terms-agree {
+    cursor: pointer;
+}
+
+/* 약관 내용 */
+
+.agree-contents {
+    margin-top: 24px;
+    padding: 15px;
+
+    width: 416px;
+    height: 208px;
+
+    border: 1px solid black;
+
+    overflow: scroll;
+}
+
+.agree-contents h5 {
+    margin-bottom: 30px;
+}
+
+/* 개인정보 이용내용 */
+
+.checkbox-personal-info-agree + label {
+
+    margin-right: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: #efefef;
+    
+    cursor: pointer;
+}
+
+.checkbox-personal-info-agree:checked + label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+.checkbox-personal-info-agree {
+    display: none;
+}
+
+.personal-info-agree {
+    cursor: pointer;
+}
+
+
+.agree-personal-info {
+    margin-top: 24px;
+    padding: 15px;
+
+    width: 416px;
+    height: 208px;
+
+    border: 1px solid black;
+}
+
+.agree-personal-info h5 {
+    margin-bottom: 30px;
+}
+
+/* 마케팅 정보 수신동의 */
+
+.agree-marketing-group {
+    padding-bottom: 40px;
+}
+
+.agree-marketing {
+    margin-top: 24px;
+}
+
+
+.last-checkbox-group {
+    margin-top: 12px;
+}
+
+.signup-button {
+    margin-top: 24px;
+
+    width: 416px;
+    height: 36px;
+
+    background-color: #111827;
+    color: #fff;
+}
