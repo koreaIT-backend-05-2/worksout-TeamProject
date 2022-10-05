@@ -49,11 +49,11 @@ public class InquiryRestController {
 	}
 	
 	@GetMapping("/list/{page}")
-	public ResponseEntity<?> getInquiryList(@PathVariable int page, @RequestParam String searchValue) {
+	public ResponseEntity<?> getInquiryList(@PathVariable int page, @RequestParam String searchFlag) {
 		List<GetinquiryListRespDto> listDto = null;
 		
 		try {
-			listDto = inquiryService.getinquiryList(page, searchValue);
+			listDto = inquiryService.getinquiryList(page, searchFlag);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", listDto));

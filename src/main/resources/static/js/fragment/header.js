@@ -14,7 +14,6 @@ genderEtcCategory.onclick = () => {
 
 const authItems = document.querySelector(".auth-items");
 
-
 function getPrincipal() {
 	let user = null;
 	

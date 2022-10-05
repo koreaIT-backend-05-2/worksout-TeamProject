@@ -1,6 +1,7 @@
 package com.project.worksout.domain.product;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.project.worksout.web.dto.product.ProductListRespDto;
 
@@ -18,6 +19,8 @@ public class Product {
 	private String product_brand;
 	private String product_kind;
 	private String product_name;
+	private String product_detail_name;
+	private String product_kor_name;
 	private String product_info;
 	private int product_price;
 	private int product_amount;
@@ -25,7 +28,10 @@ public class Product {
 	private int importance_flag;
 	private int total_count;
 	private LocalDateTime create_date;
-	private LocalDateTime update_date;	
+	private LocalDateTime update_date;
+	
+	private int file_code;
+	private String file_name;
 	
 	public ProductListRespDto toListDto() {
 		return ProductListRespDto.builder()
@@ -33,6 +39,8 @@ public class Product {
 				.productBrand(product_brand)
 				.productKind(product_kind)
 				.productName(product_name)
+				.productDetailName(product_detail_name)
+				.productKorName(product_kor_name)
 				.productInfo(product_info)
 				.productPrice(product_price)
 				.productAmount(product_amount)

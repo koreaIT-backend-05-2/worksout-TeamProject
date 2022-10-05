@@ -12,6 +12,8 @@ public class ProductListRespDto {
 	private String productBrand;
 	private String productKind;
 	private String productName;
+	private String productDetailName;
+	private String productKorName;
 	private String productInfo;
 	private int productPrice;
 	private int productAmount;

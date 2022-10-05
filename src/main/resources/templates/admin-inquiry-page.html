@@ -23,13 +23,14 @@
             <main class="main-container">
                 <div class="header-name">문의게시글</div>
                 <div class="inquiry-select-container">
-                    <select name="" id="" class="search-select">
-                        <option value="" disabled selected hidden>유형을 선택해주세요</option>
+                    <select class="search-select">
+                    	<option value="" disabled selected hidden>유형을 선택해주세요</option>
                         <option value="ONLINESTORE">온라인스토어</option>
                         <option value="MARKETING">마케팅</option>
                         <option value="PARTNERSHIP">파트너쉽</option>
                         <option value="RECRUITING">구인공고</option>
                     </select>
+                    <button class="kind-search-button" type="button">검색</button>
                 </div>
 
                 <div class="main-div">
@@ -42,24 +43,20 @@
                         </div>
                     </div>
                     <div class="admin-contents">
-                        <table class="ask">
-                            <tr class="ask-header">
-                                <th class="ask-header-box">글번호</th>
-                                <th class="ask-header-box">종류</th>
-                                <th class="ask-header-box">작성자</th>
-                                <th class="ask-header-box">이메일</th>
-                                <th class="ask-header-box2">글내용</th>
-                                <th class="ask-header-box">작성일</th>
-                            </tr>
-                            <tr class="ask-lists">
-                                <td class="ask-header-box">1</td>
-                                <td class="ask-header-box">마케팅</td>
-                                <td class="ask-header-box">홍길동</td>
-                                <td class="ask-header-box">aaaa@naver.com</td>
-                                <td class="ask-header-box2">색상이 다르고 사이즈가 커요 환불되나요 어쩌고 저쩌고..........</td>
-                                <td class="ask-header-box">2022-09-09</td>
-                            </tr>
-                           
+                        <table>
+	                        <thead>
+	                            <tr class="inquiry-header">
+	                                <th class="inquiry-header-box">글번호</th>
+	                                <th class="inquiry-header-box">종류</th>
+	                                <th class="inquiry-header-box">작성자</th>
+	                                <th class="inquiry-header-box">이메일</th>
+	                                <th class="inquiry-header-box2">글제목</th>
+	                                <th class="inquiry-header-box">작성일</th>
+	                            </tr>
+                            </thead>
+                            <tbody>
+	                            
+                           </tbody>
                         </table>
                         <div class="page-buttons">
                             <button type="button" class="page-button pre">&lt;</button>

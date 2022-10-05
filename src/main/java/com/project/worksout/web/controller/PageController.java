@@ -23,10 +23,10 @@ public class PageController {
 	}
 	
 	
-// 상품 관련 페이지	
-	@GetMapping("/items")
-	public String loadItemDetailPage() {
-		return "/items-detail-page";
+// 상품 관련 페이지
+	@GetMapping("/product/{productCode}")
+	public String detailProduct() {
+		return "/product/product-detail-page";
 	}
 	
 	@GetMapping("/cart")
@@ -52,12 +52,13 @@ public class PageController {
 	public String loadAdminAskPage() {
 		return "/admin-inquiry-page";
 	}
+	
 	@GetMapping("/admin/inquiry/detail/{inquiryCode}")
 	public String detailInquriy() {
 		return "/admin-inquiry-detail-page";
 	}
 	
-	
+
 	
 	//문의사항 페이지
 	@GetMapping("/inquiry")

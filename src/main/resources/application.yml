@@ -18,7 +18,7 @@ spring:
     url: jdbc:mariadb://web-study.cimknwts3ktb.ap-northeast-2.rds.amazonaws.com:3306/worksout?useUnicode=true&characterEncoding=UTF-8
     username: admin
     password: 1q2w3e4r
-    
+   
   servlet:
     multipart:
       max-file-size: 50MB
@@ -32,3 +32,4 @@ mybatis:
 file:
   path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
   downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
+  

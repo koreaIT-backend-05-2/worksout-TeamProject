@@ -149,6 +149,8 @@ public class InquiryServiceImpl implements InquiryService{
 		map.put("index", index);
 		map.put("search_flag", searchFlag);
 		
+		log.info("test {}: ", searchFlag);
+		
 		List<GetinquiryListRespDto> list = new ArrayList<GetinquiryListRespDto>();
 		
 		inquiryRepository.getInquiryList(map).forEach(inquiry -> {
