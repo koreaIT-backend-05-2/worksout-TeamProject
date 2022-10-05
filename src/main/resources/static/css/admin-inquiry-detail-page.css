@@ -1,0 +1,118 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 50px;
+}
+
+article {
+
+    margin-top: 20px;
+
+    border: 2px solid black;
+
+    padding: 40px 60px;
+
+    width: 70%;
+    min-height: 400px;
+
+}
+
+.inquiry-detail-header {
+    display: flex;
+    justify-content: space-between;
+    
+    padding-bottom: 10px;
+
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.inquiry-title {
+    font-size: 30px;
+}
+
+.inquiry-detail-description {
+    display: flex;
+
+    padding-top: 60px;
+
+}
+
+.inquiry-detail-description h3 {
+    margin: 0px 6px;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.inquiry-detail-description h3:nth-child(1) {
+    color: purple;
+}
+
+.inquiry-detail-description h3:nth-child(3) {
+    margin-left: 20px;
+}
+
+.inquiry-content {
+    border-bottom: 3px solid #dbdbdb;
+
+    padding: 30px 10px;
+    
+    min-height: 400px;
+}
+
+.inquiry-content p {
+    font-size: 16px;
+}
+
+.inquiry-files {
+    display: flex;
+    padding: 10px;
+
+    border-bottom: 3px solid #dbdbdb;
+}
+
+.inquiry-files h3 {
+    margin-right: 20px;
+
+    font-size: 16px;
+}
+
+.inquiry-files a{
+    margin: 0px 7px;
+
+    font-size: 15px;
+    text-decoration: none;
+
+}
+
+.inquiry-files a:visited, .inquiry-files a:link {
+    color: black;
+}
+
+.inquiry-files a:active {
+    color: crimson;
+}
+
+.inquiry-detail-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.inquiry-detail-buttons button {
+    border: 1px solid black;
+
+    padding: 5px 10px;
+    width: 60px;
+    height: 30px;
+
+    background-color: white;
+}
+
+.inquiry-detail-buttons button:active {
+    background-color: #fafafa;
+}

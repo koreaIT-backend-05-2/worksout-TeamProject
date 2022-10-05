@@ -1,0 +1,61 @@
+.inquiry-select-container {
+
+    width: 1752px;    
+    text-align: end;
+}
+
+.search-select {
+    margin-bottom: 10px;
+
+    height: 20px;
+}
+
+
+
+.admin-contents{
+	
+	width: 1500px;
+}
+
+.inquiry-header {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 10px 0px;
+    
+    width: 1500px;
+    
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+.inquiry-header-box {
+    text-align: center;
+    
+    width: 180px;
+}
+.inquiry-header-box2 {
+    text-align: center;
+    width: 950px;
+    
+}
+
+.inquiry-lists {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0px;
+    
+    width: 1500px;
+    
+    cursor: pointer;
+}
+
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.page-button {
+    width: 30px;
+}
