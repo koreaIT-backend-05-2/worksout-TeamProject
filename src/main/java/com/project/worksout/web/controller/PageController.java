@@ -22,6 +22,13 @@ public class PageController {
 		return "/signup-success";
 	}
 	
+	// 메인 페이지
+	@GetMapping("/main")
+	public String loadMainPage() {
+		return "/main";
+	}
+	
+	
 	
 	// 상품 관련 페이지	
 	@GetMapping("/items")

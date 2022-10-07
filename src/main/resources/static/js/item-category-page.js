@@ -55,6 +55,7 @@ function loadItems(list, genderSelect) {
 	
 	let item = null;
 	
+	
 	list.forEach(product => {
 		
 		// 상품코드 중복확인 + 젠더
@@ -68,70 +69,84 @@ function loadItems(list, genderSelect) {
 			
 			for(i = 0 ; i < product.files.length ; i++){
 				imgFiles = product.files[i].fileName;
-				console.log(imgFiles);
+				console.log("productCode = "+ product.productCode);
+				console.log("imgFiles = " + imgFiles);
 			}
 			
 			
 			loadedItems.innerHTML += `
-			<div class = "item-selection"> 
-				<div class="items">
-					<div class="item">
-					    <img src="/image/product/${product.files[0].fileName}">
-					</div>
-					<div>
-					    <p>${product.productBrand}</p>
-					    <p>${product.productName}</p>
-					    <div>
-					        ${price},000 원
-					    </div>
+				<div class = "item-selection" id = "pd-${product.productCode}">
+					<div class="items" id = "pd-${product.productCode}">
+						<div class = "event">
+							<div class="item">
+							    <img src="/image/product/${product.files[0].fileName}">
+							</div>
+							<div>
+							    <p>${product.productBrand}</p>
+							    <p>${product.productName}</p>
+							    <div>
+							        ${price},000 원
+							    </div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
 				`;
 					
 		}		
 		item = product.productName;		
 		
 	})
-	addEvent();
+	addEvent(list);
 }
 function subStringProductCode(items){
-	const productContents = items.querySelector(".pd");
-	console.log("tdProductContents : " + productContents);
+	//console.log(items);
 	
-	const productCode = productContents.getAttribute("id");
-	console.log("productCode : " + productCode);
+	const itemSelection = items.querySelector(".items");
+	//console.log("itemSelection : " + itemSelection);
+	
+	const productCode = itemSelection.getAttribute("id");
+	//console.log("productCode : " + productCode);
 	
 	const tokenIndex = productCode.lastIndexOf("-");
-	console.log("tokenIndex : " + tokenIndex);
+	//console.log("tokenIndex : " + tokenIndex);
 	
-	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
-	console.log("  ");
+	//console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
+	//console.log("  ");
 	return productCode.substring(tokenIndex + 1);
 }
 
-function addEvent(){
+function addEvent(list){
 	const itemSelection = document.querySelectorAll(".item-selection");
-
+	
 	for(let items of itemSelection) {
+		//console.log(items);
+		let defaultDiv = itemSelection;
+		//console.log(itemSelection);
  		const productCode = subStringProductCode(items);
  		
-		addSelectEvent(items, productCode);
+		mouseEvent(items, productCode, list, defaultDiv);
 	}
 		//console.log(productCode);
 }
 
 
-function addSelectEvent(items, productCode){
-	const itemSelection = items.querySelector(".item-selection");
+function mouseEvent(items, productCode, list, defaultDiv){
+	const itemSelection = items.querySelector(".item");
+	console.log(defaultDiv);
+	
+	itemSelection.onclick = () => {
+		location.href = "/product/" + productCode;
+	}
+	
 	itemSelection.onmouseover = () => {
-		console.log("over");
-//		console.log(removeChk());
-		//if(removeChk()){
-		//	deleteProduct(pdContent, productCode);
-		//}
+		console.log("over + " + productCode);
 	}
 	itemSelection.onmouseout = () => {
-		console.log("out");
+		console.log("out + " + productCode);
 	}
+}
+
+function reLoad(){
+	
 }
