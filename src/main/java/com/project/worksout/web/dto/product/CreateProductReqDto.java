@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class CreateProductReqDto {
 	private int productCode;
+	private int productGroup;
 	private String productBrand;
 	private String productKind;
 	private String productName;

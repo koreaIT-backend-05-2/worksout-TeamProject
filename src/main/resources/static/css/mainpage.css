@@ -19,6 +19,7 @@ main{
 
 .a {
     position: relative;
+    cursor: pointer;
 }
 
 .first-img {

@@ -42,10 +42,5 @@ public class PageController {
 	}
 
 	
-	@GetMapping("/category")
-	public String loadItemCategoryPage() {
-		return "/items-category-page";
-	}
-	
 	
 }

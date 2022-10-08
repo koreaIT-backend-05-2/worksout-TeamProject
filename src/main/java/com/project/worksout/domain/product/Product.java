@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Product {
 	private int product_code;
+	private int product_group;
 	private String product_brand;
 	private String product_kind;
 	private String product_name;
@@ -38,6 +39,7 @@ public class Product {
 	public ProductListRespDto toProductListRespDto(List<Map<String, Object>> files) {
 		return ProductListRespDto.builder()
 				.productCode(product_code)
+				.productGroup(product_group)
 				.productBrand(product_brand)
 				.productKind(product_kind)
 				.productName(product_name)
@@ -59,6 +61,7 @@ public class Product {
 	public ProductRespDto toProductRespDto(List<Map<String, Object>> files) {
 		return ProductRespDto.builder()
 				.productCode(product_code)
+				.productGroup(product_group)
 				.productBrand(product_brand)
 				.productKind(product_kind)
 				.productName(product_name)
@@ -68,6 +71,7 @@ public class Product {
 				.productPrice(product_price)
 				.productAmount(product_amount)
 				.productSize(product_size)
+				.productGender(product_gender)
 				.importanceFlag(importance_flag = 0)
 				.totalCount(total_count = 0)
 				.createDate(create_date)

@@ -1,28 +1,12 @@
 const filterButton = document.querySelector(".filter-button");
 const filter = document.querySelector(".filters");
-const maleButton = document.querySelector(".gender-male");
-const femaleButton = document.querySelector(".gender-female");
-const etcButton = document.querySelector(".gender-etc")
 
 let genderSelect = "m";
+
 const type = 1;
 
 load(genderSelect);
  
-
-maleButton.onclick=()=>{
-	genderSelect = "m";
-	load(genderSelect);
-}
-femaleButton.onclick=()=>{
-	genderSelect = "f";
-	load(genderSelect);
-}
-etcButton.onclick=()=>{
-	genderSelect = "e";
-	load(genderSelect);
-}
-
 
 
 filterButton.onclick = () => {
@@ -69,14 +53,14 @@ function loadItems(list, genderSelect) {
 			
 			for(i = 0 ; i < product.files.length ; i++){
 				imgFiles = product.files[i].fileName;
-				console.log("productCode = "+ product.productCode);
-				console.log("imgFiles = " + imgFiles);
+				//console.log("productCode = "+ product.productCode);
+				//console.log("imgFiles = " + imgFiles);
 			}
 			
 			
 			loadedItems.innerHTML += `
-				<div class = "item-selection" id = "pd-${product.productCode}">
-					<div class="items" id = "pd-${product.productCode}">
+				<div class = "item-selection" id = "pd-${product.productGroup}">
+					<div class="items" id = "pd-${product.productGroup}">
 						<div class = "event">
 							<div class="item">
 							    <img src="/image/product/${product.files[0].fileName}">
@@ -99,51 +83,51 @@ function loadItems(list, genderSelect) {
 	})
 	addEvent(list);
 }
-function subStringProductCode(items){
+function subStringProductGroup(items){
 	//console.log(items);
 	
 	const itemSelection = items.querySelector(".items");
 	//console.log("itemSelection : " + itemSelection);
 	
-	const productCode = itemSelection.getAttribute("id");
-	//console.log("productCode : " + productCode);
+	const productGroup = itemSelection.getAttribute("id");
+	//console.log("productGroup : " + productGroup);
 	
-	const tokenIndex = productCode.lastIndexOf("-");
+	const tokenIndex = productGroup.lastIndexOf("-");
 	//console.log("tokenIndex : " + tokenIndex);
 	
 	//console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
 	//console.log("  ");
-	return productCode.substring(tokenIndex + 1);
+	return productGroup.substring(tokenIndex + 1);
 }
 
 function addEvent(list){
 	const itemSelection = document.querySelectorAll(".item-selection");
-	
+	console.log(list);
 	for(let items of itemSelection) {
 		//console.log(items);
 		let defaultDiv = itemSelection;
 		//console.log(itemSelection);
- 		const productCode = subStringProductCode(items);
+ 		const productGroup = subStringProductGroup(items);
  		
-		mouseEvent(items, productCode, list, defaultDiv);
+		mouseEvent(items, productGroup, list, defaultDiv);
 	}
 		//console.log(productCode);
 }
 
 
-function mouseEvent(items, productCode, list, defaultDiv){
+function mouseEvent(items, productGroup, list, defaultDiv){
 	const itemSelection = items.querySelector(".item");
-	console.log(defaultDiv);
+	//console.log(defaultDiv);
 	
 	itemSelection.onclick = () => {
-		location.href = "/product/" + productCode;
+		location.href = "/product/" + productGroup;
 	}
 	
 	itemSelection.onmouseover = () => {
-		console.log("over + " + productCode);
+		console.log("over + " + productGroup);
 	}
 	itemSelection.onmouseout = () => {
-		console.log("out + " + productCode);
+		console.log("out + " + productGroup);
 	}
 }
 

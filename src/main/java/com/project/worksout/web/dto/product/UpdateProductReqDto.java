@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class UpdateProductReqDto {
 	private int productCode;
+	private int productGroup;
 	private String productBrand;
 	private String productName;
 	private String productDetailName;
@@ -21,6 +22,7 @@ public class UpdateProductReqDto {
 	public Product toEntity() {
 		return Product.builder()
 				.product_code(productCode)
+				.product_group(productGroup)
 				.product_brand(productBrand)
 				.product_name(productName)
 				.product_detail_name(productDetailName)
