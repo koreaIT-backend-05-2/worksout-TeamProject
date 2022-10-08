@@ -107,7 +107,6 @@ function getList(list) {
 	            <td>${product.productGender}</td>
 	            <td>${files}</td>
 	            <td>
-	                <button type="button" class="updateButton">수정</button>
 	                <button type="button" class="deleteButton">삭제</button>
 	            </td>
 	        </tr>

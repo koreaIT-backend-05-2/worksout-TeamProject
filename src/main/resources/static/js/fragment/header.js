@@ -1,10 +1,35 @@
+const mainLogoImage = document.querySelector(".main-logo-image");
+
+mainLogoImage.onclick = () => {
+	location.href = "/main";
+}
+
 const genderEtcCategory = document.querySelector(".gender-etc-category");
 const hiddenCategoryMenu = document.querySelector(".hidden-category-menu");
 
-//genderEtcCategory.onclick = () => {
-//    hiddenCategoryMenu.classList.toggle("hidden");
-    
-//}
+const maleButton = document.querySelector(".gender-male");
+const femaleButton = document.querySelector(".gender-female");
+const etcButton = document.querySelector(".gender-etc")
+
+maleButton.onclick=()=>{
+	location.href = "/category/m";
+}
+femaleButton.onclick=()=>{
+	location.href = "/category/f";
+}
+etcButton.onclick=()=>{
+	location.href = "/category/e";
+}
+
+
+genderEtcCategory.onmouseover = () => {
+    hiddenCategoryMenu.classList.toggle("hidden");
+	hiddenCategoryMenu.onmouseout =() => {
+		hiddenCategoryMenu.classList.toggle("hidden");
+	}
+}
+
+
 
 /*
 

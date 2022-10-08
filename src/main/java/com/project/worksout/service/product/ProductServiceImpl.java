@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
 	private String filePath;
 	
 	private final ProductRepository productRepository;
+	
 	// 추가
 	@Override
 	public int createProduct(CreateProductReqDto createProductReqDto) throws Exception {		
@@ -93,12 +94,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductRespDto getProduct(int productCode) throws Exception {
+	
 		ProductRespDto productRespDto = null;
-		
+			
 		Map<String, Object> reqMap = new HashMap<String, Object>();
 		reqMap.put("product_code", productCode);
 		
 		Product product = productRepository.getProduct(reqMap);
+		
 		if(product != null) {
 			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
 			
@@ -112,6 +115,8 @@ public class ProductServiceImpl implements ProductService {
 			productRespDto = product.toProductRespDto(files);
 		}
 		log.info("{}", productRespDto);
+		
+		
 		return productRespDto;
 	}
 	@Override

@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class ProductListRespDto {
 	private int productCode;
+	private int productGroup;
 	private String productBrand;
 	private String productKind;
 	private String productName;

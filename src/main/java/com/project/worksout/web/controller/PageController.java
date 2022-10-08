@@ -22,6 +22,13 @@ public class PageController {
 		return "/signup-success";
 	}
 	
+	// 메인 페이지
+	@GetMapping("/main")
+	public String loadMainPage() {
+		return "/main";
+	}
+	
+	
 	
 // 상품 관련 페이지
 	@GetMapping("/product/{productCode}")
@@ -34,24 +41,6 @@ public class PageController {
 		return "/cart";
 	}
 	
-	@GetMapping("/category")
-	public String loadItemCategoryPage() {
-		return "/items-category-page";
-	}
-	
-	// 관리자 뷰
-	@GetMapping("/admin/user")
-	public String loadAdminUserInfoPage() {
-		return "/admin-user-info-page";
-	}
-	@GetMapping("/admin/add-items")
-	public String loadAdminItemInsertPage() {
-		return "/admin-item-insert-page";
-	}
-	@GetMapping("/admin/inquiry")
-	public String loadAdminAskPage() {
-		return "/admin-inquiry-page";
-	}
 	
 	@GetMapping("/admin/inquiry/detail/{inquiryCode}")
 	public String detailInquriy() {
