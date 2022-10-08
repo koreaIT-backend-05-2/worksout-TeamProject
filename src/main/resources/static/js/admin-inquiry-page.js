@@ -1,6 +1,7 @@
 const kindSearchBtn = document.querySelector(".kind-search-button");
-
 let page = 1;
+
+load(page);
 
 kindSearchBtn.onclick = () => {
 	

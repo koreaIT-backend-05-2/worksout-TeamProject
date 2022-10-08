@@ -1,15 +1,19 @@
 package com.project.worksout.web.dto.cart;
 
+import java.util.List;
+import java.util.Map;
+
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class GetCartReqDto {
+public class GetCartRespDto {
 
-	private String productImg;
+	private int cartCode;
+	private List<Map<String, Object>> productImg;
 	private String productName;
-	private String productKind;
+	private String productDetailName;
 	private String productSize;
 	private int productAmount;
 	private int productPrice;

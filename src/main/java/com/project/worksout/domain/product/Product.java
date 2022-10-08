@@ -1,6 +1,7 @@
 package com.project.worksout.domain.product;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,7 @@ public class Product {
 	private String file_name;
 	
 	private List<ProductFile> product_files;
+	private List<ProductSize> product_size_list;
 	
 	public ProductListRespDto toProductListRespDto(List<Map<String, Object>> files) {
 		return ProductListRespDto.builder()
@@ -50,11 +52,11 @@ public class Product {
 				.productKorName(product_kor_name)
 				.productInfo(product_info)
 				.productPrice(product_price)
-				.productAmount(product_amount)
 				.productSize(product_size)
+				.productAmount(product_amount)
+//				.productAmountList(product_amount_list)
+//				.productSizeList(product_size_list)
 				.productGender(product_gender)
-				.importanceFlag(importance_flag = 0)
-				.totalCount(total_count = 0)
 				.createDate(create_date)
 				.updateDate(update_date)
 				.files(files)
@@ -72,11 +74,10 @@ public class Product {
 				.productKorName(product_kor_name)
 				.productInfo(product_info)
 				.productPrice(product_price)
-				.productAmount(product_amount)
 				.productSize(product_size)
-				.productGender(product_gender)
-				.importanceFlag(importance_flag = 0)
-				.totalCount(total_count = 0)
+				.productAmount(product_amount)
+//				.productSizeList(product_size_list)
+//				.productAmountList(product_amount_list)
 				.createDate(create_date)
 				.updateDate(update_date)
 				.files(files)

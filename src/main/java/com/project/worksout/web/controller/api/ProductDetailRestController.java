@@ -23,14 +23,12 @@ public class ProductDetailRestController {
 
 	private final ProductDetailService productDetailService;
 	
-	@GetMapping("/{productCode}")
-	public ResponseEntity<?> getDetailProduct(@PathVariable int productCode) {
+	@GetMapping("/{productGroup}")
+	public ResponseEntity<?> getDetailProduct(@PathVariable int productGroup) {
 		ProductDetailRespDto productDetailRespDto = null;
 		
-		log.info(">>>>> {}", productDetailService);
-		
 		try {
-			productDetailRespDto = productDetailService.getProductDetail(productCode);
+			productDetailRespDto = productDetailService.getProductDetail(productGroup);
 			if(productDetailRespDto == null) {
 				return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "request failed", productDetailRespDto));
 			}
@@ -39,8 +37,11 @@ public class ProductDetailRestController {
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", productDetailRespDto));
 		}
 		
+		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "request success", productDetailRespDto));
 	}
+	
+	
 	
 	
 }

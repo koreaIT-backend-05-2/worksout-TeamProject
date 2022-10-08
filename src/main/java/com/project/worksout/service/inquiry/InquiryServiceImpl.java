@@ -124,7 +124,9 @@ public class InquiryServiceImpl implements InquiryService{
 				downloadFiles.add(fileMap);
 			});
 			
+			
 			Inquiry firstInquiry = inquiries.get(0);
+			
 			
 			getInquiryRespDto = GetInquiryRespDto.builder()
 					.inquiryCode(firstInquiry.getInquiry_code())

@@ -11,6 +11,7 @@ public class AddCartReqDto {
 
 	private String username;
 	private int productCode;
+	private int productGroup;
 	private String productSize;
 	
 	
@@ -18,6 +19,7 @@ public class AddCartReqDto {
 		return Cart.builder()
 				.user_id(username)
 				.product_code(productCode)
+				.product_group(productGroup)
 				.product_size(productSize)
 				.build();
 	}

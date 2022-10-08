@@ -47,8 +47,6 @@ public class PageController {
 		return "/admin-inquiry-detail-page";
 	}
 	
-
-	
 	//문의사항 페이지
 	@GetMapping("/inquiry")
 	public String loadInquiryPage() {
