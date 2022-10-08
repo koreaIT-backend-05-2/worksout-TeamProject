@@ -14,8 +14,8 @@ public class UpdateProductReqDto {
 	private String productKind;
 	private String productInfo;
 	private int productPrice;
-	private int productAmount;
 	private String productSize;
+	private int productAmount;
 	private String productGender;
 	
 	public Product toEntity() {
@@ -28,8 +28,8 @@ public class UpdateProductReqDto {
 				.product_kind(productKind)
 				.product_info(productInfo)
 				.product_price(productPrice)
-				.product_amount(productAmount)
 				.product_size(productSize)
+				.product_amount(productAmount)
 				.product_gender(productGender)
 				.build();
 	}

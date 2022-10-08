@@ -1,8 +1,4 @@
-const sizeBtns = document.querySelectorAll(".size-button");
 const selectBtn = document.querySelector(".select-button");
-
- let productSize = null;
-
 
 // 사이즈 클릭시만 구매 또는 장바구니 버튼 생성
 
@@ -10,33 +6,47 @@ selectBtn.onclick = () => {
     alert("사이즈를 선택해주세요");
 }
 
-for(let i = 0; i < sizeBtns.length; i++) {
-    sizeBtns[i].onclick = () => {
-	
-		productSize = sizeBtns[i].value;
-	
-	// 클릭 이전에 한번 초기화
-		sizeBtns.forEach(sizeBtn => {
-			sizeBtn.classList.remove("act-size")
-		});
+function buttonEvent(){
+		let sizeBtns = document.querySelectorAll(".size-button");
 		
-	// 이벤트 추가
-        sizeBtns[i].classList.add("act-size");
-      
-   	// 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
-        selectBtn.onclick = () =>{
-            if(sizeBtns[i].classList.add){
-                change();
-                
-                const cartBtn = document.querySelector(".cart-button");
-
-				cartBtn.onclick = () => {
-					cartLoad();
-				}   
-            }
-        }
-    }
+		 let productSize = null;
+	
+		console.log(sizeBtns)	
+		
+		//사이즈 선택 이벤트
+	for(let i = 0; i < sizeBtns.length; i++) {
+	    sizeBtns[i].onclick = () => {
+		
+			productSize = sizeBtns[i].textContent;
+		
+		// 클릭 이전에 한번 초기화
+			sizeBtns.forEach(sizeBtn => {
+				sizeBtn.classList.remove("act-size")
+			});
+			
+		// 이벤트 추가
+	        sizeBtns[i].classList.add("act-size");
+	      
+	   	// 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
+	        selectBtn.onclick = () =>{
+	            if(sizeBtns[i].classList.add){
+	                change();
+	                
+	                const cartBtn = document.querySelector(".cart-button");
+	
+					cartBtn.onclick = () => {
+						if(user == null) {
+								alert("로그인이 필요합니다.")
+								location.href = "/signin"
+						}
+						cartLoad();
+					}   
+	            }
+	        }
+	    }
+	}
 }
+
 
 
 // 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
@@ -114,20 +124,24 @@ interestBtn.onclick = () => {
 
 /** >>>>>>>>>>>>>>>>>>>>>REQ>>>>>>>>>>>>>>>>>>>>>> */
 
-let productCode = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+let productGroup = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
 
 load();
 
-console.log("urlNumber: " + productCode);
+	console.log("urlNumber: " + productGroup);
 
 function load() {
 	$.ajax({
 		async: false,
 		type: "get",
-		url: "/api/v1/product/" + productCode,
+		url: "/api/v1/product/" + productGroup,
 		dataType: "json",
 		success: (response) => {
+			const product = response.data;
+			
 			getProduct(response.data)
+			
+			
 		},
 		error: errorMessage
 		
@@ -139,26 +153,49 @@ function getProduct(product) {
 	const productName = document.querySelector(".product-name");
 	const productDetailName = document.querySelector(".product-detail-name");
 	const productKorName = document.querySelector(".product-kor-name");
-	const productCodeNum = document.querySelector(".product-code");
+	const productgroupNum = document.querySelector(".product-code");
 	const productPrice = document.querySelector(".product-price");
 	const productInfo = document.querySelector(".product-info");
 	const productImg = document.querySelector(".img-group");
+	const sizeBtnsGroup = document.querySelector(".size-buttons-group");
 	
-	productCode = product.productCode;
+	
+	productGroup = product.productGroup;
 	
 	productBrand.innerHTML = product.productBrand;
 	productName.innerHTML = product.productName;
 	productDetailName.innerHTML = product.productDetailName;
 	productKorName.innerHTML = product.productKorName;
-	productCodeNum.innerHTML = productCode;
+	productgroupNum.innerHTML = productGroup;
 	productPrice.innerHTML = product.productPrice + "원";
+	
+
+/** */
+
+//	let productSizeArray = new Array();
+
+//	product.productSizeList.forEach(size => {
+//		if(size.size_name != undefined) {
+//			productSizeArray.push(`
+//				<button type="button" class="size-button" id="product-size-${product.productSizeList.product_code}" value ="">${product.productSizeList.size_name}</button>
+//			`)
+//		}
+//		
+//	});
+
+product.productSizeList.forEach(size => {
+	sizeBtnsGroup.innerHTML += `
+	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="">${size.size_name}</button>
+	
+	`;
+})
 	
 	let productFileArray = new Array();
 	
-	product.productImgFiles.forEach(file => {
-		if(file.fileCode != undefined) {
+	product.productFileList.forEach(file => {
+		if(file.file_code != undefined) {
 			productFileArray.push(`
-			 <img src = "/image/product/${file.fileName}">
+			 <img src = "/image/product/${file.file_name}">
 			`)
 		}
 	});
@@ -166,6 +203,38 @@ function getProduct(product) {
 	productImg.innerHTML = productFileArray;
 	
 	productInfo.innerHTML = product.productInfo;
+	
+	buttonEvent();
+	
+//	let count = 0;
+//	let allCount = 0;
+//	let name = null;
+//	for(let i = 0 ; i < product.productSizeList.length; i++ ){
+//		if(name != product.productFileList[i].file_name) {
+//		count++; //다른사진갯수
+//		}
+//		allCount++;	//전제사진갯수
+//		name = product.productFileList[i].file_name;
+//	}
+//	console.log("asdsadsa"+count);
+//	console.log("allCount"+allCount);
+//	console.log("필요한 갯수 = " + (count / allCount));
+//	
+//		let resultNum = allCount / count;
+//	
+//		if (resultNum < 1 ) {
+//			resultNum = 1;
+//		}
+//	
+//		for(let i = 0; i < resultNum ; i ++){
+//		const sizeBtnsGroup = document.querySelector(".size-buttons-group");
+//	
+//		sizeBtnsGroup.innerHTML += `
+//					<button type="button" class="size-button" id="product-size-${product.productSizeList[i].size_name}" value ="">${product.productSizeList[i].size_name}</button>
+//			`;
+//	}
+	
+	
 }
 
 
@@ -174,16 +243,15 @@ function getProduct(product) {
 
 function cartLoad() {
 	
-	
+	let size = document.querySelectorAll(".size-button");
 	
 	let addCart = {
-		username: user.user_id,
-		"productCode": productCode,
-		"productSize" : productSize
-	}
-	
-
-	
+			username: user.user_id,
+			"productGroup": productGroup,
+			"productCode": 1,
+			"productSize": "12"
+		}
+		
 	$.ajax({
 		async: false,
 		type: "post",
@@ -192,11 +260,12 @@ function cartLoad() {
 		data:JSON.stringify(addCart),
 		success: (response) => {
 			if(response.data) {
+				
 				alert("장바구니 추가완료")
+				alert(JSON.stringify(addCart))
 			}
 		},
 		error: errorMessage
-		
 	})
 }
 

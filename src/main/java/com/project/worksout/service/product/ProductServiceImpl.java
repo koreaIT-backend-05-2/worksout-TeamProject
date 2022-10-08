@@ -5,11 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.worksout.domain.product.Product;
 import com.project.worksout.domain.product.ProductFile;
 import com.project.worksout.domain.product.ProductRepository;
+import com.project.worksout.domain.product.ProductSize;
 import com.project.worksout.web.dto.product.CreateProductReqDto;
 import com.project.worksout.web.dto.product.ProductListRespDto;
 import com.project.worksout.web.dto.product.ProductRespDto;
@@ -54,8 +56,8 @@ public class ProductServiceImpl implements ProductService {
 				.product_kor_name(createProductReqDto.getProductKorName())
 				.product_info(createProductReqDto.getProductInfo())
 				.product_price(createProductReqDto.getProductPrice())
-				.product_amount(createProductReqDto.getProductAmount())
 				.product_size(createProductReqDto.getProductSize())
+				.product_amount(createProductReqDto.getProductAmount()) 
 				.product_gender(createProductReqDto.getProductGender())
 				.build();
 		
@@ -88,6 +90,7 @@ public class ProductServiceImpl implements ProductService {
 			productRepository.saveProductFiles(productFiles);
 			
 		}
+		
 		return product.getProduct_code();
 	}
 
@@ -128,6 +131,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		productRepository.getProductList(map).forEach(product -> {
 			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
+			
+			log.info("<<<<<<<<<<{}>>>>>>>>>", product);
 			
 			product.getProduct_files().forEach(file -> {
 				Map<String, Object> fileMap = new HashMap<String, Object>();

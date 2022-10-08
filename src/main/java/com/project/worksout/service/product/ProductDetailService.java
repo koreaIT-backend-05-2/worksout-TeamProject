@@ -4,6 +4,6 @@ import com.project.worksout.web.dto.product.ProductDetailRespDto;
 
 public interface ProductDetailService {
 
-	public ProductDetailRespDto getProductDetail(int productCode) throws Exception;
+	public ProductDetailRespDto getProductDetail(int productGroup) throws Exception;
 	
 }
