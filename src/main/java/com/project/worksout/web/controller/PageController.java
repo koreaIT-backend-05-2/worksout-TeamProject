@@ -23,7 +23,7 @@ public class PageController {
 	}
 	
 	// 메인 페이지
-	@GetMapping("/main")
+	@GetMapping(value = {"/", "main"})
 	public String loadMainPage() {
 		return "/main";
 	}
@@ -51,5 +51,10 @@ public class PageController {
 	@GetMapping("/inquiry")
 	public String loadInquiryPage() {
 		return "inquiry";
+	}
+	
+	@GetMapping("/entry")
+	public String loadEntryPage() {
+		return "entry";
 	}
 }

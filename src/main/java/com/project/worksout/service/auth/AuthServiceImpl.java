@@ -35,5 +35,6 @@ public class AuthServiceImpl implements AuthService{
 		
 		return userRepository.removeUserByUsercode(userCode) > 0;
 	}
+
 	
 }

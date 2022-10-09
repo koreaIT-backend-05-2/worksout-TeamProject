@@ -43,6 +43,8 @@
   			um.user_phone_last,
   			um.user_roles,
   			um.user_rank,
+  			um.user_email_agreement,
+  			um.user_sms_agreement,
   			
   			ud.delivery_name,
   			ud.consignee_name,
@@ -59,6 +61,8 @@
   			um.user_id = #{username}
 
   	</select>
+  
+  	
   	
   	<update id="updateUserByUsercode" parameterType="com.project.worksout.domain.user.User">
   		update
@@ -83,7 +87,8 @@
   			ud.delivery_detail_address = #{delivery_detail_address},
   			ud.delivery_requestment = #{delivery_requestment}
   		where
-  			um.user_code = #{user_code}
+  			um.user_code = #{user_code} and
+  			ud.user_code = #{user_code}
   			
   	</update>
   	<delete id="removeUserByUsercode"  parameterType="Integer">

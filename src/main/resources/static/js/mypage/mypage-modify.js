@@ -2,7 +2,11 @@ const addressInput = document.querySelector(".address-input");
 const addressSearchButton = document.querySelector(".address-search-button");
 const detailAddressInput = document.querySelector(".detail-address-input");
 
+const myInfoModify = document.querySelector(".my-info-modify");
 
+myInfoModify.onclick = () => {
+	
+}
 
 // 다음 주소 api
 function searchAddress() {
@@ -88,8 +92,8 @@ userRank.value = `${user.user_rank}`;
 editPhoneInputs[0].value = `${user.user_phone_first} `;
 editPhoneInputs[1].value = `${user.user_phone_middle} `;
 editPhoneInputs[2].value = `${user.user_phone_last} `;
-emailAgree = `${user.user_email_agreement}`;
-smsAgree = `${user.user_sms_agreement} `;
+emailAgree = user.user_email_agreement;
+smsAgree = user.user_sms_agreement;
 
 
 addressPhoneInputs[0].value = `${user.consignee_phone_first}`
@@ -125,6 +129,19 @@ for(let i = 0; i < agreeList.length; i++) {
 }
 
  */
+ 
+ console.log(emailAgree);
+ console.log(smsAgree);
+ 
+ if(emailAgree == true){
+	checkboxs[0].checked=true;
+}
+ if(smsAgree == true){
+	checkboxs[1].checked=true;
+}
+
+ 
+ 
  
  //회원 탈퇴 버튼 (모달 컨테이너로 유도 후 탈퇴)
 const modalContainer = document.querySelector(".modal-container")

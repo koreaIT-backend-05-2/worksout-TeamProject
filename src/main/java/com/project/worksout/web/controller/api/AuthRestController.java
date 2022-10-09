@@ -97,7 +97,6 @@ public class AuthRestController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
-	
 	}
 	
 	//회원정보 수정 컨트롤러

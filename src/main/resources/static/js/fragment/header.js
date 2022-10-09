@@ -1,11 +1,43 @@
 const mainLogoImage = document.querySelector(".main-logo-image");
+const entryPage = document.querySelector(".entry-page");
+const cartPage = document.querySelector(".cart-page");
+
+entryPage.onclick = () => {
+	location.href = "/entry";
+}
+cartPage.onclick = () => {
+	location.href = "/cart";	
+}
 
 mainLogoImage.onclick = () => {
 	location.href = "/main";
 }
 
-const genderEtcCategory = document.querySelector(".gender-etc-category");
+const headerSection = document.querySelector(".header-section");
+const genderEtcCategory = document.querySelectorAll(".gender-etc-category");
 const hiddenCategoryMenu = document.querySelector(".hidden-category-menu");
+
+for(let i = 0 ; i < genderEtcCategory.length ; i++) {
+	
+	genderEtcCategory[i].onmouseover = () => {
+	    hiddenCategoryMenu.classList.toggle("hidden");
+//	    hiddenCategoryMenu.classList.add("active");
+//	    hiddenCategoryMenu.classList.remove("hidden");
+//		hiddenCategoryMenu.onmouseout =() => {
+//			hiddenCategoryMenu.classList.toggle("hidden");
+//		}
+		console.log("젠더 i번째 버튼 = ");
+		console.log(i);
+	}		
+//	hiddenCategoryMenu.onmouseout =() => {
+//		hiddenCategoryMenu.classList.remove("active");
+//		hiddenCategoryMenu.classList.add("hidden");		
+//	}
+}
+
+
+
+
 
 const maleButton = document.querySelector(".gender-male");
 const femaleButton = document.querySelector(".gender-female");
@@ -21,13 +53,6 @@ etcButton.onclick=()=>{
 	location.href = "/category/e";
 }
 
-
-genderEtcCategory.onmouseover = () => {
-    hiddenCategoryMenu.classList.toggle("hidden");
-	hiddenCategoryMenu.onmouseout =() => {
-		hiddenCategoryMenu.classList.toggle("hidden");
-	}
-}
 
 
 
@@ -56,9 +81,9 @@ function getPrincipal() {
 	return user;
 }
 
+
 function loadHeader(user) {
-	
-	
+
 	if(user == null) {
 		authItems.innerHTML = `
 	         <p class="login-and-logout user-login">로그인</p>
@@ -83,7 +108,7 @@ function loadHeader(user) {
 		}
 		
 		myPage.onclick = () => {
-						
+			location.href = "/mypage/modify";			
 		}
 		
 	}

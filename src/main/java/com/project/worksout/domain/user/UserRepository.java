@@ -11,4 +11,6 @@ public interface UserRepository {
 	public int updateUserByUsercode(User user) throws Exception; 
 
 	public  int removeUserByUsercode(int userCode) throws Exception;
+	
+
 }

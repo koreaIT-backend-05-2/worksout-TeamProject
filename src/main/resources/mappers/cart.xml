@@ -10,10 +10,10 @@
   	values(
   		0,
   		#{user_id},
-  		#{product_code},
   		#{product_group},
   		#{product_size},
-  		#{cart_amount}
+  		#{cart_amount},
+  		#{product_code}
   	)
   </insert>
   <select id="getCartList" parameterType="hashmap" resultType="com.project.worksout.domain.cart.Cart">

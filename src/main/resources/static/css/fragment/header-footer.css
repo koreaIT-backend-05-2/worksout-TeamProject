@@ -1,6 +1,7 @@
 .hidden {
     display: none !important;
 }
+
 .main-logo-image{
 	cursor: pointer;
 }
@@ -286,3 +287,6 @@ button {
 
 /* authitems 내부 마이페이지 로그인 */
 
+.active {
+	display: block;
+}

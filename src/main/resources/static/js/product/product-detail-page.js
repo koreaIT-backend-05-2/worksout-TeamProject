@@ -247,9 +247,10 @@ function cartLoad() {
 	
 	let addCart = {
 			username: user.user_id,
-			"productGroup": productGroup,
 			"productCode": 1,
-			"productSize": "12"
+			"productGroup": productGroup,
+			"productSize": "12",
+			"cartAmount": 1 
 		}
 		
 	$.ajax({
