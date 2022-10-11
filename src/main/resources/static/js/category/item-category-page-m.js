@@ -1,6 +1,16 @@
 const filterButton = document.querySelector(".filter-button");
 const filter = document.querySelector(".filters");
 
+const soldoutChk = document.getElementById("checkbox2");
+
+let is_checked = false;
+
+is_checked = soldoutChk.ariaChecked;
+
+console.log("checkbox");
+console.log(is_checked);
+
+
 let genderSelect = "m";
 
 const type = 1;
