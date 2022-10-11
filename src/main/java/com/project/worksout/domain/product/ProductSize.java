@@ -13,5 +13,6 @@ public class ProductSize {
 
 	private int product_code;
 	private String size_name;
+	private int size_amount;
 	
 }

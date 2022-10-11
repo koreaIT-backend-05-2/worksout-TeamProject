@@ -429,8 +429,6 @@ sendAuthNum.onclick = () => {
 		},
 		success: function(data) {
 			const checkNum = data;
-			alert("checkNum: " + checkNum);
-			
 			
 			authNumCheckBtn.onclick = () => {
 				let userNum = document.querySelector(".auth-number-group-input").value;

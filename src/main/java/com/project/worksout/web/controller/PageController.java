@@ -41,7 +41,6 @@ public class PageController {
 		return "/cart";
 	}
 	
-	
 	@GetMapping("/admin/inquiry/detail/{inquiryCode}")
 	public String detailInquriy() {
 		return "/admin-inquiry-detail-page";

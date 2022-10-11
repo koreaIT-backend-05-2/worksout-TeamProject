@@ -116,7 +116,7 @@ function load() {
 		data: formData,
 		dataType: "json",
 		success: (response) => {
-			alert(response.data + "번째 문의하기 작성 완료")
+			alert("문의가 접수되었습니다.")
 			location.reload(true);
 		},
 		error: errorMessage

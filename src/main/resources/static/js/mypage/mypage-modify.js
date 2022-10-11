@@ -94,7 +94,10 @@ editPhoneInputs[1].value = `${user.user_phone_middle} `;
 editPhoneInputs[2].value = `${user.user_phone_last} `;
 emailAgree = user.user_email_agreement;
 smsAgree = user.user_sms_agreement;
+<<<<<<< HEAD
 
+=======
+>>>>>>> junhyeong
 
 addressPhoneInputs[0].value = `${user.consignee_phone_first}`
 addressPhoneInputs[1].value = `${user.consignee_phone_middle}`
@@ -112,6 +115,7 @@ const modifyBtn = document.querySelector(".modify-button");
 //수정하기 버튼 클릭시 회원정보 수정
 modifyBtn.onclick = () => {
 	load();
+	loadheader(user);
 }
 
 //마케팅 정보 수신동의 flag
@@ -130,6 +134,7 @@ for(let i = 0; i < agreeList.length; i++) {
 
  */
  
+<<<<<<< HEAD
  console.log(emailAgree);
  console.log(smsAgree);
  
@@ -142,6 +147,23 @@ for(let i = 0; i < agreeList.length; i++) {
 
  
  
+=======
+ console.log("test" + emailAgree)
+ console.log("sms" + smsAgree)
+ 
+ //마케팅 정보 수신 동의를 했을 경우 체크됨
+ if(emailAgree == true) {
+	checkboxs[0].checked = true;
+}else {
+	checkboxs[0].checked = false;
+}
+
+ if(smsAgree == true) {
+	checkboxs[1].checked = true;
+}else {
+	checkboxs[1].checked = false;
+}
+>>>>>>> junhyeong
  
  //회원 탈퇴 버튼 (모달 컨테이너로 유도 후 탈퇴)
 const modalContainer = document.querySelector(".modal-container")

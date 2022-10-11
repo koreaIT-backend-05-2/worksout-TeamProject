@@ -67,7 +67,7 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 					.productDetailName(detailProduct.getProduct_detail_name())
 					.productKorName(detailProduct.getProduct_kor_name())
 					.productPrice(detailProduct.getProduct_price())
-					.productAmount(detailProduct.getProduct_amount())
+//					.productAmount(detailProduct.getProduct_amount())
 					.productSizeList(detailProduct.getProduct_size_list())
 					.productInfo(detailProduct.getProduct_info())
 					.productFileList(detailProduct.getProduct_files())

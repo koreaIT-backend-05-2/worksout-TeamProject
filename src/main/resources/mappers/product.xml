@@ -71,14 +71,14 @@
   		<result column="product_info"  property="product_info"/>
   		<result column="product_price"  property="product_price"/>
   		<result column="product_gender" property="product_gender"/>
-  		<result column="product_amount"  property="product_amount"/>
-  		<collection property="product_size_list"  javaType="list" resultMap='product_sizes'>	</collection>
+  		<collection property="product_size_list"  javaType="list" resultMap='product_sizes'></collection>
   		<collection property="product_files" javaType="list" resultMap="product_files"></collection>
   	</resultMap>
   	
   	<resultMap type="com.project.worksout.domain.product.ProductSize" id="product_sizes">
   		<id column="product_code" property="product_code"/>
 		<result column="product_size"  property="size_name"/>
+		<result column="product_amount"  property="size_amount"/>
   	</resultMap>
 	
 	<select id="getProductDetail" parameterType="hashmap" resultMap="productDetailResultMap">

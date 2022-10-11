@@ -15,10 +15,10 @@ public class Cart {
 	private String user_id;
 	private int product_group;
 	private String product_size;
+	private int product_code;
 	
 	private int cart_amount;
 	
-	private int product_code;
 	private String product_name;
 	private String product_detail_name;
 	private String product_amount;

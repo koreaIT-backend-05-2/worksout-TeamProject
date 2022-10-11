@@ -166,6 +166,11 @@ img {
 	
 }
 
+.last-product {
+	font-size: 12px;
+	color: red;
+}
+
 .detail-info p {
     padding-bottom: 10px;
     font-size: 11px;

@@ -1,17 +1,21 @@
 const selectBtn = document.querySelector(".select-button");
 
+let productGroup = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+	console.log("urlNumber: " + productGroup);
 // 사이즈 클릭시만 구매 또는 장바구니 버튼 생성
 
 selectBtn.onclick = () => {
     alert("사이즈를 선택해주세요");
 }
 
-function buttonEvent(){
+load();
+
+function buttonEvent(product){
 		let sizeBtns = document.querySelectorAll(".size-button");
 		
 		 let productSize = null;
-	
-		console.log(sizeBtns)	
+		
 		
 		//사이즈 선택 이벤트
 	for(let i = 0; i < sizeBtns.length; i++) {
@@ -122,13 +126,10 @@ interestBtn.onclick = () => {
 	}
 }
 
+buttonEvent();
+
 /** >>>>>>>>>>>>>>>>>>>>>REQ>>>>>>>>>>>>>>>>>>>>>> */
 
-let productGroup = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-
-load();
-
-	console.log("urlNumber: " + productGroup);
 
 function load() {
 	$.ajax({
@@ -140,7 +141,7 @@ function load() {
 			const product = response.data;
 			
 			getProduct(response.data)
-			
+			buttonEvent(response.data)
 			
 		},
 		error: errorMessage
@@ -159,6 +160,7 @@ function getProduct(product) {
 	const productImg = document.querySelector(".img-group");
 	const sizeBtnsGroup = document.querySelector(".size-buttons-group");
 	
+	console.log("상품코드: " + product.productSizeList.length)
 	
 	productGroup = product.productGroup;
 	
@@ -169,25 +171,21 @@ function getProduct(product) {
 	productgroupNum.innerHTML = productGroup;
 	productPrice.innerHTML = product.productPrice + "원";
 	
+	for(let i = 0; i > product.productSizeList.length; i++) {
+		const lastProduct = document.querySelector(".last-product");
 
-/** */
+		console.log("lastProduct: " + lastProduct)
+		if(product.productSizeList[i].size_amount == 1) {
+				lastProduct.innerHTML += "해당 상품은 품절입니다";
+			}
+	}
 
-//	let productSizeArray = new Array();
-
-//	product.productSizeList.forEach(size => {
-//		if(size.size_name != undefined) {
-//			productSizeArray.push(`
-//				<button type="button" class="size-button" id="product-size-${product.productSizeList.product_code}" value ="">${product.productSizeList.size_name}</button>
-//			`)
-//		}
-//		
-//	});
 
 product.productSizeList.forEach(size => {
 	sizeBtnsGroup.innerHTML += `
 	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="">${size.size_name}</button>
-	
 	`;
+	
 })
 	
 	let productFileArray = new Array();
@@ -204,7 +202,7 @@ product.productSizeList.forEach(size => {
 	
 	productInfo.innerHTML = product.productInfo;
 	
-	buttonEvent();
+
 	
 //	let count = 0;
 //	let allCount = 0;
@@ -237,7 +235,7 @@ product.productSizeList.forEach(size => {
 	
 }
 
-
+	
 
 //장바구니
 
