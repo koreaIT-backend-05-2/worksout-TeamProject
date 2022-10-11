@@ -2,7 +2,6 @@ package com.project.worksout.service.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.project.worksout.domain.user.User;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Data
 public class PrincipalDetails implements UserDetails{
 	
@@ -20,12 +21,12 @@ public class PrincipalDetails implements UserDetails{
 	
 	public PrincipalDetails(User user) {
 		this.user = user;
+		log.info(">>>>>> principalUser {}", user);
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-		
 		
 		user.getUserRoles().forEach(role -> {
 			grantedAuthorities.add(() -> role);
@@ -63,5 +64,5 @@ public class PrincipalDetails implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
 }

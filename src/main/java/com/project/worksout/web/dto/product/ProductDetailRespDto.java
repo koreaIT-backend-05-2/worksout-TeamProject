@@ -20,7 +20,6 @@ public class ProductDetailRespDto {
 	private String productDetailName;
 	private String productKorName;
 	private int productPrice;
-	private int productAmount;
 	private String productInfo;
 	
 	private List<ProductSize> productSizeList;

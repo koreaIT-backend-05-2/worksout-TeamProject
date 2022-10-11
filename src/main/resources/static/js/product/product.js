@@ -13,5 +13,5 @@ pdInsertButton.onclick = () => {
 	location.href = "/admin/add-items";
 }
 inquiryButton.onclick = () => {
-	location.href = "/admin/ask";
+	location.href = "/admin/inquiry";
 }

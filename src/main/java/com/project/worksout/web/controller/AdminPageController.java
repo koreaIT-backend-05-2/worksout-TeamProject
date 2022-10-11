@@ -24,4 +24,5 @@ public class AdminPageController {
 	public String loadAdminAskPage() {
 		return "/admin-inquiry-page";
 	}
+	
 }

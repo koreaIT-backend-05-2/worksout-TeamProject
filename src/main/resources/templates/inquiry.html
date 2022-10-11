@@ -10,6 +10,9 @@
     <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
+ <!-- 헤더부분 -->
+        <th:block th:replace="/fragment/header"></th:block>
+        
     <main>
         <div class="main-container">
             <div class="center-text">
@@ -105,7 +108,12 @@
             </div>
         </div>
 
+  <!-- footer부분 -->
+    <th:block th:replace="/fragment/footer"></th:block>
     </main>
+    
+   
+    
     <script src="/static/js/inquiry.js"></script>
 </body>
 </html>

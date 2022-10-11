@@ -37,7 +37,7 @@ public class CartServiceImpl implements CartService{
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("user_id", username);
+		map.put("user_code", username);
 		
 		List<Cart> cartLists = cartRepository.getCartList(map);
 

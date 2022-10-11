@@ -42,7 +42,7 @@ public class CartRestController {
 	}
 	
 	@GetMapping("")
-	public ResponseEntity<?> getCart(@RequestParam String username ) {
+	public ResponseEntity<?> getCart(@RequestParam String username) {
 		List<GetCartRespDto> listDto = new ArrayList<GetCartRespDto>();
 		
 		try {
