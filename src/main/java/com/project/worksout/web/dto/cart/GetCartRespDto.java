@@ -18,17 +18,6 @@ public class GetCartRespDto {
 	private int productAmount;
 	private int productPrice;
 	
-	public Cart getCartToEntity() {
-		return Cart.builder()
-				.cart_code(cartCode)
-				.user_code(userCode)
-				.file_name(productFileName)
-				.product_name(productName)
-				.product_detail_name(productDetailName)
-				.product_size(productSize)
-				.product_amount(productAmount)
-				.product_price(productPrice)
-				.build();
-	}
+
 	
 }

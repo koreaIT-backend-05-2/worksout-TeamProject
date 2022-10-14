@@ -58,6 +58,11 @@ public class CartServiceImpl implements CartService{
 //		
 //		log.info("cart {}", cartLists);
 			Cart getCartList = cartLists.get(0);
+			
+//			cartLists.forEach(cart -> {
+//				GetCartRespDto cartRespDto = cart;
+//				
+//			});
 		
 			getCartListRespDto.add(GetCartRespDto.builder()
 					.userCode(getCartList.getUser_code())
@@ -70,7 +75,7 @@ public class CartServiceImpl implements CartService{
 					.build()); 
 		
 	
-		
+		log.info("getCartList {}", getCartList);
 		
 		return getCartListRespDto;
 	}
