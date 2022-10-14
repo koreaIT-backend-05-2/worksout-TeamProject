@@ -9,15 +9,15 @@ public class CategoryPageController {
 
 	@GetMapping("/category/m")
 	public String loadMaleCategoryPage() {
-		return "/category/items-category-page-m";
+		return "category/items-category-page-m";
 	}
 	@GetMapping("/category/f")
 	public String loadFemaleCategoryPage() {
-		return "/category/items-category-page-f";
+		return "category/items-category-page-f";
 	}
 	@GetMapping("/category/e")
 	public String loadEtcCategoryPage() {
-		return "/category/items-category-page-e";
+		return "category/items-category-page-e";
 	}
 	
 	
