@@ -9,7 +9,7 @@
   		cart_mst
   	values(
   		0,
-  		#{user_id},
+  		#{user_code},
   		#{product_group},
   		#{product_size},
   		#{cart_amount},
@@ -19,24 +19,23 @@
   <select id="getCartList" parameterType="hashmap" resultType="com.project.worksout.domain.cart.Cart">
   	SELECT
 		cm.cart_code,
-		cm.user_id,
+		cm.user_code,
 		
+		pm.product_code,
 		pm.product_group,
 		pm.product_name,
 		pm.product_detail_name,
 		pm.product_size,
 		pm.product_amount,
 		pm.product_price,
-		
-		pif.file_code,
+	
 		pif.file_name
 	FROM
 		cart_mst cm
-		LEFT OUTER JOIN product_mst pm ON (pm.product_size =cm.product_size)
+		LEFT OUTER JOIN product_mst pm ON (pm.product_code = cm.product_code)
 		LEFT OUTER JOIN product_img_file pif ON (pif.product_group = pm.product_group)
 	WHERE
-		cm.user_id = #{user_id} and
-		pm.product_group = #{product_group};
+		cm.user_code = #{user_code}
   
   </select>
   </mapper>

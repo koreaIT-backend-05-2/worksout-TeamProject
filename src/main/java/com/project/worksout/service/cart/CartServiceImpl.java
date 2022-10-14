@@ -32,42 +32,44 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	@Override
-	public List<GetCartRespDto> getCartList(String username) throws Exception {
+	public List<GetCartRespDto> getCartList(int userCode) throws Exception {
 		List<GetCartRespDto> getCartListRespDto = new ArrayList<GetCartRespDto>();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("user_code", username);
+		map.put("user_code", userCode);
 		
 		List<Cart> cartLists = cartRepository.getCartList(map);
 
-		log.info("map!!! {}", map);
+		log.info("map!!! {}", cartLists);
 		
 		
-		List<Map<String, Object>> cartFile = new ArrayList<Map<String,Object>>();
-		
-		cartLists.forEach(cartList -> {
-			Map<String, Object> fileMap = new HashMap<String, Object>();
-			
-			fileMap.put("fileCode", cartList.getFile_code());
-			fileMap.put("fileName", cartList.getFile_name());
-			
-			cartFile.add(fileMap);
-		});
-		
-		log.info(">> {}", cartFile);
-		
-		log.info("cart {}", cartLists);
+//		List<Map<String, Object>> cartFile = new ArrayList<Map<String,Object>>();
+//		
+//		cartLists.forEach(cartList -> {
+//			Map<String, Object> fileMap = new HashMap<String, Object>();
+//			
+//			fileMap.put("fileCode", cartList.getFile_code());
+//			fileMap.put("fileName", cartList.getFile_name());
+//			
+//			cartFile.add(fileMap);
+//		});
+//		
+//		
+//		log.info("cart {}", cartLists);
 			Cart getCartList = cartLists.get(0);
 		
 			getCartListRespDto.add(GetCartRespDto.builder()
+					.userCode(getCartList.getUser_code())
 					.cartCode(getCartList.getCart_code())
-					.productImg(cartFile)
+					.productFileName(getCartList.getFile_name())
 					.productName(getCartList.getProduct_name())
 					.productDetailName(getCartList.getProduct_detail_name())
 					.productSize(getCartList.getProduct_size())
 					.productPrice(getCartList.getProduct_price())
 					.build()); 
+		
+	
 		
 		
 		return getCartListRespDto;

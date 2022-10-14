@@ -115,10 +115,9 @@ public class AuthRestController {
 		try {
 			status = authService.updateUser(updateUserReqDto);
 			
-			if(status) {
 //				principalDetails.getUser().modifyUserData(updateUserReqDto);
 				principalDetails.getUser().modifyUserData(updateUserReqDto);
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "회원정보 수정 실패", status));
@@ -126,7 +125,7 @@ public class AuthRestController {
 		log.info(">>>>>>>test {}", user);
 		log.info(">>>>>user {}: ", updateUserReqDto);
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원정보 수정 완료", principalDetails.getUser()));
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원정보 수정 완료", status));
 	}
 	
 	

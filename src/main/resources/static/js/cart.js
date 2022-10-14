@@ -23,3 +23,14 @@ minus.onclick = () => {
         amountText.innerHTML = --amount;
     }
 }
+
+
+function load() {
+	
+	$.ajax({
+		async: false,
+		type: "get",
+		
+	});
+	
+}

@@ -15,27 +15,6 @@ mainLogoImage.onclick = () => {
 }
 
 
-for(let i = 0 ; i < genderEtcCategory.length ; i++) {
-	
-	genderEtcCategory[i].onmouseover = () => {
-	    hiddenCategoryMenu.classList.toggle("hidden");
-//	    hiddenCategoryMenu.classList.add("active");
-//	    hiddenCategoryMenu.classList.remove("hidden");
-//		hiddenCategoryMenu.onmouseout =() => {
-//			hiddenCategoryMenu.classList.toggle("hidden");
-//		}
-		console.log("젠더 i번째 버튼 = ");
-		console.log(i);
-	}		
-//	hiddenCategoryMenu.onmouseout =() => {
-//		hiddenCategoryMenu.classList.remove("active");
-//		hiddenCategoryMenu.classList.add("hidden");		
-//	}
-}
-
-
-
-
 
 const maleButton = document.querySelector(".gender-male");
 const femaleButton = document.querySelector(".gender-female");
@@ -74,8 +53,6 @@ for(let i = 0; i < headerBtns.length; i++) {
 }
 
 
-
-
 /*
 
 	로그인시 로그아웃 나타남
@@ -83,6 +60,7 @@ for(let i = 0; i < headerBtns.length; i++) {
 */
 
 const authItems = document.querySelector(".auth-items");
+
 
 function getPrincipal() {
 	let user = null;
@@ -104,13 +82,8 @@ function getPrincipal() {
 
 
 function loadHeader(user) {
-<<<<<<< HEAD
-
-=======
 	
 	let roles = "ROLE_ADMIN";
-	
->>>>>>> junhyeong
 	if(user == null) {
 		authItems.innerHTML = `
 	         <p class="login-and-logout user-login">로그인</p>
@@ -125,6 +98,9 @@ function loadHeader(user) {
 	}else if(user.userRoles.includes(roles)) {
 		
 		const headerSectionStart = document.querySelector(".header-section-start");
+		let logout = document.querySelector(".login-and-logout");
+		
+		console.log(logout)
 			
 			headerSectionStart.innerHTML = `
 			<a href="/entry" class="entry-page">응모</a>
@@ -141,23 +117,22 @@ function loadHeader(user) {
 			location.replace("/logout");
 		}
 		
-		myPage.onclick = () => {
-<<<<<<< HEAD
-			location.href = "/mypage/modify";			
-=======
+		myPage.onclick = () => {	
 			location.href = "/mypage/modify"
->>>>>>> junhyeong
 		}
 		
 	}else{
 		
-	const logout = document.querySelector(".logout");
-	const myPage = document.querySelector(".my-page");
+	
 		
 			authItems.innerHTML = `
 			<p class="hidden-my-page my-page" onclick = "location.href ='/mypage/modify'">마이페이지</p>
 	         <p class="login-and-logout logout" onclick = "location.replace('/logout')">로그아웃</p>
 		`
+		
+		let logout = document.querySelector(".logout");
+		let myPage = document.querySelector(".my-page");
+		
 		
 	}
 }
