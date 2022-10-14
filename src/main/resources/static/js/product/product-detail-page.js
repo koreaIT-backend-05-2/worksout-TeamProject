@@ -241,18 +241,18 @@ function getProduct(product) {
 
 }
 
-function subStringProductCode(sizeButton) {
-	const tdProductContents = sizeButton.querySelector(".pdsize");
-	console.log("tdProductContents : " + tdProductContents);
-	const productCode = tdProductContents.getAttribute("id");
-	console.log("productCode : " + productCode);
-	const tokenIndex = productCode.lastIndexOf("-");
-	console.log("tokenIndex : " + tokenIndex);
-
-	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
-	console.log("  ");
-	return productCode.substring(tokenIndex + 1);
-}
+//function subStringProductCode(sizeButton) {
+//	const tdProductContents = sizeButton.querySelector(".pdsize");
+//	console.log("tdProductContents : " + tdProductContents);
+//	const productCode = tdProductContents.getAttribute("id");
+//	console.log("productCode : " + productCode);
+//	const tokenIndex = productCode.lastIndexOf("-");
+//	console.log("tokenIndex : " + tokenIndex);
+//
+//	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
+//	console.log("  ");
+//	return productCode.substring(tokenIndex + 1);
+//}
 
 function addEvent() {
 	const sizeButtonTest = document.querySelector(".size-button-test");
