@@ -3,6 +3,9 @@ package com.project.worksout.web.controller.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +31,10 @@ public class CartRestController {
 	private final CartService cartService;
 	
 	@PostMapping("/addCart")
-	public ResponseEntity<?> addCart(@RequestBody AddCartReqDto addCartReqDto) {
+	public ResponseEntity<?> addCart(@RequestBody AddCartReqDto addCartReqDto, HttpServletResponse response) {
 		boolean status = false;
+		
+		//Cookie myCookie = new Cookie("test",)
 		
 		try {
 			status = cartService.addCart(addCartReqDto);

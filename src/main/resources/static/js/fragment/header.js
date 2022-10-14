@@ -15,27 +15,6 @@ mainLogoImage.onclick = () => {
 }
 
 
-for(let i = 0 ; i < genderEtcCategory.length ; i++) {
-	
-	genderEtcCategory[i].onmouseover = () => {
-	    hiddenCategoryMenu.classList.toggle("hidden");
-//	    hiddenCategoryMenu.classList.add("active");
-//	    hiddenCategoryMenu.classList.remove("hidden");
-//		hiddenCategoryMenu.onmouseout =() => {
-//			hiddenCategoryMenu.classList.toggle("hidden");
-//		}
-		console.log("젠더 i번째 버튼 = ");
-		console.log(i);
-	}		
-//	hiddenCategoryMenu.onmouseout =() => {
-//		hiddenCategoryMenu.classList.remove("active");
-//		hiddenCategoryMenu.classList.add("hidden");		
-//	}
-}
-
-
-
-
 
 const maleButton = document.querySelector(".gender-male");
 const femaleButton = document.querySelector(".gender-female");
@@ -104,13 +83,10 @@ function getPrincipal() {
 
 
 function loadHeader(user) {
-<<<<<<< HEAD
 
-=======
-	
 	let roles = "ROLE_ADMIN";
 	
->>>>>>> junhyeong
+
 	if(user == null) {
 		authItems.innerHTML = `
 	         <p class="login-and-logout user-login">로그인</p>
@@ -142,11 +118,8 @@ function loadHeader(user) {
 		}
 		
 		myPage.onclick = () => {
-<<<<<<< HEAD
 			location.href = "/mypage/modify";			
-=======
-			location.href = "/mypage/modify"
->>>>>>> junhyeong
+
 		}
 		
 	}else{

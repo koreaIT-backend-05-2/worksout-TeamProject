@@ -94,10 +94,6 @@ editPhoneInputs[1].value = `${user.user_phone_middle} `;
 editPhoneInputs[2].value = `${user.user_phone_last} `;
 emailAgree = user.user_email_agreement;
 smsAgree = user.user_sms_agreement;
-<<<<<<< HEAD
-
-=======
->>>>>>> junhyeong
 
 addressPhoneInputs[0].value = `${user.consignee_phone_first}`
 addressPhoneInputs[1].value = `${user.consignee_phone_middle}`
@@ -134,20 +130,7 @@ for(let i = 0; i < agreeList.length; i++) {
 
  */
  
-<<<<<<< HEAD
- console.log(emailAgree);
- console.log(smsAgree);
- 
- if(emailAgree == true){
-	checkboxs[0].checked=true;
-}
- if(smsAgree == true){
-	checkboxs[1].checked=true;
-}
 
- 
- 
-=======
  console.log("test" + emailAgree)
  console.log("sms" + smsAgree)
  
@@ -163,7 +146,6 @@ for(let i = 0; i < agreeList.length; i++) {
 }else {
 	checkboxs[1].checked = false;
 }
->>>>>>> junhyeong
  
  //회원 탈퇴 버튼 (모달 컨테이너로 유도 후 탈퇴)
 const modalContainer = document.querySelector(".modal-container")
