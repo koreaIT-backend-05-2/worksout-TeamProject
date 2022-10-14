@@ -25,7 +25,7 @@ public class PageController {
 	// 메인 페이지
 	@GetMapping(value = {"/", "/main"})
 	public String loadMainPage() {
-		return "/main";
+		return "main";
 	}
 	
 	
