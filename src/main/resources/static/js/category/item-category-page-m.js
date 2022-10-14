@@ -73,7 +73,7 @@ function loadItems(list, genderSelect) {
 					<div class="items" id = "pd-${product.productGroup}">
 						<div class = "event">
 							<div class="item">
-							    <img src="/image/product/${product.files[0].fileName}">
+							    <img src="/upload/product/${product.files[0].fileName}">
 							</div>
 							<div>
 							    <p>${product.productBrand}</p>
