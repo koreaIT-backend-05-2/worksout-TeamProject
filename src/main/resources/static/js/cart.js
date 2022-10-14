@@ -3,6 +3,10 @@ const plus = document.querySelector(".plus");
 const amountText = document.querySelector(".amount");
 const productPrice = document.querySelector(".td-price");
 
+let userCode = user.user_code;
+
+console.log("userCode: " + userCode);
+
 console.log(plus);
 
 let amount = 1;
@@ -30,6 +34,7 @@ function load() {
 	$.ajax({
 		async: false,
 		type: "get",
+		url: "api/v1/cart/" + userCode
 		
 	});
 	

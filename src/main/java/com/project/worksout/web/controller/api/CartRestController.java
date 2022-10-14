@@ -82,7 +82,7 @@ public class CartRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "add success", status));
 	}
 	
-	@GetMapping("")
+	@GetMapping("/{userCode}")
 	public ResponseEntity<?> getCart(@RequestParam int userCode) {
 		List<GetCartRespDto> listDto = new ArrayList<GetCartRespDto>();
 		
