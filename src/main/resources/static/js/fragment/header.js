@@ -87,7 +87,7 @@ function loadHeader(user) {
 	let roles = "ROLE_ADMIN";
 	
 
-	if(user == null) {
+	if(user == null || !user.userRoles.incluseds(roles)) {
 		authItems.innerHTML = `
 	         <p class="login-and-logout user-login">로그인</p>
 		`
