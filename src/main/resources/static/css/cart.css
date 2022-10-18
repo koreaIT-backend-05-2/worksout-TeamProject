@@ -1,7 +1,3 @@
-main {
-	height: 100%;
-}
-
 .cart {
     display: flex;
 
@@ -12,9 +8,7 @@ main {
 
 .cart-group {
     width: 940px;
-    height: 300px;
 
-    
 }
 
 .cart-group-header {
@@ -47,7 +41,6 @@ input {
 
 .cart-table {
     width: 940px;
-    height: 290px;
 }
 
 thead {
@@ -131,6 +124,9 @@ tbody tr {
 /* 주문정보 div */
 
 .order-info {
+	position: fixed;	
+	right: 150px;
+	
     margin-left: 32px;
     padding: 20px;
 

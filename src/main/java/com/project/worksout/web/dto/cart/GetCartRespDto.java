@@ -1,7 +1,5 @@
 package com.project.worksout.web.dto.cart;
 
-import com.project.worksout.domain.cart.Cart;
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,12 +9,12 @@ public class GetCartRespDto {
 
 	private int userCode;
 	private int cartCode;
-	private String productFileName;
-	private String productName;
-	private String productDetailName;
-	private String productSize;
-	private int productAmount;
-	private int productPrice;
+	private String cartProductBrand;
+	private String cartProductName;
+	private String cartProductSize;
+	private int cartProductAmount;
+	private int cartProductPrice;
+	private String cartProductFileName;
 	
 
 	

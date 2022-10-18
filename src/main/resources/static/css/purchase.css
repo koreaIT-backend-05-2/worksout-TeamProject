@@ -1,0 +1,232 @@
+input:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+.purchase-container {
+    display: flex;
+    margin: 0px auto;
+
+    width: 62.5%;
+}
+section {
+    width: 62.5%;
+}
+
+section h2 {
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid #616161;
+    
+    font-weight: 400;
+}
+
+section h3 {
+    margin-top: 24px;
+
+    font-weight: 400;
+}
+
+.orderer-info {
+    margin: 24px 0px 0px;
+    padding: 0px 0px 24px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #616161;
+}
+
+.orderer-name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.orderer-name-container input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 370px;
+    height: 36px;
+}
+
+.orderer-phone-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+
+}
+
+.orderer-phone-container input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 110px;
+    height: 36px;
+}
+
+.shipping-info {
+    margin: 24px 0px 0px;
+    padding: 0px 0px 24px;
+
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #616161;
+}
+
+.shipping-info-title {
+    margin: 0px;
+}
+
+.consignee-name-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+}
+
+.consignee-name-container input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 370px;
+    height: 36px;
+}
+
+.consignee-phone-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+}
+
+.consignee-phone-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.consignee-phone-container input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 240px;
+    height: 36px;
+}
+
+.address-container {
+    margin-top: 24px;
+}
+
+.addresss-input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 645px;
+    height: 36px;
+}
+
+.address-search-button {
+    width: 100px;
+    height: 36px;
+
+    background-color: #E5E7EB;
+    border: none;
+}
+
+.detail-address-input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 100%;
+    height: 36px;
+}
+
+.shipping-request-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+}
+
+.shipping-request-container input {
+    margin: 4px 0px 0px;
+    padding: 8px 16px;
+
+    width: 100%;
+    height: 36px;
+}
+
+.purchase-button-container {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 24px 0px 0px;
+
+    width: 270px;
+}
+
+.credit-card {
+    padding: 8px 16px;
+
+    width: 120px;
+    height: 36px;
+
+    background-color: black;
+    border: none;
+
+    color: #fff;
+    font-size: 12px;
+}
+
+.account-transfer {
+    padding: 8px 16px;
+
+    width: 130px;
+    height: 36px;
+
+    background-color: white;
+    border: 1px solid black;
+
+    font-size: 11px;
+}
+
+/* 주문상품 */
+
+article {
+    margin: 48px 0px 0px 128px;
+    padding: 20px;
+
+    width: 300px;
+
+    border: 1px solid rgba(180, 180, 180, 0.4);
+}
+
+.order-title {
+    padding-bottom: 8px;
+
+    font-weight: 300;
+}
+
+.order-products {
+    display: flex;
+    align-items: center;
+    
+    margin-top: 8px;
+}
+
+.order-product-info {
+    padding-left: 8px;
+
+}
+
+img {
+    width: 76px;
+    height: 112px;
+
+    cursor: pointer;
+}

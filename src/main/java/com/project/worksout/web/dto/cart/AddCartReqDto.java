@@ -21,7 +21,7 @@ public class AddCartReqDto {
 				.product_code(productCode)
 				.product_group(productGroup)
 				.product_size(productSize)
-				.cart_amount(cartAmount)
+				.cart_amount(1)
 				.build();
 	}
 	

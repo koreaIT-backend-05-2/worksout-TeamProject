@@ -227,6 +227,7 @@ button {
 .footer {
     margin: 12px 0px 0px;
     padding: 4px 32px 12px;
+    
 
     border-top: 1px solid #efefef;
 }
@@ -237,7 +238,7 @@ button {
 
     margin: 8px 0px 0px;
 
-    height: 32px;
+   
 }
 .company-info span{
     color: #888888;
@@ -295,8 +296,4 @@ button {
 
 .active {
 	display: block;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> junhyeong

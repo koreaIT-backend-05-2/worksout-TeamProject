@@ -33,15 +33,18 @@ public class CartServiceImpl implements CartService{
 	
 	@Override
 	public List<GetCartRespDto> getCartList(int userCode) throws Exception {
-		List<GetCartRespDto> getCartListRespDto = new ArrayList<GetCartRespDto>();
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("user_code", userCode);
+	
+		List<GetCartRespDto> cartList = new ArrayList<GetCartRespDto>();
 		
-		List<Cart> cartLists = cartRepository.getCartList(map);
-
-		log.info("map!!! {}", cartLists);
+		cartRepository.getCartList(map).forEach(cart -> {
+			cartList.add(cart.toCartListDto());
+		});
+		
 		
 		
 //		List<Map<String, Object>> cartFile = new ArrayList<Map<String,Object>>();
@@ -57,27 +60,23 @@ public class CartServiceImpl implements CartService{
 //		
 //		
 //		log.info("cart {}", cartLists);
-			Cart getCartList = cartLists.get(0);
 			
-//			cartLists.forEach(cart -> {
-//				GetCartRespDto cartRespDto = cart;
-//				
-//			});
+
 		
-			getCartListRespDto.add(GetCartRespDto.builder()
-					.userCode(getCartList.getUser_code())
-					.cartCode(getCartList.getCart_code())
-					.productFileName(getCartList.getFile_name())
-					.productName(getCartList.getProduct_name())
-					.productDetailName(getCartList.getProduct_detail_name())
-					.productSize(getCartList.getProduct_size())
-					.productPrice(getCartList.getProduct_price())
-					.build()); 
+//			getCartListRespDto.add(GetCartRespDto.builder()
+//					.userCode(getCartList.getUser_code())
+//					.cartCode(getCartList.getCart_code())
+//					.productFileName(getCartList.getFile_name())
+//					.productName(getCartList.getProduct_name())
+//					.productDetailName(getCartList.getProduct_detail_name())
+//					.productSize(getCartList.getProduct_size())
+//					.productPrice(getCartList.getProduct_price())
+//					.build()); 
+//		
+//	
+//		log.info("getCartList {}", getCartList);
 		
-	
-		log.info("getCartList {}", getCartList);
-		
-		return getCartListRespDto;
+		return cartList;
 	}
 	
 }

@@ -14,15 +14,19 @@ load();
 function buttonEvent(product){
 		let sizeBtns = document.querySelectorAll(".size-button");
 		
-		 let productSize = null;
-		
+		 let productSize = new Array();
+		 
+		 let productCode = new Array();
 		
 		//사이즈 선택 이벤트
 	for(let i = 0; i < sizeBtns.length; i++) {
 	    sizeBtns[i].onclick = () => {
 		
 			productSize = sizeBtns[i].textContent;
-		
+			console.log("뭘까 이건: " + productSize)
+			
+			productCode = sizeBtns[i].value;
+			console.log("뭘까 이건2: " + productCode)
 		// 클릭 이전에 한번 초기화
 			sizeBtns.forEach(sizeBtn => {
 				sizeBtn.classList.remove("act-size")
@@ -43,7 +47,7 @@ function buttonEvent(product){
 								alert("로그인이 필요합니다.")
 								location.href = "/signin"
 						}
-						cartLoad();
+						cartLoad(productSize, productCode);
 					}   
 	            }
 	        }
@@ -183,7 +187,7 @@ function getProduct(product) {
 
 product.productSizeList.forEach(size => {
 	sizeBtnsGroup.innerHTML += `
-	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="">${size.size_name}</button>
+	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="${size.product_code}">${size.size_name}</button>
 	`;
 	
 })
@@ -202,6 +206,13 @@ product.productSizeList.forEach(size => {
 	
 	productInfo.innerHTML = product.productInfo;
 	
+//	let productCodeArray = new Array();
+//	
+//	product.productSizeList.forEach(size => {
+//		productCodeArray.push(size.product_code);
+//	})
+//	
+//	console.log("제발 코드: " + productCodeArray)
 
 	
 //	let count = 0;
@@ -239,15 +250,13 @@ product.productSizeList.forEach(size => {
 
 //장바구니
 
-function cartLoad() {
-	
-	let size = document.querySelectorAll(".size-button");
+function cartLoad(productSize, productCode) {
 	
 	let addCart = {
-			username: user.user_id,
-			"productCode": 1,
+			userCode: user.user_code,
+			"productCode": productCode,
 			"productGroup": productGroup,
-			"productSize": "12",
+			"productSize": productSize,
 			"cartAmount": 1 
 		}
 		

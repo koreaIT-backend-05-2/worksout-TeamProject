@@ -113,25 +113,13 @@ function loadHeader(user) {
 	         <p class="login-and-logout logout" onclick = "location.replace('/logout')">로그아웃</p>
 		`
 		
-		logout.onclick = () => {
-			location.replace("/logout");
-		}
-		
-		myPage.onclick = () => {	
-			location.href = "/mypage/modify"
-		}
-		
 	}else{
-		
-	
 		
 			authItems.innerHTML = `
 			<p class="hidden-my-page my-page" onclick = "location.href ='/mypage/modify'">마이페이지</p>
 	         <p class="login-and-logout logout" onclick = "location.replace('/logout')">로그아웃</p>
 		`
 		
-		let logout = document.querySelector(".logout");
-		let myPage = document.querySelector(".my-page");
 		
 		
 	}
