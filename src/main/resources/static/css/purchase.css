@@ -28,11 +28,11 @@ section h3 {
 }
 
 .orderer-info {
-    margin: 24px 0px 0px;
-    padding: 0px 0px 24px;
-
     display: flex;
     justify-content: space-between;
+
+    margin: 24px 0px 0px;
+    padding: 0px 0px 24px;
 
     border-bottom: 1px solid #616161;
 }
@@ -53,8 +53,6 @@ section h3 {
 .orderer-phone-container {
     display: flex;
     flex-direction: column;
-
-    margin-top: 24px;
 
 }
 
@@ -120,17 +118,20 @@ section h3 {
 
 .address-container {
     margin-top: 24px;
+
 }
 
 .addresss-input {
     margin: 4px 0px 0px;
     padding: 8px 16px;
 
-    width: 645px;
+    width: 635px;
     height: 36px;
 }
 
 .address-search-button {
+    margin-left: 4px;
+
     width: 100px;
     height: 36px;
 
@@ -222,6 +223,16 @@ article {
 .order-product-info {
     padding-left: 8px;
 
+}
+
+.row-line {
+    margin: 16px 0px;
+
+
+    width: 250px;
+    height: 1px;
+
+    background-color: #E5E7EB;
 }
 
 img {
