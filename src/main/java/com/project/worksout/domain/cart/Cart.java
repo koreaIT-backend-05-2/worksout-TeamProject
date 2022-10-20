@@ -18,6 +18,7 @@ public class Cart {
 	private int product_group;
 	private String product_size;
 	private int product_code;
+	private int cart_price;
 	private int cart_amount;
 	
 	

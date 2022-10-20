@@ -56,4 +56,9 @@ public class PageController {
 	public String loadEntryPage() {
 		return "entry";
 	}
+	
+	@GetMapping("/payment")
+	public String loadPaymentPage() {
+		return "payment";
+	}
 }

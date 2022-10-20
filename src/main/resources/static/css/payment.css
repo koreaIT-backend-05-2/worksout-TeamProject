@@ -5,7 +5,7 @@ input:focus {
 
 .purchase-container {
     display: flex;
-    margin: 0px auto;
+    margin: 40px auto;
 
     width: 62.5%;
 }
@@ -233,6 +233,85 @@ article {
     height: 1px;
 
     background-color: #E5E7EB;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 16px 0px 0px;
+}
+
+.shipping-price {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 16px 0px 0px;
+}
+
+.total-payment {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 16px 0px 0px;
+}
+
+.agree-group {
+    margin-top: 15px;
+    padding-bottom: 64px;
+}
+
+.checkbox-group {
+    display: flex;
+
+    padding-right: 20px;
+}
+
+.checkbox-agree {
+    display: none;
+}
+
+.checkbox-agree + label {
+    margin-right: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background-color: #efefef;
+    
+    cursor: pointer;
+}
+
+.checkbox-agree:checked + label::after {
+    display: flex;
+    justify-content: center;
+
+
+    background-color: #111827;
+    content: '✔';
+    color: #fff;
+}
+
+.last-checkbox-group {
+    margin-top: 8px;
+}
+
+.agree {
+    cursor: pointer;
+}
+
+.order-button {
+    margin: 16px 0px 0px;
+    padding: 8px;
+
+    width: 260px;
+    height: 36px;
+
+    background-color: #D1D5DB;
+    color: #fff;
+
+    border: none;
 }
 
 img {

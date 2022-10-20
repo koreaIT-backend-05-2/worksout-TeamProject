@@ -11,6 +11,7 @@ import com.project.worksout.domain.cart.Cart;
 import com.project.worksout.domain.cart.CartRepository;
 import com.project.worksout.web.dto.cart.AddCartReqDto;
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.cart.UpdateCartRespDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -77,6 +78,12 @@ public class CartServiceImpl implements CartService{
 //		log.info("getCartList {}", getCartList);
 		
 		return cartList;
+	}
+	
+	@Override
+	public boolean updateCart(UpdateCartRespDto updateCartRespDto) throws Exception {
+		
+		return cartRepository.updateCartByCartCode(updateCartRespDto.updateCartToEntity()) > 0;
 	}
 	
 }

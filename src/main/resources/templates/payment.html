@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/purchase.css">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
     <title>purchase</title>
 </head>
 <body>
+	<th:block th:replace="fragment/header"></th:block>
+	
     <main>
         <div class="purchase-container">
             <section>
@@ -103,19 +106,24 @@
                     <div class="row-line"></div>
                     
                     <div>
-                        <div>
+                        <div class="total-price">
                             <p>총 상품금액</p>
                             <span>115000원</span>
                         </div>
-                        <div>
+                        <div class="shipping-price">
                             <p>배송비</p>
                             <span>0원</span>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="row-line"></div>
+
+                    <div class="total-payment">
                         <p>총 결제금액</p>
                         <p>115000원</p>
                     </div>
+
+                    <div class="row-line"></div>
                 </div>
                 <div class="agree-group">
                     <div class="checkbox-group">
@@ -129,10 +137,13 @@
                         <label for="provide-agree" class="agree">제 3자 제공 동의</label>
                     </div>
                 </div>
-                <button type="button">주문하기</button>
+                <button type="button" class="order-button">주문하기</button>
             </article>
         </div>
-
     </main>
+    
+    <th:block th:replace="fragment/footer"></th:block>
+    
+	<script src="/static/js/payment.js"></script>
 </body>
 </html>

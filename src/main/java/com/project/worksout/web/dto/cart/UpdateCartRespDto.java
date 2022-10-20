@@ -7,23 +7,21 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AddCartReqDto {
+public class UpdateCartRespDto {
 
-	private int userCode;
+	private int cartCode;
 	private int productCode;
 	private int productGroup;
-	private String productSize;
-	private int cartPrice;
-	private int cartAmount;
+	private int cartProductPrice;
+	private int cartProductAmount;
 	
-	public Cart cartEntity() {
+	public Cart updateCartToEntity() {
 		return Cart.builder()
-				.user_code(userCode)
+				.cart_code(cartCode)
 				.product_code(productCode)
 				.product_group(productGroup)
-				.product_size(productSize)
-				.cart_price(cartPrice)
-				.cart_amount(1)
+				.cart_price(cartProductPrice)
+				.cart_amount(cartProductAmount)
 				.build();
 	}
 	

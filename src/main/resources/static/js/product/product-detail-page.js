@@ -145,7 +145,7 @@ function load() {
 			const product = response.data;
 			
 			getProduct(response.data)
-			buttonEvent(response.data)
+			buttonEvent(product)
 			
 		},
 		error: errorMessage
@@ -251,12 +251,18 @@ product.productSizeList.forEach(size => {
 //장바구니
 
 function cartLoad(productSize, productCode) {
+	let productPrice = document.querySelector(".product-price");
+	
+	cartPrice =parseInt(productPrice.textContent);
+	
+	console.log(parseInt(cartPrice))
 	
 	let addCart = {
 			userCode: user.user_code,
 			"productCode": productCode,
 			"productGroup": productGroup,
 			"productSize": productSize,
+			"cartPrice": cartPrice,
 			"cartAmount": 1 
 		}
 		
@@ -267,11 +273,9 @@ function cartLoad(productSize, productCode) {
 		contentType: "application/json",
 		data:JSON.stringify(addCart),
 		success: (response) => {
-			if(response.data) {
 				
 				alert("장바구니 추가완료")
 				alert(JSON.stringify(addCart))
-			}
 		},
 		error: errorMessage
 	})

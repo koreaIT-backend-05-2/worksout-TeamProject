@@ -45,11 +45,11 @@ function getCartList(list) {
             <td>
                 <div class="td-quantity-button">
                     <button type="button"  class="minus">-</button>
-                    <p class="amount amount_${idx}">${cart.cartProductAmount}</p>
+                    <p class="amount-${idx}">${cart.cartProductAmount}</p>
                     <button type="button" class="plus">+</button>
                 </div>
             </td>
-            <td class="td-price">${cart.cartProductPrice}원</td>
+            <td class="td-price-${idx}">${cart.cartProductPrice}원</td>
             <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td>
         </tr>
 		`
@@ -66,41 +66,56 @@ function increaseAmount() {
 	
 	const minus = document.querySelectorAll(".minus");
 	const plus = document.querySelectorAll(".plus");
-	let price = document.querySelectorAll(".td-price");
+	
+	let amount = null;
 	
 	
-	let priceArray = new Array();
 	
-	for(let i = 0; i < price.length; i++) {
-		console.log("price: " + price[i].textContent);
-		priceArray = price[i].textContent
-	}
-	
-	let amount = 1;
+	let arr = new Array();
 	
 	for(let i = 0; i < plus.length; i++) {
-		let amountText = document.querySelectorAll(`.amount_${i}`);
+		let amountText = document.querySelector(`.amount-${i}`);
+		let priceText = document.querySelector(`.td-price-${i}`);
 		
-		console.log(">>>>>>>>>>>>: " + amountText)
+		let price = priceText.textContent;
+		
+		arr.push(amountText.className.slice(-1));
+		
+//		amountText.forEach(amount => {
+//			arr.push(amount.className.slice(-1))
+//		});
+		
+		console.log("i: " + i)
+		console.log("arr: " + arr);
+//		console.log(priceText.textContent)
+		
 		
 		console.log("plus 크기 : " + plus.length)
 		plus[i].onclick = () => {
-		    if(amountText[i].textContent != 99) {
+		    if(amountText.textContent != 99 && arr[i] == i) {
 	//			let totalAmount =  amountText[i].innerHTML;
-		        amountText[i].textContent = ++amount;
-		        
+				amount = parseInt(amountText.textContent);
+		        amountText.textContent = amount + 1;
+		        priceText.textContent =parseInt(price) *  (amount + 1) + "원"
+		        console.log(amount)
+		        console.log(price)
 		    }
 		}
 	}
 	
 	for(let i = 0; i < minus.length; i++) {
-		let amountText = document.querySelectorAll(`.amount_${i}`);
+		let amountText = document.querySelector(`.amount-${i}`);
+		let priceText = document.querySelector(`.td-price-${i}`);
+		
+		let price = priceText.textContent;
 		
 		minus[i].onclick = () => {
-		    if(amountText[i].textContent == 1) {
-		        amountText[i].textContent = amount;
+		    if(amountText.textContent == 1) {
+		        amountText.textContent = 1;
 		    }else {
-		        amountText[i].textContent = --amount;
+				amount = parseInt(amountText.textContent);
+		        amountText.textContent = amount - 1;
+		        priceText.textContent =parseInt(price) *  (amount - 1) + "원"
 		    }
 		}
 	}
