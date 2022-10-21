@@ -2,11 +2,31 @@ const productPrice = document.querySelector(".td-price");
 
 let userCode = user.user_code;
 
+let totalPrice = 0;
+
+checkUser();
+
 load();
 
 console.log("userCode: " + userCode);
 
 
+//로그인 했을 시 비회원 구매 사라짐
+function checkUser() {
+	if(user != null) {
+		const nonmemberPurchaseBtn = document.querySelector(".nonmember-purchase-button");
+		nonmemberPurchaseBtn.style.display = "none";
+	}
+}
+
+function loadPaymentpage() {
+	const memberPurchaseBtn = document.querySelector(".member-purchase-button");
+	
+	memberPurchaseBtn.onclick = () => {
+		location.href = "/payment"
+	}
+	
+}
 
 function load() {
 	
@@ -17,6 +37,8 @@ function load() {
 		dataType: "json",
 		success: (response)  => {
 			getCartList(response.data)
+			totalPriceEve(response.data)
+			
 		},
 		error: errorMessage
 		
@@ -35,7 +57,7 @@ function getCartList(list) {
 		<tr class="cart-product-list-${cart.cartCode}">
             <td class="td-checkbox"><input type="checkbox"></td>
             <td class="td-items-info">
-               <div><img src="/image/product/${cart.cartProductFileName}" alt=""></div>
+               <div><img src="/image/product/${cart.cartProductFileName}" onClick="location.href = '/product/${cart.productGroup}'" alt="#"></div>
                 <div class="items-info-content"> 
                 <p class="cartCode-hidden cartCode-${idx}">${cart.cartCode}</p>
                   <p>${cart.cartProductName}</p> 
@@ -111,7 +133,8 @@ function increaseAmount() {
 				const cartCode = document.querySelector(`.cartCode-${cartCodeIndex}`).textContent;
 				
 				updateLoad(cartCode,  amountText.textContent,  priceText);
-		        
+				
+				plusTotalprice(parseInt(price))
 		    }
 		}
 	}
@@ -136,6 +159,8 @@ function increaseAmount() {
 				const cartCode = document.querySelector(`.cartCode-${cartCodeIndex}`).textContent;
 				
 				updateLoad(cartCode, amountText.textContent, priceText);
+				
+				minusTotalprice(parseInt(price))
 		    }
 		}
 	}
@@ -166,10 +191,66 @@ function deleteClickEve() {
 
 //총 주문금액 계산
 
-function totalPrice() {
+function totalPriceEve(ttPrice) {
+	const totalOrderPrice = document.querySelector(".total-order-price");
+	const totalPaymentPrice = document.querySelector(".total-payment-price");
+
+	ttPrice.forEach(price => {
+		totalPrice += (price.cartProductPrice) * (price.cartProductAmount)	
+	});
+	
+	console.log(totalPrice);
+	
+	totalOrderPrice.textContent = totalPrice + "원"
+	totalPaymentPrice.textContent = totalPrice + "원"
+		
+
+//	const totalOrderPrice = document.querySelector(".total-order-price");
+//	const totalPaymentPrice = document.querySelector(".total-payment-price");
+//	
+//	let currentPrice = price * amount;
+//	
+//	totalOrderPrice.textContent = currentPrice + "원"
+//	totalPaymentPrice.textContent = currentPrice + "원"
+//	
+//	
+//	let totalPrice = 0;
+//	
+//	totalPrice += price * amount
+//		
+//	
+//	console.log(totalPrice);
+//	
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+}
+
+function plusTotalprice(price) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
 	
+	
+	totalPrice +=  price;
+	
+	console.log(totalPrice)
+	
+	totalOrderPrice.textContent = totalPrice + "원"
+	totalPaymentPrice.textContent = totalPrice + "원"
+	
+}
+
+function minusTotalprice(price) {
+	const totalOrderPrice = document.querySelector(".total-order-price");
+	const totalPaymentPrice = document.querySelector(".total-payment-price");
+	
+	
+	totalPrice -=  price;
+	
+	console.log(totalPrice)
+	
+	totalOrderPrice.textContent = totalPrice + "원"
+	totalPaymentPrice.textContent = totalPrice + "원"
 	
 }
 
