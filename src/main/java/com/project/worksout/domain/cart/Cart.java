@@ -15,9 +15,9 @@ public class Cart {
 
 	private int cart_code;
 	private int user_code;
+	private int product_code;
 	private int product_group;
 	private String product_size;
-	private int product_code;
 	private int cart_price;
 	private int cart_amount;
 	
@@ -33,6 +33,8 @@ public class Cart {
 		return GetCartRespDto.builder()
 					.userCode(user_code)
 					.cartCode(cart_code)
+					.productCode(product_code)
+					.productGroup(product_group)
 					.cartProductBrand(product_brand)
 					.cartProductName(product_detail_name)
 					.cartProductSize(product_size)

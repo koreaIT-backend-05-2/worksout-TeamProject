@@ -9,6 +9,7 @@
 <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
+<div class="main-box ">
 	<th:block th:replace="fragment/header"></th:block>
     <main>
         <div class="main-product">
@@ -227,7 +228,8 @@
             </div>
         </div>
     </article>
-
+    <th:block th:replace="fragment/footer"></th:block>
+</div>
     <script src="/static/js/product/product-detail-page.js"></script>
 </body>
 </html>

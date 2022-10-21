@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/ede2458143.js"></script>
 </head>
 <body>
-
+	<div class="main-box">
 	<th:block th:replace="fragment/header"></th:block>
     <main>
         <div class="cart">
@@ -98,7 +98,7 @@
                 <div>
                     <div class="total-order">
                         <p>총 주문 금액</p>
-                        <p>219,900원</p>
+                        <p class="total-order-price">219900원</p>
                     </div>
                     <div class="total-shipping">
                         <p>총 배송비</p>
@@ -109,7 +109,7 @@
                 <div class="total-price-info">
                     <div class="total-price">
                         <p>총 결제 금액</p>
-                        <p>219,900원</p>
+                        <p class="total-payment-price">219900원</p>
                     </div> 
                 </div>              
                 <button type="button" class="nonmember-purchase-button">비회원 구매</button> 
@@ -119,7 +119,7 @@
     </main>
     <!-- footer부분 -->
     <th:block th:replace="fragment/footer"></th:block>
-    
+    </div>
     <script src="/static/js/cart.js"></script>
 </body>
 </html>

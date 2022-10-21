@@ -10,6 +10,8 @@
     <title>Document</title>
 </head>
 <body>
+<div class="main-box ">
+<th:block th:replace="fragment/header"></th:block>
     <main>
         <article>
             <section class="inquiry-detail-header">
@@ -41,7 +43,10 @@
                 </div>
             </div>
         </article>
+         <!-- footer부분 -->
+	<th:block th:replace="fragment/footer"></th:block>
     </main>
+</div>
 
     <script src="/static/js/admin-inquiry-detail-page.js"></script>
 </body>

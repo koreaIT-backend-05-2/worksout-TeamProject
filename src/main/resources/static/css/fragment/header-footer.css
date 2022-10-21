@@ -225,8 +225,14 @@ button {
 /* footer 부분 */
 
 .footer {
+	position: absolute;
+	bottom: -100px;
+	
     margin: 12px 0px 0px;
     padding: 4px 32px 12px;
+    
+    width: 100%;
+ 
     
 
     border-top: 1px solid #efefef;

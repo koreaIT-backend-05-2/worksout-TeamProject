@@ -1,14 +1,21 @@
+
+main {
+	height: 100%;
+}
+
+
 .cart {
     display: flex;
 
     margin: 112px auto;
 
     width: 1280px;
+    
 }
 
 .cart-group {
+	
     width: 940px;
-
 }
 
 .cart-group-header {
@@ -116,10 +123,11 @@ tbody tr {
 
 .td-trash {
     text-align: center;
-    cursor: pointer;
 }
 
-
+.td-trash i {
+    cursor: pointer;
+}
 
 /* 주문정보 div */
 
@@ -208,4 +216,11 @@ tbody tr {
     color: #fff;
 
     background-color: #111827;
+}
+
+
+/* 히든 태그 */
+
+.cartCode-hidden {
+	display: none;
 }

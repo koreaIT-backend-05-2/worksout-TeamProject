@@ -57,5 +57,12 @@ WHERE
   
   </update>
   
+  <delete id="removeCartByCartCode" parameterType="Integer">
+	  DELETE
+	FROM
+		cart_mst
+	WHERE
+		cart_code = #{cart_code};
+  </delete>
   
   </mapper>

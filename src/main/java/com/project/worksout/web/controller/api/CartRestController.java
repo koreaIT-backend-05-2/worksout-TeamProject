@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -99,6 +100,20 @@ public class CartRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed request", status));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
+	}
+	
+	@DeleteMapping("/remove/{cartCode}")
+	public ResponseEntity<?> removeCart(@PathVariable int cartCode) {
+		boolean status = false;
+		
+		try {
+			status = cartService.removeCart(cartCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(1, "failed request", status));
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));

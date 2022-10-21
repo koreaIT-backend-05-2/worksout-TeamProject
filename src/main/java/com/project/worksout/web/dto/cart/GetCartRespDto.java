@@ -9,6 +9,8 @@ public class GetCartRespDto {
 
 	private int userCode;
 	private int cartCode;
+	private int productCode;
+	private int productGroup;
 	private String cartProductBrand;
 	private String cartProductName;
 	private String cartProductSize;

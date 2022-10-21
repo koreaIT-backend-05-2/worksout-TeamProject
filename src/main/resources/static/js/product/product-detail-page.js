@@ -273,11 +273,16 @@ function cartLoad(productSize, productCode) {
 		contentType: "application/json",
 		data:JSON.stringify(addCart),
 		success: (response) => {
-				
 				alert("장바구니 추가완료")
 				alert(JSON.stringify(addCart))
 		},
-		error: errorMessage
+		error: (error) => {
+			if(error.status == 500) {
+				alert("이미 추가된 상품입니다.")
+			}else {
+				errorMessage	
+			}
+		}
 	})
 }
 

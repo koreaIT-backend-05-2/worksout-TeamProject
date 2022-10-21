@@ -9,7 +9,11 @@ import com.project.worksout.web.dto.cart.UpdateCartRespDto;
 public interface CartService {
 
 	public boolean addCart(AddCartReqDto addCartReqDto) throws Exception;
+	
 	public List<GetCartRespDto> getCartList(int userCode) throws Exception;
+	
 	public boolean updateCart(UpdateCartRespDto updateCartRespDto) throws Exception;
+	
+	public boolean removeCart(int cartCode) throws Exception;
 	
 }

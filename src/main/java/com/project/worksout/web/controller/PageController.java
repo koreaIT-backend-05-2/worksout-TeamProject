@@ -61,4 +61,9 @@ public class PageController {
 	public String loadPaymentPage() {
 		return "payment";
 	}
+	
+	@GetMapping("/interest")
+	public String loadInterestPage() {
+		return "interest";
+	}
 }
