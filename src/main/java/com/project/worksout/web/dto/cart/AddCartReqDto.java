@@ -15,6 +15,7 @@ public class AddCartReqDto {
 	private String productSize;
 	private int cartPrice;
 	private int cartAmount;
+	private int payFlag;
 	
 	public Cart cartEntity() {
 		return Cart.builder()
@@ -24,6 +25,7 @@ public class AddCartReqDto {
 				.product_size(productSize)
 				.cart_price(cartPrice)
 				.cart_amount(1)
+				.pay_flag(1)
 				.build();
 	}
 	

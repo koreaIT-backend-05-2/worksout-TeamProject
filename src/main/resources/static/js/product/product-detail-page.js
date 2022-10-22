@@ -160,6 +160,7 @@ function getProduct(product) {
 	const productKorName = document.querySelector(".product-kor-name");
 	const productgroupNum = document.querySelector(".product-code");
 	const productPrice = document.querySelector(".product-price");
+	const productHiddenPrice = document.querySelector(".product-hidden-price");
 	const productInfo = document.querySelector(".product-info");
 	const productImg = document.querySelector(".img-group");
 	const sizeBtnsGroup = document.querySelector(".size-buttons-group");
@@ -173,7 +174,9 @@ function getProduct(product) {
 	productDetailName.innerHTML = product.productDetailName;
 	productKorName.innerHTML = product.productKorName;
 	productgroupNum.innerHTML = productGroup;
-	productPrice.innerHTML = product.productPrice + "원";
+	productHiddenPrice.innerHTML = product.productPrice;
+	productPrice.innerHTML = product.productPrice.toLocaleString("ko-kr") + "원";
+	
 	
 	for(let i = 0; i > product.productSizeList.length; i++) {
 		const lastProduct = document.querySelector(".last-product");
@@ -251,7 +254,7 @@ product.productSizeList.forEach(size => {
 //장바구니
 
 function cartLoad(productSize, productCode) {
-	let productPrice = document.querySelector(".product-price");
+	let productPrice = document.querySelector(".product-hidden-price");
 	
 	cartPrice =parseInt(productPrice.textContent);
 	
@@ -273,16 +276,15 @@ function cartLoad(productSize, productCode) {
 		contentType: "application/json",
 		data:JSON.stringify(addCart),
 		success: (response) => {
+			if(response.data) {
 				alert("장바구니 추가완료")
-				alert(JSON.stringify(addCart))
-		},
-		error: (error) => {
-			if(error.status == 500) {
-				alert("이미 추가된 상품입니다.")
 			}else {
-				errorMessage	
+				alert("이미 추가된 상품입니다.")
 			}
-		}
+				
+		},
+		error: errorMessage	
+	
 	})
 }
 

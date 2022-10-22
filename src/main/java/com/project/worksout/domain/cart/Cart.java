@@ -20,6 +20,7 @@ public class Cart {
 	private String product_size;
 	private int cart_price;
 	private int cart_amount;
+	private int pay_flag;
 	
 	
 	private String product_brand;
@@ -41,6 +42,7 @@ public class Cart {
 					.cartProductAmount(cart_amount)
 					.cartProductPrice(product_price)
 					.cartProductFileName(file_name)
+					.payFlag(pay_flag)
 					.build();
 				
 					

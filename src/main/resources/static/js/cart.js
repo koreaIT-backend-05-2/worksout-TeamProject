@@ -4,7 +4,11 @@ let userCode = user.user_code;
 
 let totalPrice = 0;
 
+//totalPrice.toLocaleString("ko-kr")
+
 checkUser();
+
+loadPaymentpage();
 
 load();
 
@@ -53,9 +57,14 @@ function getCartList(list) {
 	console.log(list[0].cartProductFileName)
 	
 	list.forEach((cart, idx) => {
+		let productHiddenPrice = cart.cartProductPrice
+
+		let productPrice = cart.cartProductPrice.toLocaleString("ko-kr")
+		
+		
 		cartTbody.innerHTML += `
 		<tr class="cart-product-list-${cart.cartCode}">
-            <td class="td-checkbox"><input type="checkbox"></td>
+            <td class="td-checkbox"><input class="cart-flag-checkbox" type="checkbox"  value="${cart.cartCode}"></td>
             <td class="td-items-info">
                <div><img src="/image/product/${cart.cartProductFileName}" onClick="location.href = '/product/${cart.productGroup}'" alt="#"></div>
                 <div class="items-info-content"> 
@@ -72,12 +81,11 @@ function getCartList(list) {
                     <button type="button" class="plus plus-${idx}">+</button>
                 </div>
             </td>
-            <td class="td-price-${idx}">${cart.cartProductPrice}원</td>
+            <td class="td-price-hidden-${idx}" style="display:none">${productHiddenPrice}원</td>
+            <td class="td-price-${idx}">${productPrice}원</td>
             <td class="td-trash"><i class="fa-solid fa-trash-can delete-cart-${idx}"></i></td>
         </tr>
 		`
-		
-		
 	});
 	
 	console.log("<<<<<<<<: " + list[0].cartCode)
@@ -102,8 +110,9 @@ function increaseAmount() {
 	for(let i = 0; i < plus.length; i++) {
 		let amountText = document.querySelector(`.amount-${i}`);
 		let priceText = document.querySelector(`.td-price-${i}`);
+		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
 		
-		let price = priceText.textContent;
+		let price = priceHiddenText.textContent;
 		
 		arr.push(amountText.className.slice(-1));
 		
@@ -123,7 +132,7 @@ function increaseAmount() {
 	//			let totalAmount =  amountText[i].innerHTML;
 				amount = parseInt(amountText.textContent);
 		        amountText.textContent = amount + 1;
-		        priceText =parseInt(price) *  (amount + 1) + "원"
+		        priceHiddenText = parseInt(price) *  (amount + 1) + "원"
 		        console.log(amount)
 		        console.log(price)
 		        console.log("i의 값: " + i)
@@ -132,9 +141,9 @@ function increaseAmount() {
 		        
 				const cartCode = document.querySelector(`.cartCode-${cartCodeIndex}`).textContent;
 				
-				updateLoad(cartCode,  amountText.textContent,  priceText);
+				updateLoad(cartCode,  amountText.textContent,  priceHiddenText);
 				
-				plusTotalprice(parseInt(price))
+				plusTotalPrice(parseInt(price))
 		    }
 		}
 	}
@@ -142,8 +151,12 @@ function increaseAmount() {
 	for(let i = 0; i < minus.length; i++) {
 		let amountText = document.querySelector(`.amount-${i}`);
 		let priceText = document.querySelector(`.td-price-${i}`);
+		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
 		
-		let price = priceText.textContent;
+		let price = priceHiddenText.textContent;
+		
+		console.log(price)
+		console.log(price)
 		
 		minus[i].onclick = (e) => {
 		    if(amountText.textContent == 1) {
@@ -152,15 +165,18 @@ function increaseAmount() {
 		    }else {
 				amount = parseInt(amountText.textContent);
 		        amountText.textContent = amount - 1;
-		        priceText =parseInt(price) *  (amount - 1) + "원"
+		        priceHiddenText = parseInt(price) *  (amount - 1) + "원"
 		        
 		        let cartCodeIndex = e.target.classList[1].substring(e.target.classList[1].lastIndexOf("-") + 1);
 		        
 				const cartCode = document.querySelector(`.cartCode-${cartCodeIndex}`).textContent;
 				
-				updateLoad(cartCode, amountText.textContent, priceText);
+				console.log(priceText)
+				console.log(priceHiddenText)
 				
-				minusTotalprice(parseInt(price))
+				updateLoad(cartCode, amountText.textContent, priceHiddenText);
+				
+				minusTotalPrice(parseInt(price))
 		    }
 		}
 	}
@@ -171,23 +187,35 @@ function deleteClickEve() {
 	
 	for(let i = 0; i < deleteBtns.length; i++) {
 			deleteBtns[i].onclick = () => {
+				let deletePriceText = document.querySelector(`.td-price-${i}`);
+				let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+				let amountText = document.querySelector(`.amount-${i}`);
+				
+				 deletePrice = parseInt(priceHiddenText.textContent);
+				 amount = parseInt(amountText.textContent);
+				 
+				 let deletePriceWithAmount = deletePrice * amount;
+				 
+				 console.log("제발 되야한다: " + deletePriceWithAmount)
+				 
+				 deleteTotalPrice(deletePriceWithAmount);
+				
 				let deleteIndex = deleteBtns[i].className.slice(-1)
 
 				const cartCode = document.querySelector(`.cartCode-${deleteIndex}`).textContent;
-
-
 				console.log(cartCode)
 
 				deleteCart(cartCode);
 
 				const cartProductList = document.querySelector(`.cart-product-list-${cartCode}`);
-				
+			
 				cartProductList.remove();
-	
-
+				
+				
 		}
 	}
 }
+
 
 //총 주문금액 계산
 
@@ -201,8 +229,13 @@ function totalPriceEve(ttPrice) {
 	
 	console.log(totalPrice);
 	
-	totalOrderPrice.textContent = totalPrice + "원"
-	totalPaymentPrice.textContent = totalPrice + "원"
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
 		
 
 //	const totalOrderPrice = document.querySelector(".total-order-price");
@@ -226,33 +259,79 @@ function totalPriceEve(ttPrice) {
 	
 }
 
-function plusTotalprice(price) {
+function plusTotalPrice(price) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
-	
 	
 	totalPrice +=  price;
 	
 	console.log(totalPrice)
+
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
 	
-	totalOrderPrice.textContent = totalPrice + "원"
-	totalPaymentPrice.textContent = totalPrice + "원"
+		
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
 	
 }
 
-function minusTotalprice(price) {
+function minusTotalPrice(price) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
 	
+	console.log(price);
 	
-	totalPrice -=  price;
+	totalPrice -= price;
 	
 	console.log(totalPrice)
 	
-	totalOrderPrice.textContent = totalPrice + "원"
-	totalPaymentPrice.textContent = totalPrice + "원"
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
+	
+//	console.log(typeof(totalOrderPrice.textContent))
 	
 }
+
+
+function deleteTotalPrice(price) {
+	const totalOrderPrice = document.querySelector(".total-order-price");
+	const totalPaymentPrice = document.querySelector(".total-payment-price");
+
+	console.log("내가 원하는 값: " + price)
+	
+	console.log("현재 금액: " + totalPrice)
+	
+	totalPrice -= price;
+	
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
+	
+	console.log("ttttttttttttttttprce: " + totalPrice)
+		
+}
+
+
+//function purchaseCancelFlag() {
+//	const cartFlagCheckbox = document.querySelector(".cart-flag-checkbox");
+//	
+//	
+//	
+//}
+
+
 
 function updateLoad(cartCode, amount, price) {
 console.log("cartCode: " + cartCode)
@@ -278,7 +357,6 @@ console.log("price" + price)
 		error: errorMessage
 		
 	});
-
 
 //	console.log("cartCode: " + cartCode)
 //	console.log("productCode: " + productCode)

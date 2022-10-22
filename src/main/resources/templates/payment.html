@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/payment.css">
     <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
-    <title>purchase</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>payment</title>
 </head>
 <body>
 <div class="main-box ">
@@ -21,34 +22,47 @@
                 <div class="orderer-info">
                     <div class="orderer-name-container">
                         <label for="name">이름 *</label>
-                        <input type="text" id="name" class="orderer-name-input" placeholder="이름을 입력해주세요.">
+                        <input type="text" id="name" class="orderer-name-input" disabled placeholder="이름을 입력해주세요.">
                     </div>
                     <div class="orderer-phone-container">
                         <label for="phone-number">핸드폰 번호 *</label>
-                        <div>
-                            <input type="text" id="phone-number" placeholder="000">
-                            <input type="text" placeholder="0000">
-                            <input type="text" placeholder="0000">
+                        <div class="phone-number-container">
+                            <input type="text" id="phone-number"  class="first-phone-input" placeholder="000" disabled>
+                            <input type="text" class="middle-phone-input"  placeholder="0000" disabled>
+                            <input type="text"  class="last-phone-input" placeholder="0000" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="shipping-info">
-                    <h3 class="shipping-info-title">배송 정보</h3>
-                    <div class="consignee-name-container">
-                        <label for="consignee-name">수취인 이름 *</label>
-                        <input type="text" id="consignee-name" placeholder="수취인 이름을 적어주세요.">
+                    <div class="shipping-title-container">
+                        <h3 class="shipping-info-title">배송 정보</h3>
+                        <h3 class="shipping-location-list">배송지 목록</h3>
+                    </div>
+                    <div class="shipping-button-group">
+                        <button type="button" class="exist-choose-button">기존 배송지</button>
+                        <button type="button" class="new-choose-button">신규 입력</button>
+                    </div>
+                    <div class="shipping-info-container">
+                        <div class="shipping-location-container">
+                            <label for="shipping-location">배송지명 *</label>
+                            <input type="text" id="shipping-location" class="shipping-location-input" placeholder="배송지명을 적어주세요." disabled>
+                        </div>
+                        <div class="consignee-name-container">
+                            <label for="consignee-name">수취인 이름 *</label>
+                            <input type="text" id="consignee-name"  class="consignee-name-input"  placeholder="수취인 이름을 적어주세요.">
+                        </div>
                     </div>
                     <div class="consignee-phone-container">
-                        <label for="consignee-phone-number">수취인 전화번호 *</label>
+                        <label for="consignee-phone">수취인 전화번호 *</label>
                         <div class="consignee-phone-group">
-                            <input type="text" id="consignee-phone-number" placeholder="000">
-                            <input type="text" placeholder="0000">
-                            <input type="text" placeholder="0000">
+                            <input type="text" id="consignee-phone"  class="consignee-first-phone-input" placeholder="000">
+                            <input type="text"  class="consignee-middle-phone-input"placeholder="0000">
+                            <input type="text"  class="consignee-last-phone-input" placeholder="0000">
                         </div>
                     </div>
                     <div class="address-container" >
                             <p>주소 *</p>
-                            <input type="text" class="addresss-input" disabled placeholder="주소" >
+                            <input type="text" class="address-input" disabled placeholder="주소" >
                         <button type="button" class="address-search-button">검색</button>
                         <div>
                             <input type="text" class="detail-address-input" placeholder="상세 주소 입력">

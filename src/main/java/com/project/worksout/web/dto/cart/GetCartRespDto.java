@@ -17,6 +17,7 @@ public class GetCartRespDto {
 	private int cartProductAmount;
 	private int cartProductPrice;
 	private String cartProductFileName;
+	private int payFlag;
 	
 
 	

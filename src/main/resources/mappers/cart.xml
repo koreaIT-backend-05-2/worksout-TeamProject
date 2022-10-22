@@ -5,17 +5,26 @@
   
   <mapper namespace="com.project.worksout.domain.cart.CartRepository">
   <insert id="saveCart"  parameterType="com.project.worksout.domain.cart.Cart">
-  	insert into
-  		cart_mst
-  	values(
-  		0,
-  		#{user_code},
-  		#{product_code},
-  		#{product_group},
-  		#{product_size},
-  		#{cart_price},
-  		#{cart_amount}
-  	)
+  INSERT INTO
+		cart_mst
+	select
+		0,
+		#{user_code},
+		#{product_code},
+		#{product_group},
+		#{product_size},
+		#{cart_price},
+		#{cart_amount},
+		#{pay_flag}
+	FROM dual
+WHERE NOT EXISTS
+	(SELECT
+		*
+	FROM
+		cart_mst
+	WHERE
+		user_code = #{user_code} AND product_code = #{product_code}
+	);
   </insert>
   <select id="getCartList" parameterType="hashmap" resultType="com.project.worksout.domain.cart.Cart">
   	SELECT
@@ -34,6 +43,7 @@ from
 		pm.product_detail_name,
 		
 		cm.cart_amount,
+		cm.pay_flag,
 	
 		pif.file_name
 	FROM
@@ -55,6 +65,15 @@ WHERE
 	WHERE
 		cart_code = #{cart_code};
   
+  </update>
+  
+  <update id="updateCartFlag" parameterType="Integer">
+  UPDATE
+		cart_mst
+	SET
+		pay_flag = case when pay_flag = '1' then 0 ELSE 1 end
+	WHERE
+		cart_code = #{cart_code};
   </update>
   
   <delete id="removeCartByCartCode" parameterType="Integer">
