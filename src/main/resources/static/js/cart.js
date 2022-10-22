@@ -254,8 +254,6 @@ function minusTotalprice(price) {
 	
 }
 
-
-
 function updateLoad(cartCode, amount, price) {
 console.log("cartCode: " + cartCode)
 console.log("amount" + amount)
