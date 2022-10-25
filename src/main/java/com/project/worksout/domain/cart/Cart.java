@@ -12,11 +12,16 @@ import lombok.NoArgsConstructor;
 public class Cart {
 
 	private int cart_code;
+	
+	private int user_code;
+	
 	private String user_id;
+	
+	private int product_code;
 	private int product_group;
 	private String product_size;
-	private int product_code;
 	
+	private int cart_price;
 	private int cart_amount;
 	
 	private String product_name;
@@ -27,4 +32,5 @@ public class Cart {
 	private int file_code;
 	private String file_name;
 	
+	private int pay_flag;
 }

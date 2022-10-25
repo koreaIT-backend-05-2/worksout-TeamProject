@@ -44,31 +44,47 @@ public class CartServiceImpl implements CartService{
 		log.info("map!!! {}", map);
 		
 		
-		List<Map<String, Object>> cartFile = new ArrayList<Map<String,Object>>();
 		
-		cartLists.forEach(cartList -> {
+//		cartLists.forEach(cartList -> {
+//			Map<String, Object> fileMap = new HashMap<String, Object>();
+//			
+//			fileMap.put("fileCode", cartList.getFile_code());
+//			fileMap.put("fileName", cartList.getFile_name());
+//			
+//			cartFile.add(fileMap);
+//		});
+		
+
+		
+		//log.info(">> {}", cartFile);
+		
+		log.info("cartLists {}", cartLists);
+		
+		cartLists.forEach(cart -> {
+			
 			Map<String, Object> fileMap = new HashMap<String, Object>();
 			
-			fileMap.put("fileCode", cartList.getFile_code());
-			fileMap.put("fileName", cartList.getFile_name());
+			fileMap.put("fileCode", cart.getFile_code());
+			fileMap.put("fileName", cart.getFile_name());
 			
-			cartFile.add(fileMap);
-		});
-		
-		log.info(">> {}", cartFile);
-		
-		log.info("cart {}", cartLists);
-			Cart getCartList = cartLists.get(0);
-		
+			Cart getCartList = cart;
+			
 			getCartListRespDto.add(GetCartRespDto.builder()
 					.cartCode(getCartList.getCart_code())
-					.productImg(cartFile)
+					.userCode(getCartList.getUser_code())
+					.productCode(getCartList.getProduct_code())
+					.productImg(fileMap)
 					.productName(getCartList.getProduct_name())
 					.productDetailName(getCartList.getProduct_detail_name())
 					.productSize(getCartList.getProduct_size())
 					.productPrice(getCartList.getProduct_price())
+					.cartAmount(getCartList.getCart_amount())
+					.pay_flag(getCartList.getPay_flag())
 					.build()); 
-		
+			
+			log.info("cart {}", cart);
+		});
+		System.out.println(getCartListRespDto);
 		
 		return getCartListRespDto;
 	}

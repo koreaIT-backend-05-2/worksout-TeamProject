@@ -11,11 +11,18 @@ import lombok.Data;
 public class GetCartRespDto {
 
 	private int cartCode;
-	private List<Map<String, Object>> productImg;
+	private int userCode;
+	
+	private int productCode;
+	private Map<String, Object> productImg;
 	private String productName;
 	private String productDetailName;
 	private String productSize;
 	private int productAmount;
 	private int productPrice;
+	
+	private int cartAmount;
+	
+	private int pay_flag;
 	
 }

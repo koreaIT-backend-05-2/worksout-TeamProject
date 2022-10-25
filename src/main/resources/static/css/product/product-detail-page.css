@@ -75,8 +75,16 @@ img {
     color: #1F2937;
 }
 
+.size-buttons-group{
+	display: flex;
+}
+
+.size-button-list {
+	margin : 0px 3px 0px 0px;
+}
+
 .size-button {
-    width: 44px;
+	width: 44px;
     height: 44px;
 
     background-color: white;

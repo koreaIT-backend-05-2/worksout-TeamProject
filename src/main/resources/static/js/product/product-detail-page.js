@@ -2,6 +2,11 @@ const selectBtn = document.querySelector(".select-button");
 
 let productGroup = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
 
+let selectedProductCode = null;
+let selectedProductSize = null;
+
+let staticProductPrice = null;
+
 console.log("urlNumber: " + productGroup);
 // 사이즈 클릭시만 구매 또는 장바구니 버튼 생성
 
@@ -13,10 +18,20 @@ load();
 
 function buttonEvent(product) {
 	let sizeBtns = document.querySelectorAll(".size-button");
+	let sizeBtnLists = document.querySelectorAll(".size-button-list");
 
 	let productSize = null;
+	
 
-
+	for (let sizeButtons of sizeBtnLists) {
+		const productCode = subStringProductCode(sizeButtons);
+		const productSize = sizeButtons.innerText;
+		sizeButtons.onclick=()=>{
+			//alert(productCode + " "+ productSize);
+			selectedProductCode = parseInt(productCode);
+			selectedProductSize = productSize;
+		}
+	}
 	//사이즈 선택 이벤트
 	for (let i = 0; i < sizeBtns.length; i++) {
 		sizeBtns[i].onclick = () => {
@@ -43,6 +58,7 @@ function buttonEvent(product) {
 							alert("로그인이 필요합니다.")
 							location.href = "/signin"
 						}
+						
 						cartLoad();
 					}
 				}
@@ -168,8 +184,13 @@ function getProduct(product) {
 	productName.innerHTML = product.productName;
 	productDetailName.innerHTML = product.productDetailName;
 	productKorName.innerHTML = product.productKorName;
-	productgroupNum.innerHTML = productGroup;
-	productPrice.innerHTML = product.productPrice + "원";
+	productgroupNum.innerHTML = product.productGroup;
+	
+	const price = product.productPrice.toLocaleString('ko-kr');
+	staticProductPrice = product.productPrice;
+	console.log(typeof(price))
+	
+	productPrice.innerHTML = price + "원";
 
 	for (let i = 0; i > product.productSizeList.length; i++) {
 		const lastProduct = document.querySelector(".last-product");
@@ -183,10 +204,12 @@ function getProduct(product) {
 
 	product.productSizeList.forEach(size => {
 		sizeBtnsGroup.innerHTML += `
-	<div class = "size-button-test" id = "pdsize-${size.product_code}">
-		<button type="button" class="size-button" id="pdsize-${size.product_code}" value ="">${size.size_name}</button>
-	</div>
-	`;
+		<div class ="size-button-list">
+			<div class ="size-buttons" id ="pdsize-${size.product_code}">		
+				<button type="button" class="size-button"  value ="">${size.size_name}</button>
+			</div>
+		</div>
+		`;
 	})
 
 	addEvent();
@@ -242,50 +265,52 @@ function getProduct(product) {
 }
 
 function subStringProductCode(sizeButton) {
-	const tdProductContents = sizeButton.querySelector(".pdsize");
-	console.log("tdProductContents : " + tdProductContents);
+	const tdProductContents = sizeButton.querySelector(".size-buttons");
 	const productCode = tdProductContents.getAttribute("id");
-	console.log("productCode : " + productCode);
 	const tokenIndex = productCode.lastIndexOf("-");
-	console.log("tokenIndex : " + tokenIndex);
 
-	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
-	console.log("  ");
 	return productCode.substring(tokenIndex + 1);
 }
 
 function addEvent() {
-	const sizeButtonTest = document.querySelector(".size-button-test");
+	const sizeButtonList = document.querySelectorAll(".size-button-list");
 
-	for (let sizeButton of sizeButtonTest) {
-		//const productCode = subStringProductCode(sizeButton);
+	for (let sizeButton of sizeButtonList) {
+		const productCode = subStringProductCode(sizeButton);
 
-		//mouseEvent(productCode);
+		mouseEvent(sizeButton, productCode);
 	}
 }
 
-function mouseEvent(productCode) {
-	const sizeBtn = document.querySelector(".size-button");
-
-	sizeBtn.onclick = () => {
-		console.log(productCode);
-	}
+function mouseEvent(sizeButton, productCode) {
+	const sizeBtn = sizeButton.querySelector(".size-button");
+	const productSize = sizeBtn.textContent;
+//	sizeBtn.onclick = () => {
+//		console.log(productCode);
+//		console.log(productSize);
+//		selectedProductCode = productCode;
+//		selectedProductSize = productSize;
+//	}
 }
+
 
 //장바구니
-
+let count=0;
 function cartLoad() {
 
 	let size = document.querySelectorAll(".size-button");
 
 	let addCart = {
-		username: user.user_id,
-		"productCode": 1,
+		//username: user.user_id,
+		"userCode": user.user_code,
+		"productCode": selectedProductCode,
 		"productGroup": productGroup,
-		"productSize": "12",
+		"productSize": selectedProductSize,
+		"cartPrice": staticProductPrice,
 		"cartAmount": 1
 	}
-
+	console.log(addCart);
+	
 	$.ajax({
 		async: false,
 		type: "post",
@@ -294,9 +319,10 @@ function cartLoad() {
 		data: JSON.stringify(addCart),
 		success: (response) => {
 			if (response.data) {
-
 				alert("장바구니 추가완료")
 				alert(JSON.stringify(addCart))
+			} else {
+				alert("이미 등록된 상품입니다.");
 			}
 		},
 		error: errorMessage

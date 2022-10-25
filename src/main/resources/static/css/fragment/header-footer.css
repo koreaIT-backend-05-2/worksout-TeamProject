@@ -225,10 +225,19 @@ button {
 /* footer 부분 */
 
 .footer {
+    bottom: -100px;
+   	position: absolute;
+   	z-index: 1;
+   	
     margin: 12px 0px 0px;
     padding: 4px 32px 12px;
+	
+	width: 100%;   
 
+	background-color: white;
     border-top: 1px solid #efefef;
+    
+    
 }
 
 .footer-content{
