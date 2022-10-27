@@ -7,10 +7,12 @@
     <title>MainPage</title>
  	<link rel="stylesheet" href="/static/css/style.css">   
     <link rel="stylesheet" href="/static/css/mainpage.css">
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
+<div class="main-box ">
         <!-- 헤더부분 -->
-        <th:block th:replace="/fragment/header"></th:block>
+	<th:block th:replace="fragment/header"></th:block>
     
     <main>
         <div class="main-container">
@@ -19,7 +21,8 @@
         
     </main>
 	<!-- footer부분 -->
-    <th:block th:replace="/fragment/footer"></th:block>
+    <th:block th:replace="fragment/footer"></th:block>
+</div>
     
     <script src="/static/js/main.js"></script>
 </body>

@@ -7,17 +7,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.worksout.service.cart.CartService;
 import com.project.worksout.web.dto.CMRespDto;
 import com.project.worksout.web.dto.cart.AddCartReqDto;
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.cart.UpdateCartRespDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,8 +77,8 @@ public class CartRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "add success", status));
 	}
 	
-	@GetMapping("")
-	public ResponseEntity<?> getCart(@RequestParam int userCode) {
+	@GetMapping("/{userCode}")
+	public ResponseEntity<?> getCart(@PathVariable int userCode) {
 		List<GetCartRespDto> listDto = new ArrayList<GetCartRespDto>();
 		
 		try {
@@ -88,5 +91,46 @@ public class CartRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", listDto));
 	}
 	
+	@PutMapping("/modify/{cartCode}")
+	public ResponseEntity<?> updateCart(@PathVariable int cartCode, @RequestBody UpdateCartRespDto updateCartRespDto) {
+		boolean status = false;
+		
+		try {
+			status = cartService.updateCart(updateCartRespDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed request", status));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
+	}
+	
+	@DeleteMapping("/remove/{cartCode}")
+	public ResponseEntity<?> removeCart(@PathVariable int cartCode) {
+		boolean status = false;
+		
+		try {
+			status = cartService.removeCart(cartCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(1, "failed request", status));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
+	}
+	
+//	@PutMapping("/flag/{cartCode}")
+//	public ResponseEntity<?> updateFlag(@PathVariable int cartCode) {
+//		boolean status = false;
+//		
+//		try {
+//			status = cartService.updateCartFlag(cartCode);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed request", status));
+//		}
+//		
+//		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
+//	}
 	
 }

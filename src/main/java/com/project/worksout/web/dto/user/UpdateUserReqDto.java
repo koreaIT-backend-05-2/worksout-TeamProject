@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import com.project.worksout.domain.user.User;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class UpdateUserReqDto {
 	
 	private int userCode;

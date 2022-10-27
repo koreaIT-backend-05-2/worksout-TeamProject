@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: ${port:8000}
   servlet:
     encoding:
       charset: UTF-8
@@ -32,4 +32,5 @@ mybatis:
 file:
   path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
   downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
+  
   

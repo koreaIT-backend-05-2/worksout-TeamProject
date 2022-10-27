@@ -10,9 +10,10 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>worksout</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>worksout</name>
 	<description>TeamProject</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -81,14 +82,13 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		
 		<!-- commons-io -->
 		<dependency>
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
 		    <version>2.4</version>
-		</dependency>		
-
+		</dependency>
+	
 	</dependencies>
 
 	<build>

@@ -14,10 +14,11 @@
 </head>
 
 <body>
+<div class="main-box ">
     <div class="__next">
         <div class="all-container">
             <!-- 헤더부분 -->
-            <th:block th:replace="/fragment/header"></th:block>
+            <th:block th:replace="fragment/header"></th:block>
 
             <main class="main-container">
                 <div class="header-name">상품등록</div>
@@ -52,11 +53,12 @@
             </main>
             
             <!-- footer부분 -->
-            <th:block th:replace="/fragment/footer"></th:block>
+            <th:block th:replace="fragment/footer"></th:block>
         </div>
 
     </div>
   <!-- <script src="/static/js/item-category-page.js"></script> -->
+</div>
     
     <script src="/static/js/product/product-insert.js"></script>
     <script src="/static/js/product/product.js"></script>

@@ -14,11 +14,12 @@
 </head>
 
 <body>
+<div class="main-box ">
     <div class="__next">
         <div class="all-container">
 
             <!-- header 부분  -->
-            <th:block th:replace="/fragment/header"></th:block>
+            <th:block th:replace="fragment/header"></th:block>
 
             <main class="main-container">
                 <div class="header-name">문의게시글</div>
@@ -72,11 +73,13 @@
             </main>
             
             <!-- footer부분 -->
-            <th:block th:replace="/fragment/footer"></th:block>
+            <th:block th:replace="fragment/footer"></th:block>
         
         </div>
 
     </div>
+</div>
+    
     <script src="/static/js/product/product.js"></script>
     <script src="/static/js/admin-inquiry-page.js"></script>
     <script src="/static/js/product/product.js"></script>

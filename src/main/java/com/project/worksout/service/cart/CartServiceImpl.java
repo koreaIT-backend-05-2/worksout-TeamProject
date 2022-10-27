@@ -11,6 +11,7 @@ import com.project.worksout.domain.cart.Cart;
 import com.project.worksout.domain.cart.CartRepository;
 import com.project.worksout.web.dto.cart.AddCartReqDto;
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.cart.UpdateCartRespDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,15 +34,18 @@ public class CartServiceImpl implements CartService{
 	
 	@Override
 	public List<GetCartRespDto> getCartList(int userCode) throws Exception {
-		List<GetCartRespDto> getCartListRespDto = new ArrayList<GetCartRespDto>();
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("user_code", userCode);
+	
+		List<GetCartRespDto> cartList = new ArrayList<GetCartRespDto>();
 		
-		List<Cart> cartLists = cartRepository.getCartList(map);
-
-		log.info("map!!! {}", cartLists);
+		cartRepository.getCartList(map).forEach(cart -> {
+			cartList.add(cart.toCartListDto());
+		});
+		
 		
 		
 //		List<Map<String, Object>> cartFile = new ArrayList<Map<String,Object>>();
@@ -57,22 +61,43 @@ public class CartServiceImpl implements CartService{
 //		
 //		
 //		log.info("cart {}", cartLists);
-			Cart getCartList = cartLists.get(0);
+			
+
 		
-			getCartListRespDto.add(GetCartRespDto.builder()
-					.userCode(getCartList.getUser_code())
-					.cartCode(getCartList.getCart_code())
-					.productFileName(getCartList.getFile_name())
-					.productName(getCartList.getProduct_name())
-					.productDetailName(getCartList.getProduct_detail_name())
-					.productSize(getCartList.getProduct_size())
-					.productPrice(getCartList.getProduct_price())
-					.build()); 
+//			getCartListRespDto.add(GetCartRespDto.builder()
+//					.userCode(getCartList.getUser_code())
+//					.cartCode(getCartList.getCart_code())
+//					.productFileName(getCartList.getFile_name())
+//					.productName(getCartList.getProduct_name())
+//					.productDetailName(getCartList.getProduct_detail_name())
+//					.productSize(getCartList.getProduct_size())
+//					.productPrice(getCartList.getProduct_price())
+//					.build()); 
+//		
+//	
+//		log.info("getCartList {}", getCartList);
 		
+		return cartList;
+	}
 	
+	@Override
+	public boolean updateCart(UpdateCartRespDto updateCartRespDto) throws Exception {
 		
+		return cartRepository.updateCartByCartCode(updateCartRespDto.updateCartToEntity()) > 0;
+	}
+
+//	@Override
+//	public boolean updateCartFlag(int cartCode) throws Exception {
+//		
+//		
+//		return cartRepository.updateCartFlag(cartCode) > 0;
+//	}
+	
+	
+	@Override
+	public boolean removeCart(int cartCode) throws Exception {
 		
-		return getCartListRespDto;
+		return cartRepository.removeCartByCartCode(cartCode) > 0;
 	}
 	
 }

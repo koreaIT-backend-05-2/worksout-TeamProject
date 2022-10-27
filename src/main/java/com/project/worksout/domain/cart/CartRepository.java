@@ -9,6 +9,13 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CartRepository {
 
 	public int saveCart(Cart cart) throws Exception;
+	
 	public List<Cart> getCartList(Map<String, Object> map) throws Exception;
+	
+	public int updateCartByCartCode(Cart cart) throws Exception;
+	
+//	public int updateCartFlag(int cartCode) throws Exception;
+	
+	public int removeCartByCartCode(int cartCode) throws Exception;
 	
 }
