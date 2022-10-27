@@ -119,18 +119,18 @@ public class CartRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
 	}
 	
-	@PutMapping("/flag/{cartCode}")
-	public ResponseEntity<?> updateFlag(@PathVariable int cartCode) {
-		boolean status = false;
-		
-		try {
-			status = cartService.updateCartFlag(cartCode);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed request", status));
-		}
-		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
-	}
+//	@PutMapping("/flag/{cartCode}")
+//	public ResponseEntity<?> updateFlag(@PathVariable int cartCode) {
+//		boolean status = false;
+//		
+//		try {
+//			status = cartService.updateCartFlag(cartCode);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed request", status));
+//		}
+//		
+//		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", status));
+//	}
 	
 }

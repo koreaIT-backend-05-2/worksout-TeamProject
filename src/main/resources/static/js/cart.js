@@ -42,7 +42,7 @@ function load() {
 		success: (response)  => {
 			getCartList(response.data)
 			totalPriceEve(response.data)
-			
+			cartCheckbox(response.data)
 		},
 		error: errorMessage
 		
@@ -64,7 +64,7 @@ function getCartList(list) {
 		
 		cartTbody.innerHTML += `
 		<tr class="cart-product-list-${cart.cartCode}">
-            <td class="td-checkbox"><input class="cart-flag-checkbox" type="checkbox"  value="${cart.cartCode}"></td>
+            <td class="td-checkbox"><input class="cart-flag-checkbox" type="checkbox"  value="${cart.cartCode}" checked = "${cart.payFlag}"></td>
             <td class="td-items-info">
                <div><img src="/image/product/${cart.cartProductFileName}" onClick="location.href = '/product/${cart.productGroup}'" alt="#"></div>
                 <div class="items-info-content"> 
@@ -325,12 +325,85 @@ function deleteTotalPrice(price) {
 
 
 //function purchaseCancelFlag() {
-//	const cartFlagCheckbox = document.querySelector(".cart-flag-checkbox");
+	
 //	
 //	
 //	
 //}
 
+
+
+function cartCheckbox(data) {
+	const cartAllCheckbox = document.querySelector(".cart-all-checkbox");
+	const cartFlagCheckbox = document.querySelectorAll(".cart-flag-checkbox");
+	const cartCodes = document.querySelector(`.cartCode-hidden`);
+	
+
+	let cartCode = cartCodes.textContent;
+	
+	console.log(cartCodes.textContent);
+	console.log(cartFlagCheckbox)	
+	
+	
+	let flagArr = new Array();
+	
+	data.forEach(flag => {
+		flagArr.push(flag.payFlag)
+	}) 
+	
+	console.log(flagArr)
+	console.log(cartAllCheckbox.checked)
+	
+	for(let i = 0; i < flagArr.length; i++) {
+		cartFlagCheckbox[i].onchange = () => {
+			if(cartFlagCheckbox[i].checked == false) {
+				cartAllCheckbox.checked = false;
+			}else {
+				cartAllCheckbox.checked = true;
+			}
+		}
+	}
+	for(let i = 0; i < flagArr.length; i++) {
+		let amountText = document.querySelector(`.amount-${i}`);
+		let priceText = document.querySelector(`.td-price-${i}`);
+		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+		
+		console.log(amountText)
+		console.log(priceText)
+		console.log(priceHiddenText)
+		
+		console.log(typeof(amountText.textContent)) //string
+		console.log(typeof(priceText.textContent)) //string
+		console.log(typeof(priceHiddenText.textContent)) //string
+		
+		if(cartFlagCheckbox[i].checked == false) {
+			
+		} 
+		
+		
+	}
+		
+	
+	
+	cartAllCheckbox.onchange = () => {
+	
+		if(cartAllCheckbox.checked == true) {
+			for(let i = 0; i < flagArr.length; i++) {
+				flagArr[i] = true;
+				cartFlagCheckbox[i].checked = true
+				
+			}
+		}else {
+			for(let i = 0; i < flagArr.length; i++) {
+				flagArr[i] = false;
+				cartFlagCheckbox[i].checked = false;
+				
+			}
+		}
+	}
+	
+//	 updateCartCheck(cartCode);
+}
 
 
 function updateLoad(cartCode, amount, price) {
@@ -380,6 +453,23 @@ function deleteCart(cartCode) {
 		}
 	});
 }
+
+//function updateCartCheck(cartCode) {
+//	
+//	console.log(cartCode)
+//	
+//	$.ajax({
+//		async: false,
+//		type: "put",
+//		url: "/api/v1/cart/flag/" + cartCode,
+//		dataType: "json",
+//		success: (response) => {
+//			
+//		},
+//		error: errorMessage
+//		
+//	});
+//}
 
  
 //에러메시지

@@ -86,12 +86,12 @@ public class CartServiceImpl implements CartService{
 		return cartRepository.updateCartByCartCode(updateCartRespDto.updateCartToEntity()) > 0;
 	}
 
-	@Override
-	public boolean updateCartFlag(int cartCode) throws Exception {
-		
-		
-		return cartRepository.updateCartFlag(cartCode) > 0;
-	}
+//	@Override
+//	public boolean updateCartFlag(int cartCode) throws Exception {
+//		
+//		
+//		return cartRepository.updateCartFlag(cartCode) > 0;
+//	}
 	
 	
 	@Override
