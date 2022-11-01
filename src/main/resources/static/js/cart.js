@@ -6,6 +6,8 @@ let totalPrice = 0;
 
 //totalPrice.toLocaleString("ko-kr")
 
+firstUpdateCartCheck(userCode);
+
 checkUser();
 
 loadPaymentpage();
@@ -64,7 +66,7 @@ function getCartList(list) {
 		
 		cartTbody.innerHTML += `
 		<tr class="cart-product-list-${cart.cartCode}">
-            <td class="td-checkbox"><input class="cart-flag-checkbox" type="checkbox"  value="${cart.cartCode}" checked = "${cart.payFlag}"></td>
+            <td class="td-checkbox"><input class="cart-flag-checkbox flag-${idx}" type="checkbox"  value="${cart.cartCode}" checked=${cart.payFlag}></td>
             <td class="td-items-info">
                <div><img src="/image/product/${cart.cartProductFileName}" onClick="location.href = '/product/${cart.productGroup}'" alt="#"></div>
                 <div class="items-info-content"> 
@@ -88,13 +90,24 @@ function getCartList(list) {
 		`
 	});
 	
+	let flagArr = new Array();
+	
+	list.forEach(flag => {
+		flagArr.push(flag.payFlag)
+	})	;
+
+	console.log(flagArr)
+	
 	console.log("<<<<<<<<: " + list[0].cartCode)
 	
 	increaseAmount();
 	
+	checkboxControl(flagArr);
+	
 	deleteClickEve();
 	
 }
+
 
 //수량 증가
 
@@ -223,8 +236,14 @@ function totalPriceEve(ttPrice) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
 
+	totalPrice =0;
+	
 	ttPrice.forEach(price => {
-		totalPrice += (price.cartProductPrice) * (price.cartProductAmount)	
+		if(price.payFlag == 1) {
+		console.log(price.payFlag); 	
+			totalPrice += (price.cartProductPrice) * (price.cartProductAmount)	
+			
+		}
 	});
 	
 	console.log(totalPrice);
@@ -332,7 +351,7 @@ function deleteTotalPrice(price) {
 //}
 
 
-
+//체크박스 전체 체크 
 function cartCheckbox(data) {
 	const cartAllCheckbox = document.querySelector(".cart-all-checkbox");
 	const cartFlagCheckbox = document.querySelectorAll(".cart-flag-checkbox");
@@ -349,61 +368,214 @@ function cartCheckbox(data) {
 	
 	data.forEach(flag => {
 		flagArr.push(flag.payFlag)
-	}) 
+	}) ;
 	
 	console.log(flagArr)
 	console.log(cartAllCheckbox.checked)
 	
 	for(let i = 0; i < flagArr.length; i++) {
 		cartFlagCheckbox[i].onchange = () => {
+			
+	 		updateCartCheck(data[i].cartCode);
+	 		console.log(data[i].cartCode)
 			if(cartFlagCheckbox[i].checked == false) {
 				cartAllCheckbox.checked = false;
-			}else {
-				cartAllCheckbox.checked = true;
+				
 			}
 		}
 	}
-	for(let i = 0; i < flagArr.length; i++) {
-		let amountText = document.querySelector(`.amount-${i}`);
-		let priceText = document.querySelector(`.td-price-${i}`);
-		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
-		
-		console.log(amountText)
-		console.log(priceText)
-		console.log(priceHiddenText)
-		
-		console.log(typeof(amountText.textContent)) //string
-		console.log(typeof(priceText.textContent)) //string
-		console.log(typeof(priceHiddenText.textContent)) //string
-		
-		if(cartFlagCheckbox[i].checked == false) {
-			
-		} 
-		
-		
-	}
-		
 	
 	
 	cartAllCheckbox.onchange = () => {
+		
+		totalPrice = 0;
 	
 		if(cartAllCheckbox.checked == true) {
 			for(let i = 0; i < flagArr.length; i++) {
 				flagArr[i] = true;
 				cartFlagCheckbox[i].checked = true
 				
+				
+				totalPrice += (data[i].cartProductPrice) * (data[i].cartProductAmount)
+
+				
+				console.log(data[i].cartProductPrice)
+				
+				console.log(totalPrice)
+				
+				const totalOrderPrice = document.querySelector(".total-order-price");
+				const totalPaymentPrice = document.querySelector(".total-payment-price");
+				
+				
+				let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+				totalOrderPrice.textContent = localeTotalPrice + "원"
+				totalPaymentPrice.textContent = localeTotalPrice + "원"
+				
 			}
 		}else {
+			
 			for(let i = 0; i < flagArr.length; i++) {
 				flagArr[i] = false;
 				cartFlagCheckbox[i].checked = false;
 				
+//				totalPrice -= (data[i].cartProductPrice) * (data[i].cartProductAmount)
+				
+				totalPrice == 0;
+				
+				console.log(data[i].cartProductPrice)
+				
+				console.log(totalPrice)
+				
+				const totalOrderPrice = document.querySelector(".total-order-price");
+				const totalPaymentPrice = document.querySelector(".total-payment-price");
+				
+				
+				let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+				totalOrderPrice.textContent = localeTotalPrice + "원"
+				totalPaymentPrice.textContent = localeTotalPrice + "원"
 			}
 		}
 	}
 	
-//	 updateCartCheck(cartCode);
 }
+
+//체크박스 가격 변동
+function checkboxControl(flag) {
+	const flagChceckboxs = document.querySelectorAll(".cart-flag-checkbox");
+	console.log(flagChceckboxs)
+	
+	for(let i = 0; i < flagChceckboxs.length; i++) {
+			flagChceckboxs[i].onclick = () => {
+				if(flagChceckboxs[i].checked == true) {
+					let addPriceText = document.querySelector(`.td-price-${i}`);
+					let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+					let amountText = document.querySelector(`.amount-${i}`);
+					
+					 addPrice = parseInt(priceHiddenText.textContent);
+					 amount = parseInt(amountText.textContent);
+					 
+					 let addPriceWithAmount = addPrice * amount;
+					 
+					 console.log("제발 되야한다: " + addPriceWithAmount)
+					 
+					 checkboxFlagAdd(addPriceWithAmount);
+					
+					let flagIndex = flagChceckboxs[i].className.slice(-1)
+	
+					const cartCode = document.querySelector(`.cartCode-${flagIndex}`).textContent;
+					
+					console.log(cartCode)
+					
+				}else {
+					let deletePriceText = document.querySelector(`.td-price-${i}`);
+					let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+					let amountText = document.querySelector(`.amount-${i}`);
+					
+					 deletePrice = parseInt(priceHiddenText.textContent);
+					 amount = parseInt(amountText.textContent);
+					 
+					 let deletePriceWithAmount = deletePrice * amount;
+					 
+					 console.log("제발 되야한다: " + deletePriceWithAmount)
+					 
+					 checkboxFlagDelete(deletePriceWithAmount);
+					
+					let flagIndex = flagChceckboxs[i].className.slice(-1)
+	
+					const cartCode = document.querySelector(`.cartCode-${flagIndex}`).textContent;
+					
+					console.log(cartCode)
+
+				}
+				
+		}
+	}
+	
+//	console.log(flag)
+//	
+//	for(let i = 0; i < flag.length; i++) {
+//		const cartFlagCheckbox = document.querySelectorAll(".cart-flag-checkbox");
+//		let deletePriceText = document.querySelector(`.td-price-${i}`);
+//		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+//		let amountText = document.querySelector(`.amount-${i}`);
+//		
+//		 deletePrice = parseInt(priceHiddenText.textContent);
+//		 amount = parseInt(amountText.textContent);
+//		 
+//		 let deletePriceWithAmount = deletePrice * amount;
+//		 
+//		 console.log("제발 되야한다: " + deletePriceWithAmount)
+//		 
+////		 flag-${idx}
+//		 
+//		let flagIndex = cartFlagCheckbox[i].className.slice(-1)
+//		
+//		console.log(flagIndex)
+//
+//		const cartCode = document.querySelector(`.cartCode-${flagIndex}`).textContent;
+//		console.log(cartCode)
+		
+		
+//		let amountText = document.querySelector(`.amount-${i}`);
+//		let priceText = document.querySelector(`.td-price-${i}`);
+//		let priceHiddenText = document.querySelector(`.td-price-hidden-${i}`);
+//		
+//		console.log(flag[i])
+//		
+//		console.log(amountText)
+//		console.log(priceText)
+//		console.log(priceHiddenText)
+//		
+//		console.log(typeof(amountText.textContent)) //string
+//		console.log(typeof(priceText.textContent)) //string
+//		console.log(typeof(priceHiddenText.textContent)) //string
+}
+
+function checkboxFlagDelete(price) {
+	const totalOrderPrice = document.querySelector(".total-order-price");
+	const totalPaymentPrice = document.querySelector(".total-payment-price");
+
+	console.log("내가 원하는 값: " + price)
+	
+	console.log("현재 금액: " + totalPrice)
+	
+	totalPrice -= price;
+	
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
+	
+	console.log("ttttttttttttttttprce: " + totalPrice)
+}
+
+
+function checkboxFlagAdd(price) {
+	const totalOrderPrice = document.querySelector(".total-order-price");
+	const totalPaymentPrice = document.querySelector(".total-payment-price");
+
+	console.log("내가 원하는 값: " + price)
+	
+	console.log("현재 금액: " + totalPrice)
+	
+	totalPrice += price;
+	
+//	totalOrderPrice.textContent = totalPrice + "원"
+//	totalPaymentPrice.textContent = totalPrice + "원"
+	
+	let localeTotalPrice = totalPrice.toLocaleString("ko-kr")
+	
+	totalOrderPrice.textContent = localeTotalPrice + "원"
+	totalPaymentPrice.textContent = localeTotalPrice + "원"
+	
+	console.log("ttttttttttttttttprce: " + totalPrice)
+}
+
 
 
 function updateLoad(cartCode, amount, price) {
@@ -454,22 +626,40 @@ function deleteCart(cartCode) {
 	});
 }
 
-//function updateCartCheck(cartCode) {
-//	
-//	console.log(cartCode)
-//	
-//	$.ajax({
-//		async: false,
-//		type: "put",
-//		url: "/api/v1/cart/flag/" + cartCode,
-//		dataType: "json",
-//		success: (response) => {
-//			
-//		},
-//		error: errorMessage
-//		
-//	});
-//}
+function updateCartCheck(cartCode) {
+	
+	console.log(cartCode)
+	
+	$.ajax({
+		async: false,
+		type: "put",
+		url: "/api/v1/cart/flag/" + cartCode,
+		dataType: "json",
+		success: (response) => {
+				console.log(response.data)
+		},
+		error: errorMessage
+		
+	});
+}
+
+function firstUpdateCartCheck(userCode) {
+	
+	console.log(userCode)
+	
+	$.ajax({
+		async: false,
+		type: "put",
+		url: "/api/v1/cart/first/flag/" + userCode,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data)
+				
+		},
+		error: errorMessage
+		
+	});
+}
 
  
 //에러메시지

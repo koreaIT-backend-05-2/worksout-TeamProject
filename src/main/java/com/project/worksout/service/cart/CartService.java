@@ -14,7 +14,9 @@ public interface CartService {
 	
 	public boolean updateCart(UpdateCartRespDto updateCartRespDto) throws Exception;
 	
-//	public boolean updateCartFlag(int cartCode) throws Exception;
+	public boolean updateCartFlag(int cartCode) throws Exception;
+	
+	public boolean updateFirstCartFlag(int userCode)throws Exception;
 	
 	public boolean removeCart(int cartCode) throws Exception;
 	

@@ -14,7 +14,9 @@ public interface CartRepository {
 	
 	public int updateCartByCartCode(Cart cart) throws Exception;
 	
-//	public int updateCartFlag(int cartCode) throws Exception;
+	public int updateCartFlag(int cartCode) throws Exception;
+	
+	public int updateFirstCartFlag(int userCode) throws Exception;
 	
 	public int removeCartByCartCode(int cartCode) throws Exception;
 	

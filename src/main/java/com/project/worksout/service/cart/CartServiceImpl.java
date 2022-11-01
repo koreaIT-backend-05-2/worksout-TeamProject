@@ -86,18 +86,34 @@ public class CartServiceImpl implements CartService{
 		return cartRepository.updateCartByCartCode(updateCartRespDto.updateCartToEntity()) > 0;
 	}
 
-//	@Override
-//	public boolean updateCartFlag(int cartCode) throws Exception {
+	@Override
+	public boolean updateCartFlag(int cartCode) throws Exception {
+//		List<GetCartRespDto> cartList = new ArrayList<GetCartRespDto>();
+//		Map<String, Object> map = new HashMap<String, Object>();
 //		
+//		map.put("user_code", userCode);
 //		
-//		return cartRepository.updateCartFlag(cartCode) > 0;
-//	}
+//		if(cartRepository.updateCartFlag(cartCode, userCode) > 0) {
+//			cartRepository.getCartList(map).forEach(cart -> {
+//				cartList.add(cart.toCartListDto());
+//			});
+//		}
+//		return cartList;
+		
+		return cartRepository.updateCartFlag(cartCode) > 0;
+	}
 	
 	
 	@Override
 	public boolean removeCart(int cartCode) throws Exception {
 		
 		return cartRepository.removeCartByCartCode(cartCode) > 0;
+	}
+	
+	@Override
+	public boolean updateFirstCartFlag(int userCode) throws Exception {
+		
+		return cartRepository.updateFirstCartFlag(userCode) > 0;
 	}
 	
 }

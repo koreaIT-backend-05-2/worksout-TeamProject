@@ -67,17 +67,26 @@ WHERE
   
   </update>
   
-<!--   <update id="updateCartFlag" parameterType="Integer"> -->
-<!--   UPDATE -->
-<!-- 		cart_mst -->
-<!-- 	SET -->
-<!-- 		pay_flag = case when pay_flag = '1' then 0 ELSE 1 end -->
-<!-- 	WHERE -->
-<!-- 		cart_code = #{cart_code}; -->
-<!--   </update> -->
+  <update id="updateCartFlag" parameterType="Integer">
+ 	UPDATE
+		cart_mst
+	SET
+		pay_flag = case when pay_flag = '1' then 0 ELSE 1 end
+	WHERE
+		cart_code = #{cart_code};
+  </update>
+  
+  <update id="updateFirstCartFlag" parameterType="Integer">
+  	UPDATE
+		cart_mst
+	SET
+		pay_flag = 1
+	WHERE
+		user_code = #{user_code};
+  </update>
   
   <delete id="removeCartByCartCode" parameterType="Integer">
-	  DELETE
+	DELETE
 	FROM
 		cart_mst
 	WHERE
