@@ -18,6 +18,10 @@ public interface CartRepository {
 	
 	public int updateFirstCartFlag(int userCode) throws Exception;
 	
+	public int updateAllCartFlag(int userCode) throws Exception;
+	
 	public int removeCartByCartCode(int cartCode) throws Exception;
+	
+	public int removeChoiceCartByPayFlag(int userCode) throws Exception;
 	
 }

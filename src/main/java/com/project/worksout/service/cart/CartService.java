@@ -18,6 +18,10 @@ public interface CartService {
 	
 	public boolean updateFirstCartFlag(int userCode)throws Exception;
 	
+	public boolean updateAllCartFlag(int userCode) throws Exception;
+	
 	public boolean removeCart(int cartCode) throws Exception;
+	
+	public boolean removeChoiceCart(int userCode) throws Exception;
 	
 }

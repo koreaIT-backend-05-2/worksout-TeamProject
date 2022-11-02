@@ -103,6 +103,18 @@ public class CartServiceImpl implements CartService{
 		return cartRepository.updateCartFlag(cartCode) > 0;
 	}
 	
+	@Override
+	public boolean updateFirstCartFlag(int userCode) throws Exception {
+		
+		return cartRepository.updateFirstCartFlag(userCode) > 0;
+	}
+	
+	@Override
+	public boolean updateAllCartFlag(int userCode) throws Exception {
+		
+		return cartRepository.updateAllCartFlag(userCode) > 0;
+	}
+	
 	
 	@Override
 	public boolean removeCart(int cartCode) throws Exception {
@@ -111,9 +123,10 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	@Override
-	public boolean updateFirstCartFlag(int userCode) throws Exception {
+	public boolean removeChoiceCart(int userCode) throws Exception {
 		
-		return cartRepository.updateFirstCartFlag(userCode) > 0;
+		return cartRepository.removeChoiceCartByPayFlag(userCode) > 0;
 	}
+	
 	
 }

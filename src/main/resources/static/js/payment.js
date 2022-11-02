@@ -14,7 +14,15 @@ console.log(user.user_name)
 console.log(shippingLocationInput)
 console.log(addressInput)
 
+let userCode = user.user_code;
+
+let totalPaymentPrice = 0;
+
+load();
+
 loadInfo();
+
+checkboxEve();
 
 function loadInfo() {
 	
@@ -80,4 +88,109 @@ function searchAddress() {
             detailAddressInput.focus();
         }
     }).open();
+}
+
+//구매할 상품 리스트
+function productList(data) {
+	const orderTitle = document.querySelector(".order-title");
+	const productList = document.querySelector(".product-list");
+	
+	orderTitle.innerHTML = `주문상품(${data.length})`
+	
+	data.forEach(product => {
+		
+		let productPrice = product.cartProductPrice.toLocaleString("ko-kr")
+		
+		productList.innerHTML += `
+			<div class="order-products">
+                <div>
+                    <img src="/image/product/${product.productFileName}" alt="">
+                </div>
+                <div class="order-product-info">
+                    <p>${product.productBrand}</p>
+                    <p>${product.productName}</p>
+                    <p>사이즈: ${product.productSize}</p>
+                    <p>${productPrice}원 / 수량 ${product.cartProductAmount}개</p>
+                </div>
+            </div>
+		`
+	});
+}
+
+//총 상품 금액
+function totalProductPrice(data) {
+	
+	totalPaymentPrice = 0;
+	
+	data.forEach(price => {
+			totalPaymentPrice += (price.cartProductPrice)
+ 	});
+ 	
+ 	console.log(totalPaymentPrice)
+ 	
+ 	totalProductPricePayment(totalPaymentPrice);
+	
+}
+
+function totalProductPricePayment(totalPaymentPrice) {
+	const ttPrice = document.querySelector(".total-price span");
+	const ttPayment = document.querySelector(".total-payment span");
+	
+	let price = totalPaymentPrice.toLocaleString("ko-kr")
+	
+	ttPrice.innerHTML = `${price}원`;
+	ttPayment.innerHTML = `${price}원`;
+	
+}
+
+//동의시 주문하기 버튼 활성화
+function checkboxEve() {
+	const AgreeCheckbox = document.querySelectorAll(".checkbox-agree")
+	const orderBtn = document.querySelector(".order-button");
+	console.log(AgreeCheckbox);
+	
+	let flag = [false, false];
+	
+	for(let i = 0; i < AgreeCheckbox.length; i++) {
+		AgreeCheckbox[i].onchange = () => {
+			
+			let allCheckedFlag = true
+		
+			for(let j = 0; j < flag.length; j++){
+				if(AgreeCheckbox[j].checked == false) {
+					allCheckedFlag = false;
+					break;
+				}
+			}
+			
+		allCheckedFlag ? (orderBtn.style.backgroundColor = "black", orderBtn.style.disabled = true) : (orderBtn.style.backgroundColor = "", orderBtn.style.disabled = false);
+		}
+	}
+}
+
+function load() {
+	$.ajax({
+		async: false,
+		type: "get",
+		url: "/api/v1/payment/" + userCode,
+		dataType: "json",
+		success: (response) => {
+			console.log(response)
+			productList(response.data)
+			totalProductPrice(response.data)
+		},
+		error: errorMessage
+		
+	})
+}
+
+console.log(JSON.parse(localStorage.getItem("listToken")))
+
+//에러메시지
+
+function errorMessage(request, status, error) {
+	alert("요청 실패");
+	console.log(request.status);
+	console.log(request.responseText);
+	console.log(error);
 }

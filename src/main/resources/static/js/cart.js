@@ -10,9 +10,10 @@ firstUpdateCartCheck(userCode);
 
 checkUser();
 
-loadPaymentpage();
-
 load();
+
+
+loadPaymentpage();
 
 console.log("userCode: " + userCode);
 
@@ -23,15 +24,6 @@ function checkUser() {
 		const nonmemberPurchaseBtn = document.querySelector(".nonmember-purchase-button");
 		nonmemberPurchaseBtn.style.display = "none";
 	}
-}
-
-function loadPaymentpage() {
-	const memberPurchaseBtn = document.querySelector(".member-purchase-button");
-	
-	memberPurchaseBtn.onclick = () => {
-		location.href = "/payment"
-	}
-	
 }
 
 function load() {
@@ -45,6 +37,7 @@ function load() {
 			getCartList(response.data)
 			totalPriceEve(response.data)
 			cartCheckbox(response.data)
+			choiceRemoveClickEve(response.data)
 		},
 		error: errorMessage
 		
@@ -58,15 +51,19 @@ function getCartList(list) {
 	
 	console.log(list[0].cartProductFileName)
 	
+	cartTbody.innerHTML = ``;
+	
 	list.forEach((cart, idx) => {
 		let productHiddenPrice = cart.cartProductPrice
 
 		let productPrice = cart.cartProductPrice.toLocaleString("ko-kr")
 		
+
+		
 		
 		cartTbody.innerHTML += `
 		<tr class="cart-product-list-${cart.cartCode}">
-            <td class="td-checkbox"><input class="cart-flag-checkbox flag-${idx}" type="checkbox"  value="${cart.cartCode}" checked=${cart.payFlag}></td>
+            <td class="td-checkbox"><input class="cart-flag-checkbox flag-${idx}" type="checkbox"  value="${cart.cartCode}" ${cart.payFlag ? "checked" : ""}></td>
             <td class="td-items-info">
                <div><img src="/image/product/${cart.cartProductFileName}" onClick="location.href = '/product/${cart.productGroup}'" alt="#"></div>
                 <div class="items-info-content"> 
@@ -373,20 +370,32 @@ function cartCheckbox(data) {
 	console.log(flagArr)
 	console.log(cartAllCheckbox.checked)
 	
+	
 	for(let i = 0; i < flagArr.length; i++) {
 		cartFlagCheckbox[i].onchange = () => {
 			
+			let allCheckedFlag = true;
+			
 	 		updateCartCheck(data[i].cartCode);
-	 		console.log(data[i].cartCode)
-			if(cartFlagCheckbox[i].checked == false) {
-				cartAllCheckbox.checked = false;
-				
+			
+			for(let j = 0; j < flagArr.length; j++) {
+				if(cartFlagCheckbox[j].checked == false) {
+					allCheckedFlag = false;
+					break;
+				}
 			}
+	 		console.log(data[i].cartCode)
+			
+			allCheckedFlag ? cartAllCheckbox.checked = true : cartAllCheckbox.checked = false ;
 		}
 	}
 	
 	
+	
 	cartAllCheckbox.onchange = () => {
+		
+		console.log(userCode);
+		allUpdateCartCheck(userCode)
 		
 		totalPrice = 0;
 	
@@ -438,7 +447,6 @@ function cartCheckbox(data) {
 			}
 		}
 	}
-	
 }
 
 //체크박스 가격 변동
@@ -533,6 +541,7 @@ function checkboxControl(flag) {
 //		console.log(typeof(priceHiddenText.textContent)) //string
 }
 
+//체크박스 선택 해제시 가격 빼는 로직
 function checkboxFlagDelete(price) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
@@ -555,6 +564,7 @@ function checkboxFlagDelete(price) {
 }
 
 
+//체크박스 선택시 가격 더해주는 로직
 function checkboxFlagAdd(price) {
 	const totalOrderPrice = document.querySelector(".total-order-price");
 	const totalPaymentPrice = document.querySelector(".total-payment-price");
@@ -577,6 +587,50 @@ function checkboxFlagAdd(price) {
 }
 
 
+//선택상품 삭제 클릭 이벤트
+function choiceRemoveClickEve(data){
+	const itemsDeleteBtn = document.querySelector(".items-delete");
+	console.log(userCode)
+	
+//	let cartList = new Array();
+//	
+//	data.forEach(list => {
+//			cartList.push(list.payFlag)
+//		}) 
+	
+	itemsDeleteBtn.onclick = () => {
+		
+		deleteChoiceCart(userCode)
+		
+		load();
+
+		console.log(data)
+		
+	}
+}
+
+function loadPaymentpage() {
+	const memberPurchaseBtn = document.querySelector(".member-purchase-button");
+	const cartFlagCheckbox = document.querySelectorAll(".cart-flag-checkbox");
+	
+	let list = new Array();
+	
+	memberPurchaseBtn.onclick = () => {
+
+	for(let i = 0; i < cartFlagCheckbox.length; i++) {
+			if(cartFlagCheckbox[i].checked == true) {
+				list.push(cartFlagCheckbox[i].value)
+			}	
+		}
+		console.log(list)
+		
+		let listToken = JSON.stringify(list);
+		
+		localStorage.setItem("listToken", listToken);
+		
+		location.href = "/payment"
+	}
+}
 
 function updateLoad(cartCode, amount, price) {
 console.log("cartCode: " + cartCode)
@@ -622,8 +676,25 @@ function deleteCart(cartCode) {
 		dataType: "json",
 		success: (response) => {
 			console.log(response.data)
-		}
+		},
+		error: errorMessage
+		
 	});
+}
+
+function deleteChoiceCart(userCode) {
+	
+	$.ajax({
+		async: false,
+		type: "delete",
+		url: "/api/v1/cart/choice/remove/" + userCode,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data)
+		},
+		error:errorMessage
+		
+	})
 }
 
 function updateCartCheck(cartCode) {
@@ -661,6 +732,24 @@ function firstUpdateCartCheck(userCode) {
 	});
 }
 
+function allUpdateCartCheck(userCode) {
+	
+	console.log(userCode)
+	
+	$.ajax({
+		async: false,
+		type: "put",
+		url: "/api/v1/cart/all/flag/" + userCode,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data)
+		
+		},
+		error: errorMessage
+		
+	});
+	
+}
  
 //에러메시지
 

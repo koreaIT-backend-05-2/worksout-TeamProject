@@ -34,6 +34,8 @@ from
 		ROW_NUMBER() over(PARTITION BY pm.product_code ORDER BY pif.file_code) AS i,
 		cm.cart_code,
 		cm.user_code,
+		cm.cart_amount,
+		cm.pay_flag,
 		
 		pm.product_code,
 		pm.product_group,
@@ -42,9 +44,6 @@ from
 		pm.product_price,
 		pm.product_detail_name,
 		
-		cm.cart_amount,
-		cm.pay_flag,
-	
 		pif.file_name
 	FROM
 		cart_mst cm
@@ -84,6 +83,24 @@ WHERE
 	WHERE
 		user_code = #{user_code};
   </update>
+  
+  <update id="updateAllCartFlag" parameterType="Integer">
+  	UPDATE
+		cart_mst
+	SET
+		pay_flag = case when pay_flag = '1' then 0 ELSE 1 end
+	WHERE
+		user_code = #{user_code};
+  </update>
+  
+  <delete id="removeChoiceCartByPayFlag" parameterType="Integer">
+ 	DELETE
+	FROM
+		cart_mst
+	WHERE
+		user_code = #{user_code} and
+		pay_flag = 1;
+  </delete>
   
   <delete id="removeCartByCartCode" parameterType="Integer">
 	DELETE

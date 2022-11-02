@@ -1,6 +1,7 @@
 package com.project.worksout.domain.cart;
 
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.payment.GetPaymentProductRespDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,7 +46,21 @@ public class Cart {
 					.payFlag(pay_flag)
 					.build();
 				
-					
+	}
+	
+	public GetPaymentProductRespDto toPaymentProductListDto() {
+		return GetPaymentProductRespDto.builder()
+				.userCode(user_code)
+				.cartCode(cart_code)
+				.cartProductAmount(cart_amount)
+				.cartProductPrice(cart_price)
+				.productCode(product_code)
+				.productGroup(product_group)
+				.productBrand(product_brand)
+				.productName(product_detail_name)
+				.productSize(product_size)
+				.productFileName(file_name)
+				.build();
 	}
 	
 }
