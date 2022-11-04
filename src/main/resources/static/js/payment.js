@@ -8,6 +8,8 @@ const detailAddressInput = document.querySelector(".detail-address-input");
 
 const shippingRequest = document.querySelector(".shipping-request");
 
+const orderBtn = document.querySelector(".order-button");
+
 console.log(ordererNameInput)
 console.log(userPhoneNumInputs)
 console.log(user.user_name)
@@ -104,10 +106,10 @@ function productList(data) {
 		productList.innerHTML += `
 			<div class="order-products">
                 <div>
-                    <img src="/image/product/${product.productFileName}" alt="">
+                    <img src="/image/product/${product.productFileName}" onClick = "location.href = '/product/${product.productGroup}' " alt="">
                 </div>
                 <div class="order-product-info">
-                    <p>${product.productBrand}</p>
+                    <p class = "product-brand">${product.productBrand}</p>
                     <p>${product.productName}</p>
                     <p>사이즈: ${product.productSize}</p>
                     <p>${productPrice}원 / 수량 ${product.cartProductAmount}개</p>
@@ -146,7 +148,6 @@ function totalProductPricePayment(totalPaymentPrice) {
 //동의시 주문하기 버튼 활성화
 function checkboxEve() {
 	const AgreeCheckbox = document.querySelectorAll(".checkbox-agree")
-	const orderBtn = document.querySelector(".order-button");
 	console.log(AgreeCheckbox);
 	
 	let flag = [false, false];
@@ -163,10 +164,71 @@ function checkboxEve() {
 				}
 			}
 			
-		allCheckedFlag ? (orderBtn.style.backgroundColor = "black", orderBtn.style.disabled = true) : (orderBtn.style.backgroundColor = "", orderBtn.style.disabled = false);
+		allCheckedFlag ? (orderBtn.style.backgroundColor = "black", orderBtn.disabled = false) : (orderBtn.style.backgroundColor = "", orderBtn.disabled = true);
+		
+		productOrderEve();
 		}
+	} 
+}
+
+
+//결제하기 버튼 클릭 이벤트
+function productOrderEve() {
+	orderBtn.onclick = () => {
+//		alert("test")
+
+		let IMP = window.IMP;
+		IMP.init("imp75518151");
+		
+		requestPay();
+		
 	}
 }
+
+
+//결제하기 이벤트
+function requestPay() {
+	
+	const totalPrice = document.querySelector(".total-price span").textContent;
+	
+	let name = ordererNameInput.value;
+	let phone = userPhoneNumInputs[0].value + "-" + userPhoneNumInputs[1].value + "-" + userPhoneNumInputs[2].value;
+	let addressAll = addressInput.value;
+	let addressDetail = detailAddressInput.value;
+	
+	const address = addressAll + " " + addressDetail;
+	
+	console.log(totalPrice)
+	console.log(name)
+	console.log(phone)
+	console.log(address)
+	
+	
+  // IMP.request_pay(param, callback) 결제창 호출
+  IMP.request_pay({ // param
+      pg: "kcp",
+      pay_method: "card",
+      merchant_uid: "PRODUCT-" + new Date().getTime(),
+      name: "WORKSOUT상품 구매",
+      amount: totalPrice,
+      buyer_email: "",
+      buyer_name: name,
+      buyer_tel: phone,
+      buyer_addr: address
+//	  buyer_postcode: ""
+  }, function (rsp) { // callback
+      if (rsp.success) {
+          // 결제 성공 시 로직,
+         	alert("결제 성공")
+         	console.log(rsp)
+      } else {
+          // 결제 실패 시 로직,
+          console.log(rsp)
+          alert("사용자 결제 취소")
+      }
+  });
+}
+
 
 function load() {
 	$.ajax({

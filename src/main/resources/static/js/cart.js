@@ -38,6 +38,15 @@ function load() {
 			totalPriceEve(response.data)
 			cartCheckbox(response.data)
 			choiceRemoveClickEve(response.data)
+			
+			let list = response.data;
+			
+			let productListToken = JSON.stringify(list.length);
+			
+			console.log(productListToken)
+			
+			localStorage.setItem("productListToken", productListToken);
+			
 		},
 		error: errorMessage
 		

@@ -71,7 +71,7 @@ function change() {
 
 // 상세정보
 
-const detailInfoBtn = document.querySelector(".detail-info-button");
+const detailInfoBtn = document.querySelector(".detail-info-group");
 const detailInfo = document.querySelector(".detail-info");
 
 detailInfoBtn.onclick = () => {
@@ -79,7 +79,7 @@ detailInfoBtn.onclick = () => {
 }
 
 // 배송안내
-const shippingInfoBtn = document.querySelector(".shipping-info-button");
+const shippingInfoBtn = document.querySelector(".shipping-info-group");
 const shippingInfo = document.querySelector(".shipping-info");
 
 shippingInfoBtn.onclick = () => {
@@ -87,7 +87,7 @@ shippingInfoBtn.onclick = () => {
 }
 
 // 반품안내
-const returnInfoBtn = document.querySelector(".return-info-button");
+const returnInfoBtn = document.querySelector(".return-info-group");
 const returnInfo = document.querySelector(".return-info");
 
 returnInfoBtn.onclick = () => {
@@ -96,7 +96,7 @@ returnInfoBtn.onclick = () => {
 
 
 // A/S 안내
-const asInfoBtn = document.querySelector(".as-info-button");
+const asInfoBtn = document.querySelector(".as-info-group");
 const asInfo = document.querySelector(".as-info");
 
 asInfoBtn.onclick = () => {

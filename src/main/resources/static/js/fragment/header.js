@@ -130,6 +130,18 @@ let user = getPrincipal();
 
 loadHeader(user);
 
+cartListNumEve();
+
+//장바구니 옆에 개수 넣어주는 이벤트
+function cartListNumEve() {
+	let cartList = localStorage.getItem("productListToken")
+
+	console.log(cartList)
+	
+	cartPage.innerHTML = `장바구니(${cartList})`;
+}
+
+
 
 
 //에러메시지
