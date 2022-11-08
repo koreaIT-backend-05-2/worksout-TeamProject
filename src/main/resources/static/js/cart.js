@@ -62,6 +62,7 @@ function getList(cartList){
 		
 		cartAmount.push(cart.cartAmount);
 		productPrice.push(cart.productPrice);
+		let varAmount = parseInt(cart.cartAmount);
 		
 		tBody.innerHTML += `
 			<tr class="tr-cart-items">
@@ -74,14 +75,14 @@ function getList(cartList){
                         <p>사이즈: ${cart.productSize}</p>
                     </div>
                 </td>
-                <td>
+                <td class="td-amount" id = "ct-${cart.cartAmount}">
                     <div class="td-quantity-button">
                         <button type="button" class="minus">-</button>
-                        <p>${cart.cartAmount}</p>
+                        <p class = "amount">${varAmount}</p>
                         <button type="button" class="plus">+</button>
                     </div>
                 </td>
-                <td class="td-price" id = "ct-${cart.productCode}">${cart.productPrice}원</td>
+                <td class="td-price" id = "ct-${cart.cartCode}">${cart.productPrice}원</td>
                 <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td>
             </tr>
 					
@@ -92,12 +93,12 @@ function getList(cartList){
 	addEvent();
 }
 
-function addEvent(cartList){
+function addEvent(){
 	const trCartItems = document.querySelectorAll(".tr-cart-items");
 	for(let trCItem of trCartItems){
-		const productCode = subStringProductCode(trCItem);
-		
-		mouseEvent(trCItem, productCode);
+		const cartCode = subStringProductCode(trCItem);
+		const cartAmount = subStringCartAmount(trCItem);
+		mouseEvent(trCItem, cartCode, cartAmount);
 	}
 }
 
@@ -107,27 +108,81 @@ function subStringProductCode(trCItem){
 	const itemSelection = trCItem.querySelector(".td-price");
 	console.log("itemSelection : " + itemSelection);
 	
-	const productCode = itemSelection.getAttribute("id");
-	console.log("productGroup : " + productCode);
+	const cartCode = itemSelection.getAttribute("id");
+	console.log("productGroup : " + cartCode);
 	
-	const tokenIndex = productCode.lastIndexOf("-");
+	const tokenIndex = cartCode.lastIndexOf("-");
 	console.log("tokenIndex : " + tokenIndex);
 	
-	console.log("productCode.substring(tokenIndex + 1) : " + productCode.substring(tokenIndex + 1));
+	console.log("cartCode.substring(tokenIndex + 1) : " + cartCode.substring(tokenIndex + 1));
 	console.log("  ");
-	return productCode.substring(tokenIndex + 1);
+	return cartCode.substring(tokenIndex + 1);
 }
 
-function mouseEvent(trCItem, productCode){
+function subStringCartAmount(trCItem){
+	//console.log(items);
+	
+	const itemSelection = trCItem.querySelector(".td-amount");
+	console.log("itemSelection : " + itemSelection);
+	
+	const cartAmount = itemSelection.getAttribute("id");
+	console.log("productGroup : " + cartAmount);
+	
+	const tokenIndex = cartAmount.lastIndexOf("-");
+	console.log("tokenIndex : " + tokenIndex);
+	
+	console.log("cartAmount.substring(tokenIndex + 1) : " + cartAmount.substring(tokenIndex + 1));
+	console.log("  ");
+	return cartAmount.substring(tokenIndex + 1);
+}
+
+function mouseEvent(trCItem, cartCode, cartAmount){
 	const plsBtn = trCItem.querySelector(".plus");
 	const mnsBtn = trCItem.querySelector(".minus");
 	console.log(trCItem);
+	console.log("mouseEvent >> " +cartAmount);
+	let varAmount = parseInt(cartAmount);
+	
+	const amountValue = trCItem.querySelector(".amount");
 	plsBtn.onclick=()=>{
-		console.log("plus " + productCode);
+		console.log("plus cartCode: " + cartCode);
+		update(cartCode, varAmount++);
+
+		amountValue.innerText = ``;
+		amountValue.innerText = `${varAmount}`;		
 		
 	}
 	mnsBtn.onclick=()=>{
-		console.log("minus " + productCode);		
-		
+		console.log("minus cartCode: " + cartCode);
+		if(varAmount > 1 ) {
+			varAmount--;	
+		}		
+		update(cartCode, varAmount);
+
+		amountValue.innerText = ``;
+		amountValue.innerText = `${varAmount}`;		
 	}
+}
+
+function update(cartCode, num) {
+	console.log("cartCode : "+ cartCode + "  num: " + num);
+	$.ajax({
+		type:"put",
+		url: `/api/v1/cart/setCart/${cartCode}`,
+		contentType: "application/json",
+		data: JSON.stringify({
+			"cartCode": cartCode,
+			"cartAmount" : num
+		}),
+		async: false,
+		dataType: "JSON",
+		success: (response) => {
+			console.log(response.data);
+			//location.replace(location.href);
+			
+		},
+		error: (error) => {
+			console.log(error);
+		}
+	})
 }

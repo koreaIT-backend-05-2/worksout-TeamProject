@@ -11,4 +11,7 @@ public interface CartRepository {
 	public int saveCart(Cart cart) throws Exception;
 	public List<Cart> getCartList(Map<String, Object> map) throws Exception;
 	
+	public int updateCartAmount(Cart cart) throws Exception;
+	
+	public int deleteCart(int cart_code) throws Exception;
 }

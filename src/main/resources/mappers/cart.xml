@@ -87,4 +87,14 @@
 	WHERE
 		cm.user_code = #{user_code};
   </select>
+  
+  <update id="updateCartAmount" 
+  parameterType="com.project.worksout.domain.cart.Cart">
+	  UPDATE 
+	  	cart_mst 
+	  SET 
+	  	cart_amount = #{cart_amount} 
+	  WHERE 
+	  	cart_code = #{cart_code};
+  </update>
   </mapper>

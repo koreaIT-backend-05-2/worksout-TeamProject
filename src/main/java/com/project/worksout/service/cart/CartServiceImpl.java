@@ -11,6 +11,7 @@ import com.project.worksout.domain.cart.Cart;
 import com.project.worksout.domain.cart.CartRepository;
 import com.project.worksout.web.dto.cart.AddCartReqDto;
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.cart.UpdateCartReqDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -87,6 +88,17 @@ public class CartServiceImpl implements CartService{
 		System.out.println(getCartListRespDto);
 		
 		return getCartListRespDto;
+	}
+	
+	public boolean updateCartAmount(UpdateCartReqDto updateCartReqDto) throws Exception {
+		log.info("ServiceImpl updateCartAmount >>> " + updateCartReqDto);
+		return cartRepository.updateCartAmount(updateCartReqDto.toEntity()) > 0;
+	}
+
+	@Override
+	public boolean removeCart(int cartCode) throws Exception {
+		
+		return false;
 	}
 	
 }

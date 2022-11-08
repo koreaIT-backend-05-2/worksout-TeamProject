@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import com.project.worksout.service.cart.CartService;
 import com.project.worksout.web.dto.CMRespDto;
 import com.project.worksout.web.dto.cart.AddCartReqDto;
 import com.project.worksout.web.dto.cart.GetCartRespDto;
+import com.project.worksout.web.dto.cart.UpdateCartReqDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,5 +61,21 @@ public class CartRestController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success request", listDto));
+	}
+	
+	@PutMapping("/setCart/{cartCode}")
+	public ResponseEntity<?> setCartAmount(@PathVariable int cartCode, @RequestBody UpdateCartReqDto updateCartReqDto){
+		boolean status = false;
+		System.out.println("setCartAmount >>>" + cartCode + " /// ReqBody UpdateCartReqDto >>" + updateCartReqDto);
+		try {
+			updateCartReqDto.setCartCode(cartCode);
+			status = cartService.updateCartAmount(updateCartReqDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "update failed", status));
+		}
+		
+//		System.out.println("setCartAmount >>>" + cartCode + " /// ReqBody UpdateCartReqDto >>" + updateCartReqDto);
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "update success", null));
 	}
 }
