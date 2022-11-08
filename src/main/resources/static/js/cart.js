@@ -152,6 +152,7 @@ function mouseEvent(trCItem, cartCode, cartAmount){
 		amountValue.innerText = `${varAmount}`;		
 		
 	}
+	
 	mnsBtn.onclick=()=>{
 		console.log("minus cartCode: " + cartCode);
 		if(varAmount > 1 ) {
