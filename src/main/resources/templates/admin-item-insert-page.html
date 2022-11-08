@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/static/css/admin-item-insert.css">
 </head>
 
-<body>
+<body> <div style="min-height:100%; position:relative;">
     <div class="__next">
         <div class="all-container">
             <!-- 헤더부분 -->
@@ -40,8 +40,8 @@
 	                            <input type="text" placeholder="product_kor_name" name="productKorName">
 	                            <input type="text" placeholder="product_info" name="productInfo">
 	                            <input type="text" placeholder="product_price" name="productPrice">
-	                            <input type="text" placeholder="product_amount" name="productAmount">
 	                            <input type="text" placeholder="product_size" name="productSize">
+	                            <input type="text" placeholder="product_amount" name="productAmount">
 	                            <input type="text" placeholder="product_gender" name="productGender">
 	                            <input type="file" class="product-file" name="file" multiple="multiple" accept=".jpg, .jpeg, .png, .gif">
 	                        </div>
@@ -52,7 +52,7 @@
             </main>
             
             <!-- footer부분 -->
-            <th:block th:replace="/fragment/footer"></th:block>
+            <th:block th:replace="/fragment/footer"></th:block></div>
         </div>
 
     </div>

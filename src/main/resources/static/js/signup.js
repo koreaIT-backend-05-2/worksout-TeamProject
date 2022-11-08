@@ -3,6 +3,7 @@ const year = document.querySelector('#year');
 const month = document.querySelector('#month');
 const date = document.querySelector('#date');
 
+
 // 연도 선택시 월 활성화
 
 year.onchange = () => {
@@ -22,23 +23,23 @@ year.onchange = () => {
 month.onchange = () => {
 
 if(date.value == "date") {
-activeDateSelect();
-date.disabled = false;
-}
+	activeDateSelect();
+	date.disabled = false;
+	}
 }
 
 // "월"의 스타일
 function activeMonthSelect() {
-month.style.backgroundColor = "white"
-month.style.border = "1px solid #9ca3af"
-month.style.color = "#1F2937"
+	month.style.backgroundColor = "white"
+	month.style.border = "1px solid #9ca3af"
+	month.style.color = "#1F2937"
 }
 
 //"일"의 스타일
 function activeDateSelect() {
-date.style.backgroundColor = "white"
-date.style.border = "1px solid #9ca3af"
-date.style.color = "#1F2937"
+	date.style.backgroundColor = "white"
+	date.style.border = "1px solid #9ca3af"
+	date.style.color = "#1F2937"
 }
 
 /////////////////////////////////////////////////////////////
@@ -171,8 +172,6 @@ const password = document.querySelector("#password");
 const passwordCheck = document.querySelector("#password-check");
 let passwordCheckError = document.querySelector(".password-check-error");
 
-
-
 password.onblur = () => {
 	
 	if(password.value != passwordCheck.value){
@@ -188,6 +187,7 @@ passwordCheck.onkeyup = () => {
 		passwordCheckError.innerHTML = ""
 	}
 }
+
 
 /**
 
@@ -398,6 +398,65 @@ signupBtn.onclick = () => {
 	    }
 	});
 }
+
+/**
+
+	인증번호 발송
+
+ */
+const sendAuthNum = document.querySelector(".auth-number");
+const authNumGroup = document.querySelector(".auth-number-group");
+const authNumCheckBtn = document.querySelector(".auth-number-button");
+const authNumInput = document.querySelector(".auth-number-group-input");
+
+
+console.log("1234: " + authNumInput);
+console.log("test: " + authNumCheckBtn);
+console.log("인증번호 버튼: " + sendAuthNum);
+
+sendAuthNum.onclick = () => {
+	authNumGroup.classList.add("visible")
+	sendAuthNum.innerHTML = "인증번호 재발송"
+	
+	const to = inputs[4].value + inputs[5].value + inputs[6].value;
+	
+	$.ajax({
+		async: false,
+		url: "/check/sendSMS",
+		type: "get",
+		data: {
+			"to": to
+		},
+		success: function(data) {
+			const checkNum = data;
+			
+			authNumCheckBtn.onclick = () => {
+				let userNum = document.querySelector(".auth-number-group-input").value;
+				console.log(typeof checkNum);
+				console.log(typeof userNum);
+				console.log(checkNum)
+				console.log(userNum)
+				if(checkNum === userNum) {
+					alert("인증에 성공하셨습니다.")
+					authNumGroup.classList.remove("visible")
+					inputs[4].disabled = "true";
+					inputs[5].disabled = "true";
+					inputs[6].disabled = "true";
+					sendAuthNum.innerHTML = "인증확인 완료";
+					sendAuthNum.disabled = "false";
+				}else {
+					alert("인증에 실패하셨습니다. 다시 입력해주세요")
+				}
+			}
+		},
+		error: errorMessage
+			
+	});
+	
+}
+
+
+
 
 //에러메시지
 

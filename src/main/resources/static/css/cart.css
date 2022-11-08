@@ -1,3 +1,7 @@
+main {
+	height: 100%;
+}
+
 .cart {
     display: flex;
 
@@ -8,7 +12,7 @@
 
 .cart-group {
     width: 940px;
-    height: 300px;
+    height: auto;
 
     
 }

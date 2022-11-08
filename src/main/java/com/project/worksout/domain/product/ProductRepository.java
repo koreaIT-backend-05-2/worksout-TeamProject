@@ -11,6 +11,9 @@ public interface ProductRepository {
 	public int saveProductFiles(List<ProductFile> list) throws Exception;
 	public Product getProduct(Map<String, Object> map) throws Exception;
 	public List<Product> getProductList(Map<String, Object> map) throws Exception;
+	
+	//detail
+	public List<Product>  getProductDetail(Map<String, Object> map) throws Exception;
 	public int updateProduct(Product product) throws Exception;
 	public int deleteProduct(int product_code) throws Exception;
 }

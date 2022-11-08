@@ -1,33 +1,27 @@
 package com.project.worksout.web.controller.sms;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.worksout.handler.aop.annotation.Log;
 import com.project.worksout.service.sms.SMSAuthService;
-import com.project.worksout.web.dto.CMRespDto;
 
 import lombok.RequiredArgsConstructor;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Controller
 @RequiredArgsConstructor
 public class AuthSMSController {
 	
-	private SMSAuthService smsAuthService;
+	private final SMSAuthService smsAuthService;
 	
+	@Log
 	@GetMapping("/check/sendSMS")
-	public ResponseEntity<?> sendSMS(@RequestParam String sendMsg) {
-		boolean status = false;
+	public @ResponseBody String sendSMS(@RequestParam(value = "to") String to) throws CoolsmsException {
 		
-		try {
-			status = smsAuthService.authPhoneNumberCheck(sendMsg);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.ok().body(new CMRespDto<>(-1, "메시지 전송 실패", status));
-		}
-		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "메시지 전송 성공", status));
+			return smsAuthService.phoneNumberCheck(to);
 	}
 	
 }

@@ -1,7 +1,6 @@
-.hidden {
-    display: none !important;
+.main-logo-image{
+	cursor: pointer;
 }
-
 a{
     text-decoration: none;
     color: #1f2937;
@@ -23,13 +22,17 @@ button {
 
 /* 헤더부분 */
 .header-z-index{
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    z-index:10;
+    
+     width: 100%;
+    
+    background: white;
 }
 .header {
     display: flex;
     justify-content: space-around;
-    width: auto;
+    width: 100%;
     height: 98px;
 }
 
@@ -139,8 +142,7 @@ button {
 /* hidden-category-menu부분 */
 
 .hidden-category-menu {
-    display: flex;
-    align-items: center;
+    display: none;
 
     padding: 20px 80px 20px 40px;
 
@@ -150,7 +152,6 @@ button {
 
 .brand-category-menu {
     display: flex;
-    justify-content: center;
  
 }
 
@@ -224,10 +225,19 @@ button {
 /* footer 부분 */
 
 .footer {
+    bottom: -100px;
+   	position: absolute;
+   	z-index: 1;
+   	
     margin: 12px 0px 0px;
     padding: 4px 32px 12px;
+	
+	width: 100%;   
 
+	background-color: white;
     border-top: 1px solid #efefef;
+    
+    
 }
 
 .footer-content{
@@ -282,5 +292,17 @@ button {
     color: #1f2937;
 }
 
+
+/* 관리자 페이지로 이동*/
+
+.admin-page {
+	margin-left: 20px;
+	
+}
+
 /* authitems 내부 마이페이지 로그인 */
 
+.active {
+	display: block;
+
+}

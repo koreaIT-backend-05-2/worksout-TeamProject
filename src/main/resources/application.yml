@@ -15,10 +15,10 @@ spring:
     static-path-pattern: /static/**
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://web-study.cimknwts3ktb.ap-northeast-2.rds.amazonaws.com:3306/worksout?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mariadb://web-study.cimknwts3ktb.ap-northeast-2.rds.amazonaws.com:3306/worksout?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: admin
     password: 1q2w3e4r
-    
+   
   servlet:
     multipart:
       max-file-size: 50MB
@@ -30,4 +30,6 @@ mybatis:
   - /mappers/*.xml
 
 file:
-  path: C:/TeamProject/worksout-TeamProject/git/worksout-TeamProject/upload/
+  path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
+  downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
+  

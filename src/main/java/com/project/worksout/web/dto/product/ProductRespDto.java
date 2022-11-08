@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class ProductRespDto {
 	private int productCode;
+	private int productGroup;
 	private String productBrand;
 	private String productKind;
 	private String productName;
@@ -18,11 +19,11 @@ public class ProductRespDto {
 	private String productKorName;
 	private String productInfo;
 	private int productPrice;
+	private List<Integer> productAmountList;
+	private List<String> productSizeList;
 	private int productAmount;
 	private String productSize;
 	private String productGender;
-	private int importanceFlag;
-	private int totalCount;
 	private LocalDateTime createDate;
 	private LocalDateTime updateDate;
 	private List<Map<String, Object>> files;

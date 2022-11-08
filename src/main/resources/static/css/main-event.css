@@ -1,0 +1,54 @@
+.name {
+    padding: 0px 0px 0px 14px;
+    font-size: 17px;
+    height: 25px;
+}
+
+.date {
+    padding: 0px 0px 0px 14px;
+    font-size: 14px;
+    height: 25px;
+}
+
+.inner-contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.br {
+    margin: 30px;
+}
+.inner-contents img{
+    width: 800px;
+    height: 1001px;
+}
+
+.event2 img{
+	width: 1200px;
+	height: 1503px;
+}
+
+.h2{
+	font-size: 24px;
+}
+
+.text-contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-contents strong{
+    font-size: 14px;
+}
+
+.inner-content-span {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.text-contents sub {
+    font-size: 11px;
+    font-weight: 400;
+}

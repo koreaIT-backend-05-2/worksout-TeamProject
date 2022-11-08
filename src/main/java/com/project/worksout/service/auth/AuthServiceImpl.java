@@ -27,6 +27,7 @@ public class AuthServiceImpl implements AuthService{
 	
 	@Override
 	public boolean updateUser(UpdateUserReqDto updateUserReqDto) throws Exception {
+		
 		return userRepository.updateUserByUsercode(updateUserReqDto.toEntity()) > 0;
 	}
 	
@@ -35,5 +36,6 @@ public class AuthServiceImpl implements AuthService{
 		
 		return userRepository.removeUserByUsercode(userCode) > 0;
 	}
+
 	
 }

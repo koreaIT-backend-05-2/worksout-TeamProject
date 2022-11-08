@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.worksout.domain.cart.CartRepository">
+  <insert id="saveCart"  parameterType="com.project.worksout.domain.cart.Cart">
+  	INSERT INTO 
+		cart_mst
+		SELECT 
+	  		0,
+	  		#{user_code},
+	  		#{product_code},
+	  		#{product_group},
+	  		#{product_size},
+	  		#{cart_price},
+	  		#{cart_amount},
+	  		1
+	FROM DUAL
+	WHERE NOT EXISTS
+		(SELECT 
+			*
+		FROM
+			cart_mst
+		WHERE 
+			user_code = #{user_code} AND product_code = #{product_code}
+		);
+  </insert>
+  <select id="getCartList" parameterType="hashmap" resultType="com.project.worksout.domain.cart.Cart">
+  	<!-- SELECT
+		cm.cart_code,
+		cm.user_code,
+		cm.cart_price,
+		cm.cart_amount,
+		cm.pay_flag,
+		
+		pm.product_group,
+		pm.product_name,
+		pm.product_detail_name,
+		pm.product_size,
+		pm.product_amount,
+		pm.product_price,
+		
+		pif.file_code,
+		pif.file_name
+	FROM
+		cart_mst cm
+		LEFT OUTER JOIN product_mst pm ON (pm.product_size =cm.product_size AND pm.product_code = cm.product_code)
+		LEFT OUTER JOIN product_img_file pif ON (pif.product_group = pm.product_group)
+	WHERE
+		cm.user_code = #{user_code};
+	 -->	
+		<!--  and
+		pm.product_group = #{product_group}; -->
+  
+  		
+  		
+  		SELECT
+		cm.cart_code,
+		cm.user_code,
+		cm.cart_price,
+		cm.cart_amount,
+		cm.pay_flag,
+		
+		pm.product_code,
+		pm.product_group,
+		pm.product_name,
+		pm.product_detail_name,
+		pm.product_size,
+		pm.product_amount,
+		pm.product_price,
+		
+		pif.file_code,
+		pif.file_name
+	FROM
+		cart_mst cm
+		LEFT OUTER JOIN product_mst pm ON (pm.product_size = cm.product_size AND pm.product_code = cm.product_code)
+		LEFT OUTER JOIN 
+			(SELECT DISTINCT(product_group),file_name,file_code 
+				FROM product_img_file 
+				WHERE 
+					file_code IN (
+						SELECT min(file_code) 
+						FROM product_img_file 
+						GROUP BY product_group)) pif 
+			ON(pif.product_group = pm.product_group)
+	WHERE
+		cm.user_code = #{user_code};
+  </select>
+  
+  <update id="updateCartAmount" 
+  parameterType="com.project.worksout.domain.cart.Cart">
+	  UPDATE 
+	  	cart_mst 
+	  SET 
+	  	cart_amount = #{cart_amount} 
+	  WHERE 
+	  	cart_code = #{cart_code};
+  </update>
+  </mapper>

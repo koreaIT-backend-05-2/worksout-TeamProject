@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/static/css/admin-item-insert.css">
 </head>
 
-<body>
+<body> <div style="min-height:100%; position:relative;">
     <div class="__next">
         <div class="all-container">
             <!-- 헤더부분 -->
@@ -24,10 +24,10 @@
                 <div class="main-div">
                     <div class="admin-category">
                         <div>
-                            <div class="admin-category-menu">유저정보</div>
-                            <div class="admin-category-menu">상품리스트</div>
-                            <div class="admin-category-underbar-menu">상품등록</div>
-                            <div class="admin-category-menu">문의게시글</div>
+                            <div class="admin-category-menu user-info">유저정보</div>
+                            <div class="admin-category-menu pd-list">상품리스트</div>
+                            <div class="admin-category-underbar-menu pd-insert">상품등록</div>
+                            <div class="admin-category-menu inquiry">문의게시글</div>
                         </div>
                     </div>
                     <div class="admin-contents">
@@ -36,10 +36,13 @@
 	                            <input type="text" placeholder="product_brand" name="productBrand">
 	                            <input type="text" placeholder="product_kind" name="productKind">
 	                            <input type="text" placeholder="product_name" name="productName">
+	                            <input type="text" placeholder="product_detail_name" name="productDetailName">
+	                            <input type="text" placeholder="product_kor_name" name="productKorName">
 	                            <input type="text" placeholder="product_info" name="productInfo">
 	                            <input type="text" placeholder="product_price" name="productPrice">
 	                            <input type="text" placeholder="product_amount" name="productAmount">
 	                            <input type="text" placeholder="product_size" name="productSize">
+	                            <input type="text" placeholder="product_gender" name="productGender">
 	                            <input type="file" class="product-file" name="file" multiple="multiple" accept=".jpg, .jpeg, .png, .gif">
 	                        </div>
                         </form>
@@ -49,14 +52,15 @@
             </main>
             
             <!-- footer부분 -->
-            <th:block th:replace="/fragment/footer"></th:block>
+            <th:block th:replace="/fragment/footer"></th:block></div>
         </div>
 
     </div>
   <!-- <script src="/static/js/item-category-page.js"></script> -->
     
     <script src="/static/js/product/product-insert.js"></script>
-
+    <script src="/static/js/product/product.js"></script>
+    
 </body>
 
 </html>

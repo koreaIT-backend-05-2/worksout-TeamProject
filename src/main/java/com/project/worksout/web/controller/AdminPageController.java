@@ -20,8 +20,9 @@ public class AdminPageController {
 	public String loadAdminItemInsertPage() {
 		return "/admin-item-insert-page";
 	}
-	@GetMapping("/ask")
+	@GetMapping("/inquiry")
 	public String loadAdminAskPage() {
-		return "/admin-ask-page";
+		return "/admin-inquiry-page";
 	}
+	
 }

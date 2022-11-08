@@ -2,7 +2,11 @@ const addressInput = document.querySelector(".address-input");
 const addressSearchButton = document.querySelector(".address-search-button");
 const detailAddressInput = document.querySelector(".detail-address-input");
 
+const myInfoModify = document.querySelector(".my-info-modify");
 
+myInfoModify.onclick = () => {
+	
+}
 
 // 다음 주소 api
 function searchAddress() {
@@ -88,9 +92,8 @@ userRank.value = `${user.user_rank}`;
 editPhoneInputs[0].value = `${user.user_phone_first} `;
 editPhoneInputs[1].value = `${user.user_phone_middle} `;
 editPhoneInputs[2].value = `${user.user_phone_last} `;
-emailAgree = `${user.user_email_agreement}`;
-smsAgree = `${user.user_sms_agreement} `;
-
+emailAgree = user.user_email_agreement;
+smsAgree = user.user_sms_agreement;
 
 addressPhoneInputs[0].value = `${user.consignee_phone_first}`
 addressPhoneInputs[1].value = `${user.consignee_phone_middle}`
@@ -108,6 +111,7 @@ const modifyBtn = document.querySelector(".modify-button");
 //수정하기 버튼 클릭시 회원정보 수정
 modifyBtn.onclick = () => {
 	load();
+	loadheader(user);
 }
 
 //마케팅 정보 수신동의 flag
@@ -125,6 +129,23 @@ for(let i = 0; i < agreeList.length; i++) {
 }
 
  */
+ 
+
+ console.log("test" + emailAgree)
+ console.log("sms" + smsAgree)
+ 
+ //마케팅 정보 수신 동의를 했을 경우 체크됨
+ if(emailAgree == true) {
+	checkboxs[0].checked = true;
+}else {
+	checkboxs[0].checked = false;
+}
+
+ if(smsAgree == true) {
+	checkboxs[1].checked = true;
+}else {
+	checkboxs[1].checked = false;
+}
  
  //회원 탈퇴 버튼 (모달 컨테이너로 유도 후 탈퇴)
 const modalContainer = document.querySelector(".modal-container")

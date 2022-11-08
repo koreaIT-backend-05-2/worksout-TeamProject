@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.worksout.domain.inquiry.InquiryRepository">
+  <select id="getInquiryList" parameterType="hashmap" resultType="com.project.worksout.domain.inquiry.Inquiry">
+  	select
+  		inquiry_code,
+  		inquiry_kind,
+  		inquiry_name,
+  		inquiry_email,
+  		inquiry_title,
+  		create_date,
+  		(select 
+  			count(*) 
+		from 
+			inquiry_mst
+		<choose>
+			<when test='search_flag == "ONLINESTORE" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "MARKETING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "PARTNERSHIP" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "RECRUITING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+		</choose>
+			) as total_inquiry_count
+  	from
+  		inquiry_mst qm
+  		<choose>
+			<when test='search_flag == "ONLINESTORE" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "MARKETING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "PARTNERSHIP" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+			<when test='search_flag == "RECRUITING" ' >
+				where
+					qm.inquiry_kind like #{search_flag}
+			</when>
+		</choose>
+  	order by
+  		inquiry_code desc
+  	limit #{index}, 10;
+  </select>
+  
+  <insert id="saveInquiry" parameterType="com.project.worksout.domain.inquiry.Inquiry"
+  	useGeneratedKeys="true" keyProperty="inquiry_code">
+  	insert into
+  		inquiry_mst
+  	values(
+  		0,
+  		#{inquiry_kind},
+  		#{inquiry_title},
+  		#{inquiry_name},
+  		#{inquiry_email},
+  		#{inquiry_content},
+  		now(),
+  		now()
+  	);
+  </insert>
+  <insert id="saveInquiryFiles" parameterType="java.util.List">
+  	insert into
+  		inquiry_file
+  	values
+  		<foreach collection="list" item = "file" separator=",">
+  			(
+  				0,
+  				#{file.inquiry_code},
+  				#{file.file_name},
+  				now(),
+  				now()
+  			)
+  			
+  		</foreach>
+  </insert>
+  <select id="getInquiry" parameterType="hashmap"  resultType="com.project.worksout.domain.inquiry.Inquiry">
+  SELECT
+	qm.inquiry_code,
+	qm.inquiry_kind,
+	qm.inquiry_name,
+	qm.inquiry_email,
+	qm.inquiry_title,
+	qm.inquiry_content,
+	
+	qf.file_code,
+	qf.file_name,
+	
+	qm.create_date
+FROM
+	inquiry_mst qm
+	LEFT OUTER JOIN inquiry_file qf ON(qf.inquiry_code = qm.inquiry_code)
+where
+	<choose>
+		<when test= 'flag == null'>
+			qm.inquiry_code = #{inquiry_code}
+		</when>
+		<when test='flag.equals("pre")'>
+			qm.inquiry_code = (
+				select
+					max(inquiry_code)
+				from	
+					inquiry_mst
+				where
+					inquiry_code &lt; #{inquiry_code}
+			)
+		</when>
+		<otherwise>
+			qm.inquiry_code = (
+				select
+					min(inquiry_code)
+				from	
+					inquiry_mst
+				where
+					inquiry_code &gt; #{inquiry_code}
+			)
+		</otherwise>
+	</choose>
+  </select>
+  
+  </mapper>

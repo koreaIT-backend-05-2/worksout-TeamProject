@@ -40,7 +40,7 @@ function load() {
 		dataType: "json",
 		success:(response) => {
 				getList(response.data);
-				console.log("response.data : " + response.data);
+				console.log(response.data);
 //			if(response.data[0] != null){
 //				getList(response.data);
 //				console.log(response.data);
@@ -107,7 +107,6 @@ function getList(list) {
 	            <td>${product.productGender}</td>
 	            <td>${files}</td>
 	            <td>
-	                <button type="button" class="updateButton">수정</button>
 	                <button type="button" class="deleteButton">삭제</button>
 	            </td>
 	        </tr>
