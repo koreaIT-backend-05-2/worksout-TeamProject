@@ -17,6 +17,7 @@ public class Payment {
 
 	private int payment_code;
 	private int user_code;
+	private int product_group;
 	private int product_code;
 	private int cart_code;
 	private String payment_request;

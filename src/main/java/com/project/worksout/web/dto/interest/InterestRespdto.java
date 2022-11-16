@@ -11,7 +11,7 @@ public class InterestRespdto {
 
 	private int userCode;
 	private int productGroup;
-	private int interestFlag;
+	private boolean interestFlag;
 	
 	public Interest toInterestEntity() {
 		return Interest.builder()
@@ -20,5 +20,4 @@ public class InterestRespdto {
 				.interest_flag(interestFlag)
 				.build();
 	}
-	
 }

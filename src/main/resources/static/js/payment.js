@@ -98,23 +98,47 @@ function productList(data) {
 	
 	orderTitle.innerHTML = `주문상품(${data.length})`
 	
+	console.log(data)
+	
 	data.forEach(product => {
 		
-		let productPrice = product.cartProductPrice.toLocaleString("ko-kr")
+		let productAmount = product.cartProductAmount;
 		
-		productList.innerHTML += `
-			<div class="order-products">
-                <div>
-                    <img src="/image/product/${product.productFileName}" onClick = "location.href = '/product/${product.productGroup}' " alt="">
-                </div>
-                <div class="order-product-info">
-                    <p class = "product-brand">${product.productBrand}</p>
-                    <p>${product.productName}</p>
-                    <p>사이즈: ${product.productSize}</p>
-                    <p>${productPrice}원 / 수량 ${product.cartProductAmount}개</p>
-                </div>
-            </div>
-		`
+		if(productAmount > 0) {
+			let productPrice = product.cartProductPrice.toLocaleString("ko-kr")
+		
+			productList.innerHTML += `
+				<div class="order-products">
+	                <div>
+	                    <img src="/image/product/${product.productFileName}" onClick = "location.href = '/product/${product.productGroup}' " alt="">
+	                </div>
+	                <div class="order-product-info">
+	                    <p class = "product-brand">${product.productBrand}</p>
+	                    <p>${product.productName}</p>
+	                    <p>사이즈: ${product.productSize}</p>
+	                    <p>${productPrice}원 / 수량 ${product.cartProductAmount}개</p>
+	                </div>
+	            </div>
+			`
+		}else {
+			let productPrice = product.cartProductPrice.toLocaleString("ko-kr")
+		
+			productList.innerHTML += `
+				<div class="order-products">
+	                <div>
+	                    <img src="/image/product/${product.productFileName}" onClick = "location.href = '/product/${product.productGroup}' " alt="">
+	                </div>
+	                <div class="order-product-info">
+	                    <p class = "product-brand">${product.productBrand}</p>
+	                    <p>${product.productName}</p>
+	                    <p>사이즈: ${product.productSize}</p>
+	                    <p>${productPrice}원 / 수량 ${product.productAmount}개</p>
+	                </div>
+	            </div>
+			`
+		}
+		
+		
 	});
 }
 
@@ -314,6 +338,7 @@ function paymentAddLoad(data) {
 		dataList.push(
 			paymentList = {
 				"userCode": userCode,
+				"productGroup": list.productGroup,
 				"productCode": list.productCode,
 				"cartCode": list.cartCode,
 				"paymentRequest": paymentRequest
@@ -344,9 +369,6 @@ function paymentAddLoad(data) {
 	
 
 }
-
-
-
 
 //에러메시지
 

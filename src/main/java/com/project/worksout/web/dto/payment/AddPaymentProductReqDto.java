@@ -13,6 +13,7 @@ public class AddPaymentProductReqDto {
 
 	private int userCode;
 	private int productCode;
+	private int productGroup;
 	private int cartCode;
 	private String paymentRequest;
 	private LocalDateTime createDate;
@@ -21,6 +22,7 @@ public class AddPaymentProductReqDto {
 		return Payment.builder()
 				.user_code(userCode)
 				.product_code(productCode)
+				.product_group(productGroup)
 				.cart_code(cartCode)
 				.payment_request(paymentRequest)
 				.create_date(createDate)

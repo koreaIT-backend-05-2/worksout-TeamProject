@@ -1,0 +1,52 @@
+img {
+    margin: 0px 0px 12px;
+
+    width: 300px;
+    height: 450px;  
+}
+
+.interest-proudct-text {
+    margin: 0px 0px 32px;
+
+    height: 64px;
+    border-bottom: 1px solid rgb(239, 239, 239);
+
+    text-align: center;
+}
+
+.interest-proudct-text h3 {
+    font-size: 14px;
+    font-weight: 200;
+    
+    line-height: 64px;
+}
+
+.interest-product-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 16px auto;
+
+    width: 1250px;
+}
+
+.interest-product-list:last-child {
+	padding-bottom: 60px;
+}
+
+.interest-closed {
+    display: flex;
+    justify-content: flex-end;
+
+    position: relative;
+    top: 25px;
+    right: 10px;
+
+}
+
+.fa-xmark {
+    font-size: 20px;
+
+    cursor: pointer;
+}

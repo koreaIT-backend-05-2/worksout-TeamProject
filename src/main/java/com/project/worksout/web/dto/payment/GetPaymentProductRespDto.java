@@ -11,6 +11,7 @@ public class GetPaymentProductRespDto {
 	
 	private int cartCode;
 	private int cartProductAmount;
+	private int productAmount;
 	private int cartProductPrice;
 	
 	private int productCode;

@@ -15,5 +15,15 @@
 	  			#{interest_flag}
   			)
   	</insert>
-  	
+  	<select id="getCheckInterestProduct" parameterType="Integer"  resultType="com.project.worksout.domain.interest.Interest">
+  		SELECT
+			im.user_code,
+			im.product_group,
+			im.interest_flag
+		FROM
+			interest_mst im
+			LEFT OUTER JOIN user_mst um ON (um.user_code = im.user_code)
+		WHERE
+			im.product_group = #{product_group};
+  	</select>
   </mapper>

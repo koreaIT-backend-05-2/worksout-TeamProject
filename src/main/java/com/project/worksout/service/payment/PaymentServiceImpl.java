@@ -27,14 +27,16 @@ public class PaymentServiceImpl implements PaymentService{
 		map.put("payment_type", paymentType);
 		map.put("key_code", keyCode);
 		
-		System.out.println(">>>>>>>>>>paymentType" + paymentType);
-		System.out.println(">>>>>>>>>>keyCode" + keyCode);
+		System.out.println(">>>>>>>>>>paymentType: " + paymentType);
+		System.out.println(">>>>>>>>>>keyCode: " + keyCode);
 		
 		List<GetPaymentProductRespDto> productList = new ArrayList<GetPaymentProductRespDto>();
 		
 		paymentRepositiory.getPaymentProductList(map).forEach(product -> {
 			productList.add(product.toPaymentProductListDto());
 		});
+		
+		System.out.println("?????: " + productList);
 		
 		return productList;
 	}

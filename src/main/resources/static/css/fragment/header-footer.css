@@ -36,10 +36,16 @@ button {
     height: 98px;
 }
 
+.main-container-header {
+	width: 100%;
+}
+
 .header-section{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    padding: 12px 32px;
 
     width: auto;
     height: 60px;
@@ -49,6 +55,8 @@ button {
     display: flex;
     justify-content: flex-start;
     align-items: center;    
+    
+    padding: 8px;
     
     width: 618.66px;
     height: 36px;

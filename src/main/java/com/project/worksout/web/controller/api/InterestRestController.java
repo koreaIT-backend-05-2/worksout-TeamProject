@@ -1,5 +1,8 @@
 package com.project.worksout.web.controller.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.worksout.service.interest.InterestService;
 import com.project.worksout.web.dto.CMRespDto;
+import com.project.worksout.web.dto.interest.GetinterestRespDto;
 import com.project.worksout.web.dto.interest.InterestRespdto;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +28,7 @@ public class InterestRestController {
 	private final InterestService interestService;
 
 	@PostMapping("/add")
-	public ResponseEntity<?> addinterestProduct(@RequestBody InterestRespdto interestRespdto) {
+	public ResponseEntity<?> addInterestProduct(@RequestBody InterestRespdto interestRespdto) {
 		boolean status = false;
 		
 		try {
@@ -36,6 +40,21 @@ public class InterestRestController {
 		
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "add interestProduct", status));
+	}
+	
+	@GetMapping("/flag/{productGroup}")
+	public ResponseEntity<?> checkInterestProduct(@PathVariable int productGroup) {
+	
+		List<GetinterestRespDto> listDto = new ArrayList<GetinterestRespDto>();
+		
+		try {
+			listDto =interestService.checkInterestProduct(productGroup);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.ok().body(new CMRespDto<>(-1, "failed load", listDto));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success load", listDto));
 	}
 	
 }

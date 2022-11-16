@@ -30,8 +30,8 @@ public class PaymentRestController {
 	public ResponseEntity<?> getPaymentProduct(@RequestParam String paymentType, @RequestParam String keyCode) {
 		List<GetPaymentProductRespDto> listDto = new ArrayList<GetPaymentProductRespDto>();
 		
-		System.out.println(paymentType);
-		System.out.println(keyCode);
+		System.out.println("controllerType: " + paymentType);
+		System.out.println("controller keyCode: " + keyCode);
 				
 		try {
 			listDto = paymentService.getPaymentProductList(paymentType, keyCode);

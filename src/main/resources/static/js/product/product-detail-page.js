@@ -57,7 +57,7 @@ function buttonEvent(product){
 								alert("로그인이 필요합니다.")
 								location.href = "/signin"
 						}
-							 paymentTokenEve(productCode)
+							 paymentTokenEve(product)
 							location.href = "/payment"
 						
 					}
@@ -68,11 +68,11 @@ function buttonEvent(product){
 }
 
 //localstorage로 보낼 key값과 value값을 만드는 function
-function paymentTokenEve(productCode) {
+function paymentTokenEve(product) {
 	
 	let paymentObject = {
 		"paymentType": "productType",
-		"keyCode": productCode
+		"keyCode": product.productGroup
 	}
 	
 	let productObject = JSON.stringify(paymentObject);
@@ -146,16 +146,25 @@ console.log("관심버튼:" + interestBtn);
 let flag = false;
 
 interestBtn.onclick = () => {
-	if(flag) {
-		flag = false;
-		interestBtn.innerHTML = `<i class="fa-regular fa-heart" ></i>`;
-	}else{
-		flag = true;
-		interestBtn.innerHTML = `<i class="fa-solid fa-heart" style="color:red;"></i>`;
-	}
+	
+	if(user == null) {
+		alert("로그인이 필요합니다");
+		location.href = "/signin"
+	} 
+	
+		if(flag) {
+			flag = false;
+			interestBtn.innerHTML = `<i class="fa-regular fa-heart" ></i>`;
+		}else{
+			flag = true;
+			interestBtn.innerHTML = `<i class="fa-solid fa-heart" style="color:red;"></i>`;
+		
+			addInterest(flag);
+		}
+		console.log(flag);
 }
 
-buttonEvent();
+
 
 /** >>>>>>>>>>>>>>>>>>>>>REQ>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -334,6 +343,34 @@ function modalEve() {
 		location.href = "/cart"
 	}
 	
+}
+
+function addInterest(flag) {
+	
+	let userCode = user.user_code;
+	
+	console.log(flag);
+	console.log(userCode);
+	console.log(productGroup)
+	
+	let addInterest = {
+		"userCode": userCode,
+		"productGroup": productGroup,
+		"interestFlag": flag
+	}
+	
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/api/v1/interest/add",
+		contentType: "application/json",
+		data: JSON.stringify(addInterest),
+		success: (response) => {
+			console.log(response.data)
+		},
+		error: errorMessage
+	});
+
 }
 
 //에러 메시지
