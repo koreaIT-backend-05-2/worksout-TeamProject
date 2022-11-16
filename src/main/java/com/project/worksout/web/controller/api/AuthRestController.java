@@ -100,7 +100,7 @@ public class AuthRestController {
 			return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
 		}
 		
-		log.info(">>>>> ?userinfo {}", principalDetails.getUser());
+//		log.info(">>>>> ?userinfo {}", principalDetails.getUser());
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
 	}

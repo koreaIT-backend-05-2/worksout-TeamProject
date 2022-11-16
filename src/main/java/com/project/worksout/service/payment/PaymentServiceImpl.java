@@ -7,7 +7,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.project.worksout.domain.payment.Payment;
 import com.project.worksout.domain.payment.PaymentRepositiory;
+import com.project.worksout.web.dto.payment.AddPaymentProductReqDto;
 import com.project.worksout.web.dto.payment.GetPaymentProductRespDto;
 
 import lombok.RequiredArgsConstructor;
@@ -19,10 +21,14 @@ public class PaymentServiceImpl implements PaymentService{
 	private final PaymentRepositiory paymentRepositiory;
 
 	@Override
-	public List<GetPaymentProductRespDto> getPaymentProductList(int userCode) throws Exception {
+	public List<GetPaymentProductRespDto> getPaymentProductList(String paymentType, String keyCode) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("user_code", userCode);
+		map.put("payment_type", paymentType);
+		map.put("key_code", keyCode);
+		
+		System.out.println(">>>>>>>>>>paymentType" + paymentType);
+		System.out.println(">>>>>>>>>>keyCode" + keyCode);
 		
 		List<GetPaymentProductRespDto> productList = new ArrayList<GetPaymentProductRespDto>();
 		
@@ -31,5 +37,29 @@ public class PaymentServiceImpl implements PaymentService{
 		});
 		
 		return productList;
+	}
+	
+	@Override
+	public boolean addPaymentProduct(List<AddPaymentProductReqDto> addPaymentProductReqDto) throws Exception {
+		boolean status = false;
+		
+		List<Payment> payments = new ArrayList<Payment>();
+		
+		addPaymentProductReqDto.forEach(paymentList -> {
+			payments.add(paymentList.toPaymentEntity());
+		});
+		
+		System.out.println("test" + payments);
+		System.out.println("size" + payments.size());
+		
+		status = paymentRepositiory.savePaymentProduct(payments) > 0;
+		
+
+		if(status) {
+			status = paymentRepositiory.savePaymentState(payments) > 0;
+			
+		}
+				
+		return status;
 	}
 }

@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 					.antMatchers("/admin/**")
 					.access("hasRole('ROLE_ADMIN')")
 					
-					.antMatchers("/mypage/**", "/cart/**")
+					.antMatchers("/mypage/**", "/cart/**", "/payment/**")
 					
 					.authenticated()
 					

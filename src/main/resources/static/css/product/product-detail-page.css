@@ -470,3 +470,74 @@ article {
 	display: block;
 	border-top: 1px solid black;
 }
+
+/* 모달창 */
+
+.modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #00000065;
+    width: 100%;
+    height: 100%;
+
+	z-index: 999;
+}
+
+.modal-visible {
+    display: none; 
+}
+
+.modal-withdrawal {
+    display: flex;
+    flex-direction: column;
+
+
+    padding: 24px;
+
+    width: 386px;
+    height: 172px;
+    background-color: #fff;
+}
+
+.modal-close-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-close-group i {
+	cursor: pointer;
+}
+
+.modal-ask-text {
+    margin-top: 16px;
+    padding-bottom: 24px;
+}
+
+.modal-move-button {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 16px 0px 0px;
+
+    height: 36px;
+}
+
+.modal-move-button button {
+    padding: 8px;
+
+    width: 160px;
+    height: 36px;
+
+    background-color: #111837;
+    color: #fff;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}

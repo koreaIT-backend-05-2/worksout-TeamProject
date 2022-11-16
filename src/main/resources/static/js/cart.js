@@ -12,7 +12,6 @@ checkUser();
 
 load();
 
-
 loadPaymentpage();
 
 console.log("userCode: " + userCode);
@@ -34,18 +33,20 @@ function load() {
 		url: "api/v1/cart/" + userCode,
 		dataType: "json",
 		success: (response)  => {
-			getCartList(response.data)
-			totalPriceEve(response.data)
-			cartCheckbox(response.data)
-			choiceRemoveClickEve(response.data)
-			
-			let list = response.data;
-			
-			let productListToken = JSON.stringify(list.length);
-			
-			console.log(productListToken)
-			
-			localStorage.setItem("productListToken", productListToken);
+			if(response.data != null) {
+				getCartList(response.data)
+				totalPriceEve(response.data)
+				cartCheckbox(response.data)
+				choiceRemoveClickEve(response.data)
+				
+				let list = response.data;
+				
+				let productListToken = JSON.stringify(list.length);
+				
+				console.log(productListToken)
+				
+				localStorage.setItem("productListToken", productListToken);
+			}
 			
 		},
 		error: errorMessage
@@ -58,17 +59,12 @@ function load() {
 function getCartList(list) {
 	const cartTbody = document.querySelector("tbody");
 	
-	console.log(list[0].cartProductFileName)
-	
 	cartTbody.innerHTML = ``;
 	
 	list.forEach((cart, idx) => {
 		let productHiddenPrice = cart.cartProductPrice
 
 		let productPrice = cart.cartProductPrice.toLocaleString("ko-kr")
-		
-
-		
 		
 		cartTbody.innerHTML += `
 		<tr class="cart-product-list-${cart.cartCode}">
@@ -104,7 +100,6 @@ function getCartList(list) {
 
 	console.log(flagArr)
 	
-	console.log("<<<<<<<<: " + list[0].cartCode)
 	
 	increaseAmount();
 	
@@ -622,20 +617,24 @@ function loadPaymentpage() {
 	const memberPurchaseBtn = document.querySelector(".member-purchase-button");
 	const cartFlagCheckbox = document.querySelectorAll(".cart-flag-checkbox");
 	
-	let list = new Array();
-	
 	memberPurchaseBtn.onclick = () => {
 
-	for(let i = 0; i < cartFlagCheckbox.length; i++) {
-			if(cartFlagCheckbox[i].checked == true) {
-				list.push(cartFlagCheckbox[i].value)
-			}	
+//	for(let i = 0; i < cartFlagCheckbox.length; i++) {
+//			if(cartFlagCheckbox[i].checked == true) {
+//				list.push(cartFlagCheckbox[i].value)
+//			}	
+//		}
+//		console.log(list)
+		
+		let paymentObject = {
+			"paymentType": "cartType",
+			"keyCode": userCode
 		}
-		console.log(list)
 		
-		let listToken = JSON.stringify(list);
+		let cartObject = JSON.stringify(paymentObject)
 		
-		localStorage.setItem("listToken", listToken);
+		localStorage.setItem("TypeObject", cartObject);
+		
 		
 		location.href = "/payment"
 	}

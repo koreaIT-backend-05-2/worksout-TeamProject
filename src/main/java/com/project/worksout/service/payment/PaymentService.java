@@ -7,7 +7,7 @@ import com.project.worksout.web.dto.payment.GetPaymentProductRespDto;
 
 public interface PaymentService {
 
-	public List<GetPaymentProductRespDto> getPaymentProductList(int userCode) throws Exception;
+	public List<GetPaymentProductRespDto> getPaymentProductList(String paymentType, String keyCode) throws Exception;
 	
-	public boolean addPaymentProduct(AddPaymentProductReqDto addPaymentProductReqDto) throws Exception;
+	public boolean addPaymentProduct(List<AddPaymentProductReqDto> addPaymentProductReqDto) throws Exception;
 }

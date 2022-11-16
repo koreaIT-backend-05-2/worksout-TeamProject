@@ -24,7 +24,6 @@ load();
 
 loadInfo();
 
-checkboxEve();
 
 function loadInfo() {
 	
@@ -146,7 +145,7 @@ function totalProductPricePayment(totalPaymentPrice) {
 }
 
 //동의시 주문하기 버튼 활성화
-function checkboxEve() {
+function checkboxEve(data) {
 	const AgreeCheckbox = document.querySelectorAll(".checkbox-agree")
 	console.log(AgreeCheckbox);
 	
@@ -166,28 +165,28 @@ function checkboxEve() {
 			
 		allCheckedFlag ? (orderBtn.style.backgroundColor = "black", orderBtn.disabled = false) : (orderBtn.style.backgroundColor = "", orderBtn.disabled = true);
 		
-		productOrderEve();
+		productOrderEve(data);
 		}
 	} 
 }
 
 
 //결제하기 버튼 클릭 이벤트
-function productOrderEve() {
+function productOrderEve(data) {
 	orderBtn.onclick = () => {
 //		alert("test")
 
 		let IMP = window.IMP;
 		IMP.init("imp75518151");
 		
-		requestPay();
+		requestPay(data);
 		
 	}
 }
 
 
 //결제하기 이벤트
-function requestPay() {
+function requestPay(data) {
 	
 	const totalPrice = document.querySelector(".total-price span").textContent;
 	
@@ -225,28 +224,129 @@ function requestPay() {
           // 결제 실패 시 로직,
           console.log(rsp)
           alert("사용자 결제 취소")
+          console.log(data)
+          paymentAddLoad(data);
       }
   });
 }
 
 
 function load() {
+	
+	let typeObject = localStorage.getItem("TypeObject");
+	
+	if(typeObject != null){ 
+	
+		typeObject = JSON.parse(localStorage.getItem("TypeObject"))
+		
+	}
+	localStorage.removeItem("TypeObject");
+	console.log(typeObject)
+
+	let paymentType = typeObject.paymentType;
+	let keyCode= String(typeObject.keyCode);
+	
+	console.log(paymentType)
+	console.log(keyCode)
+	
+	console.log(typeof(paymentType))
+	console.log(typeof(keyCode))
+	
 	$.ajax({
 		async: false,
 		type: "get",
-		url: "/api/v1/payment/" + userCode,
+		url: "/api/v1/payment/list",
 		dataType: "json",
+		data: {
+			"paymentType" : paymentType,
+			"keyCode": keyCode
+		},
 		success: (response) => {
 			console.log(response)
 			productList(response.data)
 			totalProductPrice(response.data)
+			checkboxEve(response.data);
 		},
 		error: errorMessage
 		
 	})
 }
 
-console.log(JSON.parse(localStorage.getItem("listToken")))
+// let obj1 = {
+// 	"userCode": 1,
+// 	"productCode": 1,
+// 	"cartCode": 1,
+// 	"paymentRequest": "test1"
+// }
+
+// let obj2 = {
+// 	"userCode": 1,
+// 	"productCode": 2,
+// 	"cartCode": 2,
+// 	"paymentRequest": "test2"
+// }
+
+// let obj3 = {
+// 	"userCode": 1,
+// 	"productCode": 2,
+// 	"cartCode": 3,
+// 	"paymentRequest": "test3"
+// }
+
+// let testArray = new Array();
+
+// testArray.push(obj1);
+// testArray.push(obj2);
+// testArray.push(obj3);
+
+// console.log(testArray)
+
+function paymentAddLoad(data) {
+
+	let paymentRequest = document.querySelector("#shipping-request").value
+
+	let dataList = new Array();
+	
+	let paymentList = null;
+
+	data.forEach(list => {
+		
+		dataList.push(
+			paymentList = {
+				"userCode": userCode,
+				"productCode": list.productCode,
+				"cartCode": list.cartCode,
+				"paymentRequest": paymentRequest
+			}) 
+	})
+	
+	console.log(dataList)
+	
+//  let list = {
+// 	"userCode" : userCode,
+// 	"productCode" : productCode,
+// 	"cartCode" : cartCode,
+// 	"paymentRequest": paymentRequest
+//  }
+
+	  $.ajax({
+	 	async: false,
+	 	type: "post",
+	 	url: `/api/v1/payment/addPayment`,
+	 	contentType: "application/json",
+	 	data: JSON.stringify(dataList),
+	 	dataType: "json",
+	 	success: (response) => {
+		
+	 	},
+	 	error: errorMessage
+	 });
+	
+
+}
+
+
+
 
 //에러메시지
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.worksout.service.payment.PaymentService;
@@ -25,13 +26,15 @@ public class PaymentRestController {
 	
 	private final PaymentService paymentService;
 
-	@GetMapping("/{userCode}")
-	public ResponseEntity<?> getPaymentProduct(@PathVariable int userCode) {
+	@GetMapping("/list")
+	public ResponseEntity<?> getPaymentProduct(@RequestParam String paymentType, @RequestParam String keyCode) {
 		List<GetPaymentProductRespDto> listDto = new ArrayList<GetPaymentProductRespDto>();
 		
+		System.out.println(paymentType);
+		System.out.println(keyCode);
 				
 		try {
-			listDto = paymentService.getPaymentProductList(userCode);
+			listDto = paymentService.getPaymentProductList(paymentType, keyCode);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failedrequest", listDto));
@@ -41,9 +44,21 @@ public class PaymentRestController {
 	}
 
 	@PostMapping("/addPayment")
-	public ResponseEntity<?> addPaymentProduct(@RequestBody AddPaymentProductReqDto addPaymentProductReqDto) {
+	public ResponseEntity<?> addPaymentProduct(@RequestBody List<AddPaymentProductReqDto> addPaymentProductReqDto) {
+
+		System.out.println(addPaymentProductReqDto);
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "success add paymentList", null));
+		boolean dto = false;
+		
+		try {
+			dto = paymentService.addPaymentProduct(addPaymentProductReqDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "failed add paymentList", dto));
+		}
+		
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "success add paymentList",  dto));
 	}
 	
 }

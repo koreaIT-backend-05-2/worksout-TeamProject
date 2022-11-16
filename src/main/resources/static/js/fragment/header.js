@@ -2,6 +2,7 @@ const mainLogoImage = document.querySelector(".main-logo-image");
 const entryPage =document.querySelector(".entry-page");
 const cartPage =document.querySelector(".cart-page");
 
+
 entryPage.onclick = () => {
 	location.href = "/entry"
 }
@@ -113,6 +114,9 @@ function loadHeader(user) {
 	         <p class="login-and-logout logout" onclick = "location.replace('/logout')">로그아웃</p>
 		`
 		
+			console.log(user)
+			cartListNumEve(user);
+		
 	}else{
 		
 			authItems.innerHTML = `
@@ -121,6 +125,8 @@ function loadHeader(user) {
 		`
 		
 		
+			console.log(user)
+			cartListNumEve(user);
 		
 	}
 }
@@ -130,15 +136,17 @@ let user = getPrincipal();
 
 loadHeader(user);
 
-cartListNumEve();
+
 
 //장바구니 옆에 개수 넣어주는 이벤트
-function cartListNumEve() {
+function cartListNumEve(user) {
 	let cartList = localStorage.getItem("productListToken")
 
 	console.log(cartList)
 	
-	cartPage.innerHTML = `장바구니(${cartList})`;
+	if(user != null) {
+		cartPage.innerHTML = `장바구니(${cartList})`;
+	}
 }
 
 

@@ -11,5 +11,9 @@ import com.project.worksout.domain.cart.Cart;
 public interface PaymentRepositiory {
 
 	public List<Cart> getPaymentProductList(Map<String, Object> map) throws Exception;
+	
+	public int savePaymentProduct(List<Payment> payment) throws Exception;
 
+	public int savePaymentState(List<Payment> payment)  throws Exception;
+	
 }

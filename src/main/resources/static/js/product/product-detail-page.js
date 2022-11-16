@@ -48,13 +48,38 @@ function buttonEvent(product){
 								location.href = "/signin"
 						}
 						cartLoad(productSize, productCode);
-					}   
+					} 
+					
+					const purchaseBtn = document.querySelector(".purchase-button");
+					
+					purchaseBtn.onclick = () => {
+						if(user == null) {
+								alert("로그인이 필요합니다.")
+								location.href = "/signin"
+						}
+							 paymentTokenEve(productCode)
+							location.href = "/payment"
+						
+					}
 	            }
 	        }
 	    }
 	}
 }
 
+//localstorage로 보낼 key값과 value값을 만드는 function
+function paymentTokenEve(productCode) {
+	
+	let paymentObject = {
+		"paymentType": "productType",
+		"keyCode": productCode
+	}
+	
+	let productObject = JSON.stringify(paymentObject);
+	
+	localStorage.setItem("TypeObject", productObject);
+	
+}
 
 
 // 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
@@ -277,7 +302,7 @@ function cartLoad(productSize, productCode) {
 		data:JSON.stringify(addCart),
 		success: (response) => {
 			if(response.data) {
-				alert("장바구니 추가완료")
+				modalEve();
 			}else {
 				alert("이미 추가된 상품입니다.")
 			}
@@ -288,6 +313,28 @@ function cartLoad(productSize, productCode) {
 	})
 }
 
+
+function modalEve() {
+	const modalContainer = document.querySelector(".modal-container");
+	const closeModal = document.querySelector(".modal-close-group i");
+	const modalMoveShoppingBtn = document.querySelector(".modal-move-shopping-button");
+	const modalMoveCartBtn = document.querySelector(".modal-move-cart-button");
+	
+	modalContainer.classList.remove("modal-visible");
+	
+	closeModal.onclick = () => {
+		modalContainer.classList.add("modal-visible");
+	}
+	
+	modalMoveShoppingBtn.onclick = () => {
+		modalContainer.classList.add("modal-visible");
+	}
+	
+	modalMoveCartBtn.onclick = () => {
+		location.href = "/cart"
+	}
+	
+}
 
 //에러 메시지
 function errorMessage(request, status, error) {
