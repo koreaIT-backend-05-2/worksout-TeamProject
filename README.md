@@ -8,6 +8,7 @@
   * Validation을 이용한 유효성 검사
   * Security를 이용해 ROLE 등 접근처리
   * 회원가입 시 휴대폰 인증 api
+  * PrincipalDetails를 통해 header에 user정보를 담은 후 로그인 유지 및 후에 마이 페이지, 구매하기 등 정보를 불러오는 데 이용
  
 * 마이 페이지
   * 회원 정보를 확인할 수 있음
@@ -43,4 +44,28 @@
   * 체크박스 선택 후 회원구매 페이지로 이동 가능
 
 * 구매하기
-  *   
+  * 아임포트 api를 통해 구매하기 연동
+ </br>
+
+
+## 프로젝트 배포 및 기존 사이트
+
+
+
+[해당 사이트](https://www.worksout.co.kr/)  
+</br>
+[배포 사이트]()
+
+>배포 AWS를 통한 배포
+___
+
+</br>
+
+## 기술 스택
+
+![html5](https://img.shields.io/badge/HTML5-red?style=flat-square&logo=HTML5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-blue?style=flat-square&logo=CSS3)
+![JavaScript](https://img.shields.io/badge/-JavaScript-f7df1e?style=flat-square&logo=JavaScript&logoColor=black)
+</br>
+
+   
