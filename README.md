@@ -88,17 +88,43 @@
 
 <img src="https://user-images.githubusercontent.com/105491519/206981624-839fb022-9495-4011-badb-f0fb8a2e08c1.png" width="100%"/>
 
+> 메인 이미지입니다.  
+> header와 footer 그리고 각 카테고리에서 뽑아온 이미지를 메인에 나타냈습니다.
+
 </br>
 
 ### 로그인 페이지
 </br>
 
-<img src="https://user-images.githubusercontent.com/105491519/206983004-a14daffe-cc3b-4a5d-9c59-458e06513c84.png" width="100%"/>
+<img src="https://user-images.githubusercontent.com/105491519/206983004-a14daffe-cc3b-4a5d-9c59-458e06513c84.png" width="50%"/>
+<img src="https://user-images.githubusercontent.com/105491519/206987941-f8249b84-e54e-4bc5-9edd-844a1344657e.png" width="50%"/>
+
+> 로그인 페이지입니다.  
+> Handler를 이용해 로그인 실패시 해당 이미지처럼 alert로 사용자에게 알려줍니다. 
+
+</br>
 
 ### 회원가입 페이지
 </br>
 
 <img src="https://user-images.githubusercontent.com/105491519/206983645-2e36a9c8-1a86-4d7f-b97d-b4c3a6954607.png" width="50%"/><img src="https://user-images.githubusercontent.com/105491519/206983757-f237e41d-e60e-4446-869e-e1edcae4dd7e.png" width="50%"/>
+
+> 회원가입 페이지입니다.  
+> Validation을 통해 사용자가 필수사항을 기입하지 아니할 경우 해당 칸에 경고 표시를 하여 알려줍니다.
+
+</br>
+
+<img src="https://user-images.githubusercontent.com/105491519/206988560-c897890a-b2dc-4ad0-aa19-f6d2e204bac5.jpg" width="50%"/>
+
+<img src="https://user-images.githubusercontent.com/105491519/206988686-bea47406-c3ae-4be6-924e-195d41e7dd0c.jpg" width="50%"/>
+
+> 회원가입 중 휴대폰 인증입니다.
+> 휴대폰 번호를 기입하고 인증버튼을 누르면 문자로 인증번호가 날아오고, 해당 번호를 기입하면 버튼이 비활성화 됩니다.
+
+</br>
+
+
+
 
 
 
