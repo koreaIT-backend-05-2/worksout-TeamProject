@@ -4,6 +4,8 @@
 > FrameWork는 Spring Boot이며, JAVA로 개발한 쇼핑몰입니다.  
 > 쇼핑몰에서 구현한 기능은 다음과 같습니다.
 
+</br>
+
 * 회원가입 / 로그인
   * Validation을 이용한 유효성 검사
   * Security를 이용해 ROLE 등 접근처리
@@ -48,7 +50,7 @@
  </br>
 
 
-## 프로젝트 배포 및 기존 사이트
+## 기존 사이트
 
 
 
@@ -76,7 +78,27 @@
 ![MariaDB](https://img.shields.io/badge/-MariaDB-%23003545?style=flat-square&logo=MariaDB)
 ![Mybatis](https://img.shields.io/badge/-Mybatis-%23000000?style=flat-square)
 
+</br>
 
 ## 구현한 기능
+</br>
+
+### 메인 페이지
+</br>
+
+<img src="https://user-images.githubusercontent.com/105491519/206981624-839fb022-9495-4011-badb-f0fb8a2e08c1.png" width="100%"/>
+
+</br>
+
+### 로그인 페이지
+</br>
+
+<img src="https://user-images.githubusercontent.com/105491519/206983004-a14daffe-cc3b-4a5d-9c59-458e06513c84.png" width="100%"/>
+
+### 회원가입 페이지
+</br>
+
+<img src="https://user-images.githubusercontent.com/105491519/206983645-2e36a9c8-1a86-4d7f-b97d-b4c3a6954607.png" width="50%"/><img src="https://user-images.githubusercontent.com/105491519/206983757-f237e41d-e60e-4446-869e-e1edcae4dd7e.png" width="50%"/>
+
 
 
