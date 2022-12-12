@@ -57,7 +57,6 @@
 [배포 사이트]()
 
 >배포 AWS를 통한 배포
-___
 
 </br>
 
@@ -76,3 +75,8 @@ ___
 
 ![MariaDB](https://img.shields.io/badge/-MariaDB-%23003545?style=flat-square&logo=MariaDB)
 ![Mybatis](https://img.shields.io/badge/-Mybatis-%23000000?style=flat-square)
+
+
+## 구현한 기능
+
+
