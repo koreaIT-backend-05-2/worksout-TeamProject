@@ -96,8 +96,8 @@
 ### 로그인 페이지
 </br>
 
-<img src="https://user-images.githubusercontent.com/105491519/206983004-a14daffe-cc3b-4a5d-9c59-458e06513c84.png" width="50%"/>
-<img src="https://user-images.githubusercontent.com/105491519/206987941-f8249b84-e54e-4bc5-9edd-844a1344657e.png" width="50%"/>
+<img src="https://user-images.githubusercontent.com/105491519/206983004-a14daffe-cc3b-4a5d-9c59-458e06513c84.png" width="400px"/>
+<img src="https://user-images.githubusercontent.com/105491519/206987941-f8249b84-e54e-4bc5-9edd-844a1344657e.png" width="400px"/>
 
 > 로그인 페이지입니다.  
 > Handler를 이용해 로그인 실패시 해당 이미지처럼 alert로 사용자에게 알려줍니다. 
@@ -107,7 +107,7 @@
 ### 회원가입 페이지
 </br>
 
-<img src="https://user-images.githubusercontent.com/105491519/206983645-2e36a9c8-1a86-4d7f-b97d-b4c3a6954607.png" width="50%"/><img src="https://user-images.githubusercontent.com/105491519/206983757-f237e41d-e60e-4446-869e-e1edcae4dd7e.png" width="50%"/>
+<img src="https://user-images.githubusercontent.com/105491519/206983645-2e36a9c8-1a86-4d7f-b97d-b4c3a6954607.png" width="400px"/><img src="https://user-images.githubusercontent.com/105491519/206983757-f237e41d-e60e-4446-869e-e1edcae4dd7e.png" width="400px"/>
 
 > 회원가입 페이지입니다.  
 > Validation을 통해 사용자가 필수사항을 기입하지 아니할 경우 해당 칸에 경고 표시를 하여 알려줍니다.
