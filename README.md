@@ -56,9 +56,6 @@
 
 [해당 사이트](https://www.worksout.co.kr/)  
 </br>
-[배포 사이트]()
-
->배포 AWS를 통한 배포
 
 </br>
 
