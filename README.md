@@ -114,7 +114,7 @@
 
 <img src="https://user-images.githubusercontent.com/105491519/206988686-bea47406-c3ae-4be6-924e-195d41e7dd0c.jpg" width="50%"/>
 
-> 회원가입 중 휴대폰 인증입니다.
+> 회원가입 중 휴대폰 인증입니다.  
 > 휴대폰 번호를 기입하고 인증버튼을 누르면 문자로 인증번호가 날아오고, 해당 번호를 기입하면 버튼이 비활성화 됩니다.
 
 </br>
@@ -123,14 +123,20 @@
 
 <img src="https://user-images.githubusercontent.com/105491519/210759485-63ff03b5-476b-4d63-bb91-b85b8455c29c.png" width="50%"/>
 
-> 마이페이지 화면입니다.
+> 마이페이지 화면입니다.  
 > 가입했던 회원 정보가 들어가 있고, 주소창을 채워 정보를 수정 가능하며 필요시에 회원 탈퇴도 가능합니다.
 
 
 <img src="https://user-images.githubusercontent.com/105491519/210760386-d2d7ab48-700d-43df-b200-1dd47e5658cc.gif" width="50%"/>
 
-> 회원수정입니다.
+> 회원수정 입니다.  
 > 필요한 정보를 수정한 후 수정 버튼을 누르면 DB에 저장된 유저정보가 수정됩니다.
+
+<img src="https://user-images.githubusercontent.com/105491519/210761454-aab96229-2009-43f2-8180-7bf078fc94ad.gif" width="50%"/>
+
+> 회원탈퇴 입니다.  
+> 회원탈퇴 버튼 클릭시 경고문구가 나오며, 이를 클릭하면 회원탈퇴가 되어 DB에 user정보가 삭제되고, 로그인이 되지 않습니다.  
+
 
 
 ### 문의하기
