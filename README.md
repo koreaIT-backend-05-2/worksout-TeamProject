@@ -120,6 +120,7 @@
 </br>
 
 ### 마이페이지
+</br>
 
 <img src="https://user-images.githubusercontent.com/105491519/210759485-63ff03b5-476b-4d63-bb91-b85b8455c29c.png" width="50%"/>  
 
