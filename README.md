@@ -130,13 +130,13 @@
 
 </br>
 
-<img src="https://user-images.githubusercontent.com/105491519/210760386-d2d7ab48-700d-43df-b200-1dd47e5658cc.gif" width="50%"/>  
+<img src="https://user-images.githubusercontent.com/105491519/210760386-d2d7ab48-700d-43df-b200-1dd47e5658cc.gif"/>  
 </br> 
   
 > 회원수정 입니다.  
 > 필요한 정보를 수정한 후 수정 버튼을 누르면 DB에 저장된 유저정보가 수정됩니다.
 
-</br>
+</br> 
 
 <img src="https://user-images.githubusercontent.com/105491519/210761454-aab96229-2009-43f2-8180-7bf078fc94ad.gif"/>  
 </br>
