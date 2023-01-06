@@ -138,7 +138,7 @@
 
 </br>
 
-<img src="https://user-images.githubusercontent.com/105491519/210761454-aab96229-2009-43f2-8180-7bf078fc94ad.gif" width="50%"/>  
+<img src="https://user-images.githubusercontent.com/105491519/210761454-aab96229-2009-43f2-8180-7bf078fc94ad.gif"/>  
 </br>
   
 > 회원탈퇴 입니다.  
