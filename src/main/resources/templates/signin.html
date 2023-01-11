@@ -11,9 +11,9 @@
     <title>login</title>
 </head>
 <body>
-     	<th:block th:replace="/fragment/header"></th:block>
+<div class="main-box ">
+<th:block th:replace="fragment/header"></th:block>
     <main>
-     	
         <form class="login" method="post" action="/signin">
             <h1>로그인</h1>
             <div class="login-form">
@@ -45,8 +45,8 @@
             </div>
         </form>
     </main>
-    <th:block th:replace="/fragment/footer"></th:block>
-    
+<th:block th:replace="fragment/footer"></th:block>
+</div>    
     <script src="/static/js/signin.js"></script>
 </body>
 </html>

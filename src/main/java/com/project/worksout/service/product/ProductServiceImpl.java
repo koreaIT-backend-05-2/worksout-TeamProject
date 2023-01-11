@@ -137,7 +137,7 @@ public class ProductServiceImpl implements ProductService {
 		productRepository.getProductList(map).forEach(product -> {
 			List<Map<String, Object>> files = new ArrayList<Map<String,Object>>();
 			
-			log.info("<<<<<<<<<<{}>>>>>>>>>", product);
+//			log.info("<<<<<<<<<<{}>>>>>>>>>", product);
 			
 			product.getProduct_files().forEach(file -> {
 				Map<String, Object> fileMap = new HashMap<String, Object>();

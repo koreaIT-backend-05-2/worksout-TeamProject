@@ -1,6 +1,8 @@
+
 main {
 	height: 100%;
 }
+
 
 .cart {
     display: flex;
@@ -8,13 +10,12 @@ main {
     margin: 112px auto;
 
     width: 1280px;
+    
 }
 
 .cart-group {
+	
     width: 940px;
-    height: 300px;
-
-    
 }
 
 .cart-group-header {
@@ -47,7 +48,6 @@ input {
 
 .cart-table {
     width: 940px;
-    height: 290px;
 }
 
 thead {
@@ -123,14 +123,18 @@ tbody tr {
 
 .td-trash {
     text-align: center;
-    cursor: pointer;
 }
 
-
+.td-trash i {
+    cursor: pointer;
+}
 
 /* 주문정보 div */
 
 .order-info {
+	position: fixed;	
+	right: 150px;
+	
     margin-left: 32px;
     padding: 20px;
 
@@ -212,4 +216,11 @@ tbody tr {
     color: #fff;
 
     background-color: #111827;
+}
+
+
+/* 히든 태그 */
+
+.cartCode-hidden {
+	display: none;
 }

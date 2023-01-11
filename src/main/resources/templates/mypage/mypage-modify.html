@@ -12,11 +12,12 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-    <th:block th:replace="/fragment/header"></th:block>
+<div class="main-box">
+    <th:block th:replace="fragment/header"></th:block>
     <main>
         <div class="myPage">
             <!-- head frgment -->
-            <th:block th:replace="/fragment/mypage-head"></th:block>
+            <th:block th:replace="fragment/mypage-head"></th:block>
           
              <!-- contents -->
             <div class="contents">
@@ -128,8 +129,9 @@
                 </article>
             </div>
         </div>
-        <th:block th:replace="/fragment/footer"></th:block>
+        <th:block th:replace="fragment/footer"></th:block>
     </main>
+</div>
 
 	<!-- 모달창 -->
     <div class="modal-container modal-visible">

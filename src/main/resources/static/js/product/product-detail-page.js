@@ -14,15 +14,19 @@ load();
 function buttonEvent(product){
 		let sizeBtns = document.querySelectorAll(".size-button");
 		
-		 let productSize = null;
-		
+		 let productSize = new Array();
+		 
+		 let productCode = new Array();
 		
 		//사이즈 선택 이벤트
 	for(let i = 0; i < sizeBtns.length; i++) {
 	    sizeBtns[i].onclick = () => {
 		
 			productSize = sizeBtns[i].textContent;
-		
+			console.log("뭘까 이건: " + productSize)
+			
+			productCode = sizeBtns[i].value;
+			console.log("뭘까 이건2: " + productCode)
 		// 클릭 이전에 한번 초기화
 			sizeBtns.forEach(sizeBtn => {
 				sizeBtn.classList.remove("act-size")
@@ -43,14 +47,39 @@ function buttonEvent(product){
 								alert("로그인이 필요합니다.")
 								location.href = "/signin"
 						}
-						cartLoad();
-					}   
+						cartLoad(productSize, productCode);
+					} 
+					
+					const purchaseBtn = document.querySelector(".purchase-button");
+					
+					purchaseBtn.onclick = () => {
+						if(user == null) {
+								alert("로그인이 필요합니다.")
+								location.href = "/signin"
+						}
+							 paymentTokenEve(product)
+							location.href = "/payment"
+						
+					}
 	            }
 	        }
 	    }
 	}
 }
 
+//localstorage로 보낼 key값과 value값을 만드는 function
+function paymentTokenEve(product) {
+	
+	let paymentObject = {
+		"paymentType": "productType",
+		"keyCode": product.productGroup
+	}
+	
+	let productObject = JSON.stringify(paymentObject);
+	
+	localStorage.setItem("TypeObject", productObject);
+	
+}
 
 
 // 사이즈 선택시 구매하기, 장바구니 버튼 나오는 이벤트
@@ -67,7 +96,7 @@ function change() {
 
 // 상세정보
 
-const detailInfoBtn = document.querySelector(".detail-info-button");
+const detailInfoBtn = document.querySelector(".detail-info-group");
 const detailInfo = document.querySelector(".detail-info");
 
 detailInfoBtn.onclick = () => {
@@ -75,7 +104,7 @@ detailInfoBtn.onclick = () => {
 }
 
 // 배송안내
-const shippingInfoBtn = document.querySelector(".shipping-info-button");
+const shippingInfoBtn = document.querySelector(".shipping-info-group");
 const shippingInfo = document.querySelector(".shipping-info");
 
 shippingInfoBtn.onclick = () => {
@@ -83,7 +112,7 @@ shippingInfoBtn.onclick = () => {
 }
 
 // 반품안내
-const returnInfoBtn = document.querySelector(".return-info-button");
+const returnInfoBtn = document.querySelector(".return-info-group");
 const returnInfo = document.querySelector(".return-info");
 
 returnInfoBtn.onclick = () => {
@@ -92,7 +121,7 @@ returnInfoBtn.onclick = () => {
 
 
 // A/S 안내
-const asInfoBtn = document.querySelector(".as-info-button");
+const asInfoBtn = document.querySelector(".as-info-group");
 const asInfo = document.querySelector(".as-info");
 
 asInfoBtn.onclick = () => {
@@ -117,16 +146,25 @@ console.log("관심버튼:" + interestBtn);
 let flag = false;
 
 interestBtn.onclick = () => {
-	if(flag) {
-		flag = false;
-		interestBtn.innerHTML = `<i class="fa-regular fa-heart" ></i>`;
-	}else{
-		flag = true;
-		interestBtn.innerHTML = `<i class="fa-solid fa-heart" style="color:red;"></i>`;
-	}
+	
+	if(user == null) {
+		alert("로그인이 필요합니다");
+		location.href = "/signin"
+	} 
+	
+		if(flag) {
+			flag = false;
+			interestBtn.innerHTML = `<i class="fa-regular fa-heart" ></i>`;
+		}else{
+			flag = true;
+			interestBtn.innerHTML = `<i class="fa-solid fa-heart" style="color:red;"></i>`;
+		
+			addInterest(flag);
+		}
+		console.log(flag);
 }
 
-buttonEvent();
+
 
 /** >>>>>>>>>>>>>>>>>>>>>REQ>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -141,7 +179,7 @@ function load() {
 			const product = response.data;
 			
 			getProduct(response.data)
-			buttonEvent(response.data)
+			buttonEvent(product)
 			
 		},
 		error: errorMessage
@@ -156,6 +194,7 @@ function getProduct(product) {
 	const productKorName = document.querySelector(".product-kor-name");
 	const productgroupNum = document.querySelector(".product-code");
 	const productPrice = document.querySelector(".product-price");
+	const productHiddenPrice = document.querySelector(".product-hidden-price");
 	const productInfo = document.querySelector(".product-info");
 	const productImg = document.querySelector(".img-group");
 	const sizeBtnsGroup = document.querySelector(".size-buttons-group");
@@ -169,7 +208,9 @@ function getProduct(product) {
 	productDetailName.innerHTML = product.productDetailName;
 	productKorName.innerHTML = product.productKorName;
 	productgroupNum.innerHTML = productGroup;
-	productPrice.innerHTML = product.productPrice + "원";
+	productHiddenPrice.innerHTML = product.productPrice;
+	productPrice.innerHTML = product.productPrice.toLocaleString("ko-kr") + "원";
+	
 	
 	for(let i = 0; i > product.productSizeList.length; i++) {
 		const lastProduct = document.querySelector(".last-product");
@@ -183,7 +224,7 @@ function getProduct(product) {
 
 product.productSizeList.forEach(size => {
 	sizeBtnsGroup.innerHTML += `
-	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="">${size.size_name}</button>
+	<button type="button" class="size-button" id="product-size-${size.product_code}" value ="${size.product_code}">${size.size_name}</button>
 	`;
 	
 })
@@ -202,6 +243,13 @@ product.productSizeList.forEach(size => {
 	
 	productInfo.innerHTML = product.productInfo;
 	
+//	let productCodeArray = new Array();
+//	
+//	product.productSizeList.forEach(size => {
+//		productCodeArray.push(size.product_code);
+//	})
+//	
+//	console.log("제발 코드: " + productCodeArray)
 
 	
 //	let count = 0;
@@ -239,15 +287,19 @@ product.productSizeList.forEach(size => {
 
 //장바구니
 
-function cartLoad() {
+function cartLoad(productSize, productCode) {
+	let productPrice = document.querySelector(".product-hidden-price");
 	
-	let size = document.querySelectorAll(".size-button");
+	cartPrice =parseInt(productPrice.textContent);
+	
+	console.log(parseInt(cartPrice))
 	
 	let addCart = {
-			username: user.user_id,
-			"productCode": 1,
+			userCode: user.user_code,
+			"productCode": productCode,
 			"productGroup": productGroup,
-			"productSize": "12",
+			"productSize": productSize,
+			"cartPrice": cartPrice,
 			"cartAmount": 1 
 		}
 		
@@ -259,15 +311,67 @@ function cartLoad() {
 		data:JSON.stringify(addCart),
 		success: (response) => {
 			if(response.data) {
-				
-				alert("장바구니 추가완료")
-				alert(JSON.stringify(addCart))
+				modalEve();
+			}else {
+				alert("이미 추가된 상품입니다.")
 			}
+				
 		},
-		error: errorMessage
+		error: errorMessage	
+	
 	})
 }
 
+
+function modalEve() {
+	const modalContainer = document.querySelector(".modal-container");
+	const closeModal = document.querySelector(".modal-close-group i");
+	const modalMoveShoppingBtn = document.querySelector(".modal-move-shopping-button");
+	const modalMoveCartBtn = document.querySelector(".modal-move-cart-button");
+	
+	modalContainer.classList.remove("modal-visible");
+	
+	closeModal.onclick = () => {
+		modalContainer.classList.add("modal-visible");
+	}
+	
+	modalMoveShoppingBtn.onclick = () => {
+		modalContainer.classList.add("modal-visible");
+	}
+	
+	modalMoveCartBtn.onclick = () => {
+		location.href = "/cart"
+	}
+	
+}
+
+function addInterest(flag) {
+	
+	let userCode = user.user_code;
+	
+	console.log(flag);
+	console.log(userCode);
+	console.log(productGroup)
+	
+	let addInterest = {
+		"userCode": userCode,
+		"productGroup": productGroup,
+		"interestFlag": flag
+	}
+	
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/api/v1/interest/add",
+		contentType: "application/json",
+		data: JSON.stringify(addInterest),
+		success: (response) => {
+			console.log(response.data)
+		},
+		error: errorMessage
+	});
+
+}
 
 //에러 메시지
 function errorMessage(request, status, error) {

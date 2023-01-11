@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.worksout.domain.interest.InterestRepository">
+  	<insert id="saveInterest"  parameterType="com.project.worksout.domain.interest.Interest">
+  		insert into
+  			interest_mst
+  		values
+  			(
+  				0,
+	  			#{user_code},
+	  			#{product_group},
+	  			#{interest_flag}
+  			)
+  	</insert>
+  	<select id="getCheckInterestProduct" parameterType="Integer"  resultType="com.project.worksout.domain.interest.Interest">
+  		SELECT
+			im.user_code,
+			im.product_group,
+			im.interest_flag
+		FROM
+			interest_mst im
+			LEFT OUTER JOIN user_mst um ON (um.user_code = im.user_code)
+		WHERE
+			im.product_group = #{product_group};
+  	</select>
+  </mapper>

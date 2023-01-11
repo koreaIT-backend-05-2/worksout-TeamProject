@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <title>payment</title>
+</head>
+<body>
+<div class="main-box ">
+	<th:block th:replace="fragment/header"></th:block>
+	
+    <main>
+        <div class="purchase-container">
+            <section>
+                <h2>주문결제</h2>
+                <h3>주문자 정보</h3>
+                <div class="orderer-info">
+                    <div class="orderer-name-container">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" class="orderer-name-input" disabled placeholder="이름을 입력해주세요.">
+                    </div>
+                    <div class="orderer-phone-container">
+                        <label for="phone-number">핸드폰 번호 *</label>
+                        <div class="phone-number-container">
+                            <input type="text" id="phone-number"  class="first-phone-input" placeholder="000" disabled>
+                            <input type="text" class="middle-phone-input"  placeholder="0000" disabled>
+                            <input type="text"  class="last-phone-input" placeholder="0000" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="shipping-info">
+                    <div class="shipping-title-container">
+                        <h3 class="shipping-info-title">배송 정보</h3>
+                        <h3 class="shipping-location-list">배송지 목록</h3>
+                    </div>
+                    <div class="shipping-button-group">
+                        <button type="button" class="exist-choose-button">기존 배송지</button>
+                        <button type="button" class="new-choose-button">신규 입력</button>
+                    </div>
+                    <div class="shipping-info-container">
+                        <div class="shipping-location-container">
+                            <label for="shipping-location">배송지명 *</label>
+                            <input type="text" id="shipping-location" class="shipping-location-input" placeholder="배송지명을 적어주세요." disabled>
+                        </div>
+                        <div class="consignee-name-container">
+                            <label for="consignee-name">수취인 이름 *</label>
+                            <input type="text" id="consignee-name"  class="consignee-name-input"  placeholder="수취인 이름을 적어주세요.">
+                        </div>
+                    </div>
+                    <div class="consignee-phone-container">
+                        <label for="consignee-phone">수취인 전화번호 *</label>
+                        <div class="consignee-phone-group">
+                            <input type="text" id="consignee-phone"  class="consignee-first-phone-input" placeholder="000">
+                            <input type="text"  class="consignee-middle-phone-input"placeholder="0000">
+                            <input type="text"  class="consignee-last-phone-input" placeholder="0000">
+                        </div>
+                    </div>
+                    <div class="address-container" >
+                            <p>주소 *</p>
+                            <input type="text" class="address-input" disabled placeholder="주소" >
+                        <button type="button" class="address-search-button">검색</button>
+                        <div>
+                            <input type="text" class="detail-address-input" placeholder="상세 주소 입력">
+                        </div>
+                    </div>
+                    <div class="shipping-request-container">
+                        <label for="shipping-request">배송시 요청사항</label>
+                        <input type="text" id="shipping-request" placeholder="배송시 요청사항을 입력해주세요.">
+                    </div>
+                </div>
+                <h3>결제수단 선택</h3>
+                <div class="purchase-button-container">
+                    <button type="button" class="credit-card">신용카드</button>
+                    <button type="button" class="account-transfer">에스크로 계좌이체</button>
+                </div>
+            </section>
+
+
+            <article>
+                <div class="order-product-container">
+                    <h3 class="order-title"></h3>
+                    
+                    <div class="product-list">
+                    
+<!--                     	<div class="order-products"> -->
+<!-- 	                        <div> -->
+<!-- 	                            <img src="https://media.worksout.co.kr/resized/live/PG22FWHEBC08321001/PG22FWHEBC08321001-1.JPG" alt=""> -->
+<!-- 	                        </div> -->
+<!-- 	                        <div class="order-product-info"> -->
+<!-- 	                            <p>BELL HAT OLIVINE</p> -->
+<!-- 	                            <p>POP TRADING COMPANY</p> -->
+<!-- 	                            <p>사이즈: L</p> -->
+<!-- 	                            <p>115000원 / 수량 1개</p> -->
+<!-- 	                        </div> -->
+<!-- 	                    </div> -->
+	                    
+<!-- 	                    <div class="order-products"> -->
+<!-- 	                        <div> -->
+<!-- 	                            <img src="https://media.worksout.co.kr/resized/live/PG22FWHEBC08321001/PG22FWHEBC08321001-1.JPG" alt=""> -->
+<!-- 	                        </div> -->
+<!-- 	                        <div class="order-product-info"> -->
+<!-- 	                            <p>BELL HAT OLIVINE</p> -->
+<!-- 	                            <p>POP TRADING COMPANY</p> -->
+<!-- 	                            <p>사이즈: L</p> -->
+<!-- 	                            <p>115000원 / 수량 1개</p> -->
+<!-- 	                        </div> -->
+<!-- 	                    </div> -->
+<!-- 	                    <div class="order-products"> -->
+<!-- 	                        <div> -->
+<!-- 	                            <img src="https://media.worksout.co.kr/resized/live/PG22FWHEBC08321001/PG22FWHEBC08321001-1.JPG" alt=""> -->
+<!-- 	                        </div> -->
+<!-- 	                        <div class="order-product-info"> -->
+<!-- 	                            <p>BELL HAT OLIVINE</p> -->
+<!-- 	                            <p>POP TRADING COMPANY</p> -->
+<!-- 	                            <p>사이즈: L</p> -->
+<!-- 	                            <p>115000원 / 수량 1개</p> -->
+<!-- 	                        </div> -->
+<!-- 	                    </div> -->
+	                    
+                    </div>
+                    
+
+                    <div class="row-line"></div>
+                    
+                    <div>
+                        <div class="total-price">
+                            <p>총 상품금액</p>
+                            <span>115000원</span>
+                        </div>
+                        <div class="shipping-price">
+                            <p>배송비</p>
+                            <span>0원</span>
+                        </div>
+                    </div>
+
+                    <div class="row-line"></div>
+
+                    <div class="total-payment">
+                        <p>총 결제금액</p>
+                        <span>115000원</span>
+                    </div>
+
+                    <div class="row-line"></div>
+                </div>
+                <div class="agree-group">
+                    <div class="checkbox-group">
+                        <input id="order-info-agree" class="checkbox-agree" type="checkbox">
+                        <label for="order-info-agree"></label>
+                        <label for="order-info-agree" class="agree">주문정보 동의</label>
+                    </div>
+                    <div class="checkbox-group last-checkbox-group">
+                        <input id="provide-agree" class="checkbox-agree" type="checkbox">
+                        <label for="provide-agree"></label>
+                        <label for="provide-agree" class="agree">제 3자 제공 동의</label>
+                    </div>
+                </div>
+                <button type="button" class="order-button" disabled=true>주문하기</button>
+            </article>
+        </div>
+    </main>
+    
+    <th:block th:replace="fragment/footer"></th:block>
+</div> 
+    
+	<script src="/static/js/payment.js"></script>
+</body>
+</html>

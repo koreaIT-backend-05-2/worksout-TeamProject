@@ -11,8 +11,8 @@
     <script src="https://kit.fontawesome.com/ede2458143.js"></script>
 </head>
 <body>
-
-	<th:block th:replace="/fragment/header"></th:block>
+	<div class="main-box">
+	<th:block th:replace="fragment/header"></th:block>
     <main>
         <div class="cart">
             <div class="cart-group">
@@ -23,7 +23,7 @@
                 <table class="cart-table">
                     <thead>
                         <tr>
-                            <th class="th-checkbox"><input type="checkbox"></th>
+                            <th class="th-checkbox"><input type="checkbox" class="cart-all-checkbox" checked="1"></th>
                             <th>상품정보</th>
                             <th>수량</th>
                             <th>가격</th>
@@ -31,64 +31,64 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="td-checkbox"><input type="checkbox"></td>
-                            <td class="td-items-info">
-                                <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div>
-                                <div class="items-info-content">
-                                    <p>10279 VOLKSWAGEN T2 CAMPER VAN</p>
-                                    <p>LEGO</p>
-                                    <p>사이즈: OS</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="td-quantity-button">
-                                    <button type="button"  class="minus">-</button>
-                                    <p class="amount">1</p>
-                                    <button type="button" class="plus">+</button>
-                                </div>
-                            </td>
-                            <td class="td-price">219900</td>
-                            <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td>
-                        </tr> <tr>
-                            <td class="td-checkbox"><input type="checkbox"></td>
-                            <td class="td-items-info">
-                                <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div>
-                                <div class="items-info-content">
-                                    <p>10279 VOLKSWAGEN T2 CAMPER VAN</p>
-                                    <p>LEGO</p>
-                                    <p>사이즈: OS</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="td-quantity-button">
-                                    <button type="button"  class="minus">-</button>
-                                    <p>1</p>
-                                    <button type="button" class="plus">+</button>
-                                </div>
-                            </td>
-                            <td class="td-price">219,900원</td>
-                            <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td>
-                        </tr> <tr>
-                            <td class="td-checkbox"><input type="checkbox"></td>
-                            <td class="td-items-info">
-                                <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div>
-                                <div class="items-info-content">
-                                    <p>10279 VOLKSWAGEN T2 CAMPER VAN</p>
-                                    <p>LEGO</p>
-                                    <p>사이즈: OS</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="td-quantity-button">
-                                    <button>-</button>
-                                    <p>1</p>
-                                    <button>+</button>
-                                </div>
-                            </td>
-                            <td class="td-price">219,900원</td>
-                            <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td>
-                        </tr>
+<!--                         <tr> -->
+<!--                             <td class="td-checkbox"><input type="checkbox"></td> -->
+<!--                             <td class="td-items-info"> -->
+<!--                                <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div> -->
+<!--                                 <div class="items-info-content">  -->
+<!--                                   <p>10279 VOLKSWAGEN T2 CAMPER VAN</p>  -->
+<!--                                    <p>LEGO</p>  -->
+<!--                                      <p>사이즈: OS</p>  -->
+<!--                                </div> -->
+<!--                             </td> -->
+<!--                             <td> -->
+<!--                                 <div class="td-quantity-button"> -->
+<!--                                     <button type="button"  class="minus">-</button> -->
+<!--                                     <p class="amount">1</p> -->
+<!--                                     <button type="button" class="plus">+</button> -->
+<!--                                 </div> -->
+<!--                             </td> -->
+<!--                             <td class="td-price">219900</td> -->
+<!--                             <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td> -->
+<!--                         </tr> <tr> -->
+<!--                             <td class="td-checkbox"><input type="checkbox"></td> -->
+<!--                             <td class="td-items-info"> -->
+<!--                                 <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div> -->
+<!--                                 <div class="items-info-content"> -->
+<!--                                     <p>10279 VOLKSWAGEN T2 CAMPER VAN</p> -->
+<!--                                     <p>LEGO</p> -->
+<!--                                     <p>사이즈: OS</p> -->
+<!--                                 </div> -->
+<!--                             </td> -->
+<!--                             <td> -->
+<!--                                 <div class="td-quantity-button"> -->
+<!--                                     <button type="button"  class="minus">-</button> -->
+<!--                                     <p>1</p> -->
+<!--                                     <button type="button" class="plus">+</button> -->
+<!--                                 </div> -->
+<!--                             </td> -->
+<!--                             <td class="td-price">219,900원</td> -->
+<!--                             <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td> -->
+<!--                         </tr> <tr> -->
+<!--                             <td class="td-checkbox"><input type="checkbox"></td> -->
+<!--                             <td class="td-items-info"> -->
+<!--                                 <div><img src="https://media.worksout.co.kr/resized/live/L1224SLFOT00346020/L1224SLFOT00346020-1.JPG" alt=""></div> -->
+<!--                                 <div class="items-info-content"> -->
+<!--                                     <p>10279 VOLKSWAGEN T2 CAMPER VAN</p> -->
+<!--                                     <p>LEGO</p> -->
+<!--                                     <p>사이즈: OS</p> -->
+<!--                                 </div> -->
+<!--                             </td> -->
+<!--                             <td> -->
+<!--                                 <div class="td-quantity-button"> -->
+<!--                                     <button>-</button> -->
+<!--                                     <p>1</p> -->
+<!--                                     <button>+</button> -->
+<!--                                 </div> -->
+<!--                             </td> -->
+<!--                             <td class="td-price">219,900원</td> -->
+<!--                             <td class="td-trash"><i class="fa-solid fa-trash-can"></i></td> -->
+<!--                         </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -98,7 +98,7 @@
                 <div>
                     <div class="total-order">
                         <p>총 주문 금액</p>
-                        <p>219,900원</p>
+                        <p class="total-order-price">0원</p>
                     </div>
                     <div class="total-shipping">
                         <p>총 배송비</p>
@@ -109,7 +109,7 @@
                 <div class="total-price-info">
                     <div class="total-price">
                         <p>총 결제 금액</p>
-                        <p>219,900원</p>
+                        <p class="total-payment-price">0원</p>
                     </div> 
                 </div>              
                 <button type="button" class="nonmember-purchase-button">비회원 구매</button> 
@@ -117,13 +117,9 @@
             </div>
         </div>
     </main>
-<<<<<<< HEAD
     <!-- footer부분 -->
-=======
-    
->>>>>>> junhyeong
-    <th:block th:replace="/fragment/footer"></th:block>
-    
+    <th:block th:replace="fragment/footer"></th:block>
+    </div>
     <script src="/static/js/cart.js"></script>
 </body>
 </html>
