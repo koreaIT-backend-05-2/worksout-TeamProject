@@ -119,7 +119,14 @@ function load() {
 			alert("문의가 접수되었습니다.")
 			location.reload(true);
 		},
-		error: errorMessage
+		error: (error) => {
+			if(error.status == 500) {
+				alert("유형을 선택해 주세요");
+			}else {
+				errorMessage
+			}
+			
+		}
 	});
 }
 

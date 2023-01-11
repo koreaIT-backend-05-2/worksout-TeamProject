@@ -37,11 +37,16 @@ function getInquiry(inquiry) {
 	
 	inquiryFile.innerHTML = `<h3>첨부파일: </h3>`;
 	
+	
+	
 	let inquiryFileArray = new Array();
+	
+	console.log(inquiry.downloadFiles);
+	
 	inquiry.downloadFiles.forEach(file => {
 		if(file.fileCode != undefined) {
 			inquiryFileArray.push(`
-			<a href="/api/v1/inquiry/${file.fileCode}">${file.fileName}</a>
+			<a href="/api/v1/inquiry/file/download/${file.fileTempName}">${file.fileOriginName}</a>
 		`) 
 		} else {
 			inquiryFileArray.push(`<p>파일 없음</p>`)

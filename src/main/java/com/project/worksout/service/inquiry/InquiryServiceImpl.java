@@ -118,7 +118,8 @@ public class InquiryServiceImpl implements InquiryService{
 				
 				if(fileName != null) {
 					fileMap.put("fileCode", inquiry.getFile_code());
-					fileMap.put("fileName", fileName.substring(fileName.indexOf("_") + 1));
+					fileMap.put("fileOriginName", fileName.substring(fileName.indexOf("_") + 1));
+					fileMap.put("fileTempName", fileName);
 				}
 				
 				downloadFiles.add(fileMap);
