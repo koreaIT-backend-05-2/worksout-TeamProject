@@ -225,11 +225,9 @@ function deleteClickEve() {
 			
 				cartProductList.remove();
 				
-				
 		}
 	}
 }
-
 
 //총 주문금액 계산
 
@@ -342,15 +340,6 @@ function deleteTotalPrice(price) {
 	console.log("ttttttttttttttttprce: " + totalPrice)
 		
 }
-
-
-//function purchaseCancelFlag() {
-	
-//	
-//	
-//	
-//}
-
 
 //체크박스 전체 체크 
 function cartCheckbox(data) {
