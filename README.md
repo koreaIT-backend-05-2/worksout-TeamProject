@@ -176,11 +176,9 @@
   * 경로를 설정하여 프로젝트에서 확인할 수 있게끔 설정했습니다.
 
 ```
-
 file:
   path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
   downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
-  
 ```
 
 ### 관리자 페이지
