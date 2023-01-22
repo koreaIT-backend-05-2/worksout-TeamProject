@@ -12,6 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import com.project.worksout.service.auth.PrincipalDetails;
 import com.project.worksout.web.dto.user.UpdateUserReqDto;
+import com.project.worksout.web.dto.user.UserInfoListRespDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -89,6 +90,23 @@ public class User {
 		convert.accept(delivery_requestment, updateUserReqDto.getDeliveryRequestment());
 
 		System.out.println(user_name);
+	}
+	
+	
+	public UserInfoListRespDto toUserListDto() {
+		return UserInfoListRespDto.builder()
+																.name(user_name)
+																.email(user_id)
+																.password(user_password)
+																.gender(user_gender)
+																.phoneFirst(user_phone_first)
+																.phoneMiddle(user_phone_middle)
+																.phoneLast(user_phone_last)
+																.birth(user_birth)
+																.rank(user_rank)
+																.emailAgree(user_email_agreement)
+																.smsAgree(user_sms_agreement)
+																.build();
 	}
 
 }

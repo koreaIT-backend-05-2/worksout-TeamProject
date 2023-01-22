@@ -99,6 +99,23 @@
   			user_code = #{user_code}
   	
   	</delete>
-  
+  <select id="getUserList"  resultType="com.project.worksout.domain.user.User" parameterType="hashmap">
+  	SELECT
+		user_code,
+		user_name,
+		user_id,
+		user_password,
+		user_gender,
+		user_phone_first,
+		user_phone_middle,
+		user_phone_last,
+		user_gender,
+		user_rank,
+		user_email_agreement,
+		user_sms_agreement
+	FROM
+		user_mst;
+ 
+  </select>
   
   </mapper>
