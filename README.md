@@ -133,6 +133,8 @@
 <img src="https://user-images.githubusercontent.com/105491519/210760386-d2d7ab48-700d-43df-b200-1dd47e5658cc.gif"/>  
 </br> 
   
+#### 마이페이지 - 회원수정
+
 > 회원수정 입니다.  
 > 필요한 정보를 수정한 후 수정 버튼을 누르면 DB에 저장된 유저정보가 수정됩니다.
 
@@ -142,14 +144,18 @@
 
 </br>
   
+#### 마이페이지 - 회원탈퇴  
+
 > 회원탈퇴 입니다.    
 > 회원탈퇴 버튼 클릭시 경고문구가 나오며, 이를 클릭하면 회원탈퇴가 되어 DB에 user정보가 삭제되고, 로그인이 되지 않습니다.  
 
 </br>
 
-### 문의하기
+### 문의하기  
 
 ![inquiry](https://user-images.githubusercontent.com/105491519/213903111-256c8680-d821-4a3a-9df5-10da9c6e43b7.gif)
+
+</br>
 
 * 문의하기 입니다.
   * 로그인 여부와 상관없이 문의를 할 수 있습니다.
@@ -157,7 +163,29 @@
   * multfile을 통해 여러개의 파일을 업로드 할 수 있으며 취소하기를 누를 시 취소할 수 있습니다.
   * 보내기를 누르게 되면 관리자페이지에 문의가 접수됩니다.
 
+</br>
+
+#### 문의하기 - 파일 다운로드  
+
+![inquiry-file-download](https://user-images.githubusercontent.com/105491519/213903389-3e8bddb6-d029-4eb6-9b24-0921ab974798.gif)
+
+</br>
+
+* 파일 다운로드 입니다.
+  * 이전에 문의하기에서 보낸 파일을 다운받아 사용할 수 있습니다.
+  * 경로를 설정하여 프로젝트에서 확인할 수 있게끔 설정했습니다.
+
+```
+
+file:
+  path: C:/TeamProject/workspace/git/worksout-TeamProject/upload/
+  downloadPath:  C:/TeamProject/workspace/git/worksout-TeamProject/download/
+  
+```
+
 ### 관리자 페이지
+
+
 
 ### 상품 디테일 페이지
 
