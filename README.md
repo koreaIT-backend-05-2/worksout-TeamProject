@@ -194,8 +194,8 @@ file:
   
   ```
   http.authorizeRequests()
-					.antMatchers("/admin/**")
-					.access("hasRole('ROLE_ADMIN')")
+	.antMatchers("/admin/**")
+	.access("hasRole('ROLE_ADMIN')")
   ```
 
 
