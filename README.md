@@ -183,6 +183,20 @@ file:
 
 ### 관리자 페이지
 
+![Admin](https://user-images.githubusercontent.com/105491519/214719461-f0b114ee-ef5d-4d2a-88c9-3b81f51bd27c.gif)
+
+</br>
+
+* 관리자 페이지입니다.
+  * 유저정보, 상품 리스트, 상품 등록, 문의하기 내용을 담고 있습니다.
+  * 상품 등록페이지에서 상품을 간편하게 등록할 수 있으며, 상품리스트에서 수정, 삭제 가능합니다.
+  * 관리자 페이지는 권한을 가진 아이디만 들어갈 수 있게끔 HttpSecurity로 설정해뒀습니다.
+  
+  ```
+  http.authorizeRequests()
+					.antMatchers("/admin/**")
+					.access("hasRole('ROLE_ADMIN')")
+  ```
 
 
 ### 상품 디테일 페이지
