@@ -165,7 +165,7 @@
 
 </br>
 
-#### 문의하기 - 파일 다운로드  
+_문의하기 - 파일 다운로드  
 
 ![inquiry-file-download](https://user-images.githubusercontent.com/105491519/213903389-3e8bddb6-d029-4eb6-9b24-0921ab974798.gif)
 
@@ -209,7 +209,7 @@ file:
   
   </br>
   
-#### 상품페이지 - 상세 페이지
+ _상품페이지 - 상세 페이지
 
 ![상품 디테일 페이지](https://user-images.githubusercontent.com/105491519/215154144-029669d0-f5c8-4791-926e-e6a28a37ded9.gif)
 
@@ -220,7 +220,7 @@ file:
   
 </br>
 
-#### 상품페이지 - 장바구니 등록
+_상품페이지 - 장바구니 등록
 
 ![상품 장바구니 페이지](https://user-images.githubusercontent.com/105491519/215155684-da92f404-7e64-4248-a9ea-c055812c70c4.gif)
 
@@ -232,7 +232,7 @@ file:
 
 </br>
 
-#### 상품페이지 - 구매하기
+_상품페이지 - 구매하기
 
 ![상품 디테일 구매하기](https://user-images.githubusercontent.com/105491519/215157199-08d38732-8ca5-42de-9c1a-1e1185bd154a.gif)
 
