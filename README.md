@@ -201,7 +201,7 @@ file:
 
 ### 상품 페이지
 
-![상품페이지](https://user-images.githubusercontent.com/105491519/215152189-01174a80-b6e8-4a93-b1c7-13b4632af201.gif)
+![product](https://user-images.githubusercontent.com/105491519/215152189-01174a80-b6e8-4a93-b1c7-13b4632af201.gif)
 
 * 상품페이지 입니다.
   * 남성 여성 생활로 상품을 분류했습니다.
@@ -211,7 +211,7 @@ file:
   
 ___상품페이지 상품 상세 페이지___
 
-![상품 디테일 페이지](https://user-images.githubusercontent.com/105491519/215154144-029669d0-f5c8-4791-926e-e6a28a37ded9.gif)
+![product-detail](https://user-images.githubusercontent.com/105491519/215154144-029669d0-f5c8-4791-926e-e6a28a37ded9.gif)
 
 * 상품 상세 페이지입니다.
   * 사이즈 선택시에만 바로 구매할 지, 장바구니에 등록할 지 선택할 수 있습니다.
@@ -222,11 +222,11 @@ ___상품페이지 상품 상세 페이지___
 
 ___상품페이지 - 장바구니 등록___
 
-![상품 장바구니 페이지](https://user-images.githubusercontent.com/105491519/215155684-da92f404-7e64-4248-a9ea-c055812c70c4.gif)
+![product-detail-cart](https://user-images.githubusercontent.com/105491519/215155684-da92f404-7e64-4248-a9ea-c055812c70c4.gif)
 
 </br>
 
-![상품 중복](https://user-images.githubusercontent.com/105491519/215163020-361154d4-e6df-4568-a3c0-5e28b3016ae9.gif)
+![product-duplicate](https://user-images.githubusercontent.com/105491519/215163020-361154d4-e6df-4568-a3c0-5e28b3016ae9.gif)
 
 * 상품 상세페이지에서 장바구니 등록하는 기능입니다.
   * 사이즈 선택 후 장바구니 등록 시 모달창이 뜨고, 장바구니로 이동할 지 계속 쇼핑을 할지 선택할 수 있습니다.
@@ -243,7 +243,7 @@ ___상품페이지 - 장바구니 등록___
 
 ___상품페이지 - 구매하기___
 
-![상품 디테일 구매하기](https://user-images.githubusercontent.com/105491519/215157199-08d38732-8ca5-42de-9c1a-1e1185bd154a.gif)
+![product-detail-purchase](https://user-images.githubusercontent.com/105491519/215157199-08d38732-8ca5-42de-9c1a-1e1185bd154a.gif)
 
 * 상품 상세페이지에서 바로 구매하는 기능입니다.
   * 사이즈 선택 후 구매하기를 누를 경우 상품을 바로 구매할 수 있는 기능입니다.
@@ -266,9 +266,39 @@ ___상품페이지 - 구매하기___
 
 ___장바구니 - 등록___
 
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/105491519/215163863-4fc8daf1-fa94-4993-bbbb-f249033722ce.gif)
+![cart-registration](https://user-images.githubusercontent.com/105491519/215163863-4fc8daf1-fa94-4993-bbbb-f249033722ce.gif)
 
 * 장바구니 등록입니다.
   * 장바구니 등록 시 장바구니 페이지에 추가 및 DB에도 추가가 됩니다.
   * 체크박스 디폴트값은 checked이며 상품 등록 시 전체 금액도 바로 증가하게 됩니다. 
+
+</br>
+
+___장바구니 - 수량 증감___
+
+![cart-quantity-IoD](https://user-images.githubusercontent.com/105491519/215169555-dbd47f98-8bde-4e8b-abaa-7fe289c67d25.gif)
+
+* 장바구니 수량 증감입니다.
+  * 장바구니 + - 버튼으로 수량을 증가 및 감소 시킬 수 있습니다.
+  * 해당 버튼을 클릭시 서버로 수량이 전달되어 DB가 수정되게끔 구현하였습니다.
+  * 수량이 증감될 때 마다 전체 금액이 변동되게끔 구현하였습니다.  
+
+* 체크박스
+  * 체크박스의 체크가 해제될 시 해당 금액이 전체 금액에서 제외됩니다.
+  * 최상단 체크박스를 클릭할 경우 전체체크가 되고 반대로 전체 체크를 해제할 수 있습니다.
+
+</br>
+
+___장바구니 - 삭제___
+
+![cart-delete](https://user-images.githubusercontent.com/105491519/215171710-62a67a3b-5599-44a4-82e7-fb31ead29401.gif)
+
+* 장바구니 삭제 기능입니다.
+  * 휴지통 버튼을 클릭시 삭제가 되며 서버에서도 바로 삭제가 되게끔 구현하였습니다.
+  * 체크박스에 체크가 되어있는 상품들은 선택상품 삭제 버튼을 통해 한 번에 삭제할 수 있습니다.
+  * 상품이 삭제될 경우 바로 전체 상품금액이 변동되게끔 구현하였습니다.
+
+</br>
+
+___장바구니 - 구매하기___
 
