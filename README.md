@@ -242,3 +242,8 @@ file:
 
 </br>
 
+### 장바구니
+
+![cart_img](https://user-images.githubusercontent.com/105491519/215158847-b9bc041c-53a1-4a7d-ab01-0213a9e879b6.png)
+
+* 장바구니 페이지입니다.
