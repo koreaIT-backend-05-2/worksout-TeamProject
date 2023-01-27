@@ -317,7 +317,7 @@ ___장바구니 - 구매하기___
 
 ### 구매하기
 
-![purchase](https://user-images.githubusercontent.com/105491519/215181494-42d91d64-8f88-434b-94b8-8c8aaffb04cb.png)
+![purchase](https://user-images.githubusercontent.com/105491519/215183980-055c6ffe-9663-4446-be1e-02475837222e.png)
 
 * 구매하기 페이지입니다.
   * 아임포트(i'mport) api를 이용해 kcp 결제를 연동하였습니다.
